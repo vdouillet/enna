@@ -52,6 +52,8 @@
 #include "geoip.h"
 #include "gadgets.h"
 
+#ifndef ELM_LIB_QUICKLAUNCH
+
 #define EDJE_GROUP_MAIN_LAYOUT "enna/main/layout"
 #define EDJE_PART_MAINMENU_SWALLOW "enna.mainmenu.swallow"
 
@@ -274,7 +276,6 @@ static int _enna_init(int argc, char **argv)
     /* Create ecore events (we should put here ALL the event_type_new) */
     ENNA_EVENT_BROWSER_CHANGED = ecore_event_type_new();
     /* try to init the requested video engine */
-    _elm_init(argc, argv);
     if (!_create_gui())
     {
         /* try to init with failsafe settings (software_x11) */
@@ -325,9 +326,10 @@ static int _create_gui(void)
 {
     Evas_Object *ic;
     Evas_Object *rect;
+    Evas_Coord minw, minh;
 
     // set custom elementary theme
-    elm_theme_extension_add(enna_config->eth, enna_config_theme_get());
+    elm_theme_overlay_add(NULL, enna_config_theme_get());
 
     // show supported engines
     _list_engines();
@@ -339,11 +341,10 @@ static int _create_gui(void)
     enna->win = elm_win_add(NULL, "enna", ELM_WIN_BASIC);
     if (!enna->win)
       return 0;
-    elm_object_theme_set(enna->win, enna_config->eth);
     elm_win_title_set(enna->win, "Enna MediaCenter");
     enna->run_fullscreen = enna_config->fullscreen | run_fullscreen;
     elm_win_fullscreen_set(enna->win, enna->run_fullscreen);
-    evas_object_smart_callback_add(enna->win, "delete-request",
+    evas_object_smart_callback_add(enna->win, "delete,request",
                                    _window_delete_cb, NULL);
     evas_object_event_callback_add(enna->win, EVAS_CALLBACK_RESIZE,
                                    _window_resize_cb, NULL);
@@ -359,7 +360,7 @@ static int _create_gui(void)
     rect = evas_object_rectangle_add(enna->evas);
     evas_object_color_set(rect, 0, 0, 0, 255);
     evas_object_show(rect);
-    elm_win_resize_object_add(enna->win, rect);
+    //    elm_win_resize_object_add(enna->win, rect);
 
     // main layout widget
     enna->layout = elm_layout_add(enna->win);
@@ -368,8 +369,7 @@ static int _create_gui(void)
         CRIT("Unable to find group \"%s\" in theme %s", EDJE_GROUP_MAIN_LAYOUT, enna_config_theme_get());
         return 0;
     }
-    evas_object_size_hint_weight_set(enna->layout, 1.0, 1.0);
-
+    evas_object_size_hint_weight_set(enna->layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(enna->layout);
 
     // mainmenu
@@ -404,12 +404,26 @@ static int _create_gui(void)
     }
 #endif
     // show all
-
+    if (!app_w || !app_h)
+      {
+         edje_object_size_min_get(elm_layout_edje_get(enna->layout), &minw, &minh);
+         if (!minw || !minh)
+           {
+              app_w = 1280;
+              app_h = 720;
+           }
+         else
+           {
+              app_w = minw;
+              app_h = minh;
+           }
+      }
+    printf("resize %d %d\n", app_w, app_h);
     evas_object_resize(enna->win, app_w, app_h);
     evas_object_resize(enna->layout, app_w - 2 * app_x_off, app_h - 2 * app_y_off);
     evas_object_move(enna->layout, app_x_off, app_y_off);
 
-    _set_scale(app_h);
+    //_set_scale(app_h);
     evas_object_show(enna->win);
 
     return 1;
@@ -634,7 +648,8 @@ static int parse_command_line(int argc, char **argv)
     return 0;
 }
 
-int main(int argc, char **argv)
+EAPI_MAIN int
+elm_main(int argc, char **argv)
 {
     int res = EXIT_FAILURE;
 
@@ -649,9 +664,8 @@ int main(int argc, char **argv)
     /* Prevent thread safety issues if the libplayer xlib hack is enabled */
     XInitThreads();
 #endif
-    elm_init(argc, argv);
     enna_util_init();
-	
+
     /* Must be called first */
     enna_config_init(conffile);
     ENNA_FREE(conffile);
@@ -672,3 +686,5 @@ int main(int argc, char **argv)
     return res;
 }
 
+#endif
+ELM_MAIN()

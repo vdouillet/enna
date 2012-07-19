@@ -43,7 +43,7 @@ _entry_input_listener_cb(void *data, enna_input event)
         case ENNA_INPUT_UP:
         case ENNA_INPUT_DOWN:
         case ENNA_INPUT_QUIT:
-            elm_object_unfocus(sd->o_edit);
+            //elm_object_unfocus(sd->o_edit);
             //evas_object_smart_callback_call(sd->o_layout, "unfocus", NULL);
             return ENNA_EVENT_CONTINUE;
         default:
@@ -169,7 +169,7 @@ enna_search_focus_set(Evas_Object *obj, Eina_Bool focus)
     
     sd = evas_object_data_get(obj, "sd");
     
-    focus ?
-        elm_object_focus(sd->o_edit) :
-        elm_object_unfocus(sd->o_edit);
+    /* focus ? */
+    /*     elm_object_focus(sd->o_edit) : */
+    /*     elm_object_unfocus(sd->o_edit); */
 }

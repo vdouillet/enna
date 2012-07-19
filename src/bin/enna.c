@@ -384,8 +384,8 @@ static int _create_gui(void)
     enna->o_button_back = elm_button_add(enna->layout);
     elm_object_style_set(enna->o_button_back, "mediaplayer");
     ic = elm_icon_add(enna->o_button_back);
-    elm_icon_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
-    elm_button_icon_set(enna->o_button_back, ic);
+    elm_image_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
+    elm_object_content_set(enna->o_button_back, ic);
 
     elm_layout_content_set(enna->layout, "back.swallow", enna->o_button_back);
     evas_object_smart_callback_add(enna->o_button_back, "clicked", _button_back_clicked_cb, NULL);

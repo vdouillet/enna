@@ -135,14 +135,14 @@ static void
 _mouse_in(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
     Smart_Data *sd = data;
-    elm_notify_timeout_set(sd->controls, 0);
+//    elm_notify_timeout_set(sd->controls, 0);
 }
 
 static void
 _mouse_out(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
     Smart_Data *sd = data;
-    elm_notify_timeout_set(sd->controls, 3);
+//    elm_notify_timeout_set(sd->controls, 3);
 }
 
 
@@ -164,7 +164,7 @@ _button_clicked_play_cb(void *data, Evas_Object *obj, void *event_info)
         elm_slideshow_timeout_set(sd->slideshow, 0);
         elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_play");
     }
-    elm_button_icon_set(sd->btplay, ic);
+    elm_button_content_set(sd->btplay, ic);
     evas_object_size_hint_min_set(sd->btplay, 64, 64);
     evas_object_size_hint_weight_set(sd->btplay, 0.0, 1.0);
     evas_object_size_hint_align_set(sd->btplay, 0.5, 0.5);
@@ -222,7 +222,7 @@ _mouse_wheel_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
     Smart_Data *sd = data;
     Evas_Object *photocam;
-    Elm_Slideshow_Item *item;
+    Elm_Object_Item *item;
     Evas_Event_Mouse_Wheel *ev = (Evas_Event_Mouse_Wheel*) event_info;
     double zoom;
 
@@ -361,18 +361,18 @@ enna_photo_slideshow_add(Evas_Object *parent)
     elm_slideshow_transition_set(sd->slideshow, "horizontal");
     elm_slideshow_loop_set(sd->slideshow, 1);
 
-    sd->controls = elm_notify_add(sd->layout);
-    elm_notify_orient_set(sd->controls, ELM_NOTIFY_ORIENT_BOTTOM);
+//    sd->controls = elm_notify_add(sd->layout);
+//    elm_notify_orient_set(sd->controls, ELM_NOTIFY_ORIENT_BOTTOM);
     evas_object_geometry_get(enna->layout, NULL, NULL, &w, &h);
     evas_object_move(sd->controls, 0, 0);
     evas_object_resize(sd->controls, w, h);
     //elm_object_style_set(sd->controls, "enna_bottom");
     /* Fixme : add a config value */
-    elm_notify_timeout_set(sd->controls, 10);
+//    elm_notify_timeout_set(sd->controls, 10);
 
     bx = elm_box_add(sd->layout);
     elm_box_horizontal_set(bx, 1);
-    elm_notify_content_set(sd->controls, bx);
+//    elm_notify_content_set(sd->controls, bx);
     evas_object_show(bx);
 
     evas_object_event_callback_add(bx, EVAS_CALLBACK_MOUSE_IN, _mouse_in, sd);
@@ -446,7 +446,7 @@ void enna_photo_slideshow_timeout_set(Evas_Object *obj, int to)
 
 void enna_photo_slideshow_image_add(Evas_Object *obj, const char *file, const char *group)
 {
-    Elm_Slideshow_Item *it;
+    Elm_Object_Item *it;
     Smart_Data *sd = evas_object_data_get(obj, "sd");
     it = elm_slideshow_item_add(sd->slideshow, &itc, file);
     sd->items = eina_list_append(sd->items, it);
@@ -454,7 +454,7 @@ void enna_photo_slideshow_image_add(Evas_Object *obj, const char *file, const ch
 
 void enna_photo_slideshow_goto(Evas_Object *obj, int nth)
 {
-    Elm_Slideshow_Item *it;
+    Elm_Object_Item *it;
     Smart_Data *sd = evas_object_data_get(obj, "sd");
 
     it = eina_list_nth(sd->items, nth);

@@ -74,7 +74,7 @@ _update_text(Evas_Object *lb)
 
     if (tmp) enna_buffer_appendf(label, "<h2>%s<h2>", tmp);
 
-    elm_label_label_set(lb, label->buf);
+    elm_object_text_set(lb, label->buf);
     enna_buffer_free(label);
 }
 

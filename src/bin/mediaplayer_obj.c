@@ -126,7 +126,7 @@ metadata_set_text(Evas_Object *obj,
         tmp = enna_util_str_chomp(tmp);
     }
     elm_label_ellipsis_set(obj, EINA_TRUE);
-    elm_label_label_set(obj, tmp);
+    elm_object_text_set(obj, tmp);
     ENNA_FREE(tmp);
     eina_stringshare_del(str);
     return res;
@@ -164,11 +164,11 @@ _metadata_set(Evas_Object *obj, Enna_Metadata *metadata __UNUSED__, Enna_File *f
             snprintf(cv, sizeof(cv), "%s/covers/%s",
                      enna_util_data_home_get(), cover);
 
-        elm_icon_file_set(sd->cv, cv, NULL);
+        elm_image_file_set(sd->cv, cv, NULL);
     }
     else
     {
-        elm_icon_file_set(sd->cv,
+        elm_image_file_set(sd->cv,
                            enna_config_theme_get(), "cover/music/file");
     }
     evas_object_size_hint_align_set(sd->cv, 0.5, 0.5);
@@ -185,7 +185,7 @@ media_cover_hide (Smart_Data *sd)
 
     ENNA_OBJECT_DEL(sd->cv);
     sd->cv = elm_icon_add(sd->layout);
-    elm_icon_file_set(sd->cv, NULL, NULL);
+    elm_image_file_set(sd->cv, NULL, NULL);
     elm_layout_content_set(sd->layout, "cover.swallow", sd->cv);
     evas_object_show(sd->cv);
 }
@@ -397,8 +397,8 @@ show_play_button(Smart_Data * sd)
 {
     Evas_Object *ic;
     ic = elm_icon_add(sd->layout);
-    elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_play");
-    elm_button_icon_set(sd->play_btn, ic);
+    elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_play");
+    elm_object_content_set(sd->play_btn, ic);
     evas_object_show(ic);
 }
 
@@ -407,8 +407,8 @@ show_pause_button(Smart_Data * sd)
 {
     Evas_Object *ic;
     ic = elm_icon_add(sd->layout);
-    elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_pause");
-    elm_button_icon_set(sd->play_btn, ic);
+    elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_pause");
+    elm_object_content_set(sd->play_btn, ic);
     evas_object_show(ic);
 }
 
@@ -547,14 +547,13 @@ enna_mediaplayer_obj_event_release(void)
 #define ELM_ADD(icon, cb)                                            \
     it = ENNA_NEW(Button_Item, 1);                                   \
     ic = elm_icon_add(layout);                                       \
-    elm_icon_file_set(ic, enna_config_theme_get(), icon);            \
-    elm_icon_scale_set(ic, 0, 0);                                    \
+    elm_image_file_set(ic, enna_config_theme_get(), icon);           \
     bt = elm_button_add(layout);                                     \
     it->bt = bt;                                                     \
     evas_object_smart_callback_add(bt, "clicked", cb, sd);           \
     it->func = cb;                                                   \
     it->data = sd;                                                   \
-    elm_button_icon_set(bt, ic);                                     \
+    elm_object_content_set(bt, ic);                                  \
     elm_object_style_set(bt, "mediaplayer");                         \
     evas_object_size_hint_weight_set(bt, 0.0, 1.0);                  \
     evas_object_size_hint_align_set(bt, 0.5, 0.5);                   \
@@ -597,7 +596,7 @@ enna_mediaplayer_obj_add(Evas * evas __UNUSED__, Enna_Playlist *enna_playlist)
     elm_label_slide_set(lb, EINA_TRUE);
     evas_object_size_hint_weight_set(lb, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_size_hint_align_set(lb, 0.5, 0.5);
-    elm_label_label_set(lb, "");
+    elm_object_text_set(lb, "");
     elm_box_pack_end(bx, lb);
     evas_object_show(lb);
     sd->title = lb;
@@ -607,7 +606,7 @@ enna_mediaplayer_obj_add(Evas * evas __UNUSED__, Enna_Playlist *enna_playlist)
     elm_label_slide_set(lb, EINA_TRUE);
     evas_object_size_hint_weight_set(lb, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_size_hint_align_set(lb, 0.5, 0.5);
-    elm_label_label_set(lb, "");
+    elm_object_text_set(lb, "");
     elm_box_pack_end(bx, lb);
     evas_object_show(lb);
     sd->album = lb;
@@ -617,13 +616,13 @@ enna_mediaplayer_obj_add(Evas * evas __UNUSED__, Enna_Playlist *enna_playlist)
     elm_label_slide_set(lb, EINA_TRUE);
     evas_object_size_hint_weight_set(lb, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_size_hint_align_set(lb, 0.5, 0.5);
-    elm_label_label_set(lb, "");
+    elm_object_text_set(lb, "");
     elm_box_pack_end(bx, lb);
     evas_object_show(lb);
     sd->artist = lb;
 
     btn_box = elm_box_add(layout);
-    elm_box_homogenous_set(btn_box, 0);
+    elm_box_homogeneous_set(btn_box, 0);
     elm_box_horizontal_set(btn_box, 1);
 
     ELM_ADD("icon/mp_stop",    _button_clicked_stop_cb);

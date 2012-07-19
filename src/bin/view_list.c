@@ -40,7 +40,7 @@ struct _List_Item
     Enna_File *file;
     void (*func_activated) (void *data);
     void *data;
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
 };
 
 struct _Smart_Data
@@ -51,11 +51,11 @@ struct _Smart_Data
 
 
 static void
-_item_activate(Elm_Genlist_Item *item)
+_item_activate(Elm_Object_Item *item)
 {
     List_Item *li;
 
-    li = (List_Item*)elm_genlist_item_data_get(item);
+    li = (List_Item*)elm_object_item_data_get(item);
     if (li->func_activated)
             li->func_activated(li->data);
 }
@@ -71,7 +71,7 @@ _item_selected(void *data, Evas_Object *obj, void *event_info __UNUSED__)
 static void
 _item_click_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info)
 {
-    Elm_Genlist_Item *item = data;
+    Elm_Object_Item *item = data;
     Evas_Event_Mouse_Up *ev = event_info;
 
     /* Don't activate when user is scrolling list */
@@ -92,14 +92,14 @@ _file_meta_update(void *data, Enna_File *file __UNUSED__)
 static void
 _item_realized_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info)
 {
-   Elm_Genlist_Item *item = event_info;
+   Elm_Object_Item *item = event_info;
    Evas_Object *o_item;
    List_Item *li;
 
-   o_item = (Evas_Object*)elm_genlist_item_object_get(item);
+   o_item = (Evas_Object*) elm_object_item_widget_get(item);
    evas_object_event_callback_add(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb, item);
 
-   li = (List_Item*)elm_genlist_item_data_get(item);
+   li = (List_Item*)elm_object_item_data_get(item);
    if (li && li->file)
    {
        switch (li->file->type)
@@ -118,14 +118,14 @@ _item_realized_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *even
 static void
 _item_unrealized_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info)
 {
-    Elm_Genlist_Item *item = event_info;
+    Elm_Object_Item *item = event_info;
     Evas_Object *o_item;
     List_Item *li;
 
-    o_item = (Evas_Object*)elm_genlist_item_object_get(item);
+    o_item = (Evas_Object*)elm_object_item_widget_get(item);
     evas_object_event_callback_del(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb);
 
-    li = (List_Item*)elm_genlist_item_data_get(item);
+    li = (List_Item*)elm_object_item_data_get(item);
     if (li && li->file)
     {
         switch (li->file->type)
@@ -151,7 +151,7 @@ _item_remove(Evas_Object *obj, List_Item *item)
     sd->items = eina_list_remove(sd->items, item);
     enna_file_meta_callback_del(item->file, _file_meta_update);
     enna_file_free(item->file);
-    elm_genlist_item_del(item->item);
+    elm_object_item_del(item->item);
     free(item);
 
     return;
@@ -185,9 +185,9 @@ _list_item_default_icon_get(void *data, Evas_Object *obj, const char *part)
 
         ic = elm_icon_add(obj);
         if (li->file->icon && li->file->icon[0] == '/')
-            elm_icon_file_set(ic, li->file->icon, NULL);
+            elm_image_file_set(ic, li->file->icon, NULL);
         else if (li->file->icon)
-            elm_icon_file_set(ic, enna_config_theme_get(), li->file->icon);
+            elm_image_file_set(ic, enna_config_theme_get(), li->file->icon);
         else
             return NULL;
         evas_object_size_hint_min_set(ic, 32, 32);
@@ -202,7 +202,7 @@ _list_item_default_icon_get(void *data, Evas_Object *obj, const char *part)
             return NULL;
 
         ic = elm_icon_add(obj);
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/arrow_right");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/arrow_right");
         evas_object_size_hint_min_set(ic, 24, 24);
         evas_object_show(ic);
         return ic;
@@ -280,7 +280,7 @@ _list_item_track_icon_get(void *data, Evas_Object *obj, const char *part)
         if (!starred)
             return NULL;
         ic = elm_icon_add(obj);
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/favorite");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/favorite");
         evas_object_size_hint_min_set(ic, 24, 24);
         evas_object_show(ic);
         return ic;
@@ -304,7 +304,7 @@ _list_item_track_icon_get(void *data, Evas_Object *obj, const char *part)
         eina_stringshare_del(tmp);
         ic = elm_icon_add(obj);
         printf("PLAYING icon add\n");
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_play");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_play");
         evas_object_size_hint_min_set(ic, 24, 24);
         evas_object_show(ic);
         return ic;
@@ -375,7 +375,7 @@ _list_item_film_icon_get(void *data, Evas_Object *obj, const char *part)
             return NULL;
         eina_stringshare_del(played);
         ic = elm_icon_add(obj);
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/played");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/played");
         evas_object_show(ic);
         return ic;
     }
@@ -383,35 +383,9 @@ _list_item_film_icon_get(void *data, Evas_Object *obj, const char *part)
     return NULL;
 }
 
-static Elm_Genlist_Item_Class itc_list_default = {
-    "default",
-    {
-        _list_item_default_label_get,
-        _list_item_default_icon_get,
-        NULL,
-        NULL
-    }
-};
-
-static Elm_Genlist_Item_Class itc_list_track = {
-    "track",
-    {
-        _list_item_track_label_get,
-        _list_item_track_icon_get,
-        NULL,
-        NULL
-    }
-};
-
-static Elm_Genlist_Item_Class itc_list_film = {
-    "film",
-    {
-        _list_item_film_label_get,
-        _list_item_film_icon_get,
-        NULL,
-        NULL
-    }
-};
+static Elm_Genlist_Item_Class *itc_list_default = NULL;
+static Elm_Genlist_Item_Class *itc_list_track = NULL;
+static Elm_Genlist_Item_Class *itc_list_film = NULL;
 
 static void
 _smart_select_item(Smart_Data *sd, int n)
@@ -421,7 +395,7 @@ _smart_select_item(Smart_Data *sd, int n)
     it = eina_list_nth(sd->items, n);
     if (!it) return;
 
-    elm_genlist_item_middle_bring_in(it->item);
+    elm_genlist_item_bring_in(it->item, ELM_GENLIST_ITEM_SCROLLTO_MIDDLE);
     elm_genlist_item_selected_set(it->item, 1);
     evas_object_smart_callback_call(sd->obj, "hilight", it->data);
 }
@@ -482,7 +456,7 @@ enna_list_add(Evas_Object *parent)
     /* Don't let elm focused genlist object, keys are handle by enna */
     elm_object_focus_allow_set(obj, EINA_FALSE);
     evas_object_size_hint_weight_set(obj, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-    elm_genlist_horizontal_mode_set(obj, ELM_LIST_COMPRESS);
+    elm_genlist_mode_set(obj, ELM_LIST_COMPRESS);
 
     evas_object_show(obj);
     sd->obj = obj;
@@ -511,22 +485,43 @@ enna_list_file_append(Evas_Object *obj, Enna_File *file,
     it->data = data;
     it->file = enna_file_ref(file);
 
+    itc_list_default = elm_genlist_item_class_new();
+    itc_list_default->item_style     = "default";
+    itc_list_default->func.text_get = _list_item_default_label_get;
+    itc_list_default->func.content_get  = _list_item_default_icon_get;
+    itc_list_default->func.state_get = NULL;
+    itc_list_default->func.del       = NULL;
+
+    itc_list_track = elm_genlist_item_class_new();
+    itc_list_track->item_style = "track";
+    itc_list_track->func.text_get = _list_item_track_label_get;
+    itc_list_track->func.content_get  =  _list_item_track_icon_get;
+    itc_list_track->func.state_get = NULL;
+    itc_list_track->func.del       = NULL;
+
+    itc_list_film = elm_genlist_item_class_new();
+    itc_list_film->item_style = "film";
+    itc_list_film->func.text_get = _list_item_film_label_get;
+    itc_list_film->func.content_get  =  _list_item_film_icon_get;
+    itc_list_film->func.state_get = NULL;
+    itc_list_film->func.del       = NULL;
+
     if (file->type == ENNA_FILE_TRACK)
     {
-        it->item = elm_genlist_item_append (obj, &itc_list_track, it,
+        it->item = elm_genlist_item_append (obj, itc_list_track, it,
                                             NULL, ELM_GENLIST_ITEM_NONE,
                                             _item_selected, it);
 
     }
     else if (file->type == ENNA_FILE_FILM)
     {
-        it->item = elm_genlist_item_append (obj, &itc_list_film, it,
+        it->item = elm_genlist_item_append (obj, itc_list_film, it,
                                             NULL, ELM_GENLIST_ITEM_NONE,
                                             _item_selected, it);
     }
     else
     {
-        it->item = elm_genlist_item_append (obj, &itc_list_default, it,
+        it->item = elm_genlist_item_append (obj, itc_list_default, it,
                                             NULL, ELM_GENLIST_ITEM_NONE,
                                             _item_selected, it);
     }

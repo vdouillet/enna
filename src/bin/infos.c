@@ -82,18 +82,18 @@ _update_icon(Evas_Object *parent, Enna_File *file, const char *key)
 
     if (path && path[0] != '/')
     {
-        elm_icon_file_set(ic, enna_config_theme_get(), path);
+        elm_image_file_set(ic, enna_config_theme_get(), path);
         eina_stringshare_del(path);
     }
     else if (path)
     {
-        elm_icon_file_set(ic, path, NULL);
+        elm_image_file_set(ic, path, NULL);
         eina_stringshare_del(path);
 
     }
     else if (!strcmp(key, "cover"))
     {
-        elm_icon_file_set(ic, enna_config_theme_get(), file->icon);
+        elm_image_file_set(ic, enna_config_theme_get(), file->icon);
     }
 
     if (ic)
@@ -201,7 +201,7 @@ enna_infos_add (Evas_Object *parent)
 
     sd = calloc(1, sizeof(Smart_Data));
 
-    sd->pager = elm_pager_add(parent);
+    sd->pager = elm_naviframe_add(parent);
     elm_object_style_set(sd->pager, "slide_invisible");
     evas_object_size_hint_weight_set(sd->pager, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show (sd->pager);
@@ -250,8 +250,8 @@ enna_infos_file_set(Evas_Object *obj, Enna_File *file)
                 break;
             }
         }
-        elm_pager_content_pop(sd->pager);
-        elm_pager_content_push(sd->pager, sd->page);
+        elm_naviframe_item_pop(sd->pager);
+        elm_naviframe_item_simple_push(sd->pager, sd->page);
     }
 
     if (sd->file)

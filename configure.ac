@@ -44,6 +44,8 @@ PKG_CHECK_MODULES([ENNA],
    eet >= 1.4.0
    evas >= 1.0.0
    ecore >= 1.0.0
+   ecore-x >= 1.0.0
+   ecore-input > 1.0.0
    ecore-evas >= 1.0.0
    ecore-file >= 1.0.0
    ecore-ipc >= 1.0.0

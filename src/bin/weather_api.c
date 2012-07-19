@@ -399,7 +399,7 @@ _weather_config_panel_city_validate_cb(void *data __UNUSED__, Enna_View_List2_Wi
 static void
 _weather_config_panel_city_add_cb(void *data, Enna_View_List2_Widget *widget __UNUSED__)
 {
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
 
     item = enna_list2_item_insert_before(_o_cfg_panel,
                                          data,
@@ -426,7 +426,7 @@ _weather_config_panel_show(void *data __UNUSED__)
 {
     Eina_List *l;
     char *city;
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
 
     _o_cfg_panel= enna_list2_add(enna->evas);
     evas_object_size_hint_align_set(_o_cfg_panel, -1.0, -1.0);

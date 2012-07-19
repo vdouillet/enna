@@ -145,7 +145,7 @@ enna_get_geo_by_ip (void)
                                       url_data_cb, NULL); 
 
     /* proceed with IP Geolocalisation request */
-    ecore_con_url_send(url, NULL, 0, NULL);
+    //ecore_con_url_send(url, NULL, 0, NULL);
 
     enna_log(ENNA_MSG_EVENT, ENNA_MODULE_NAME,
              "Search Request: %s", GEOIP_QUERY);

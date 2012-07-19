@@ -104,14 +104,14 @@ _list_button_mouse_move_cb(void *data __UNUSED__, Evas *e __UNUSED__, Evas_Objec
 
 /***   Privates  ***/
 static Enna_View_List2_Widget *
-_enna_list_item_widget_add(Elm_Genlist_Item *item,
+_enna_list_item_widget_add(Elm_Object_Item *item,
                            const char *icon, const char *label, const char *label2,
                            void (*func) (void *data, Enna_View_List2_Widget *widget),
                            void *func_data,
                            list_control_type type,
                            Eina_Bool status)
 {
-    Item_Data *id = (Item_Data *)elm_genlist_item_data_get(item);
+    Item_Data *id = (Item_Data *)elm_object_item_data_get(item);
     Enna_View_List2_Widget *b;
 
     if (!item) return NULL;
@@ -172,9 +172,9 @@ _list_item_buttons_create_all(const Item_Data *id)
         {
             ic = elm_icon_add(enna->layout);
             if (b->icon && b->icon[0] == '/')
-                elm_icon_file_set(ic, b->icon, NULL);
+                elm_image_file_set(ic, b->icon, NULL);
             else if (b->icon)
-                elm_icon_file_set(ic, enna_config_theme_get(), b->icon);
+                elm_image_file_set(ic, enna_config_theme_get(), b->icon);
             evas_object_show(ic);
         }
 
@@ -184,19 +184,21 @@ _list_item_buttons_create_all(const Item_Data *id)
         case ENNA_BUTTON:
             o = elm_button_add(enna->layout);
             elm_object_style_set(o, "view_list2");
-            elm_button_label_set(o, b->label);
-            elm_button_icon_set(o, ic);
+            elm_object_text_set(o, b->label);
+            elm_object_content_set(o, ic);
             evas_object_smart_callback_add(o, "clicked", _list_button_clicked_cb, b);
             break;
         case ENNA_TOGGLE:
-            o = elm_toggle_add(enna->layout);
-            elm_toggle_states_labels_set(o, b->label, b->label2);
+            o = elm_check_add(enna->layout);
+            elm_object_style_set(o, "toggle");
+            elm_object_part_text_set(o, "on", b->label);
+            elm_object_part_text_set(o, "off", b->label2);
             break;
         case ENNA_CHECKBOX:
             o = elm_check_add(enna->layout);
             //elm_object_style_set(o, "enna_list");
-            elm_check_label_set(o, b->label);
-            elm_check_icon_set(o, ic);
+            elm_object_text_set(o, b->label);
+            elm_object_content_set(o, ic);
             elm_check_state_set(o, b->status);
             evas_object_smart_callback_add(o, "changed", _list_button_clicked_cb, b);
             break;
@@ -251,9 +253,9 @@ _list_item_icon_get(void *data, Evas_Object *obj, const char *part)
 
         ic = elm_icon_add(obj);
         if (id->icon && id->icon[0] == '/')
-            elm_icon_file_set(ic, id->icon, NULL);
+            elm_image_file_set(ic, id->icon, NULL);
         else
-            elm_icon_file_set(ic, enna_config_theme_get(), id->icon);
+            elm_image_file_set(ic, enna_config_theme_get(), id->icon);
         evas_object_size_hint_min_set(ic, 64, 64);
         evas_object_show(ic);
         return ic;
@@ -295,15 +297,7 @@ _list_item_del(void *data, Evas_Object *obj __UNUSED__)
     ENNA_FREE(id);
 }
 
-static Elm_Genlist_Item_Class itc_single_label = {
-    "view_list2",
-    {
-        _list_item_label_get,
-        _list_item_icon_get,
-        _list_item_state_get,
-        _list_item_del
-    }
-};
+static Elm_Genlist_Item_Class *itc_single_label = NULL;
 
 /***   Public API  ***/
 Evas_Object *
@@ -314,19 +308,28 @@ enna_list2_add(Evas *evas __UNUSED__) // evas is unused
     obj = elm_genlist_add(enna->layout);
     evas_object_size_hint_align_set(obj, -1.0, -1.0);
     evas_object_size_hint_weight_set(obj, 1.0, 1.0);
-    elm_genlist_horizontal_mode_set(obj, ELM_LIST_LIMIT);
+    //elm_genlist_horizontal_mode_set(obj, ELM_LIST_LIMIT);
     //~ evas_object_smart_callback_add(obj, "clicked", _list_item_clicked_cb, NULL);
     evas_object_show(obj);
+
+    itc_single_label = elm_genlist_item_class_new();
+    itc_single_label->item_style     = "view_list2";
+    itc_single_label->func.text_get = _list_item_label_get;
+    itc_single_label->func.content_get  = _list_item_icon_get;
+    itc_single_label->func.state_get = _list_item_state_get;
+    itc_single_label->func.del       = _list_item_del;
+
+
 
     return obj;
 }
 
-Elm_Genlist_Item *
+Elm_Object_Item *
 enna_list2_append(Evas_Object *obj, const char *label1, const char *label2,
                   const char *icon,
                   void(*func)(void *data), void *func_data)
 {
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
     Item_Data *id;
 
     id = ENNA_NEW(Item_Data, 1);
@@ -337,7 +340,7 @@ enna_list2_append(Evas_Object *obj, const char *label1, const char *label2,
     id->label2 = eina_stringshare_add(label2);
     id->icon = eina_stringshare_add(icon);
 
-    item = elm_genlist_item_append(obj, &itc_single_label, id, NULL,
+    item = elm_genlist_item_append(obj, itc_single_label, id, NULL,
                                    ELM_GENLIST_ITEM_NONE,
                                    _list_item_selected_cb, id);
 
@@ -347,13 +350,13 @@ enna_list2_append(Evas_Object *obj, const char *label1, const char *label2,
     return item;
 }
 
-Elm_Genlist_Item *
-enna_list2_item_insert_after(Evas_Object *obj, Elm_Genlist_Item *after,
+Elm_Object_Item *
+enna_list2_item_insert_after(Evas_Object *obj, Elm_Object_Item *after,
                              const char *label1, const char *label2,
                              const char *icon,
                              void(*func)(void *data), void *func_data)
 {
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
     Item_Data *id;
 
     id = ENNA_NEW(Item_Data, 1);
@@ -364,7 +367,7 @@ enna_list2_item_insert_after(Evas_Object *obj, Elm_Genlist_Item *after,
     id->label2 = eina_stringshare_add(label2);
     id->icon = eina_stringshare_add(icon);
 
-    item = elm_genlist_item_insert_after(obj, &itc_single_label, id, NULL, after,
+    item = elm_genlist_item_insert_after(obj, itc_single_label, id, NULL, after,
                                          ELM_GENLIST_ITEM_NONE,
                                          _list_item_selected_cb, id);
 
@@ -374,13 +377,13 @@ enna_list2_item_insert_after(Evas_Object *obj, Elm_Genlist_Item *after,
     return item;
 }
 
-Elm_Genlist_Item *
-enna_list2_item_insert_before(Evas_Object *obj, Elm_Genlist_Item *before,
+Elm_Object_Item *
+enna_list2_item_insert_before(Evas_Object *obj, Elm_Object_Item *before,
                               const char *label1, const char *label2,
                               const char *icon,
                               void(*func)(void *data), void *func_data)
 {
-    Elm_Genlist_Item *item;
+    Elm_Object_Item *item;
     Item_Data *id;
 
     id = ENNA_NEW(Item_Data, 1);
@@ -391,7 +394,7 @@ enna_list2_item_insert_before(Evas_Object *obj, Elm_Genlist_Item *before,
     id->label2 = eina_stringshare_add(label2);
     id->icon = eina_stringshare_add(icon);
 
-    item = elm_genlist_item_insert_before(obj, &itc_single_label, id, NULL, before,
+    item = elm_genlist_item_insert_before(obj, itc_single_label, id, NULL, before,
                                           ELM_GENLIST_ITEM_NONE,
                                           _list_item_selected_cb, id);
 
@@ -410,7 +413,7 @@ enna_list2_file_append(Evas_Object *obj, Enna_File *file,
 }
 
 Enna_View_List2_Widget *
-enna_list2_item_button_add(Elm_Genlist_Item *item,
+enna_list2_item_button_add(Elm_Object_Item *item,
                            const char *icon, const char *label,
                            void (*func) (void *data,Enna_View_List2_Widget *widget), void *func_data)
 {
@@ -418,7 +421,7 @@ enna_list2_item_button_add(Elm_Genlist_Item *item,
 }
 
 Enna_View_List2_Widget * //TODO to finish
-enna_list2_item_toggle_add(Elm_Genlist_Item *item,
+enna_list2_item_toggle_add(Elm_Object_Item *item,
                            const char *icon, const char *onlabel, const char *offlabel,
                            void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data)
 {
@@ -426,7 +429,7 @@ enna_list2_item_toggle_add(Elm_Genlist_Item *item,
 }
 
 Enna_View_List2_Widget *
-enna_list2_item_check_add(Elm_Genlist_Item *item,
+enna_list2_item_check_add(Elm_Object_Item *item,
                           const char *icon, const char *label, Eina_Bool status,
                           void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data)
 {
@@ -434,7 +437,7 @@ enna_list2_item_check_add(Elm_Genlist_Item *item,
 }
 
 Enna_View_List2_Widget *
-enna_list2_item_entry_add(Elm_Genlist_Item *item,
+enna_list2_item_entry_add(Elm_Object_Item *item,
                           const char *icon, const char *label,
                           void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data)
 {
@@ -450,9 +453,9 @@ enna_list2_item_entry_get(Enna_View_List2_Widget *entry)
 }
 
 void
-enna_list2_item_del(Elm_Genlist_Item *item)
+enna_list2_item_del(Elm_Object_Item *item)
 {
-    Elm_Genlist_Item *next;
+    Elm_Object_Item *next;
 
     next = elm_genlist_item_next_get(item);
     if (!next)
@@ -461,7 +464,7 @@ enna_list2_item_del(Elm_Genlist_Item *item)
     if (next)
         elm_genlist_item_selected_set(next, EINA_TRUE);
 
-    elm_genlist_item_del(item);
+    elm_object_item_del(item);
 }
 
 /* Events input */
@@ -476,14 +479,14 @@ _list_item_button_event_input_focus_set(Enna_View_List2_Widget *ib, Eina_Bool fo
             ib->input_listener = enna_input_listener_add("view_list2/entry",
                                                           _list_item_button_input_events_cb, ib);
             enna_input_listener_promote(ib->input_listener);
-            elm_object_focus(ib->obj);
+            //elm_object_focus(ib->obj);
             //evas_object_focus_set(ib->obj, EINA_TRUE);
         }
         else
         {
             enna_input_listener_del(ib->input_listener);
             ib->input_listener = NULL;
-            elm_object_unfocus(ib->obj);
+            //elm_object_unfocus(ib->obj);
             //evas_object_focus_set(enna->win, EINA_TRUE);
 
         }
@@ -509,9 +512,9 @@ _list_item_button_input_events_cb(void *data, enna_input event)
 }
 
 static Enna_View_List2_Widget *
-_list_item_button_focus_next(Elm_Genlist_Item *item, Enna_View_List2_Widget *cur)
+_list_item_button_focus_next(Elm_Object_Item *item, Enna_View_List2_Widget *cur)
 {
-    Item_Data *id = (Item_Data *)elm_genlist_item_data_get(item);
+    Item_Data *id = (Item_Data *)elm_object_item_data_get(item);
     Enna_View_List2_Widget *next;
 
     if (!item || !id) return NULL;
@@ -543,9 +546,9 @@ _list_item_button_focus_next(Elm_Genlist_Item *item, Enna_View_List2_Widget *cur
 }
 
 static Enna_View_List2_Widget *
-_list_item_button_focus_prev(Elm_Genlist_Item *item, Enna_View_List2_Widget *cur)
+_list_item_button_focus_prev(Elm_Object_Item *item, Enna_View_List2_Widget *cur)
 {
-    Item_Data *id = (Item_Data *)elm_genlist_item_data_get(item);
+    Item_Data *id = (Item_Data *)elm_object_item_data_get(item);
     Enna_View_List2_Widget *prev;
 
     if (!item || !id) return NULL;
@@ -575,14 +578,14 @@ _list_item_button_focus_prev(Elm_Genlist_Item *item, Enna_View_List2_Widget *cur
 Eina_Bool
 enna_list2_input_feed(Evas_Object *obj, enna_input event)
 {
-    Elm_Genlist_Item *item, *prev, *next;
+    Elm_Object_Item *item, *prev, *next;
     Item_Data *id;
 
     //printf("INPUT.. to list2 %d\n", event);
     if (!obj) return ENNA_EVENT_CONTINUE;
 
     item = elm_genlist_selected_item_get(obj);
-    id = (Item_Data*)elm_genlist_item_data_get(item);
+    id = (Item_Data*)elm_object_item_data_get(item);
     if (!item) return ENNA_EVENT_CONTINUE;
 
     switch (event)
@@ -600,7 +603,7 @@ enna_list2_input_feed(Evas_Object *obj, enna_input event)
             if (prev)
             {
                 elm_genlist_item_selected_set(prev, EINA_TRUE);
-                elm_genlist_item_bring_in(prev);
+                elm_genlist_item_bring_in(prev, ELM_GENLIST_ITEM_SCROLLTO_MIDDLE);
                 _list_item_button_event_input_focus_set(id->focused, EINA_FALSE);
                 if (id->focused)
                 {
@@ -615,7 +618,7 @@ enna_list2_input_feed(Evas_Object *obj, enna_input event)
             if (next)
             {
                 elm_genlist_item_selected_set(next, EINA_TRUE);
-                elm_genlist_item_bring_in(next);
+                elm_genlist_item_bring_in(next, ELM_GENLIST_ITEM_SCROLLTO_MIDDLE);
                 _list_item_button_event_input_focus_set(id->focused, EINA_FALSE);
                 if (id->focused)
                 {
@@ -638,7 +641,7 @@ enna_list2_input_feed(Evas_Object *obj, enna_input event)
                     _list_button_activate(id->focused);
                     break;
                 case ENNA_TOGGLE:
-                     elm_toggle_state_set(id->focused->obj, !elm_toggle_state_get(id->focused->obj));
+                     elm_check_state_set(id->focused->obj, !elm_check_state_get(id->focused->obj));
                 default:
                     _list_button_activate(id->focused);
                     break;
@@ -653,20 +656,20 @@ enna_list2_input_feed(Evas_Object *obj, enna_input event)
             }
             else
             {
-                _list_item_activate((Item_Data*)elm_genlist_item_data_get(item));
+                _list_item_activate((Item_Data*)elm_object_item_data_get(item));
             }
             return ENNA_EVENT_BLOCK;
             break;
         case ENNA_INPUT_FIRST:
             prev = elm_genlist_first_item_get(obj);
             elm_genlist_item_selected_set(prev, EINA_TRUE);
-            elm_genlist_item_bring_in(prev);
+            elm_genlist_item_bring_in(prev, ELM_GENLIST_ITEM_SCROLLTO_MIDDLE);
             return ENNA_EVENT_BLOCK;
             break;
         case ENNA_INPUT_LAST:
             next = elm_genlist_last_item_get(obj);
             elm_genlist_item_selected_set(next, EINA_TRUE);
-            elm_genlist_item_bring_in(next);
+            elm_genlist_item_bring_in(next, ELM_GENLIST_ITEM_SCROLLTO_MIDDLE);
             return ENNA_EVENT_BLOCK;
             break;
         //~ case ENNA_INPUT_PREV:

@@ -46,7 +46,7 @@ struct _Picture_Item
     Enna_File *file;
     void (*func_activated) (void *data);
     void *data;
-    Elm_Gengrid_Item *item;
+    Elm_Object_Item *item;
     Smart_Data *sd;
 
 };
@@ -87,9 +87,9 @@ _grid_item_icon_get(void *data, Evas_Object *obj, const char *part)
 		{
 			ic = elm_icon_add(obj);
 			if (pi->file->icon && pi->file->icon[0] == '/')
-				elm_icon_file_set(ic, pi->file->icon, NULL);
+				elm_image_file_set(ic, pi->file->icon, NULL);
 			else if (pi->file->icon)
-				elm_icon_file_set(ic, enna_config_theme_get(), pi->file->icon);
+				elm_image_file_set(ic, enna_config_theme_get(), pi->file->icon);
 			else
 				return NULL;
 
@@ -132,7 +132,7 @@ _item_remove(Evas_Object *obj, Picture_Item *item)
 
     if (!sd || !item) return;
 
-    elm_gengrid_item_del(item->item);
+    elm_object_item_del(item->item);
     sd->items = eina_list_remove(sd->items, item);
     enna_kbdnav_item_del(sd->nav, item);
     ENNA_FREE(item);
@@ -140,15 +140,7 @@ _item_remove(Evas_Object *obj, Picture_Item *item)
     return;
 }
 
-static Elm_Gengrid_Item_Class gic = {
-    "default",
-    {
-        _grid_item_label_get,
-        _grid_item_icon_get,
-        _grid_item_state_get,
-        _grid_item_del
-    }
-};
+static Elm_Gengrid_Item_Class *gic;
 
 static void
 _del_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
@@ -180,11 +172,11 @@ _resize_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *ev
 }
 
 static void
-_item_activate(Elm_Gengrid_Item *item)
+_item_activate(Elm_Object_Item *item)
 {
     Picture_Item *li;
 
-    li = (Picture_Item*)elm_gengrid_item_data_get(item);
+    li = (Picture_Item*)elm_object_item_data_get(item);
     if (li->func_activated)
             li->func_activated(li->data);
 }
@@ -195,13 +187,13 @@ _item_selected(void *data, Evas_Object *obj, void *event_info __UNUSED__)
     Picture_Item *li = data;
 
     evas_object_smart_callback_call(obj, "hilight", li->data);
-    elm_gengrid_item_bring_in(li->item);
+    elm_gengrid_item_bring_in(li->item, ELM_GENGRID_ITEM_SCROLLTO_MIDDLE);
 }
 
 static void
 _item_click_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info)
 {
-    Elm_Gengrid_Item *item = data;
+    Elm_Object_Item *item = data;
     Evas_Event_Mouse_Up *ev = event_info;
 
     /* Don't activate when user is scrolling list */
@@ -213,10 +205,10 @@ _item_click_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void
 static void
 _item_realized_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info)
 {
-   Elm_Gengrid_Item *item = event_info;
+   Elm_Object_Item *item = event_info;
    Evas_Object *o_item;
 
-   o_item = (Evas_Object*)elm_gengrid_item_object_get(item);
+   o_item = (Evas_Object*)elm_object_item_widget_get(item);
    evas_object_event_callback_add(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb, item);
 }
 
@@ -248,6 +240,13 @@ enna_wall_add(Evas_Object * parent)
 
     sd->nav = enna_kbdnav_add();
 
+    gic = elm_gengrid_item_class_new();
+    gic->item_style = "default";
+    gic->func.text_get = _grid_item_label_get;
+    gic->func.content_get = _grid_item_icon_get;
+    gic->func.state_get = _grid_item_state_get;
+    gic->func.del = _grid_item_del;
+
     return sd->o_grid;
 }
 
@@ -271,7 +270,7 @@ _kbdnav_object_get(void *item_data, void *user_data __UNUSED__)
   if (!pi)
     return NULL;
 
-  return elm_gengrid_item_object_get(pi->item);
+  return elm_object_item_widget_get(pi->item);
 }
 
 static void
@@ -316,7 +315,7 @@ enna_wall_file_append(Evas_Object *obj, Enna_File *file,
     pi->file = file;
     pi->sd = sd;
 
-    pi->item = elm_gengrid_item_append (obj, &gic, pi, _item_selected, pi);
+    pi->item = elm_gengrid_item_append (obj, gic, pi, _item_selected, pi);
     sd->items = eina_list_append(sd->items, pi);
     enna_kbdnav_item_add(sd->nav, pi, &ekc, NULL);
 }

@@ -102,7 +102,7 @@ _append_helper(Evas_Object *obj, const char *label,
     if (icon)
     {
         si->o_icon = elm_icon_add(enna->layout);
-        elm_icon_file_set(si->o_icon, enna_config_theme_get(), icon);
+        elm_image_file_set(si->o_icon, enna_config_theme_get(), icon);
         evas_object_show(si->o_icon);
         edje_object_part_swallow (o_edje, "enna.swallow.icon", si->o_icon);
     }
@@ -537,11 +537,11 @@ enna_box_add(Evas_Object *parent, const char *style)
 
     sd->o_box = elm_box_add(sd->o_scroll);
     elm_box_horizontal_set(sd->o_box, sd->horizontal);
-    elm_box_homogenous_set(sd->o_box, 1);
+    elm_box_homogeneous_set(sd->o_box, 1);
     evas_object_show(sd->o_box);
 
-    elm_scroller_content_set(sd->o_scroll, sd->o_box);
-    elm_layout_content_set(sd->o_layout, "enna.swallow.content", sd->o_scroll);
+    elm_object_content_set(sd->o_scroll, sd->o_box);
+    elm_object_part_content_set(sd->o_layout, "enna.swallow.content", sd->o_scroll);
     elm_scroller_content_min_limit(sd->o_scroll, 1, 1);
     evas_object_size_hint_weight_set(sd->o_box, 1.0, 1.0);
     evas_object_size_hint_align_set(sd->o_box, -1.0, -1.0);

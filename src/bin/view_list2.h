@@ -31,17 +31,17 @@
 typedef struct _Enna_View_List2_Widget Enna_View_List2_Widget;
 
 Evas_Object      *enna_list2_add(Evas *evas);
-Elm_Genlist_Item *enna_list2_append(Evas_Object *obj, const char *label1,
+Elm_Object_Item *enna_list2_append(Evas_Object *obj, const char *label1,
                                     const char *label2, const char *icon,
                                     void (*func)(void *data), void *func_data);
-Elm_Genlist_Item *enna_list2_item_insert_after(Evas_Object *obj,
-                                               Elm_Genlist_Item *after,
+Elm_Object_Item *enna_list2_item_insert_after(Evas_Object *obj,
+                                               Elm_Object_Item *after,
                                                const char *label1, const char *label2,
                                                const char *icon,
                                                void(*func)(void *data),
                                                void *func_data);
-Elm_Genlist_Item *enna_list2_item_insert_before(Evas_Object *obj,
-                                               Elm_Genlist_Item *before,
+Elm_Object_Item *enna_list2_item_insert_before(Evas_Object *obj,
+                                               Elm_Object_Item *before,
                                                const char *label1, const char *label2,
                                                const char *icon,
                                                void(*func)(void *data),
@@ -49,22 +49,22 @@ Elm_Genlist_Item *enna_list2_item_insert_before(Evas_Object *obj,
 void          enna_list2_file_append(Evas_Object *obj, Enna_File *file,
                                     void (*func) (void *data), void *func_data);
 
-Enna_View_List2_Widget *enna_list2_item_button_add(Elm_Genlist_Item *item,
+Enna_View_List2_Widget *enna_list2_item_button_add(Elm_Object_Item *item,
                                         const char *icon, const char *label,
                                                    void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data);
-Enna_View_List2_Widget *enna_list2_item_toggle_add(Elm_Genlist_Item *item,
+Enna_View_List2_Widget *enna_list2_item_toggle_add(Elm_Object_Item *item,
                                                    const char *icon,
                                                    const char *onlabel, const char *offlabel,
                                                    void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data);
-Enna_View_List2_Widget *enna_list2_item_check_add(Elm_Genlist_Item *item,
+Enna_View_List2_Widget *enna_list2_item_check_add(Elm_Object_Item *item,
                                         const char *icon, const char *label,
                                         Eina_Bool status,
                                                   void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data);
-Enna_View_List2_Widget *enna_list2_item_entry_add(Elm_Genlist_Item *item,
+Enna_View_List2_Widget *enna_list2_item_entry_add(Elm_Object_Item *item,
                                         const char *icon, const char *label,
                                                   void (*func) (void *data, Enna_View_List2_Widget *widget), void *func_data);
 const char             *enna_list2_item_entry_get(Enna_View_List2_Widget *entry);
-void          enna_list2_item_del(Elm_Genlist_Item *item);
+void          enna_list2_item_del(Elm_Object_Item *item);
 
 //~ Eina_List* enna_list_files_get(Evas_Object* obj);
 //~ void enna_list_select_nth(Evas_Object *obj, int nth);

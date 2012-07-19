@@ -290,8 +290,8 @@ enna_mainmenu_show(Evas_Object *obj)
                             "gadgets,show", "enna");
 
     ic = elm_icon_add(enna->o_button_back);
-    elm_icon_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
-    elm_button_icon_set(enna->o_button_back, ic);
+    elm_image_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
+    elm_object_content_set(enna->o_button_back, ic);
 
 }
 
@@ -312,22 +312,22 @@ enna_mainmenu_hide(Evas_Object *obj)
                             "gadgets,hide", "enna");
 
     ic = elm_icon_add(enna->o_button_back);
-    elm_icon_file_set(ic, enna_config_theme_get(), "icon/arrow_left");
-    elm_button_icon_set(enna->o_button_back, ic);
+    elm_image_file_set(ic, enna_config_theme_get(), "icon/arrow_left");
+    elm_object_content_set(enna->o_button_back, ic);
     enna_gadgets_hide();
 }
 
 typedef struct _Bg_Data
 {
     Enna_File *file;
-    Elm_Slideshow_Item *it;
+    Elm_Object_Item *it;
 }Bg_Data;
 
 static Evas_Object *
 _background_get(void *data, Evas_Object *obj)
 {
     Evas_Object *o_bg = elm_icon_add(obj);
-    elm_icon_file_set(o_bg, enna_config_theme_get(), data);
+    elm_image_file_set(o_bg, enna_config_theme_get(), data);
     return o_bg;
 }
 
@@ -343,7 +343,7 @@ void
 enna_mainmenu_background_add(Evas_Object *obj, Enna_File *file)
 {
     Smart_Data *sd;
-    Elm_Slideshow_Item *it;
+    Elm_Object_Item *it;
     Bg_Data *bg;
 
 
@@ -372,7 +372,7 @@ enna_mainmenu_background_select(Evas_Object *obj, Enna_File *file)
     {
         if (bg->file == file)
         {
-            elm_slideshow_show(bg->it);
+            elm_slideshow_item_show(bg->it);
             break;
         }
     }

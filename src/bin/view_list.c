@@ -384,8 +384,8 @@ _list_item_film_icon_get(void *data, Evas_Object *obj, const char *part)
 }
 
 static Elm_Genlist_Item_Class itc_list_default;
-static Elm_Genlist_Item_Class *itc_list_track = NULL;
-static Elm_Genlist_Item_Class *itc_list_film = NULL;
+static Elm_Genlist_Item_Class itc_list_track;
+static Elm_Genlist_Item_Class itc_list_film;
 
 static void
 _smart_select_item(Smart_Data *sd, int n)
@@ -474,19 +474,17 @@ enna_list_add(Evas_Object *parent)
     itc_list_default.func.state_get = NULL;
     itc_list_default.func.del       = NULL;
 
-    itc_list_track = elm_genlist_item_class_new();
-    itc_list_track->item_style = "track";
-    itc_list_track->func.text_get = _list_item_track_label_get;
-    itc_list_track->func.content_get  =  _list_item_track_icon_get;
-    itc_list_track->func.state_get = NULL;
-    itc_list_track->func.del       = NULL;
+    itc_list_track.item_style = "track";
+    itc_list_track.func.text_get = _list_item_track_label_get;
+    itc_list_track.func.content_get  =  _list_item_track_icon_get;
+    itc_list_track.func.state_get = NULL;
+    itc_list_track.func.del       = NULL;
 
-    itc_list_film = elm_genlist_item_class_new();
-    itc_list_film->item_style = "film";
-    itc_list_film->func.text_get = _list_item_film_label_get;
-    itc_list_film->func.content_get  =  _list_item_film_icon_get;
-    itc_list_film->func.state_get = NULL;
-    itc_list_film->func.del       = NULL;
+    itc_list_film.item_style = "film";
+    itc_list_film.func.text_get = _list_item_film_label_get;
+    itc_list_film.func.content_get  =  _list_item_film_icon_get;
+    itc_list_film.func.state_get = NULL;
+    itc_list_film.func.del       = NULL;
 
     return obj;
 }
@@ -509,14 +507,14 @@ enna_list_file_append(Evas_Object *obj, Enna_File *file,
 
     if (file->type == ENNA_FILE_TRACK)
     {
-        it->item = elm_genlist_item_append(obj, itc_list_track, it,
+        it->item = elm_genlist_item_append(obj, &itc_list_track, it,
                                            NULL, ELM_GENLIST_ITEM_NONE,
                                            _item_selected, it);
 
     }
     else if (file->type == ENNA_FILE_FILM)
     {
-        it->item = elm_genlist_item_append(obj, itc_list_film, it,
+        it->item = elm_genlist_item_append(obj, &itc_list_film, it,
                                            NULL, ELM_GENLIST_ITEM_NONE,
                                            _item_selected, it);
     }
@@ -645,7 +643,7 @@ enna_list_selected_data_get(Evas_Object *obj)
     List_Item *it;
     Smart_Data *sd = evas_object_data_get(obj, "sd");
 
-    if (!sd->items) return NULL;
+    if (!sd || !sd->items) return NULL;
 
     EINA_LIST_FOREACH(sd->items,l, it)
     {

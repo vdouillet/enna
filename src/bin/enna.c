@@ -329,7 +329,9 @@ static int _create_gui(void)
     Evas_Coord minw, minh;
 
     // set custom elementary theme
+    //    elm_theme_extension_add(NULL, enna_config_theme_get());
     elm_theme_overlay_add(NULL, enna_config_theme_get());
+
 
     // show supported engines
     _list_engines();

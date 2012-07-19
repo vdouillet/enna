@@ -1308,11 +1308,12 @@
 /* } */
 
 ////////////////////////////////////////////////////
-group { name: "elm/genlist/item/default/default";
+group { name: "elm/genlist/item/default/enna";
+   alias: "elm/genlist/item_compress/default/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text";
-   data.item: "icons" "elm.swallow.icon elm.swallow.starred elm.swallow.end";
+   data.item: "texts" "elm.text";
+   data.item: "contents" "elm.swallow.icon elm.swallow.starred elm.swallow.end";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
@@ -1484,12 +1485,12 @@ group { name: "elm/genlist/item/default/default";
 }
 
 ////////////////////////////////////////////////////
-group { name: "elm/genlist/item_odd/default/default";
-   alias: "elm/genlist/item_compress_odd/default/default";
+group { name: "elm/genlist/item_odd/default/enna";
+   alias: "elm/genlist/item_compress_odd/default/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text";
-   data.item: "icons" "elm.swallow.playing elm.swallow.icon elm.swallow.end elm.swallow.label";
+   data.item: "texts" "elm.text";
+   data.item: "contents" "elm.swallow.playing elm.swallow.icon elm.swallow.end elm.swallow.label";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
@@ -1660,11 +1661,11 @@ group { name: "elm/genlist/item_odd/default/default";
 
 ////////////////////////////////////////////////////
 
-group { name: "elm/genlist/item/track/default";
+group { name: "elm/genlist/item/track/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text.trackno elm.text.title elm.text.length";
-   data.item: "icons" "elm.swallow.playing elm.swallow.starred";
+   data.item: "texts" "elm.text.trackno elm.text.title elm.text.length";
+   data.item: "contents" "elm.swallow.playing elm.swallow.starred";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
@@ -1867,11 +1868,11 @@ group { name: "elm/genlist/item/track/default";
 }
 
 ////////////////////////////////////////////////////
-group { name: "elm/genlist/item_odd/track/default";
+group { name: "elm/genlist/item_odd/track/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text.trackno elm.text.title elm.text.length";
-   data.item: "icons" "elm.swallow.playing elm.swallow.starred";
+   data.item: "texts" "elm.text.trackno elm.text.title elm.text.length";
+   data.item: "contents" "elm.swallow.playing elm.swallow.starred";
    data.item: "treesize" "20";
    images {
       image: "sel_bg.png" COMP;
@@ -2076,11 +2077,11 @@ group { name: "elm/genlist/item_odd/track/default";
 
 ////////////////////////////////////////////////////
 
-group { name: "elm/genlist/item/film/default";
+group { name: "elm/genlist/item/film/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text.title elm.text.episode";
-   data.item: "icons" "elm.swallow.played";
+   data.item: "texts" "elm.text.title elm.text.episode";
+   data.item: "contents" "elm.swallow.played";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
@@ -2243,11 +2244,11 @@ group { name: "elm/genlist/item/film/default";
 
 ////////////////////////////////////////////////////
 
-group { name: "elm/genlist/item_odd/film/default";
+group { name: "elm/genlist/item_odd/film/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
-   data.item: "labels" "elm.text.title elm.text.episode";
-   data.item: "icons" "elm.swallow.played";
+   data.item: "texts" "elm.text.title elm.text.episode";
+   data.item: "contents" "elm.swallow.played";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
@@ -2525,8 +2526,8 @@ group { name: "elm/label/base/default";
 
 ///////////////////////////////////////////////////////////////////////////////
 group { name: "elm/gengrid/item/default/default";
-   data.item: "labels" "elm.text";
-   data.item: "icons" "elm.swallow.icon elm.swallow.end";
+   data.item: "texts" "elm.text";
+   data.item: "contents" "elm.swallow.icon elm.swallow.end";
    images {
 
    }

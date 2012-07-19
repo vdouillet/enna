@@ -383,7 +383,7 @@ _list_item_film_icon_get(void *data, Evas_Object *obj, const char *part)
     return NULL;
 }
 
-static Elm_Genlist_Item_Class *itc_list_default = NULL;
+static Elm_Genlist_Item_Class itc_list_default;
 static Elm_Genlist_Item_Class *itc_list_track = NULL;
 static Elm_Genlist_Item_Class *itc_list_film = NULL;
 
@@ -462,10 +462,31 @@ enna_list_add(Evas_Object *parent)
     sd->obj = obj;
 
     evas_object_data_set(obj, "sd", sd);
+    elm_object_style_set(obj, "enna");
 
     evas_object_smart_callback_add(obj, "realized", _item_realized_cb, sd);
     evas_object_smart_callback_add(obj, "unrealized", _item_unrealized_cb, sd);
     evas_object_event_callback_add(obj, EVAS_CALLBACK_DEL, _del_cb, sd);
+
+    itc_list_default.item_style     = "default";
+    itc_list_default.func.text_get = _list_item_default_label_get;
+    itc_list_default.func.content_get  = _list_item_default_icon_get;
+    itc_list_default.func.state_get = NULL;
+    itc_list_default.func.del       = NULL;
+
+    itc_list_track = elm_genlist_item_class_new();
+    itc_list_track->item_style = "track";
+    itc_list_track->func.text_get = _list_item_track_label_get;
+    itc_list_track->func.content_get  =  _list_item_track_icon_get;
+    itc_list_track->func.state_get = NULL;
+    itc_list_track->func.del       = NULL;
+
+    itc_list_film = elm_genlist_item_class_new();
+    itc_list_film->item_style = "film";
+    itc_list_film->func.text_get = _list_item_film_label_get;
+    itc_list_film->func.content_get  =  _list_item_film_icon_get;
+    itc_list_film->func.state_get = NULL;
+    itc_list_film->func.del       = NULL;
 
     return obj;
 }
@@ -485,45 +506,25 @@ enna_list_file_append(Evas_Object *obj, Enna_File *file,
     it->data = data;
     it->file = enna_file_ref(file);
 
-    itc_list_default = elm_genlist_item_class_new();
-    itc_list_default->item_style     = "default";
-    itc_list_default->func.text_get = _list_item_default_label_get;
-    itc_list_default->func.content_get  = _list_item_default_icon_get;
-    itc_list_default->func.state_get = NULL;
-    itc_list_default->func.del       = NULL;
-
-    itc_list_track = elm_genlist_item_class_new();
-    itc_list_track->item_style = "track";
-    itc_list_track->func.text_get = _list_item_track_label_get;
-    itc_list_track->func.content_get  =  _list_item_track_icon_get;
-    itc_list_track->func.state_get = NULL;
-    itc_list_track->func.del       = NULL;
-
-    itc_list_film = elm_genlist_item_class_new();
-    itc_list_film->item_style = "film";
-    itc_list_film->func.text_get = _list_item_film_label_get;
-    itc_list_film->func.content_get  =  _list_item_film_icon_get;
-    itc_list_film->func.state_get = NULL;
-    itc_list_film->func.del       = NULL;
 
     if (file->type == ENNA_FILE_TRACK)
     {
-        it->item = elm_genlist_item_append (obj, itc_list_track, it,
-                                            NULL, ELM_GENLIST_ITEM_NONE,
-                                            _item_selected, it);
+        it->item = elm_genlist_item_append(obj, itc_list_track, it,
+                                           NULL, ELM_GENLIST_ITEM_NONE,
+                                           _item_selected, it);
 
     }
     else if (file->type == ENNA_FILE_FILM)
     {
-        it->item = elm_genlist_item_append (obj, itc_list_film, it,
-                                            NULL, ELM_GENLIST_ITEM_NONE,
-                                            _item_selected, it);
+        it->item = elm_genlist_item_append(obj, itc_list_film, it,
+                                           NULL, ELM_GENLIST_ITEM_NONE,
+                                           _item_selected, it);
     }
     else
     {
-        it->item = elm_genlist_item_append (obj, itc_list_default, it,
-                                            NULL, ELM_GENLIST_ITEM_NONE,
-                                            _item_selected, it);
+        it->item = elm_genlist_item_append(obj, &itc_list_default, it,
+                                           NULL, ELM_GENLIST_ITEM_NONE,
+                                           _item_selected, it);
     }
     sd->items = eina_list_append(sd->items, it);
     /* Select first item */

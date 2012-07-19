@@ -1902,6 +1902,7 @@ group { name: "elm/genlist/item/enna_list/default";
          }
       }
       part { name: "endclip";
+         type: RECT;
          clip_to: "disclip";
          description { state: "default" 0.0;
             color: 255 255 255 100;

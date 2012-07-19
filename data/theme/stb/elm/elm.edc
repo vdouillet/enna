@@ -3218,6 +3218,7 @@ group { name: "elm/button/base/mediaplayer";
       }
       parts {
          part { name: "elm.background.progressbar";
+            type: RECT;
             mouse_events: 0;
             description {
                state: "default" 0.0;
@@ -3459,6 +3460,7 @@ group { name: "elm/button/base/mediaplayer";
            }
          }
          part { name: "progress-rect";
+            type: RECT;
             mouse_events: 0;
             description {
                state: "default" 0.0;
@@ -3562,5 +3564,17 @@ group { name: "elm/button/base/mediaplayer";
             action:  STATE_SET "default" 0.0;
             target: "elm.progress.progressbar";
          }
+      }
+   }
+
+  group { name: "elm/entry/anchor/default";
+      parts {
+         part { name: "bg";
+	    type: RECT;
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       color: 128 0 0 64;
+	    }
+	 }
       }
    }

@@ -16,6 +16,7 @@ group {
       part {
          name: "flags.video.clip";
          mouse_events: 0;
+         type: RECT;
          description {
             state: "default" 0.0;
             visible: 1;
@@ -47,6 +48,7 @@ group {
 
       part {
          name: "flags.audio.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;
@@ -79,6 +81,7 @@ group {
 
       part {
          name: "flags.studio.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;
@@ -112,6 +115,7 @@ group {
       part {
          name: "flags.media.clip";
          mouse_events: 0;
+         type: RECT;
          description {
             state: "default" 0.0;
             visible: 1;

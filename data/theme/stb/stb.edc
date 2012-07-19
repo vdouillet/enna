@@ -3331,6 +3331,7 @@ group {
 
       part {
          name: "flags.video.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;
@@ -3363,6 +3364,7 @@ group {
 
       part {
          name: "flags.audio.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;
@@ -3395,6 +3397,7 @@ group {
 
       part {
          name: "flags.studio.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;
@@ -3427,6 +3430,7 @@ group {
 
       part {
          name: "flags.media.clip";
+         type: RECT;
          mouse_events: 0;
          description {
             state: "default" 0.0;

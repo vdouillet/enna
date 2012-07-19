@@ -649,8 +649,7 @@ int main(int argc, char **argv)
     /* Prevent thread safety issues if the libplayer xlib hack is enabled */
     XInitThreads();
 #endif
-
-    eina_init();
+    elm_init(argc, argv);
     enna_util_init();
 	
     /* Must be called first */
@@ -659,11 +658,10 @@ int main(int argc, char **argv)
 
     enna = calloc(1, sizeof(Enna));
 
-    ecore_event_handler_add(ECORE_EVENT_SIGNAL_EXIT, exit_signal, enna);
-
     if (!_enna_init(argc, argv))
         goto out;
 
+    ecore_event_handler_add(ECORE_EVENT_SIGNAL_EXIT, exit_signal, enna);
     ecore_main_loop_begin();
 
     _enna_shutdown();

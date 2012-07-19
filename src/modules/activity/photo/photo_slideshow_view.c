@@ -157,14 +157,14 @@ _button_clicked_play_cb(void *data, Evas_Object *obj, void *event_info)
     if (!elm_slideshow_timeout_get(sd->slideshow))
     {
         elm_slideshow_timeout_set(sd->slideshow, sd->delay);
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_pause");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_pause");
     }
     else
     {
         elm_slideshow_timeout_set(sd->slideshow, 0);
-        elm_icon_file_set(ic, enna_config_theme_get(), "icon/mp_play");
+        elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_play");
     }
-    elm_button_content_set(sd->btplay, ic);
+    elm_object_content_set(sd->btplay, ic);
     evas_object_size_hint_min_set(sd->btplay, 64, 64);
     evas_object_size_hint_weight_set(sd->btplay, 0.0, 1.0);
     evas_object_size_hint_align_set(sd->btplay, 0.5, 0.5);
@@ -322,9 +322,8 @@ _sd_del(void *data, Evas *e, Evas_Object *obj, void *event_info)
     elm_object_style_set(bt, "mediaplayer");                         \
     evas_object_smart_callback_add(bt, "clicked", cb, sd);           \
     ic = elm_icon_add(bt);                                           \
-    elm_icon_file_set(ic, enna_config_theme_get(), icon);            \
-    elm_icon_scale_set(ic, 0, 0);                                    \
-    elm_button_icon_set(bt, ic);                                     \
+    elm_image_file_set(ic, enna_config_theme_get(), icon);            \
+    elm_object_content_set(bt, ic);                                   \
     evas_object_size_hint_min_set(bt, 64, 64);                       \
     evas_object_size_hint_weight_set(bt, 0.0, 1.0);                  \
     evas_object_size_hint_align_set(bt, 0.5, 0.5);                   \
@@ -458,5 +457,5 @@ void enna_photo_slideshow_goto(Evas_Object *obj, int nth)
     Smart_Data *sd = evas_object_data_get(obj, "sd");
 
     it = eina_list_nth(sd->items, nth);
-    elm_slideshow_show(it);
+    elm_slideshow_item_show(it);
 }

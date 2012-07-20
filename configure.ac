@@ -40,21 +40,21 @@ CFLAGS="$CFLAGS -DLOCALEDIR=\"\\\"$datadir/locale\\\"\""
 
 PKG_CHECK_MODULES([ENNA],
   [
-   eina >= 1.0.0
-   eet >= 1.4.0
-   evas >= 1.0.0
-   ecore >= 1.0.0
-   ecore-x >= 1.0.0
-   ecore-input > 1.0.0
-   ecore-evas >= 1.0.0
-   ecore-file >= 1.0.0
-   ecore-ipc >= 1.0.0
-   ecore-con >= 1.0.0
-   efreet >= 1.0.0
-   edje >= 1.0.0
-   edbus >= 1.0.0
-   ethumb >= 0.1.0
-   elementary >= 0.7.0
+   eina >= 1.2.0
+   eet >= 1.6.0
+   evas >= 1.2.0
+   ecore >= 1.2.0
+   ecore-x >= 1.2.0
+   ecore-input > 1.2.0
+   ecore-evas >= 1.2.0
+   ecore-file >= 1.2.0
+   ecore-ipc >= 1.2.0
+   ecore-con >= 1.2.0
+   efreet >= 1.2.0
+   edje >= 1.2.0
+   edbus >= 1.2.0
+   ethumb >= 1.0.0
+   elementary >= 1.0.0
    libvalhalla >= 2.0.0 libvalhalla < 3.0.0
    libxml-2.0
    libcurl

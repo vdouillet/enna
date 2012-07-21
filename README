@@ -19,15 +19,21 @@ Enna's features
 Core dependencies
 =================
 
-* Eina >= 1.0.0
-* Eet >= 1.4.0
-* Evas >= 1.0.0
-* Ecore >= 1.0.0
-* Edje >= 1.0.0
-* Efreet >= 1.0.0
-* Edbus >= 1.0.0
-* Ethumb >= 0.1.0
-* Elementary >= 0.7.0
+* Eina >= 1.2.0
+* Eet >= 1.6.0
+* Evas >= 1.2.0
+* Ecore >= 1.2.0
+* Ecore-X >= 1.2.0
+* Ecore-input >= 1.2.0
+* Ecore-Evas >= 1.2.0
+* Ecore-File >= 1.2.0
+* Ecore-Ipc >= 1.2.0
+* Ecore-Con >= 1.2.0
+* Edje >= 1.2.0
+* Efreet >= 1.2.0
+* Edbus >= 1.2.0
+* Ethumb >= 1.0.0
+* Elementary >= 1.0.0
 * libvalhalla (http://hg.geexbox.org/libvalhalla/) >= 2.0.0
 * libxml-2.0
 * libcurl

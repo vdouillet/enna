@@ -169,15 +169,12 @@ _class_event_mediaplayer_view(enna_input event)
 static void
 _panel_infos_display(int show)
 {
-    Evas_Object *o_edje;
-
     DBG(__FUNCTION__);
-    o_edje = elm_layout_edje_get(mod->o_layout);
 
     if (show != mod->infos_displayed)
     {
         mod->infos_displayed  = show;
-//        elm_flip_go(mod->o_pager, ELM_FLIP_ROTATE_Y_CENTER_AXIS);
+        elm_flip_go(mod->o_pager, ELM_FLIP_ROTATE_Y_CENTER_AXIS);
     }
 }
 
@@ -271,7 +268,7 @@ _create_mediaplayer_gui()
     o = enna_mediaplayer_obj_add(enna->evas, mod->enna_playlist);
     evas_object_show(o);
     mod->o_mediaplayer = o;
-//    elm_flip_content_back_set(mod->o_pager, mod->o_mediaplayer);
+    elm_object_part_content_set(mod->o_pager, "back", mod->o_mediaplayer);
     evas_object_smart_callback_add(mod->o_mediaplayer, "info,clicked",
                                    _mediaplayer_info_clicked_cb, NULL);
     edje_object_signal_emit(o_edje, "mediaplayer,show", "enna");
@@ -287,7 +284,7 @@ _create_menu()
 
     /* Create Pager */
     ENNA_OBJECT_DEL(mod->o_pager);
-//    mod->o_pager = elm_flip_add(mod->o_layout);
+    mod->o_pager = elm_flip_add(mod->o_layout);
     evas_object_size_hint_weight_set(mod->o_pager, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(mod->o_pager);
 
@@ -312,7 +309,7 @@ _create_menu()
 
     /* Create Lyrics */
     mod->o_infos = enna_infos_add (mod->o_pager);
-    /* elm_flip_content_front_set(mod->o_pager, mod->o_infos); */
+    elm_object_part_content_set(mod->o_pager, "front", mod->o_infos); 
     mod->infos_displayed = 1;
 }
 

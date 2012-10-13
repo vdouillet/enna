@@ -267,7 +267,7 @@ collections
                color: 224 224 224 255;
                color3: 0 0 0 64;
                text {
-                  font: "Comfortaa";
+                  font: "Comfortaa_Regular";
                   size: 14;
                   min: 1 1;
                   align: 0.5 0.5;
@@ -354,7 +354,7 @@ collections
                color: 255 255 255 255;
                color3: 147 147 147 255;
                text {
-                  font: "Comfortaa";
+                  font: "Comfortaa_Regular";
                   size: 20;
                   align: 0.5 0.5;
                }
@@ -731,7 +731,7 @@ collections
                color: 255 255 255 200;
                color3: 0 0 0 64;
                text {
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     18;
                   min:      0 1;
                   align:    0 0;
@@ -1151,7 +1151,7 @@ group {
             rel2.offset: -4 -4;
 
             text {
-               font: "content";
+               font: "Comfortaa_Regular";
                size: 20;
                min: 0 0;
                align: 1.0 0.5;
@@ -1193,7 +1193,7 @@ group {
             rel2.offset: -4 -4;
 
             text {
-               font: "content";
+               font: "Comfortaa_Regular";
                size: 20;
                min: 0 0;
                align: 0.0 0.5;
@@ -1269,8 +1269,8 @@ images {
     styles {
        style {
           name: "style.infos.video";
-          base: "font=content font_size=14 align=left color=#FFF wrap=word";
-          tag:  "b"   "+ font=content_bd";
+          base: "font=Comfortaa_Regular font_size=14 align=left color=#FFF wrap=word";
+          tag:  "b"   "+ font=Comfortaa_Bold";
           tag:  "c"   "+ align=center";
           tag:  "hl"  "+ color=#A0D026A0";
           tag:  "sd"  "+ style=far_shadow shadow_color=#000000ff";
@@ -1860,7 +1860,7 @@ group {
                 rel2.offset: -15 -15;
                 text {
                   text:     "Description";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0.5 0.5;
                   min: 0 0;
@@ -1913,7 +1913,7 @@ group {
                 rel2.offset: -15 -100;
                 text {
                   text:     "Description";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0.5 0.5;
                   min: 1 0;
@@ -1931,7 +1931,7 @@ group {
                 rel2.offset: -15 -70;
                 text {
                   text:     "Description";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0.5 0.5;
                   min: 1 0;
@@ -2001,7 +2001,7 @@ group {
 
                 text {
                   text:     "Year: 2011";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0 0.5;
                   min: 1 0;
@@ -2026,7 +2026,7 @@ group {
 
                 text {
                   text:     "Length: 00:00";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0 0.5;
                   min: 1 0;
@@ -2051,7 +2051,7 @@ group {
 
                 text {
                   text:     "Codec: Flac";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     14;
                   align:    0 0.5;
                   min: 1 0;
@@ -2075,7 +2075,7 @@ group {
                 align: 0 0;
                 text {
                   text:     "Track: 00";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     18;
                   align:    0 0;
                   min: 1 1;
@@ -2098,7 +2098,7 @@ group {
 
                 text {
                   text:     "Title: Title Name";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     18;
                   align:    0 0.5;
                   min: 0 1;
@@ -2124,7 +2124,7 @@ group {
 
                 text {
                   text:     "Album: Album name";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     18;
                   align:    0 0.5;
                   min: 1 1;
@@ -2150,7 +2150,7 @@ group {
 
                 text {
                   text:     "Artist: Artist name";
-                  font:     "Comfortaa";
+                  font:     "Comfortaa_Regular";
                   size:     18;
                   align:    0 0.5;
                   min: 1 1;
@@ -2232,7 +2232,7 @@ group {
             align: 0 0;
             fixed: 1 1;
             text {
-               font: "Comfortaa";
+               font: "Comfortaa_Regular";
                size: 18;
                min: 0 1;
                align: 0 0.5;
@@ -2259,7 +2259,7 @@ group {
             align: 1 0;
             color: 200 200 200 255;
             text {
-               font: "Comfortaa";
+               font: "Comfortaa_Regular";
                size: 18;
                min: 1 1;
                align: 0.5 0.5;
@@ -2286,7 +2286,7 @@ group {
             fixed: 1 1;
             color: 200 200 200 255;
             text {
-               font: "Comfortaa";
+               font: "Comfortaa_Regular";
                size: 18;
                min: 0 1;
                align: 0 0.5;
@@ -2717,7 +2717,7 @@ group {
             color: 255 255 255 255;
 	    text {
                text:     "conditions";
-               font:     "content";
+               font:     "Comfortaa_Regular";
                size:     15;
                align:    0.5 0.20;
             }
@@ -2853,7 +2853,7 @@ group {
             color: 255 255 255 255;
 	    text {
                text:     "conditions";
-               font:     "content";
+               font:     "Comfortaa_Regular";
                size:     15;
                align:    0.5 0.45;
             }
@@ -2989,7 +2989,7 @@ group {
             color: 255 255 255 255;
 	    text {
                text:     "conditions";
-               font:     "content";
+               font:     "Comfortaa_Regular";
                size:     15;
                align:    0.5 0.70;
             }
@@ -3125,7 +3125,7 @@ group {
             color: 255 255 255 255;
 	    text {
                text:     "conditions";
-               font:     "Comfortaa";
+               font:     "Comfortaa_Regular";
                size:     15;
                align:    0.5 0.95;
             }

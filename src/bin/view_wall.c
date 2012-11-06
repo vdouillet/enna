@@ -262,7 +262,7 @@ enna_wall_clear(Evas_Object *obj)
 }
 
 
-static const Evas_Object *
+static const Elm_Object_Item *
 _kbdnav_object_get(void *item_data, void *user_data __UNUSED__)
 {
   Picture_Item *pi = item_data;
@@ -270,7 +270,7 @@ _kbdnav_object_get(void *item_data, void *user_data __UNUSED__)
   if (!pi)
     return NULL;
 
-  return elm_object_item_widget_get(pi->item);
+  return pi->item;
 }
 
 static void
@@ -389,12 +389,14 @@ enna_wall_selected_data_get(Evas_Object *obj)
         return NULL;
 
     sd = evas_object_data_get(obj, "sd");
+    if(!sd->nav)
+        printf("no sd->nav\n");
     pi = enna_kbdnav_current_get(sd->nav);
 
-    if (pi)
-        return pi->data;
-    else
-        return NULL;
+    if (pi){ printf("have pi\n");
+        return pi->data;}
+    else{ printf("do not have pi\n");
+        return NULL;}
 }
 
 const char *

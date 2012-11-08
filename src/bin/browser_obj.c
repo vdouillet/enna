@@ -435,6 +435,7 @@ _view_event(Smart_Data *sd, enna_input event)
     {
         case ENNA_INPUT_BACK:
             _browse_back(sd);
+            return ENNA_EVENT_BLOCK;
             break;
         case ENNA_INPUT_OK:
         {
@@ -443,6 +444,7 @@ _view_event(Smart_Data *sd, enna_input event)
             if (!cb_data)
                 break;
             _browse(sd, cb_data->file, EINA_FALSE);
+            return ENNA_EVENT_BLOCK;
             break;
         }
         case ENNA_INPUT_UP:
@@ -496,13 +498,24 @@ _view_event(Smart_Data *sd, enna_input event)
         default:
             break;
     }
-    return ENNA_EVENT_BLOCK;
+    return ENNA_EVENT_CONTINUE;
 }
 
 static Eina_Bool
-_search_event(Smart_Data *sd, enna_input event __UNUSED__)
+_search_event(Smart_Data *sd, enna_input event)
 {
+    switch (event)
+    {
+        case ENNA_INPUT_UP:
+        case ENNA_INPUT_DOWN:
+        case ENNA_INPUT_QUIT:
+            enna_search_focus_set(sd->o_search, EINA_FALSE);
+            return ENNA_EVENT_CONTINUE;
+            break;
+        default:
     enna_search_focus_set(sd->o_search, EINA_TRUE);
+            break;
+    }
     return ENNA_EVENT_BLOCK;
 }
 

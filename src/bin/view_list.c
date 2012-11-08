@@ -684,15 +684,9 @@ view_list_item_select (Evas_Object *obj, int down, int cycle, int range)
 
     ns    = enna_list_selected_get(obj);
     total = eina_list_count(sd->items);
-    start = down ? total - 1 : 0;
     end   = down ? 0 : total - 1;
 
-    if (ns == start)
-    {
-        _smart_unselect_item(sd, start);
-        return ENNA_EVENT_CONTINUE;
-    }
-    else if (cycle)
+    if (cycle)
     {
         if (!down && (ns - range < 0))
             _smart_select_item(sd, 0);

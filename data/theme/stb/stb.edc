@@ -1,11 +1,15 @@
-fonts{
-   font:"Comfortaa_Bold.ttf" "Comfortaa_Bold";
-   font:"Comfortaa_Regular.ttf" "Comfortaa_Regular";
-   font:"Comfortaa_Thin.ttf" "Comfortaa_Thin";
-}
 
 collections
 {
+
+    fonts{
+        font:"Comfortaa_Thin.ttf" "Comfortaa_Bold";
+        font:"Comfortaa_Regular.ttf" "Comfortaa_Regular";
+        font:"Comfortaa_Thin.ttf" "Comfortaa_Thin";
+        font:"Comfortaa_Regular.ttf" "Comfortaa";
+    }
+
+
 #include "icons.edc"
 #include "elm/elm.edc"
 #include "gad_date.edc"

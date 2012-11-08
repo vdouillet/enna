@@ -595,8 +595,8 @@ collections
             type: SWALLOW;
             clip_to: "clip";
             description {
-               min: 0 64;
-               max: 10000 64;
+                min: 0 32;
+                max: 10000 32;
 
                state: "default" 0.0;
                align: 0 0;
@@ -614,9 +614,8 @@ collections
             clip_to: "clip";
             description {
                state: "default" 0.0;
-               rel1.to: "enna.swallow.header";
-               rel1.relative: 0 1;
-               rel1.offset: 0 2;
+               rel1.relative: 0 0;
+               rel1.offset: 0 42;
                rel2.relative: 1 1;
             }
          }
@@ -684,11 +683,11 @@ collections
    group
    {
       name: "enna/browser/header";
-      images
-      {
-         image: "icon_search.png" COMP;
-         image: "search_bg.png" COMP;
-      }
+      /* images */
+      /* { */
+      /*    image: "icon_search.png" COMP; */
+      /*    image: "search_bg.png" COMP; */
+      /* } */
       parts
       {
          part {
@@ -699,7 +698,7 @@ collections
                rel1.relative: 0 0;
                rel1.offset: 2 0;
                rel2.relative: 0 0.5;
-               rel2.offset: 82 -2;
+               rel2.offset: 48 -2;
             }
          }
          part {
@@ -738,68 +737,68 @@ collections
                }
             }
          }
-         part {
-            name: "enna.swallow.search";
-            type: SWALLOW ;
-            description {
-               state: "default" 0.0;
-               rel1.relative: 0 0.5;
-               rel2.relative: 1 1;
-            }
-         }
+         /* part { */
+         /*    name: "enna.swallow.search"; */
+         /*    type: SWALLOW ; */
+         /*    description { */
+         /*       state: "default" 0.0; */
+         /*       rel1.relative: 0 0.5; */
+         /*       rel2.relative: 1 1; */
+         /*    } */
+         /* } */
       }
    }
 
-   group
-   {
-      name: "enna/search";
-      images
-      {
-         image: "icon_search.png" COMP;
-         image: "search_bg.png" COMP;
-      }
-      parts
-      {
-         part {
-            name: "enna.bg.search";
-            type: IMAGE ;
-            description {
-               state: "default" 0.0;
-               rel1.relative: 0 0;
-               rel1.offset: 5 0;
-               rel2.relative: 1 0;
-               rel2.offset: -20 32;
-               color: 255 255 255 128;
-               image.normal : "search_bg.png";
-               image.border : 17 17 15 15;
-            }
-         }
-         part {
-            name: "enna.swallow.edit";
-            type: SWALLOW ;
-            description {
-               fixed: 1 1;
-               state: "default" 0.0;
-               rel1.relative: 0 0;
-               rel1.offset: 22 0;
-               rel2.relative: 1 0;
-               rel2.offset: -54 32;
-            }
-         }
-         part {
-            name: "enna.icon.search";
-            type: IMAGE ;
-            description {
-               state: "default" 0.0;
-               rel1.relative: 1 0;
-               rel1.offset: -32-20 8;
-               rel2.relative: 1 0;
-               rel2.offset: -16-20 24;
-               image.normal : "icon_search.png";
-            }
-         }
-      }
-   }
+   /* group */
+   /* { */
+   /*    name: "enna/search"; */
+   /*    images */
+   /*    { */
+   /*       image: "icon_search.png" COMP; */
+   /*       image: "search_bg.png" COMP; */
+   /*    } */
+   /*    parts */
+   /*    { */
+   /*       part { */
+   /*          name: "enna.bg.search"; */
+   /*          type: IMAGE ; */
+   /*          description { */
+   /*             state: "default" 0.0; */
+   /*             rel1.relative: 0 0; */
+   /*             rel1.offset: 5 0; */
+   /*             rel2.relative: 1 0; */
+   /*             rel2.offset: -20 32; */
+   /*             color: 255 255 255 128; */
+   /*             image.normal : "search_bg.png"; */
+   /*             image.border : 17 17 15 15; */
+   /*          } */
+   /*       } */
+   /*       part { */
+   /*          name: "enna.swallow.edit"; */
+   /*          type: SWALLOW ; */
+   /*          description { */
+   /*             fixed: 1 1; */
+   /*             state: "default" 0.0; */
+   /*             rel1.relative: 0 0; */
+   /*             rel1.offset: 22 0; */
+   /*             rel2.relative: 1 0; */
+   /*             rel2.offset: -54 32; */
+   /*          } */
+   /*       } */
+   /*       part { */
+   /*          name: "enna.icon.search"; */
+   /*          type: IMAGE ; */
+   /*          description { */
+   /*             state: "default" 0.0; */
+   /*             rel1.relative: 1 0; */
+   /*             rel1.offset: -32-20 8; */
+   /*             rel2.relative: 1 0; */
+   /*             rel2.offset: -16-20 24; */
+   /*             image.normal : "icon_search.png"; */
+   /*          } */
+   /*       } */
+   /*    } */
+   /* } */
 
 
    group {

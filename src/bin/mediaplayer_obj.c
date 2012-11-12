@@ -64,6 +64,7 @@ struct _Smart_Data
     double pos;
     double len;
     unsigned char show : 1;
+    unsigned char update : 1;
     Enna_Playlist *playlist;
 };
 
@@ -312,6 +313,16 @@ _timer_cb(void *data)
 {
     Smart_Data *sd = data;
 
+    //Wait the "length_change" signal in emotion
+    if(!sd->len)
+        sd->len = enna_mediaplayer_length_get();
+
+    if(sd->update)
+    {
+        sd->update = 0;
+        sd->pos = enna_mediaplayer_position_get();
+    }
+
     if(enna_mediaplayer_state_get() == PLAYING)
     {
         sd->pos += 1.0;
@@ -344,8 +355,7 @@ _button_clicked_rewind_cb(void *data, Evas_Object *obj __UNUSED__, void *event_i
     Smart_Data *sd = data;
 
     enna_mediaplayer_default_seek_backward();
-    sd->pos = enna_mediaplayer_position_get();
-    slider_position_update(sd);
+    sd->update = 1;
 }
 
 static void
@@ -354,8 +364,7 @@ _button_clicked_forward_cb(void *data, Evas_Object *obj __UNUSED__, void *event_
     Smart_Data *sd = data;
 
     enna_mediaplayer_default_seek_forward();
-    sd->pos = enna_mediaplayer_position_get();
-    slider_position_update(sd);
+    sd->update = 1;
 }
 
 static void
@@ -389,7 +398,15 @@ _slider_seek_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUS
 
     value = elm_slider_value_get(sd->sl);
     enna_mediaplayer_seek_percent((int) value);
-    sd->pos = enna_mediaplayer_position_get();
+    sd->update = 1;
+    ecore_timer_thaw(sd->timer);
+}
+
+static void
+_slider_start_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+{
+    Smart_Data *sd = data;
+    ecore_timer_freeze(sd->timer);
 }
 
 static void
@@ -647,7 +664,8 @@ enna_mediaplayer_obj_add(Evas * evas __UNUSED__, Enna_Playlist *enna_playlist)
     elm_slider_indicator_format_set(sl, "%1.0f %%");
     evas_object_size_hint_weight_set(sl, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     evas_object_show(sl);
-    evas_object_smart_callback_add(sl, "delay,changed", _slider_seek_cb, sd);
+    evas_object_smart_callback_add(sl, "slider,drag,start", _slider_start_cb, sd);
+    evas_object_smart_callback_add(sl, "slider,drag,stop", _slider_seek_cb, sd);
     sd->sl = sl;
     elm_layout_content_set(layout, "slider.swallow", sl);
 

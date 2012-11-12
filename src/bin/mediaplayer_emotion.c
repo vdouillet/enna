@@ -257,23 +257,13 @@ enna_mediaplayer_prev(Enna_Playlist *enna_playlist)
 double
 enna_mediaplayer_position_get(void)
 {
-    printf("TODO : position get\n");
-/*
-    return (mp->play_state == PAUSE || mp->play_state == PLAYING) ?
-        mp_position_get(): 0.0;
-*/
-    return 0.0;
+    return emotion_object_position_get(mp->player);
 }
 
 int
 enna_mediaplayer_position_percent_get(void)
 {
-    /*
-    return (mp->play_state == PAUSE || mp->play_state == PLAYING) ?
-            mp_position_percent_get() : 0;
-    */
-    printf("TODO : position_percent_get\n");
-    return 0;
+    return (int) (emotion_object_progress_status_get(mp->player)) * 100;
 }
 
 double
@@ -284,22 +274,12 @@ enna_mediaplayer_length_get(void)
 }
 
 static void
-enna_mediaplayer_seek(int value __UNUSED__, SEEK_TYPE type __UNUSED__)
+enna_mediaplayer_seek(int value , SEEK_TYPE type)
 {
-    printf("TODO : seek\n");
-    /* TODO : seek ! */
-    /*
-    const player_pb_seek_t pl_seek[] = {
-        [SEEK_ABS_PERCENT] = PLAYER_PB_SEEK_PERCENT,
-        [SEEK_ABS_SECONDS] = PLAYER_PB_SEEK_ABSOLUTE,
-        [SEEK_REL_SECONDS] = PLAYER_PB_SEEK_RELATIVE
-    };
+    double new_time, old_time, length;
 
     enna_log(ENNA_MSG_EVENT, NULL, "Seeking to: %d%c",
              value, type == SEEK_ABS_PERCENT ? '%' : 's');
-
-    if (type >= ARRAY_NB_ELEMENTS(pl_seek))
-        return;
 
     if (mp->play_state == PAUSE || mp->play_state == PLAYING)
     {
@@ -311,9 +291,31 @@ enna_mediaplayer_seek(int value __UNUSED__, SEEK_TYPE type __UNUSED__)
 
         ev->seek_value = value;
         ev->type       = type;
+
+        if(emotion_object_seekable_get(mp->player))
+        {
+            if(type == SEEK_ABS_PERCENT)
+            {
+                length = enna_mediaplayer_length_get();
+                new_time = (value * length) / 100.0;
+            }
+            else if(type == SEEK_ABS_SECONDS)
+                new_time = (double)value;
+            else if(type == SEEK_REL_SECONDS)
+            {
+                old_time = enna_mediaplayer_position_get();
+                new_time = (double)(value) + old_time;
+            }
+            else
+                new_time = 0;
         ecore_event_add(ENNA_EVENT_MEDIAPLAYER_SEEK, ev, NULL, NULL);
-        player_playback_seek(mp->player, value, pl_seek[type]);
-        }*/
+            emotion_object_position_set(mp->player, new_time);
+        }
+        else
+        {
+            enna_log(ENNA_MSG_EVENT, NULL, "No Seeking avaible");
+        }
+    }
 }
 
 void

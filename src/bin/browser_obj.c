@@ -273,7 +273,7 @@ _add_header(Smart_Data *sd, Enna_File *file)
     elm_object_content_set(o_back_btn, o_ic);
     evas_object_show(o_ic);
     elm_object_style_set(o_back_btn, "mediaplayer");
-    evas_object_smart_callback_add(o_back_btn, "clicked", _back_btn_clicked_cb, sd);
+ //   evas_object_smart_callback_add(o_back_btn, "clicked", _back_btn_clicked_cb, sd);
 
     evas_object_size_hint_align_set(o_back_btn, EVAS_HINT_FILL, EVAS_HINT_FILL);
     evas_object_size_hint_weight_set(o_back_btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);

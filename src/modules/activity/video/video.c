@@ -542,9 +542,10 @@ movie_start_playback(int resume)
                                    EVAS_CALLBACK_RESIZE,
                                    _mediaplayer_resize_cb, NULL);
 #endif
-    enna_mediaplayer_stop();
+  //  enna_mediaplayer_stop();
     enna_mediaplayer_obj_event_catch(mod->o_mediacontrols);
     enna_mediaplayer_play(mod->enna_playlist);
+    media_controls_display(1);
 #if 0
     if (resume)
     {

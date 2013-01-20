@@ -67,6 +67,19 @@ The simplest way to compile this package is:
      all sorts of other programs in order to regenerate files that came
      with the distribution.
 
+FreeBSD Installation
+====================
+
+Some feature in Enna are Linux-centric. In the configure step, some
+option must be passed to get Enna working:
+
+  1. The configuration module are not tested, it is safer to disable it
+     with --disable-module-configuration
+
+  2. The mtab module are not used in FreeBSD, you must disable it with
+     --disable-volume-mtab
+
+
 Compilers and Options
 =====================
 

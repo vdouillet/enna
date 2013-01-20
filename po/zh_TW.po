@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2011-03-14 13:41+0100\n"
+"POT-Creation-Date: 2013-01-20 00:27+0100\n"
 "PO-Revision-Date: 2010-01-13 14:16+0800\n"
 "Last-Translator: <sword.huang@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -23,64 +23,64 @@ msgstr ""
 msgid "No media found!"
 msgstr "沒有發現任何媒體!"
 
-#: src/bin/enna.c:546
+#: src/bin/enna.c:562
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna 媒體中心\n"
 
-#: src/bin/enna.c:547
+#: src/bin/enna.c:563
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr "用法：%s [選項...]\n"
 
-#: src/bin/enna.c:548
+#: src/bin/enna.c:564
 #, c-format
 msgid " Available options:\n"
 msgstr "可選項:\n"
 
-#: src/bin/enna.c:549
+#: src/bin/enna.c:565
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr "-c, (--config): 指定要使用的配置檔。\n"
 
-#: src/bin/enna.c:550
+#: src/bin/enna.c:566
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "-f, (--fs): 強制全螢幕顯示。\n"
 
-#: src/bin/enna.c:551
+#: src/bin/enna.c:567
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "-h, (--help): 顯示這個說明。\n"
 
-#: src/bin/enna.c:552
+#: src/bin/enna.c:568
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "-t, (--theme): 指定要使用的佈景。\n"
 
-#: src/bin/enna.c:553
+#: src/bin/enna.c:569
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "-g, (--geometry):指定視窗大小。(geometry=1280x720)\n"
 
-#: src/bin/enna.c:554
+#: src/bin/enna.c:570
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "-g, (--geometry):指定視窗大小。(geometry=1280x720)\n"
 
-#: src/bin/enna.c:555
+#: src/bin/enna.c:571
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (--profile): 指定顯示的描述記錄。\n"
 
-#: src/bin/enna.c:556
+#: src/bin/enna.c:572
 #, c-format
 msgid "    Supported: "
 msgstr "被支援的:"
 
-#: src/bin/enna.c:560
+#: src/bin/enna.c:576
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "-V, (--version): 顯示 Enna 的版本。\n"
@@ -186,12 +186,12 @@ msgstr "南半球"
 msgid "Weather"
 msgstr "天氣"
 
-#: src/modules/activity/bookstore/bookstore.c:321
-#: src/modules/activity/bookstore/bookstore.c:372
+#: src/modules/activity/bookstore/bookstore.c:319
+#: src/modules/activity/bookstore/bookstore.c:370
 msgid "Bookstore"
 msgstr "書店"
 
-#: src/modules/activity/bookstore/bookstore.c:374
+#: src/modules/activity/bookstore/bookstore.c:372
 msgid "Read your books"
 msgstr "讀你的書"
 
@@ -332,27 +332,27 @@ msgstr "預設閘道:"
 msgid "None"
 msgstr "None"
 
-#: src/modules/activity/games/games.c:216
+#: src/modules/activity/games/games.c:221
 #, c-format
 msgid "no games found"
 msgstr "沒有發現任何遊戲"
 
-#: src/modules/activity/games/games.c:218
+#: src/modules/activity/games/games.c:223
 #, c-format
 msgid "one game"
 msgstr "一個遊戲"
 
-#: src/modules/activity/games/games.c:220
+#: src/modules/activity/games/games.c:225
 #, c-format
 msgid "%d games"
 msgstr "%d 遊戲"
 
-#: src/modules/activity/games/games.c:404
-#: src/modules/activity/games/games.c:468
+#: src/modules/activity/games/games.c:409
+#: src/modules/activity/games/games.c:473
 msgid "Games"
 msgstr "遊戲"
 
-#: src/modules/activity/games/games.c:470
+#: src/modules/activity/games/games.c:475
 msgid "Play all your games directly from Enna"
 msgstr "直接由 Enna 玩你所有的遊戲"
 
@@ -381,12 +381,12 @@ msgstr "系統遊戲"
 msgid "%d Songs"
 msgstr "%d 歌曲"
 
-#: src/modules/activity/music/music.c:402
-#: src/modules/activity/music/music.c:467
+#: src/modules/activity/music/music.c:399
+#: src/modules/activity/music/music.c:464
 msgid "Music"
 msgstr "音樂"
 
-#: src/modules/activity/music/music.c:469
+#: src/modules/activity/music/music.c:466
 msgid "Listen to your music"
 msgstr "聆聽你的音樂"
 
@@ -428,12 +428,12 @@ msgstr "觀看電視頻道"
 msgid "%d Movies"
 msgstr "%d 電影"
 
-#: src/modules/activity/video/video.c:759
-#: src/modules/activity/video/video.c:845
+#: src/modules/activity/video/video.c:760
+#: src/modules/activity/video/video.c:846
 msgid "Video"
 msgstr "影片"
 
-#: src/modules/activity/video/video.c:847
+#: src/modules/activity/video/video.c:848
 msgid "Play your videos"
 msgstr "播放你的影片"
 
@@ -643,21 +643,21 @@ msgstr "DVD"
 msgid "Data"
 msgstr "資料"
 
-#: src/modules/volume/mtab/mtab.c:77
-#, c-format
-msgid "[NFS] %s on %s"
+#: src/modules/volume/mtab/mtab.c:78
+#, fuzzy, c-format
+msgid "[NFS] %s "
 msgstr "[NFS] %s 在 %s"
 
-#: src/modules/volume/mtab/mtab.c:87
+#: src/modules/volume/mtab/mtab.c:88
 #, c-format
 msgid "[SAMBA] %s on %s"
 msgstr "[SAMBA] %s 在 %s"
 
-#: src/modules/volume/mtab/mtab.c:171
+#: src/modules/volume/mtab/mtab.c:173
 msgid "Volumes from mtab"
 msgstr "在 mtab 中的 Volume"
 
-#: src/modules/volume/mtab/mtab.c:173
+#: src/modules/volume/mtab/mtab.c:175
 msgid "This module provide support for already mounted volumes"
 msgstr "這個模組用來提供已經安裝好的 volume"
 

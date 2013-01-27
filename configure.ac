@@ -103,7 +103,7 @@ AM_CONDITIONAL([ENNA_BUILD_THEME], test "x${build_theme}" = "xyes")
 #########"#####
 
 # Libplayer
-want_backend_libplayer="yes"
+want_backend_libplayer="no"
 have_backend_libplayer="no"
 AC_MSG_CHECKING(whether libplayer backend is to be built)
 AC_ARG_ENABLE(backend-libplayer,
@@ -130,7 +130,7 @@ if test "x$want_backend_libplayer" = "xyes"; then
 fi
 
 # Emotion
-want_backend_emotion="no"
+want_backend_emotion="yes"
 have_backend_emotion="no"
 AC_MSG_CHECKING(whether emotion backend is to be built)
 AC_ARG_ENABLE(backend-emotion,

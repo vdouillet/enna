@@ -753,7 +753,7 @@ if test "x$want_theme_stb" = "xyes"; then
 fi
 
 # Phone theme
-want_theme_phone="yes"
+want_theme_phone="no"
 AC_MSG_CHECKING(whether Phone Theme is to be built)
 AC_ARG_ENABLE(theme_phone,
   AS_HELP_STRING([--enable-theme-phone],[Enable Phone Theme]),

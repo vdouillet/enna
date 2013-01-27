@@ -252,7 +252,7 @@ if test "x$want_activity_video" = "xyes"; then
 fi
 
 # Weather
-want_activity_weather="yes"
+want_activity_weather="no"
 AC_MSG_CHECKING(whether weather activity module is to be built)
 AC_ARG_ENABLE(activity-weather,
   AS_HELP_STRING([--enable-activity-weather],[Enable Weather Activity Module]),

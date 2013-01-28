@@ -79,6 +79,10 @@ if BUILD_LIBSVDRP
 enna_LDADD += @LIBSVDRP_LIBS@
 endif
 
+if BUILD_LIBXRANDR
+enna_LDADD += @LIBXRANDR_LIBS@ -lX11
+endif
+
 ##########################################################################
 # For Modules Static linking : BEGIN
 ##########################################################################

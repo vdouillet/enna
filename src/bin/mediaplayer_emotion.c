@@ -17,6 +17,7 @@ struct _Enna_Mediaplayer
     char *uri;
     char *label;
     int audio_delay;
+    char *engine;
     int subtitle_visibility;
     int subtitle_alignment;
     int subtitle_position;
@@ -27,6 +28,16 @@ struct _Enna_Mediaplayer
 };
 
 static Enna_Mediaplayer *mp = NULL;
+
+
+static const struct {
+    const char *name;
+} map_player_type[] = {
+    { "vlc"                                  },
+    { "gstreamer"                            },
+    { "xine"                                 },
+    { NULL                                   }
+};
 
 
 
@@ -47,13 +58,30 @@ enna_mediaplayer_cfg_register (void)
 int
 enna_mediaplayer_init(void)
 {
+    const char* value = NULL;
+    int i;
+
     mp = calloc(1, sizeof(Enna_Mediaplayer));
 
     mp->uri = NULL;
     mp->label = NULL;
 
+    value = enna_config_string_get("enna", "type");
+    if(value)
+    {
+        enna_log(ENNA_MSG_INFO, NULL, " * type: %s", value);
+        for (i = 0; map_player_type[i].name; i++)
+        {
+            if (!strcmp(value, map_player_type[i].name))
+            {
+                mp->engine = value;
+                break;
+            }
+        }
+    }
+
     mp->player = emotion_object_add(evas_object_evas_get(enna->layout));
-    emotion_object_init(mp->player, "xine");
+    emotion_object_init(mp->player, mp->engine);
     evas_object_layer_set(mp->player, -1);
     mp->play_state = STOPPED;
 

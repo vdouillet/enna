@@ -88,6 +88,7 @@ cfg_main_section_set_default (void)
     enna_config->engine    = strdup("software_x11");
     enna_config->verbosity = strdup("warning");
     enna_config->log_file  = NULL;
+    enna_config->emotion_backend = strdup("xine");
 
     enna_config->music_filters =
         enna_util_tuple_get(FILTER_DEFAULT_MUSIC, ",");
@@ -153,6 +154,7 @@ cfg_main_section_load (const char *section)
     GET_STRING(engine);
     GET_STRING(verbosity);
     GET_STRING(log_file);
+    GET_STRING(emotion_backend);
 
     GET_INT(idle_timeout);
     GET_INT(fullscreen);
@@ -188,6 +190,7 @@ cfg_main_section_save (const char *section)
     SET_STRING(engine);
     SET_STRING(verbosity);
     SET_STRING(log_file);
+    SET_STRING(emotion_backend);
 
     SET_INT(idle_timeout);
     SET_INT(fullscreen);

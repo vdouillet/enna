@@ -52,7 +52,9 @@
 #include <X11/extensions/Xrandr.h>
 #endif
 
+#ifndef BUILD_BACKEND_EMOTION
 #include <player.h>
+#endif
 
 #include <valhalla.h>
 

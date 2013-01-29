@@ -37,7 +37,6 @@ struct _Enna_Config
     int slideshow_delay;
     Eina_Bool display_mouse;
     char *engine;
-    char *emotion_backend;
     char *verbosity;
     Eina_List *music_local_root_directories;
     Eina_List *music_filters;

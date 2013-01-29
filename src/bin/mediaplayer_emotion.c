@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "logs.h"
 #include "mediaplayer.h"
+#include "enna_config.h"
 
 #define SEEK_STEP_DEFAULT         10 /* seconds */
 #define VOLUME_STEP_DEFAULT       5 /* percent */
@@ -27,19 +28,87 @@ struct _Enna_Mediaplayer
     Enna_Playlist *cur_playlist;
 };
 
+typedef struct mediaplayer_cfg_s {
+    char *engine;
+} mediaplayer_cfg_t;
+
+static mediaplayer_cfg_t mp_cfg;
 static Enna_Mediaplayer *mp = NULL;
 
 
 static const struct {
     const char *name;
 } map_player_type[] = {
-    { "vlc"                                  },
+    { "generic"                                  },
     { "gstreamer"                            },
     { "xine"                                 },
     { NULL                                   }
 };
 
 
+
+static void
+cfg_mediaplayer_section_load (const char *section)
+{
+    const char *value = NULL;
+    int i;
+
+    enna_log(ENNA_MSG_INFO, NULL, "parameters:");
+
+    value = enna_config_string_get(section, "type");
+    if (value)
+    {
+        enna_log(ENNA_MSG_INFO, NULL, " * type: %s", value);
+
+        for (i = 0; map_player_type[i].name; i++)
+        {
+            if (!strcmp(value, map_player_type[i].name))
+            {
+                mp_cfg.engine = map_player_type[i].name;
+                break;
+            }
+        }
+    }
+}
+
+static void
+cfg_mediaplayer_section_save (const char *section)
+{
+    int i;
+
+    /* Default type */
+    for (i = 0; map_player_type[i].name; i++)
+    {
+        if (!strcmp(mp_cfg.engine ,map_player_type[i].name))
+        {
+            enna_config_string_set(section, "type",
+                                   map_player_type[i].name);
+            break;
+        }
+    }
+}
+
+static void
+cfg_mediaplayer_free (void)
+{
+
+}
+
+static void
+cfg_mediaplayer_section_set_default (void)
+{
+    cfg_mediaplayer_free();
+
+    mp_cfg.engine           = strdup("xine");
+}
+
+static Enna_Config_Section_Parser cfg_mediaplayer = {
+    "mediaplayer",
+    cfg_mediaplayer_section_load,
+    cfg_mediaplayer_section_save,
+    cfg_mediaplayer_section_set_default,
+    cfg_mediaplayer_free,
+};
 
 /* externally accessible functions */
 int
@@ -52,34 +121,18 @@ enna_mediaplayer_supported_uri_type(enna_mediaplayer_uri_type_t type __UNUSED__)
 void
 enna_mediaplayer_cfg_register (void)
 {
-
+    enna_config_section_parser_register(&cfg_mediaplayer);
 }
 
 int
 enna_mediaplayer_init(void)
 {
-    const char* value = NULL;
-    int i;
-
     mp = calloc(1, sizeof(Enna_Mediaplayer));
 
     mp->uri = NULL;
     mp->label = NULL;
 
-    value = enna_config_string_get("enna", "type");
-    if(value)
-    {
-        enna_log(ENNA_MSG_INFO, NULL, " * type: %s", value);
-        for (i = 0; map_player_type[i].name; i++)
-        {
-            if (!strcmp(value, map_player_type[i].name))
-            {
-                mp->engine = value;
-                break;
-            }
-        }
-    }
-
+    mp->engine = strdup(mp_cfg.engine);
     mp->player = emotion_object_add(evas_object_evas_get(enna->layout));
     emotion_object_init(mp->player, mp->engine);
     evas_object_layer_set(mp->player, -1);
@@ -107,6 +160,7 @@ enna_mediaplayer_shutdown(void)
 
     ENNA_FREE(mp->uri);
     ENNA_FREE(mp->label);
+    ENNA_FREE(mp->engine);
     emotion_object_play_set(mp->player, EINA_FALSE);
     if (mp->player)
         evas_object_del(mp->player);

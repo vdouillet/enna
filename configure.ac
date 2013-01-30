@@ -752,37 +752,6 @@ if test "x$want_theme_stb" = "xyes"; then
   AC_DEFINE(BUILD_THEME_STB, 1, [Stb Theme])
 fi
 
-# Phone theme
-want_theme_phone="no"
-AC_MSG_CHECKING(whether Phone Theme is to be built)
-AC_ARG_ENABLE(theme_phone,
-  AS_HELP_STRING([--enable-theme-phone],[Enable Phone Theme]),
-  [ want_theme_phone=$enableval ]
-)
-AC_MSG_RESULT($want_theme_phone)
-AM_CONDITIONAL(BUILD_THEME_PHONE, test "x$want_theme_phone" = "xyes")
-if test "x$want_theme_phone" = "xyes"; then
-  AC_DEFINE(BUILD_THEME_PHONE, 1, [Phone Theme])
-fi
-
-
-# Tablet (and other touchscreen embedded devices) Theme
-want_theme_tablet="no"
-AC_MSG_CHECKING(whether tablet theme is to be built)
-AC_ARG_ENABLE(theme_tablet,
-  AS_HELP_STRING([--enable-theme-tablet],[Enable Tablet Theme]),
-  [ want_theme_tablet=$enableval ]
-)
-AC_MSG_RESULT($want_theme_tablet)
-AM_CONDITIONAL(BUILD_THEME_TABLET, test "x$want_theme_tablet" = "xyes")
-if test "x$want_theme_tablet" = "xyes"; then
-  AC_DEFINE(BUILD_THEME_TABLET, 1, [Tablet Theme])
-fi
-
-if test "x$GCC" = "xyes"; then
-  CFLAGS="$CFLAGS -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_REENTRANT"
-fi
-
 # silent rules require automake 1.11
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])],[AC_SUBST([AM_DEFAULT_VERBOSITY],[1])])
 
@@ -828,9 +797,7 @@ data/Makefile
 data/other/Makefile
 data/theme/Makefile
 data/theme/default/Makefile
-data/theme/phone/Makefile
 data/theme/stb/Makefile
-data/theme/tablet/Makefile
 ])
 
 AC_OUTPUT

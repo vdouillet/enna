@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-01-20 00:27+0100\n"
+"POT-Creation-Date: 2013-01-30 13:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kostyantyn Derets <ua.motofan@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -23,65 +23,65 @@ msgstr ""
 msgid "No media found!"
 msgstr "Источник не найден!"
 
-#: src/bin/enna.c:562
+#: src/bin/enna.c:564
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "МедиаЦентр Enna\n"
 
-#: src/bin/enna.c:563
+#: src/bin/enna.c:565
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr " Использование: %s [опции...]\n"
 
-#: src/bin/enna.c:564
+#: src/bin/enna.c:566
 #, c-format
 msgid " Available options:\n"
 msgstr " Доступные опции:\n"
 
-#: src/bin/enna.c:565
+#: src/bin/enna.c:567
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr "  -c, (--config):  Укажите конфигурационный файл.\n"
 
-#: src/bin/enna.c:566
+#: src/bin/enna.c:568
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "  -f, (--fs):      Принудительный полноэкранный режим.\n"
 
-#: src/bin/enna.c:567
+#: src/bin/enna.c:569
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "  -h, (--help):    Выводит это сообщение.\n"
 
-#: src/bin/enna.c:568
+#: src/bin/enna.c:570
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr ""
 "  -t, (--theme):   Укажите название темы, которая будет использована.\n"
 
-#: src/bin/enna.c:569
+#: src/bin/enna.c:571
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "  -g, (--geometry):Укажите размеры окна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:570
+#: src/bin/enna.c:572
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "  -g, (--geometry):Укажите размеры окна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:571
+#: src/bin/enna.c:573
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (--profile): Укажите профиль дисплея\n"
 
-#: src/bin/enna.c:572
+#: src/bin/enna.c:574
 #, c-format
 msgid "    Supported: "
 msgstr "Поддерживает:"
 
-#: src/bin/enna.c:576
+#: src/bin/enna.c:578
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version): Выводит номер версии Enna.\n"
@@ -207,7 +207,7 @@ msgid "Configuration"
 msgstr "Настройка"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:677
+#: src/modules/activity/configuration/configuration_sysinfo.c:679
 msgid "System information"
 msgstr "Информация о системе"
 
@@ -236,113 +236,113 @@ msgstr "Благодарности:"
 msgid "and"
 msgstr "И"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:103
+#: src/modules/activity/configuration/configuration_sysinfo.c:105
 msgid "Enna information"
 msgstr "Информация об Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:105
+#: src/modules/activity/configuration/configuration_sysinfo.c:107
 msgid "Enna:"
 msgstr "Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:120
+#: src/modules/activity/configuration/configuration_sysinfo.c:122
 msgid "Video renderer:"
 msgstr "видео"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:181
+#: src/modules/activity/configuration/configuration_sysinfo.c:183
 msgid "Distribution:"
 msgstr "Дистрибутив"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:207
+#: src/modules/activity/configuration/configuration_sysinfo.c:209
 msgid "OS:"
 msgstr "ОС:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:215
+#: src/modules/activity/configuration/configuration_sysinfo.c:217
 msgid "for"
 msgstr "для"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:239
-#: src/modules/activity/configuration/configuration_sysinfo.c:263
+#: src/modules/activity/configuration/configuration_sysinfo.c:241
+#: src/modules/activity/configuration/configuration_sysinfo.c:265
 msgid "Available CPUs:"
 msgstr " Доступные процессоры:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:294
+#: src/modules/activity/configuration/configuration_sysinfo.c:296
 #, fuzzy
 msgid ", running at"
 msgstr ", с частотой %d MHz"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:316
-#: src/modules/activity/configuration/configuration_sysinfo.c:336
+#: src/modules/activity/configuration/configuration_sysinfo.c:318
+#: src/modules/activity/configuration/configuration_sysinfo.c:338
 msgid "CPU Load:"
 msgstr "Загрузка процессора"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:406
+#: src/modules/activity/configuration/configuration_sysinfo.c:408
 msgid "Memory:"
 msgstr "Память"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:408
+#: src/modules/activity/configuration/configuration_sysinfo.c:410
 msgid "used on"
 msgstr "использовано"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:410
+#: src/modules/activity/configuration/configuration_sysinfo.c:412
 msgid "total"
 msgstr "полный объем"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:447
+#: src/modules/activity/configuration/configuration_sysinfo.c:449
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "<hilight>Разрешение экрана: </hilight>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:450
+#: src/modules/activity/configuration/configuration_sysinfo.c:452
 #, fuzzy
 msgid "at"
 msgstr "Данные"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:452
+#: src/modules/activity/configuration/configuration_sysinfo.c:454
 msgid "min:"
 msgstr "мин."
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:454
+#: src/modules/activity/configuration/configuration_sysinfo.c:456
 msgid "max:"
 msgstr "макс."
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:467
+#: src/modules/activity/configuration/configuration_sysinfo.c:469
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:470
+#: src/modules/activity/configuration/configuration_sysinfo.c:472
 #, fuzzy
 msgid "connected to VDR"
 msgstr "установлено соединение с VDR %s на %s (%s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:473
+#: src/modules/activity/configuration/configuration_sysinfo.c:475
 msgid "on"
 msgstr "на, в"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:478
+#: src/modules/activity/configuration/configuration_sysinfo.c:480
 #, fuzzy
 msgid "not connected"
 msgstr "нет соединений<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:490
+#: src/modules/activity/configuration/configuration_sysinfo.c:492
 #, fuzzy
 msgid "Available network interfaces:"
 msgstr "<hilight>Доступные сетевые соединения:</hilight><br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:508
+#: src/modules/activity/configuration/configuration_sysinfo.c:510
 msgid "IP:"
 msgstr "IP:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:513
+#: src/modules/activity/configuration/configuration_sysinfo.c:515
 #, fuzzy
 msgid "Netmask:"
 msgstr "Netmask: %s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:613
-#: src/modules/activity/configuration/configuration_sysinfo.c:633
+#: src/modules/activity/configuration/configuration_sysinfo.c:615
+#: src/modules/activity/configuration/configuration_sysinfo.c:635
 msgid "Default gateway:"
 msgstr "Default gateway"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:661
+#: src/modules/activity/configuration/configuration_sysinfo.c:663
 #, fuzzy
 msgid "None"
 msgstr "Нет<br>"
@@ -443,17 +443,17 @@ msgstr "Телевидение"
 msgid "View TV channels"
 msgstr "Смотреть телеканалы"
 
-#: src/modules/activity/video/video.c:115
+#: src/modules/activity/video/video.c:116
 #, c-format
 msgid "%d Movies"
 msgstr "%d Фильмов"
 
-#: src/modules/activity/video/video.c:760
-#: src/modules/activity/video/video.c:846
+#: src/modules/activity/video/video.c:740
+#: src/modules/activity/video/video.c:826
 msgid "Video"
 msgstr "Видео"
 
-#: src/modules/activity/video/video.c:848
+#: src/modules/activity/video/video.c:828
 msgid "Play your videos"
 msgstr "Проиграть видео"
 
@@ -502,17 +502,17 @@ msgstr "Модуль DVD"
 msgid "Watch movies from DVD"
 msgstr "Смотреть фильм с DVD"
 
-#: src/modules/browser/localfiles/localfiles.c:605
+#: src/modules/browser/localfiles/localfiles.c:613
 #, fuzzy
 msgid "Browse local devices"
 msgstr "Обзор локальных дисков"
 
-#: src/modules/browser/localfiles/localfiles.c:808
+#: src/modules/browser/localfiles/localfiles.c:816
 #, fuzzy
 msgid "Browse local files"
 msgstr "Обзор локальных файлов"
 
-#: src/modules/browser/localfiles/localfiles.c:810
+#: src/modules/browser/localfiles/localfiles.c:818
 #, fuzzy
 msgid "Browse files in your local file systems"
 msgstr "Обзор файлов на Вашем жестком диске"

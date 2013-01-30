@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-01-20 00:27+0100\n"
+"POT-Creation-Date: 2013-01-30 13:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: George Koutsikos <ragecryx@yahoo.gr>\n"
 "Language-Team: Greece\n"
@@ -23,64 +23,64 @@ msgstr ""
 msgid "No media found!"
 msgstr "Δεν βρέθηκαν αρχεία πολυμέσων!"
 
-#: src/bin/enna.c:562
+#: src/bin/enna.c:564
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna MediaCenter\n"
 
-#: src/bin/enna.c:563
+#: src/bin/enna.c:565
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr "Χρήση: %s [επιλογές ...]\n"
 
-#: src/bin/enna.c:564
+#: src/bin/enna.c:566
 #, fuzzy, c-format
 msgid " Available options:\n"
 msgstr "Διαθέσιμες επιλογές:\n"
 
-#: src/bin/enna.c:565
+#: src/bin/enna.c:567
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr ""
 
-#: src/bin/enna.c:566
+#: src/bin/enna.c:568
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr ""
 
-#: src/bin/enna.c:567
+#: src/bin/enna.c:569
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr ""
 
-#: src/bin/enna.c:568
+#: src/bin/enna.c:570
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr ""
 
-#: src/bin/enna.c:569
+#: src/bin/enna.c:571
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr ""
 
-#: src/bin/enna.c:570
+#: src/bin/enna.c:572
 #, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr ""
 
-#: src/bin/enna.c:571
+#: src/bin/enna.c:573
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr ""
 
-#: src/bin/enna.c:572
+#: src/bin/enna.c:574
 #, c-format
 msgid "    Supported: "
 msgstr ""
 
-#: src/bin/enna.c:576
+#: src/bin/enna.c:578
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr ""
@@ -208,7 +208,7 @@ msgid "Configuration"
 msgstr "Ρύθμιση"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:677
+#: src/modules/activity/configuration/configuration_sysinfo.c:679
 #, fuzzy
 msgid "System information"
 msgstr "Πληροφορίες συστήματος"
@@ -241,116 +241,116 @@ msgstr "Μνεία στους:<br>"
 msgid "and"
 msgstr "και"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:103
+#: src/modules/activity/configuration/configuration_sysinfo.c:105
 #, fuzzy
 msgid "Enna information"
 msgstr "Πληροφορίες συστήματος"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:105
+#: src/modules/activity/configuration/configuration_sysinfo.c:107
 msgid "Enna:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:120
+#: src/modules/activity/configuration/configuration_sysinfo.c:122
 msgid "Video renderer:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:181
+#: src/modules/activity/configuration/configuration_sysinfo.c:183
 msgid "Distribution:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:207
+#: src/modules/activity/configuration/configuration_sysinfo.c:209
 msgid "OS:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:215
+#: src/modules/activity/configuration/configuration_sysinfo.c:217
 msgid "for"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:239
-#: src/modules/activity/configuration/configuration_sysinfo.c:263
+#: src/modules/activity/configuration/configuration_sysinfo.c:241
+#: src/modules/activity/configuration/configuration_sysinfo.c:265
 #, fuzzy
 msgid "Available CPUs:"
 msgstr "Διαθέσιμες επιλογές:\n"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:294
+#: src/modules/activity/configuration/configuration_sysinfo.c:296
 #, fuzzy
 msgid ", running at"
 msgstr ", τρέχει στα %d MHz"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:316
-#: src/modules/activity/configuration/configuration_sysinfo.c:336
+#: src/modules/activity/configuration/configuration_sysinfo.c:318
+#: src/modules/activity/configuration/configuration_sysinfo.c:338
 msgid "CPU Load:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:406
+#: src/modules/activity/configuration/configuration_sysinfo.c:408
 msgid "Memory:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:408
+#: src/modules/activity/configuration/configuration_sysinfo.c:410
 msgid "used on"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:410
+#: src/modules/activity/configuration/configuration_sysinfo.c:412
 msgid "total"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:447
+#: src/modules/activity/configuration/configuration_sysinfo.c:449
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "<hilight>Ανάλυση οθόνης: </hilight>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:450
+#: src/modules/activity/configuration/configuration_sysinfo.c:452
 #, fuzzy
 msgid "at"
 msgstr "Δεδομένα"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:452
+#: src/modules/activity/configuration/configuration_sysinfo.c:454
 msgid "min:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:454
+#: src/modules/activity/configuration/configuration_sysinfo.c:456
 msgid "max:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:467
+#: src/modules/activity/configuration/configuration_sysinfo.c:469
 #, fuzzy
 msgid "VDR:"
 msgstr "DVD-R"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:470
+#: src/modules/activity/configuration/configuration_sysinfo.c:472
 #, fuzzy
 msgid "connected to VDR"
 msgstr "συνδεδεμένο σε VDR %s στο %s (%s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:473
+#: src/modules/activity/configuration/configuration_sysinfo.c:475
 msgid "on"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:478
+#: src/modules/activity/configuration/configuration_sysinfo.c:480
 #, fuzzy
 msgid "not connected"
 msgstr "μη συνδεδεμένο<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:490
+#: src/modules/activity/configuration/configuration_sysinfo.c:492
 #, fuzzy
 msgid "Available network interfaces:"
 msgstr "<hilight>Διαθέσιμες διεπαφές δικτύου:</hilight><br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:508
+#: src/modules/activity/configuration/configuration_sysinfo.c:510
 msgid "IP:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:513
+#: src/modules/activity/configuration/configuration_sysinfo.c:515
 #, fuzzy
 msgid "Netmask:"
 msgstr "Μάσκα δικτύου: %s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:613
-#: src/modules/activity/configuration/configuration_sysinfo.c:633
+#: src/modules/activity/configuration/configuration_sysinfo.c:615
+#: src/modules/activity/configuration/configuration_sysinfo.c:635
 msgid "Default gateway:"
 msgstr ""
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:661
+#: src/modules/activity/configuration/configuration_sysinfo.c:663
 #, fuzzy
 msgid "None"
 msgstr "Κανένα<br>"
@@ -449,17 +449,17 @@ msgstr "Τηλεόραση"
 msgid "View TV channels"
 msgstr "Προβολή καναλιών τηλεόρασης"
 
-#: src/modules/activity/video/video.c:115
+#: src/modules/activity/video/video.c:116
 #, c-format
 msgid "%d Movies"
 msgstr "%d Ταινίες"
 
-#: src/modules/activity/video/video.c:760
-#: src/modules/activity/video/video.c:846
+#: src/modules/activity/video/video.c:740
+#: src/modules/activity/video/video.c:826
 msgid "Video"
 msgstr "Βίντεο"
 
-#: src/modules/activity/video/video.c:848
+#: src/modules/activity/video/video.c:828
 msgid "Play your videos"
 msgstr ""
 
@@ -508,16 +508,16 @@ msgstr "Άρθρωμα DVD"
 msgid "Watch movies from DVD"
 msgstr "Αναπαραγωγή ταινιών από DVD"
 
-#: src/modules/browser/localfiles/localfiles.c:605
+#: src/modules/browser/localfiles/localfiles.c:613
 #, fuzzy
 msgid "Browse local devices"
 msgstr "Περιήγηση στους τοπικούς δίσκους"
 
-#: src/modules/browser/localfiles/localfiles.c:808
+#: src/modules/browser/localfiles/localfiles.c:816
 msgid "Browse local files"
 msgstr "Περιήγηση σε τοπικά αρχεία"
 
-#: src/modules/browser/localfiles/localfiles.c:810
+#: src/modules/browser/localfiles/localfiles.c:818
 msgid "Browse files in your local file systems"
 msgstr "Περιήγηση στα τοπικά συστήματα αρχείων"
 

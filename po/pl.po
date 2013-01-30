@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-01-20 00:27+0100\n"
+"POT-Creation-Date: 2013-01-30 13:09+0100\n"
 "PO-Revision-Date: 2010-01-15 00:53+0100\n"
 "Last-Translator: Igor Szymanski <szymanski.igor@gmail.com>\n"
 "Language-Team: Polish\n"
@@ -21,64 +21,64 @@ msgstr ""
 msgid "No media found!"
 msgstr "Nie znaleziono multimediów !"
 
-#: src/bin/enna.c:562
+#: src/bin/enna.c:564
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna MediaCenter\n"
 
-#: src/bin/enna.c:563
+#: src/bin/enna.c:565
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr "Użycie: %s [options ...]\n"
 
-#: src/bin/enna.c:564
+#: src/bin/enna.c:566
 #, c-format
 msgid " Available options:\n"
 msgstr "Dostępne opcje :\n"
 
-#: src/bin/enna.c:565
+#: src/bin/enna.c:567
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr " -c, (--config) : Określ plik konfiguracyjny, który ma zostać użyty.\n"
 
-#: src/bin/enna.c:566
+#: src/bin/enna.c:568
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr " -f, (--fs) : Wymuś tryb pełnoekranowy.\n"
 
-#: src/bin/enna.c:567
+#: src/bin/enna.c:569
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr " -h, (--help) : Wyświetl pomoc.\n"
 
-#: src/bin/enna.c:568
+#: src/bin/enna.c:570
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "  -t, (--theme) :    Określ nazwę skórki która ma zostać użyta.\n"
 
-#: src/bin/enna.c:569
+#: src/bin/enna.c:571
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "  -g, (--geometry) : Określ rozmiar okna. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:570
+#: src/bin/enna.c:572
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "  -g, (--geometry) : Określ rozmiar okna. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:571
+#: src/bin/enna.c:573
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (-- profile): Określ profil wyświetlania\n"
 
-#: src/bin/enna.c:572
+#: src/bin/enna.c:574
 #, c-format
 msgid "    Supported: "
 msgstr "Wspierany:"
 
-#: src/bin/enna.c:576
+#: src/bin/enna.c:578
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version) :  Wyświetl numer wersji Enna.\n"
@@ -199,7 +199,7 @@ msgid "Configuration"
 msgstr "Konfiguracja"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:677
+#: src/modules/activity/configuration/configuration_sysinfo.c:679
 msgid "System information"
 msgstr "Informacje systemowe"
 
@@ -227,106 +227,106 @@ msgstr "Autorzy :"
 msgid "and"
 msgstr "oraz"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:103
+#: src/modules/activity/configuration/configuration_sysinfo.c:105
 msgid "Enna information"
 msgstr "Informacje o Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:105
+#: src/modules/activity/configuration/configuration_sysinfo.c:107
 msgid "Enna:"
 msgstr "Enna:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:120
+#: src/modules/activity/configuration/configuration_sysinfo.c:122
 msgid "Video renderer:"
 msgstr "Rendererowanie wideo:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:181
+#: src/modules/activity/configuration/configuration_sysinfo.c:183
 msgid "Distribution:"
 msgstr "Dystrybucja:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:207
+#: src/modules/activity/configuration/configuration_sysinfo.c:209
 msgid "OS:"
 msgstr "System operacyjny:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:215
+#: src/modules/activity/configuration/configuration_sysinfo.c:217
 msgid "for"
 msgstr "dla"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:239
-#: src/modules/activity/configuration/configuration_sysinfo.c:263
+#: src/modules/activity/configuration/configuration_sysinfo.c:241
+#: src/modules/activity/configuration/configuration_sysinfo.c:265
 msgid "Available CPUs:"
 msgstr "Dostępne procesory:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:294
+#: src/modules/activity/configuration/configuration_sysinfo.c:296
 msgid ", running at"
 msgstr ", taktowany"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:316
-#: src/modules/activity/configuration/configuration_sysinfo.c:336
+#: src/modules/activity/configuration/configuration_sysinfo.c:318
+#: src/modules/activity/configuration/configuration_sysinfo.c:338
 msgid "CPU Load:"
 msgstr "Obciążenie procesora:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:406
+#: src/modules/activity/configuration/configuration_sysinfo.c:408
 msgid "Memory:"
 msgstr "Pamięć:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:408
+#: src/modules/activity/configuration/configuration_sysinfo.c:410
 msgid "used on"
 msgstr "w użyciu z"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:410
+#: src/modules/activity/configuration/configuration_sysinfo.c:412
 msgid "total"
 msgstr "ogółem"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:447
+#: src/modules/activity/configuration/configuration_sysinfo.c:449
 msgid "Screen resolution:"
 msgstr "Rozdzielczość ekranu :"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:450
+#: src/modules/activity/configuration/configuration_sysinfo.c:452
 msgid "at"
 msgstr "przy"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:452
+#: src/modules/activity/configuration/configuration_sysinfo.c:454
 msgid "min:"
 msgstr "min:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:454
+#: src/modules/activity/configuration/configuration_sysinfo.c:456
 msgid "max:"
 msgstr "max:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:467
+#: src/modules/activity/configuration/configuration_sysinfo.c:469
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:470
+#: src/modules/activity/configuration/configuration_sysinfo.c:472
 msgid "connected to VDR"
 msgstr "podłączony do VDR"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:473
+#: src/modules/activity/configuration/configuration_sysinfo.c:475
 msgid "on"
 msgstr "na"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:478
+#: src/modules/activity/configuration/configuration_sysinfo.c:480
 msgid "not connected"
 msgstr "nie podłączony"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:490
+#: src/modules/activity/configuration/configuration_sysinfo.c:492
 msgid "Available network interfaces:"
 msgstr "Dostępne interfejsy sieciowe :"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:508
+#: src/modules/activity/configuration/configuration_sysinfo.c:510
 msgid "IP:"
 msgstr "IP:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:513
+#: src/modules/activity/configuration/configuration_sysinfo.c:515
 msgid "Netmask:"
 msgstr "Maska podsieci:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:613
-#: src/modules/activity/configuration/configuration_sysinfo.c:633
+#: src/modules/activity/configuration/configuration_sysinfo.c:615
+#: src/modules/activity/configuration/configuration_sysinfo.c:635
 msgid "Default gateway:"
 msgstr "Brama domyślna:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:661
+#: src/modules/activity/configuration/configuration_sysinfo.c:663
 msgid "None"
 msgstr "Żaden"
 
@@ -421,17 +421,17 @@ msgstr "Telewizja"
 msgid "View TV channels"
 msgstr "Wyświetl kanały TV"
 
-#: src/modules/activity/video/video.c:115
+#: src/modules/activity/video/video.c:116
 #, c-format
 msgid "%d Movies"
 msgstr "%d Filmów"
 
-#: src/modules/activity/video/video.c:760
-#: src/modules/activity/video/video.c:846
+#: src/modules/activity/video/video.c:740
+#: src/modules/activity/video/video.c:826
 msgid "Video"
 msgstr "Wideo"
 
-#: src/modules/activity/video/video.c:848
+#: src/modules/activity/video/video.c:828
 msgid "Play your videos"
 msgstr "Odtwarzaj pliki wideo"
 
@@ -475,15 +475,15 @@ msgstr "Moduł DVD"
 msgid "Watch movies from DVD"
 msgstr "Oglądaj filmy z płyt DVD"
 
-#: src/modules/browser/localfiles/localfiles.c:605
+#: src/modules/browser/localfiles/localfiles.c:613
 msgid "Browse local devices"
 msgstr "Przeglądaj lokalne urządzenia"
 
-#: src/modules/browser/localfiles/localfiles.c:808
+#: src/modules/browser/localfiles/localfiles.c:816
 msgid "Browse local files"
 msgstr "Przeglądaj pliki lokalne"
 
-#: src/modules/browser/localfiles/localfiles.c:810
+#: src/modules/browser/localfiles/localfiles.c:818
 msgid "Browse files in your local file systems"
 msgstr "Przeglądaj pliki w lokalnym systemie plików"
 

@@ -14,6 +14,7 @@ collections
 #include "elm/elm.edc"
 #include "gad_date.edc"
 #include "gad_weather.edc"
+#include "player.edc"
 
    group { name: "enna/main/layout";
       images {

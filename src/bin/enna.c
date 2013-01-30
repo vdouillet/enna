@@ -51,6 +51,7 @@
 #include "url_utils.h"
 #include "geoip.h"
 #include "gadgets.h"
+#include "videoplayer_obj.h"
 
 #ifndef ELM_LIB_QUICKLAUNCH
 
@@ -241,6 +242,7 @@ static int _enna_init(int argc, char **argv)
     enna_main_cfg_register();
     enna_weather_cfg_register();
     enna_mediaplayer_cfg_register();
+    enna_videoplayer_obj_cfg_register();
     enna_metadata_cfg_register();
 
     enna_weather_init();

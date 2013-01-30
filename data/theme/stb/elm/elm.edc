@@ -1,3 +1,4 @@
+#include "video.edc"
 
    group { name: "elm/scroller/base/default";
       alias: "elm/list/base/default";

@@ -20,7 +20,8 @@ fonts/Comfortaa_Bold.ttf \
 fonts/Comfortaa_Regular.ttf
 
 EDC = \
-stb.edc 
+stb.edc \
+player.edc
 
 IMGS = \
 images/bg.png \

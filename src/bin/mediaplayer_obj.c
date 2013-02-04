@@ -134,7 +134,7 @@ metadata_set_text(Evas_Object *obj,
 }
 
 static void
-_metadata_set(Evas_Object *obj, Enna_Metadata *metadata __UNUSED__, Enna_File *file)
+_metadata_set(Evas_Object *obj, Enna_Metadata *metadata EINA_UNUSED, Enna_File *file)
 {
     Smart_Data *sd;
     const char *cover;
@@ -193,7 +193,7 @@ media_cover_hide (Smart_Data *sd)
 
 /* Event from mediaplayer*/
 static Eina_Bool
-_start_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_start_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -210,7 +210,7 @@ _start_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
 }
 
 static Eina_Bool
-_stop_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_stop_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -224,7 +224,7 @@ _stop_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
 }
 
 static Eina_Bool
-_prev_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_prev_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -234,7 +234,7 @@ _prev_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
 }
 
 static Eina_Bool
-_next_cb(void *data, int type __UNUSED__ , void *event __UNUSED__)
+_next_cb(void *data, int type EINA_UNUSED , void *event EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -244,7 +244,7 @@ _next_cb(void *data, int type __UNUSED__ , void *event __UNUSED__)
 }
 
 static Eina_Bool
-_unpause_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_unpause_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     show_play_button(data);
     enna_log(ENNA_MSG_EVENT, NULL, "Media control Event UN_PAUSE");
@@ -252,7 +252,7 @@ _unpause_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
 }
 
 static Eina_Bool
-_pause_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_pause_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     show_pause_button(data);
     enna_log(ENNA_MSG_EVENT, NULL, "Media control Event PAUSE ");
@@ -260,7 +260,7 @@ _pause_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
 }
 
 static Eina_Bool
-_seek_cb(void *data __UNUSED__, int type __UNUSED__, void *event )
+_seek_cb(void *data EINA_UNUSED, int type EINA_UNUSED, void *event )
 {
     Enna_Event_Mediaplayer_Seek_Data *ev;
     ev=event;
@@ -270,7 +270,7 @@ _seek_cb(void *data __UNUSED__, int type __UNUSED__, void *event )
 }
 
 static Eina_Bool
-_eos_cb(void *data, int type __UNUSED__, void *event __UNUSED__)
+_eos_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -334,7 +334,7 @@ _timer_cb(void *data)
 
 /* events from buttons*/
 static void
-_button_clicked_play_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_play_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -342,7 +342,7 @@ _button_clicked_play_cb(void *data, Evas_Object *obj __UNUSED__, void *event_inf
 }
 
 static void
-_button_clicked_prev_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_prev_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -350,7 +350,7 @@ _button_clicked_prev_cb(void *data, Evas_Object *obj __UNUSED__, void *event_inf
 }
 
 static void
-_button_clicked_rewind_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_rewind_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -359,7 +359,7 @@ _button_clicked_rewind_cb(void *data, Evas_Object *obj __UNUSED__, void *event_i
 }
 
 static void
-_button_clicked_forward_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_forward_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -368,7 +368,7 @@ _button_clicked_forward_cb(void *data, Evas_Object *obj __UNUSED__, void *event_
 }
 
 static void
-_button_clicked_next_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_next_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -376,14 +376,14 @@ _button_clicked_next_cb(void *data, Evas_Object *obj __UNUSED__, void *event_inf
 }
 
 static void
-_button_clicked_stop_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_stop_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     enna_mediaplayer_stop();
 }
 
 
 static void
-_button_clicked_info_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_clicked_info_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -391,7 +391,7 @@ _button_clicked_info_cb(void *data, Evas_Object *obj __UNUSED__, void *event_inf
 }
 
 static void
-_slider_seek_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_slider_seek_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     double value;
     Smart_Data *sd = data;
@@ -403,7 +403,7 @@ _slider_seek_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUS
 }
 
 static void
-_slider_start_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_slider_start_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     ecore_timer_freeze(sd->timer);
@@ -503,7 +503,7 @@ _set_button(Smart_Data *sd, int start, int right)
 }
 
 static void
-_del_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_del_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -581,7 +581,7 @@ enna_mediaplayer_obj_event_release(void)
 
 /* externally accessible functions */
 Evas_Object *
-enna_mediaplayer_obj_add(Evas * evas __UNUSED__, Enna_Playlist *enna_playlist)
+enna_mediaplayer_obj_add(Evas * evas EINA_UNUSED, Enna_Playlist *enna_playlist)
 {
 
     Evas_Object *layout;

@@ -51,7 +51,7 @@ struct _Enna_Kbdnav_Item
 };
 
 Enna_Kbdnav *
-enna_kbdnav_add(Enna_Kbdnav_Class *class __UNUSED__)
+enna_kbdnav_add(Enna_Kbdnav_Class *class EINA_UNUSED)
 {
     Enna_Kbdnav *nav;
 

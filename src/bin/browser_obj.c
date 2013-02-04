@@ -89,7 +89,7 @@ _view_delay_hilight_cb(void *data)
 }
 
 static void
-_view_hilight_cb (void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_view_hilight_cb (void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -244,7 +244,7 @@ _update_cb(void *data, Enna_File *file)
 }
 
 static void
-_back_btn_clicked_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_back_btn_clicked_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -477,7 +477,7 @@ enna_browser_obj_root_set(Evas_Object *obj, const char *uri)
 }
 
 static void
-_browser_del_cb(void *data, Evas *e __UNUSED__, Evas_Object *o __UNUSED__, void *event_info __UNUSED__)
+_browser_del_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *o EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     Enna_File *f;

@@ -53,7 +53,7 @@ _entry_input_listener_cb(void *data, enna_input event)
 }
 
 static void
-_entry_focused_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_entry_focused_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -73,7 +73,7 @@ _entry_focused_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UN
 }
 
 static void
-_entry_unfocused_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_entry_unfocused_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     
@@ -94,7 +94,7 @@ _entry_unfocused_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __
 }
 
 static void
-_entry_activated_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_entry_activated_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     

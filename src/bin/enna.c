@@ -74,7 +74,7 @@ static int _create_gui(void);
 
 /* Callbacks */
 static Eina_Bool
-_idle_timer_cb(void *data __UNUSED__)
+_idle_timer_cb(void *data EINA_UNUSED)
 {
 
     if (enna_exit_visible())
@@ -120,13 +120,13 @@ _set_scale(int h)
 }
 
 
-static void _window_delete_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+static void _window_delete_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     ecore_main_loop_quit();
 }
 
 static void
-_window_resize_cb(void *data __UNUSED__, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_window_resize_cb(void *data EINA_UNUSED, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Evas_Coord w, h;
 
@@ -137,7 +137,7 @@ _window_resize_cb(void *data __UNUSED__, Evas *e __UNUSED__, Evas_Object *obj __
 }
 
 static void
-_button_back_clicked_cb(void *data __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_button_back_clicked_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     if (enna_mainmenu_visible(enna->o_menu))
         enna_input_event_emit(ENNA_INPUT_QUIT);
@@ -486,7 +486,7 @@ void enna_idle_timer_renew(void)
 }
 
 static Eina_Bool
-exit_signal(void *data __UNUSED__, int type __UNUSED__, void *e)
+exit_signal(void *data EINA_UNUSED, int type EINA_UNUSED, void *e)
 {
     Ecore_Event_Signal_Exit *event = e;
 

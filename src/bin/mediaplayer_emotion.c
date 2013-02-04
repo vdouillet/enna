@@ -112,7 +112,7 @@ static Enna_Config_Section_Parser cfg_mediaplayer = {
 
 /* externally accessible functions */
 int
-enna_mediaplayer_supported_uri_type(enna_mediaplayer_uri_type_t type __UNUSED__)
+enna_mediaplayer_supported_uri_type(enna_mediaplayer_uri_type_t type EINA_UNUSED)
 {
     return 1;
 }
@@ -439,13 +439,13 @@ enna_mediaplayer_video_resize(int x, int y, int w, int h)
 }
 
 int
-enna_mediaplayer_playlist_load(const char *filename __UNUSED__)
+enna_mediaplayer_playlist_load(const char *filename EINA_UNUSED)
 {
     return 0;
 }
 
 int
-enna_mediaplayer_playlist_save(const char *filename __UNUSED__)
+enna_mediaplayer_playlist_save(const char *filename EINA_UNUSED)
 {
     return 0;
 }
@@ -519,7 +519,7 @@ enna_mediaplayer_playlist_stop_clear(Enna_Playlist *enna_playlist)
 }
 
 void
-enna_mediaplayer_send_input(enna_input event __UNUSED__)
+enna_mediaplayer_send_input(enna_input event EINA_UNUSED)
 {
 }
 

@@ -244,7 +244,7 @@ _update_time_part(Evas_Object *obj, const char *part, double t)
 }
 
 static void 
-_emotion_position_update_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_emotion_position_update_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Enna_View_Player_Video_Data *priv = data;
    Evas_Object *emotion;
@@ -279,7 +279,7 @@ _emotion_position_update_cb(void *data, Evas_Object *obj __UNUSED__, void *event
 
 #if 0
 static void
-_item_file_name_get_cb(void *data, Ems_Node *node __UNUSED__, const char *value)
+_item_file_name_get_cb(void *data, Ems_Node *node EINA_UNUSED, const char *value)
 {
    Enna_View_Player_Video_Data *priv = data;
 
@@ -311,7 +311,7 @@ _item_name_get_cb(void *data, Ems_Node *node, const char *value)
 }
 
 static void
-_item_poster_get_cb(void *data, Ems_Node *node __UNUSED__, const char *value)
+_item_poster_get_cb(void *data, Ems_Node *node EINA_UNUSED, const char *value)
 {
    Enna_View_Player_Video_Data *priv = data;
 
@@ -332,7 +332,7 @@ _item_poster_get_cb(void *data, Ems_Node *node __UNUSED__, const char *value)
 #endif
 
 static void
-_emotion_open_done_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_emotion_open_done_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Enna_View_Player_Video_Data *priv = data;
 
@@ -340,7 +340,7 @@ _emotion_open_done_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info 
 }
 
 static void
-_emotion_playback_started_cb(void *data, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_emotion_playback_started_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Enna_View_Player_Video_Data *priv = data;
 
@@ -349,7 +349,7 @@ _emotion_playback_started_cb(void *data, Evas_Object *obj __UNUSED__, void *even
 }
 
 static void
-_enna_view_del(void *data, Evas *e  __UNUSED__, Evas_Object *obj, void *event_info __UNUSED__)
+_enna_view_del(void *data, Evas *e  EINA_UNUSED, Evas_Object *obj, void *event_info EINA_UNUSED)
 {
    Enna_View_Player_Video_Data *priv = data;
 
@@ -362,7 +362,7 @@ _enna_view_del(void *data, Evas *e  __UNUSED__, Evas_Object *obj, void *event_in
 }
 
 static void
-_mouse_move_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_mouse_move_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Enna_View_Player_Video_Data *priv = data;
 
@@ -371,7 +371,7 @@ _mouse_move_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void
 }
 
 static void
-_mouse_down_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_mouse_down_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Enna_View_Player_Video_Data *priv = data;
 
@@ -381,7 +381,7 @@ _mouse_down_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void
 }
 
 static void
-_mouse_up_cb(void *data, Evas *e __UNUSED__, Evas_Object *obj __UNUSED__, void *event_info __UNUSED__)
+_mouse_up_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Enna_View_Player_Video_Data *priv = data;
 

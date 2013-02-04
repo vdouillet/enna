@@ -113,7 +113,7 @@ bs_service_ctrl_btn_add (const char *icon, const char *part,
     layout = elm_layout_add(enna->layout);
 
     ic = elm_icon_add(layout);
-    elm_icon_file_set(ic, enna_config_theme_get(), icon);
+    elm_image_file_set(ic, enna_config_theme_get(), icon);
     elm_icon_resizable_set(ic, 0, 0);
     evas_object_show(ic);
 

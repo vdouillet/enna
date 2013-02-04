@@ -133,10 +133,6 @@ video_resize(void)
 
     Evas_Coord w, h, x, y;
     Evas_Coord h2 = 0;
-#ifndef BUILD_BACKEND_EMOTION
-    if (mod->controls_displayed)
-        evas_object_geometry_get(mod->o_mediacontrols, NULL, NULL, NULL, &h2);
-#endif
     evas_object_geometry_get(mod->o_mediaplayer, &x, &y, &w, &h);
     enna_mediaplayer_video_resize(x, y, w, h - h2);
 

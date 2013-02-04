@@ -52,10 +52,6 @@
 #include <X11/extensions/Xrandr.h>
 #endif
 
-#ifndef BUILD_BACKEND_EMOTION
-#include <player.h>
-#endif
-
 #include <valhalla.h>
 
 #include <ifaddrs.h>
@@ -105,12 +101,7 @@ set_enna_information(Enna_Buffer *b)
     enna_buffer_append(b, _("Enna information"));
     enna_buffer_append(b, "</c><br><br><hilight>");
     enna_buffer_append(b, _("Enna:"));
-#ifndef BUILD_BACKEND_EMOTION
-    ver = libplayer_version();
-    enna_buffer_appendf(b, "</hilight> %s<br>"
-                       "<hilight>libplayer:</hilight> %u.%u.%u<br>",
-                       VERSION, ver >> 16, ver >> 8 & 0xFF, ver & 0xFF);
-#endif /* BUILD_BACKEND_EMOTION */
+
     ver = libvalhalla_version();
     enna_buffer_appendf(b, "<hilight>libvalhalla:</hilight> %u.%u.%u<br>",
                    ver >> 16, ver >> 8 & 0xFF, ver & 0xFF);

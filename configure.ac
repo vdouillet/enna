@@ -44,7 +44,6 @@ PKG_CHECK_MODULES([ENNA],
    eet >= 1.6.0
    evas >= 1.2.0
    ecore >= 1.2.0
-   ecore-x >= 1.2.0
    ecore-input > 1.2.0
    ecore-evas >= 1.2.0
    ecore-file >= 1.2.0
@@ -56,6 +55,7 @@ PKG_CHECK_MODULES([ENNA],
    ethumb >= 1.0.0
    elementary >= 1.0.0
    libvalhalla >= 2.0.0 libvalhalla < 3.0.0
+   emotion >= 1.2.0
    libxml-2.0
    libcurl
   ]
@@ -98,63 +98,6 @@ AC_ARG_ENABLE(theme,
 )
 AM_CONDITIONAL([ENNA_BUILD_THEME], test "x${build_theme}" = "xyes")
 
-###############
-# A/V Backend #
-#########"#####
-
-# Libplayer
-want_backend_libplayer="no"
-have_backend_libplayer="no"
-AC_MSG_CHECKING(whether libplayer backend is to be built)
-AC_ARG_ENABLE(backend-libplayer,
-  AS_HELP_STRING([--enable-backend-libplayer],[Enable Libplayer A/V backend]),
-  [ want_backend_libplayer=$enableval ]
-)
-AC_MSG_RESULT($want_backend_libplayer)
-AM_CONDITIONAL(BUILD_BACKEND_LIBPLAYER, test "x$want_backend_libplayer" = "xyes")
-if test "x$want_backend_libplayer" = "xyes"; then
- PKG_CHECK_MODULES(
-    [LIBPLAYER],
-    [libplayer >= 2.0.0 libplayer < 3.0.0],
-    [
-      AC_DEFINE(BUILD_BACKEND_LIBPLAYER, 1, [Libplayer Backend])
-      have_backend_libplayer="yes"
-    ],
-    [
-      if test "x$want_backend_libplayer" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libplayer >= 2.0.0 not found (strict dependencies checking)])
-      fi
-    ]
-  )
-  AC_DEFINE(BUILD_BACKEND_LIBPLAYER, 1, [libplayer Backend])
-fi
-
-# Emotion
-want_backend_emotion="yes"
-have_backend_emotion="no"
-AC_MSG_CHECKING(whether emotion backend is to be built)
-AC_ARG_ENABLE(backend-emotion,
-  AS_HELP_STRING([--enable-backend-emotion],[Enable Emotion A/V backend]),
-  [ want_backend_emotion=$enableval ]
-)
-AC_MSG_RESULT($want_backend_emotion)
-AM_CONDITIONAL(BUILD_BACKEND_EMOTION, test "x$want_backend_emotion" = "xyes")
-if test "x$want_backend_emotion" = "xyes"; then
- PKG_CHECK_MODULES(
-    [EMOTION],
-    [emotion],
-    [
-      AC_DEFINE(BUILD_BACKEND_EMOTION, 1, [Emotion Backend])
-      have_backend_emotion="yes"
-    ],
-    [
-      if test "x$want_backend_emotion" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([emotion not found (strict dependencies checking)])
-      fi
-    ]
-  )
-  AC_DEFINE(BUILD_BACKEND_EMOTION, 1, [emotion Backend])
-fi
 
 ####################
 # Activity Modules #

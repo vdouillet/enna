@@ -772,8 +772,10 @@ group { name: "elm/button/base/mediaplayer";
     
        part {	  name: "over1";
 	    mouse_events: 0;
+        type: RECT;
 	    description { state: "default" 0.0;
 	       rel2.relative: 1.0 0.5;
+           color: 0 0 0 0;
 	    }
 	    description { state: "disabled" 0.0;
 	       inherit:  "default" 0.0;
@@ -782,8 +784,10 @@ group { name: "elm/button/base/mediaplayer";
 	 part { name: "over2";
 	    mouse_events: 1;
 	    repeat_events: 1;
-            ignore_flags: ON_HOLD;
+        ignore_flags: ON_HOLD;
+        type: RECT;
 	    description { state: "default" 0.0;
+           color: 0 0 0 0;
 	    }
 	    description { state: "disabled" 0.0;
 	       inherit:  "default" 0.0;
@@ -793,9 +797,9 @@ group { name: "elm/button/base/mediaplayer";
          part { name: "over3";
             mouse_events: 1;
             repeat_events: 1;
+            type: RECT;
             description { state: "default" 0.0;
                color: 255 255 255 0;
-	       fill.smooth : 0;
             }
             description { state: "clicked" 0.0;
                inherit:  "default" 0.0;
@@ -2416,6 +2420,7 @@ group { name: "elm/check/base/enna_list";
       part { name: "bg";
          mouse_events: 0;
          scale: 1;
+         type: RECT;
          description { state: "default" 0.0;
             rel2.relative: 0.0 1.0;
             align: 0.0 0.5;
@@ -2696,6 +2701,7 @@ group { name: "elm/win/inwin/enna_minimal";
       part {
          name: "mouse_event_catcher";
          mouse_events: 1;
+         type: RECT;
          description {
             state: "default" 0.0;
             color: 0 0 0 0;

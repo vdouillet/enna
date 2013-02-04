@@ -33,7 +33,7 @@
 
 #define ENNA_MODULE_NAME      "geoip"
 
-#define GEOIP_QUERY           "http://www.ipinfodb.com/ip_query.php"
+#define GEOIP_QUERY           "http://geoip.ubuntu.com/lookup"
 #define MAX_URL_SIZE          1024
 
 int ENNA_EVENT_GEO_LOC_DETECTED;
@@ -145,7 +145,7 @@ enna_get_geo_by_ip (void)
                                       url_data_cb, NULL); 
 
     /* proceed with IP Geolocalisation request */
-    //ecore_con_url_send(url, NULL, 0, NULL);
+    ecore_con_url_get(url);
 
     enna_log(ENNA_MSG_EVENT, ENNA_MODULE_NAME,
              "Search Request: %s", GEOIP_QUERY);

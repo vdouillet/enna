@@ -28,5 +28,6 @@
 Evas_Object *enna_view_player_video_add(Evas_Object *parent);
 void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f);
 void enna_videoplayer_obj_cfg_register(void);
+void enna_view_player_video_play(Evas_Object *o);
 
 #endif

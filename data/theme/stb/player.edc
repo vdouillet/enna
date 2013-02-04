@@ -1,3 +1,5 @@
+#define REL_BORDER_X 0.02
+#define REL_BORDER_Y 0.036
 
 group {
    name: "activity/layout/player/video";
@@ -11,9 +13,10 @@ group {
    parts {
       part {
          name: "bg";
+         type: RECT;
          description {
             state: "default" 0.0;
-            image.normal: "background.png";
+            color: 0 0 0 0;
          }
       }
 
@@ -94,7 +97,7 @@ group {
          type: RECT;
          description {
             state: "default" 0.0;
-            rel1 { relative: 0.0 1.0; offset: 0 -212-15; }
+            rel1 { relative: 0.0 1.0; offset: 0 0; }
             rel2 { relative: 1.0 1.0; offset: -1 -1; }
             color: 255 255 255 0;
             visible: 0;
@@ -141,10 +144,10 @@ group {
          }
       }
 
+    
       part {
          name: "cover.shadow";
          type: IMAGE;
-         clip_to: "cover_clip";
          description {
             rel1.to: "cover.swallow";
             rel1.offset: -51 -51;
@@ -172,9 +175,11 @@ group {
          clip_to: "cover_clip";
          type: SWALLOW;
          description {
-            rel1 { relative: 1.0 0.0; offset: -254 -204; to: "controls"; }
-            rel2 { relative: 1.0 0.0; offset: -38 123;  to: "controls"; }
+            align: 0.5 0.5;
+            rel1 { relative: 0.0 -0.3; offset: 16 0;to: "controls"; }
+            rel2 { relative: 0.3 0.7; to: "controls"; }
             aspect: 0.5 1;
+            fixed: 1 1;
          }
       }
       part {
@@ -186,8 +191,11 @@ group {
             rel2.to: "cover.swallow";
             rel2.relative: 1.0 0.5;
             image.normal: "cover_reflect.png";
+            color: 255 255 255 10;
          }
       }
+   
+
    }
 
    programs {
@@ -281,7 +289,7 @@ group {
          description {
             fixed: 1 1;
             image.normal: "menu_bg.png";
-            color: 255 255 255 200;
+            color: 255 255 255 255;
             rel1.relative:  0 1;
             rel1.offset: 0 -288;
             rel2.relative:  1 1;
@@ -299,9 +307,28 @@ group {
          description {
             fixed: 1 1;
             image.normal: "player_slider_bg.png";
-            image.border: 20 20 0 0;
-            rel1 { relative: 0.0 0.0; offset: 162 109; }
-            rel2 { relative: 1.0 0.0; offset: -561 147; }
+            image.border: 6 6 6 6;
+            align: 0.5 0.35;
+            rel1.to: slider_zone;
+            rel1.offset: 49 0;
+            rel2.offset: -49 0;
+            rel2.to: slider_zone;
+            min: 32 20;
+            max: 9999 20;
+         }
+      }
+
+
+      part {
+         name: "slider_zone";
+         type: RECT;
+         description {
+            fixed: 1 1;
+            min: 94 94;
+            max: 9999 94;
+            color: 255 0 0 0;
+            rel1 { relative: 0.0 0.0; offset: 0 180; to_x: "title.text"; }
+            rel2 { relative: 1.0 1.0; offset: -128 -100; }
          }
       }
 
@@ -310,7 +337,7 @@ group {
          type: RECT;
          description {
             rel1 { to: "slider"; relative: 0.0 0.0; }
-            rel2 { to_x: "slider_drag"; to_y: "slider"; relative: 0.0 1.0; offset: 18 -1; }
+            rel2 { to_x: "slider_drag"; to_y: "slider"; relative: 1.0 1.0; offset: -47 0;}
          }
       }
 
@@ -319,40 +346,44 @@ group {
          clip_to: "slider_clip";
          description {
             image.normal: "player_slider_inside.png";
-            image.border: 32 32 0 0;
+            image.border: 6 6 6 6;
+            min: 32 20;
+            max: 9999 20;
             rel1 { to: "slider"; }
             rel2 { to: "slider"; }
          }
       }
 
-      part {
-         name: "slider_out";
-         clip_to: "slider_clip";
-         description {
-            image.normal: "player_slider_out.png";
-            rel1 { to: "slider"; offset: -12 -12; }
-            rel2 { to: "slider"; offset: 12 12; }
-         }
-      }
+      /* part { */
+      /*    name: "slider_out"; */
+      /*    clip_to: "slider_clip"; */
+      /*    description { */
+      /*       image.normal: "player_slider_out.png"; */
+      /*       rel1 { to: "slider"; offset: -12 -12; } */
+      /*       rel2 { to: "slider"; offset: 12 12; } */
+      /*    } */
+      /* } */
 
       part {
          name: "slider_drag";
+         //type: RECT;
          description {
-            rel1 { to: "slider"; relative: 0.5 0.5; }
-            rel2 { to: "slider"; relative: 0.5 0.5; }
+            rel1 { to: "slider";offset: -47 47;}
+            rel2 { to: "slider";offset: -47 47;}
             image.normal: "player_slider_knob.png";
-            min: 36 36;
-            max: 36 36;
+            fixed: 1 1;
+            min: 94 94;
+            max: 94 94;
          }
-         dragable { x: 1 1 0; y: 0 0 0; confine: "slider"; }
+         dragable { x: 1 1 0; y: 0 0 0; confine: "slider_zone"; }
       }
 
       part {
          name: "slider_time";
          description {
             image.normal: "player_slider_time.png";
-            rel1 { to: "slider_drag"; relative: 0.5 1.0; offset: -87 0; }
-            rel2 { to: "slider_drag"; relative: 0.5 1.0; offset: 86 73; }
+            rel1 { to: "slider_drag"; relative: 0.5 0.0; offset: -55 -50; }
+            rel2 { to: "slider_drag"; relative: 0.5 0.0; offset: 54 10; }
          }
       }
 
@@ -360,47 +391,56 @@ group {
          name: "time.text";
          type: TEXT;
          description {
-            rel1 { offset: 0 20; to: "slider_time"; }
-            rel2 { offset: -1 -1; to: "slider_time"; }
+            rel1 { to: "slider_time"; }
+            rel2 { offset: -1 -14; to: "slider_time"; }
             color: 51 51 51 255;
-            text { text: "00:00:00"; size: 27; align: 0.5 0.5; }
+            text { text: "00:00"; size: 24; align: 0.5 0.5;  font: "Comfortaa";}
          }
       }
 
-      part {
-         name: "button.play";
-         description {
-            image.normal: "player_play.png";
-            rel1 { relative: 0.0 0.0; offset: 24 46; }
-            rel2 { relative: 0.0 0.0; offset: 143 165; }
-         }
-         description {
-            state: "hidden" 0.0;
-            inherit: "default" 0.0;
-            visible: 0;
-         }
-      }
+      /* part { */
+      /*    name: "button.play"; */
+      /*    description { */
+      /*       image.normal: "player_play.png"; */
+      /*       rel1 { relative: 0.0 0.0; offset: 24 46; } */
+      /*       rel2 { relative: 0.0 0.0; offset: 143 165; } */
+      /*    } */
+      /*    description { */
+      /*       state: "hidden" 0.0; */
+      /*       inherit: "default" 0.0; */
+      /*       visible: 0; */
+      /*    } */
+      /* } */
 
-      part {
-         name: "button.pause";
-         description {
-            image.normal: "player_pause.png";
-            rel1 { relative: 0.0 0.0; offset: 26 47; }
-            rel2 { relative: 0.0 0.0; offset: 132 164; }
-         }
-         description {
-            state: "hidden" 0.0;
-            inherit: "default" 0.0;
-            visible: 0;
-         }
-      }
+      /* part { */
+      /*    name: "button.pause"; */
+      /*    description { */
+      /*       image.normal: "player_pause.png"; */
+      /*       rel1 { relative: 0.0 0.0; offset: 26 47; } */
+      /*       rel2 { relative: 0.0 0.0; offset: 132 164; } */
+      /*    } */
+      /*    description { */
+      /*       state: "hidden" 0.0; */
+      /*       inherit: "default" 0.0; */
+      /*       visible: 0; */
+      /*    } */
+      /* } */
 
       part {
          name: "title.text";
          type: TEXTBLOCK;
          description {
-            rel1 { relative: 0.0 0.0; offset: 166 45; }
-            rel2 { relative: 1.0 0.0; offset: -287 99; }
+            rel1.relative: 0 1;
+            rel1.offset: 300 -288;
+            rel1.to: "bg_overlay";
+            rel2.offset: -4 -176;
+            rel2.to: "bg_overlay";
+            align: 0 0.5;
+            fixed: 1 1;
+            color: 255 255 255 180;
+
+            //            rel1 { relative: 0.0 0.0; offset: 166 45; }
+            //            rel2 { relative: 1.0 0.0; offset: -287 99; }
             text { text: "Star Wars Episode 1: La menace fantôme <director>by Georges Lucas</director>"; style: "player_title"; }
          }
       }
@@ -411,7 +451,7 @@ group {
          description {
             rel1 { relative: 1.0 0.0; offset: 10 0; to: "slider"; }
             rel2 { relative: 1.0 1.0; offset: -1 -1; to_y: "slider"; }
-            text { text: "00:00:00"; font: "Comfortaa_Thin"; size: 45; align: 0.0 0.5; }
+            text { text: "00:00:00"; font: "Comfortaa_Thin"; size: 30; align: 0.0 0.5; }
          }
       }
 

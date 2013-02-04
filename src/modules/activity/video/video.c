@@ -496,7 +496,7 @@ movie_start_playback(int resume)
    
 
     mod->o_mediaplayer = enna_view_player_video_add(enna->layout);
-    enna_view_player_video_uri_set(mod->o_mediaplayer, mod->o_current_uri);
+    enna_view_player_video_uri_set(mod->o_mediaplayer, mod->file);
     elm_layout_content_set(enna->layout,
                            "enna.fullscreen.swallow", mod->o_mediaplayer);
     evas_object_event_callback_add(mod->o_mediaplayer, EVAS_CALLBACK_RESIZE,
@@ -584,6 +584,7 @@ browser_cb_select(void *data, Evas_Object *obj, void *event_info)
                  ENNA_MODULE_NAME, "File Selected %s", file->uri);
 
         mod->o_current_uri = strdup(file->mrl);
+        mod->file = file;
         /* fetch new stream's metadata */
         m = enna_mediaplayer_metadata_get(mod->enna_playlist);
 #if 0

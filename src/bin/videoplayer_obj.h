@@ -23,9 +23,10 @@
 #define VIDEOPLAYER_OBJ_H
 
 #include <Elementary.h>
+#include "file.h"
 
 Evas_Object *enna_view_player_video_add(Evas_Object *parent);
-void enna_view_player_video_uri_set(Evas_Object *o, const char *uri);
+void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f);
 void enna_videoplayer_obj_cfg_register(void);
 
 #endif

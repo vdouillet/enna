@@ -434,35 +434,36 @@ enna_view_player_video_add(Evas_Object *parent)
    return layout;
 }
 
-void enna_view_player_video_uri_set(Evas_Object *o, const char *uri)
+void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 {
-    Enna_Metadata *m;
+    const char *cover;
 
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
-   priv->media = strdup(uri);
+   priv->media = strdup(f->mrl);
 
-   DBG("Start video player with item: %s", uri);
+   DBG("Start video player with item: %s", f->mrl);
 
-   elm_video_file_set(priv->video, uri);
+   elm_video_file_set(priv->video, f->mrl);
 
-   m = enna_metadata_meta_new(uri);
-   elm_object_part_text_set(priv->layout, "title.text", enna_metadata_meta_get(m, "title", 1));
+   elm_object_part_text_set(priv->layout, "title.text", enna_file_meta_get(f, "title"));
 
-   priv->cover = elm_icon_add(priv->layout);
-   elm_image_file_set(priv->cover, enna_metadata_meta_get(m, "cover", 1), NULL);
-   elm_image_preload_disabled_set(priv->cover, EINA_FALSE);
-
-   elm_object_part_content_set(priv->layout, "cover.swallow", priv->cover);
-   elm_object_signal_emit(priv->layout, "show,cover", "enna"); 
-
-
-#if 0
-   ems_node_media_info_get(node, media_uuid, "name", _item_name_get_cb,
-                             NULL, NULL, priv);
-   ems_node_media_info_get(node, media_uuid, "poster", _item_poster_get_cb,
-                             NULL, NULL, priv);
-#endif
+   cover = enna_file_meta_get(f, "cover");
+   if (cover)
+   {
+       priv->cover = elm_icon_add(priv->layout);
+       printf("cover : %s\n", enna_file_meta_get(f, "cover"));
+       
+       elm_image_file_set(priv->cover, cover,  NULL);
+       elm_image_preload_disabled_set(priv->cover, EINA_FALSE);
+       
+       elm_object_part_content_set(priv->layout, "cover.swallow", priv->cover);
+       elm_object_signal_emit(priv->layout, "show,cover", "enna"); 
+   }
+   else
+   {
+       elm_object_signal_emit(priv->layout, "hide,cover", "enna"); 
+   }
 }
 
 void enna_view_player_video_play(Evas_Object *o)

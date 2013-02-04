@@ -152,7 +152,7 @@ cfg_mediaplayer_section_load (const char *section)
         {
             if (!strcmp(value, map_player_type[i].name))
             {
-                mp_cfg.engine = map_player_type[i].name;
+                mp_cfg.engine = strdup(map_player_type[i].name);
                 break;
             }
         }
@@ -179,7 +179,7 @@ cfg_mediaplayer_section_save (const char *section)
 static void
 cfg_mediaplayer_free (void)
 {
-
+    free(mp_cfg.engine);
 }
 
 static void

@@ -1,43 +1,16 @@
+- v5 :
 
-[Priority 10]
+  * Remove libxml2 dependancy.
+  * Check if efreet is really need, it's only used in enna_util_init to get cache, config et data directories, we should build our own patch instead ?
+  * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
+  * Bind enna event to video player.
+  * Select last item in list when back button is pressed. 
+  * Fix click event on list
+  * remove libvalhalla browser module. Keep libvalhlla as core dependancy for now for metadata grabbing, but remove browser library module.
+  * Remove not working browser modules : cdda, dvd, spotify, netstreams, podcast, shoutcast, upnp, valhalla. They need to be fixed to match the browser api. They never worked so remove this code instead of maintaining crap.
+  * Remove not working activities modules : bookstore games tv (weather?).
+  * Remove hal and udev modules. We need to use E_UDisk now E_HAl does't exist anymore.
 
- * Photo Module
-      -> Add State info with OSD
-      -> Preload previous and next pictures
-      -> hide photo after transition : add program in edje to send signal
-   when transition is finished.
-      -> Define slideshow effect/timeout in config file.
+- v6 :
+  * Remove libvalhalla definitively and use our own parser based on EMS.
 
- * Audio module
-      -> Finish shoutcast support so that non-local streams can be played back.
-      -> Playing now edje
-
- * Add Simple Widgets
-      -> Checkbox
-      -> TextBox
-
-[Priority 9]
-
- * Popup Window
-      -> Create Popup window Smart object
-      -> Add a popup window when no media is found
-
- * Add more complicated Widgets
-      -> Virtual Keyboard (See Calaos or Illume for virtual keyboard
-   integration)
-
- * Configuration
-      -> Save config to file
-
-[Priority 8]
-
-  * Playlist
-  * Web Radio
-
-[Priority 0]
-
-  * Lastfm plugin
-  * youtube plugin
-  * Deezer plugin
-  * Theme Documentation
-  * NetFlix plugin

@@ -87,7 +87,6 @@ images/icon_weather-512.png \
 images/arrow_left.png \
 images/arrow_right.png \
 images/icon_artist.png \
-images/icon_bookstore.png \
 images/icon_directory.png \
 images/icon_enna.png \
 images/icon_freeboxtv.png \
@@ -107,7 +106,6 @@ images/unknown_cover.png
 
 
 IMG_ACTIVITIES = \
-images/bg_bookstore.png \
 images/bg_configuration.jpg \
 images/bg_games.png \
 images/bg_gocomics.png \
@@ -375,7 +373,6 @@ fonts/content.ttf \
 fonts/content_bold.ttf
 
 EDC = \
-activity_bookstore.edc \
 activity_configuration_credits.edc \
 activity_configuration.edc \
 activity_configuration_sysinfo.edc \

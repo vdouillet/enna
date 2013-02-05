@@ -147,7 +147,6 @@ images/icons/flags/video/sd.png
 IMG_ICONS = \
 images/icons/icon_config.png \
 images/icon_games.png \
-images/icon_bookstore.png \
 images/icons/icon_music.png \
 images/icons/icon_photo.png \
 images/icons/icon_video.png \

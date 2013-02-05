@@ -8,7 +8,7 @@ MODULE = configuration
 filesdir = $(libdir)/enna/modules/
 
 # the module .so file
-INCLUDES = \
+AM_CPPFLAGS = \
 -I. \
 -I$(top_srcdir) \
 -I$(top_srcdir)/src/modules/$(MODULE) \
@@ -21,11 +21,11 @@ configuration_credits.h \
 configuration_sysinfo.h
 
 if BUILD_LIBSVDRP
-INCLUDES += @LIBSVDRP_CFLAGS@
+AM_CPPFLAGS += @LIBSVDRP_CFLAGS@
 endif
 
 if BUILD_LIBXRANDR
-INCLUDES += @LIBXRANDR_CFLAGS@
+AM_CPPFLAGS += @LIBXRANDR_CFLAGS@
 endif
 
 if BUILD_ACTIVITY_CONFIGURATION

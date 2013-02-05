@@ -8,7 +8,7 @@ MODULE = tv
 filesdir = $(libdir)/enna/modules/
 
 # the module .so file
-INCLUDES = \
+AM_CPPFLAGS = \
 -I. \
 -I$(top_srcdir) \
 -I$(top_srcdir)/src/modules/$(MODULE) \
@@ -17,7 +17,7 @@ INCLUDES = \
 @ENNA_CFLAGS@
 
 if BUILD_LIBSVDRP
-INCLUDES += @LIBSVDRP_CFLAGS@
+AM_CPPFLAGS += @LIBSVDRP_CFLAGS@
 endif
 
 if BUILD_ACTIVITY_TV

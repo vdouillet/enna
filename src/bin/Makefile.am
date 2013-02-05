@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-INCLUDES = \
+AM_CPPFLAGS = \
 -DPACKAGE_LIB_DIR=\"$(libdir)\" \
 -DPACKAGE_BIN_DIR=\"$(bindir)\" \
 -DPACKAGE_DATA_DIR=\"$(datadir)\"

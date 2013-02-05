@@ -8,7 +8,7 @@ MODULE = spotify
 filesdir = $(libdir)/enna/modules/
 
 # the module .so file
-INCLUDES = \
+AM_CPPFLAGS = \
 -I. \
 -I$(top_srcdir) \
 -I$(top_srcdir)/src/modules/$(MODULE) \

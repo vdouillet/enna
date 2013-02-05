@@ -312,7 +312,6 @@ static int _create_gui(void)
     evas_object_event_callback_add(enna->win, EVAS_CALLBACK_RESIZE,
                                    _window_resize_cb, NULL);
     //~ ecore_evas_shaped_set(enna->ee, 1);  //TODO why this ???
-    enna->ee_winid = elm_win_xwindow_get(enna->win);
     enna->evas = evas_object_evas_get(enna->win);
     
     /* Enable evas cache (~4 backgrounds in the cache at a time) : 1 background =  1280x720*4 = 3,7MB */

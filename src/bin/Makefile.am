@@ -6,11 +6,7 @@ AM_CPPFLAGS = \
 -DPACKAGE_DATA_DIR=\"$(datadir)\"
 
 
-AM_CFLAGS = @ENNA_CFLAGS@ @LIBCDDB_CFLAGS@ @EVIL_CFLAGS@
-
-if BUILD_LIBSVDRP
-AM_CFLAGS += @LIBSVDRP_CFLAGS@
-endif
+AM_CFLAGS = @ENNA_CFLAGS@ @EVIL_CFLAGS@
 
 bin_PROGRAMS = enna
 
@@ -52,12 +48,8 @@ kbdnav.c\
 videoplayer_obj.c \
 mediaplayer_emotion.c
 
-enna_LDADD = @ENNA_LIBS@ @LIBCDDB_LIBS@ @EVIL_LIBS@
+enna_LDADD = @ENNA_LIBS@ @EVIL_LIBS@
 enna_LDFLAGS = -rdynamic
-
-if BUILD_LIBSVDRP
-enna_LDADD += @LIBSVDRP_LIBS@
-endif
 
 if BUILD_LIBXRANDR
 enna_LDADD += @LIBXRANDR_LIBS@ -lX11
@@ -75,38 +67,18 @@ enna_LDADD += @LIBXRANDR_LIBS@
 endif
 
 include ../modules/activity/configuration/config.mak
-include ../modules/activity/games/config.mak
 include ../modules/activity/music/config.mak
 include ../modules/activity/photo/config.mak
-include ../modules/activity/tv/config.mak
 include ../modules/activity/video/config.mak
-include ../modules/activity/weather/config.mak
-include ../modules/browser/cdda/config.mak
-include ../modules/browser/dvd/config.mak
-include ../modules/browser/ipod/config.mak
 include ../modules/browser/localfiles/config.mak
-include ../modules/browser/netstreams/config.mak
-include ../modules/browser/podcasts/config.mak
-include ../modules/browser/shoutcast/config.mak
-include ../modules/browser/spotify/config.mak
-include ../modules/browser/upnp/config.mak
-include ../modules/browser/valhalla/config.mak
 include ../modules/gadgets/date/config.mak
 include ../modules/gadgets/dummy/config.mak
-include ../modules/gadgets/weather/config.mak
 include ../modules/input/kbd/config.mak
 include ../modules/input/lirc/config.mak
-include ../modules/input/wiimote/config.mak
-include ../modules/volume/hal/config.mak
 include ../modules/volume/mtab/config.mak
-include ../modules/volume/udev/config.mak
 
 if BUILD_ACTIVITY_CONFIGURATION
 enna_SOURCES += $(SRCS_ACTIVITY_CONFIGURATION)
-endif
-
-if BUILD_ACTIVITY_GAMES
-enna_SOURCES += $(SRCS_ACTIVITY_GAMES)
 endif
 
 if BUILD_ACTIVITY_MUSIC
@@ -117,61 +89,12 @@ if BUILD_ACTIVITY_PHOTO
 enna_SOURCES += $(SRCS_ACTIVITY_PHOTO)
 endif
 
-if BUILD_ACTIVITY_TV
-enna_SOURCES += $(SRCS_ACTIVITY_TV)
-endif
-
 if BUILD_ACTIVITY_VIDEO
 enna_SOURCES += $(SRCS_ACTIVITY_VIDEO)
 endif
 
-if BUILD_ACTIVITY_WEATHER
-enna_SOURCES += $(SRCS_ACTIVITY_WEATHER)
-endif
-
-if BUILD_BROWSER_CDDA
-enna_SOURCES += $(SRCS_BROWSER_CDDA)
-endif
-
-if BUILD_BROWSER_DVD
-enna_SOURCES += $(SRCS_BROWSER_DVD)
-endif
-
-if BUILD_BROWSER_IPOD
-enna_SOURCES += $(SRCS_BROWSER_IPOD)
-endif
-
 if BUILD_BROWSER_LOCALFILES
 enna_SOURCES += $(SRCS_BROWSER_LOCALFILES)
-endif
-
-if BUILD_BROWSER_NETSTREAMS
-enna_SOURCES += $(SRCS_BROWSER_NETSTREAMS)
-endif
-
-if BUILD_BROWSER_PODCASTS
-enna_SOURCES += $(SRCS_BROWSER_PODCASTS)
-endif
-
-if BUILD_BROWSER_SHOUTCAST
-enna_SOURCES += $(SRCS_BROWSER_SHOUTCAST)
-endif
-
-
-if BUILD_BROWSER_SPOTIFY
-enna_SOURCES += $(SRCS_BROWSER_SPOTIFY)
-AM_CFLAGS += @SPOTIFY_CFLAGS@
-enna_LDADD += @SPOTIFY_LIBS@
-endif
-
-if BUILD_BROWSER_UPNP
-enna_SOURCES += $(SRCS_BROWSER_UPNP)
-AM_CFLAGS += @GUPNP_CFLAGS@
-enna_LDADD += @GUPNP_LIBS@
-endif
-
-if BUILD_BROWSER_VALHALLA
-enna_SOURCES += $(SRCS_BROWSER_VALHALLA)
 endif
 
 if BUILD_GADGET_DATE
@@ -180,10 +103,6 @@ endif
 
 if BUILD_GADGET_DUMMY
 enna_SOURCES += $(SRCS_GADGET_DUMMY)
-endif
-
-if BUILD_GADGET_WEATHER
-enna_SOURCES += $(SRCS_GADGET_WEATHER)
 endif
 
 if BUILD_INPUT_KBD
@@ -195,26 +114,8 @@ enna_SOURCES += $(SRCS_INPUT_LIRC)
 enna_LDADD += @LIRC_LIBS@
 endif
 
-if BUILD_INPUT_WIIMOTE
-enna_SOURCES += $(SRCS_INPUT_WIIMOTE)
-AM_CFLAGS += @LIBBLUETOOTH_CFLAGS@
-enna_LDADD += @LIBBLUETOOTH_LIBS@ @LIBCWIID_LIBS@
-endif
-
-if BUILD_VOLUME_HAL
-enna_SOURCES += $(SRCS_VOLUME_HAL)
-AM_CFLAGS += @EHAL_CFLAGS@
-enna_LDADD += @EHAL_LIBS@
-endif
-
 if BUILD_VOLUME_MTAB
 enna_SOURCES += $(SRCS_VOLUME_MTAB)
-endif
-
-if BUILD_VOLUME_UDEV
-enna_SOURCES += $(SRCS_VOLUME_UDEV)
-AM_CFLAGS += @UDEV_CFLAGS@
-enna_LDADD += @UDEV_LIBS@
 endif
 
 endif

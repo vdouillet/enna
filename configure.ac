@@ -115,19 +115,6 @@ if test "x$want_activity_configuration" = "xyes"; then
   AC_DEFINE(BUILD_ACTIVITY_CONFIGURATION, 1, [configuration Activity])
 fi
 
-# Games
-want_activity_games="no"
-AC_MSG_CHECKING(whether games activity module is to be built)
-AC_ARG_ENABLE(activity-games,
-  AS_HELP_STRING([--enable-activity-games],[Enable Games Activity Module]),
-  [ want_activity_games=$enableval ]
-)
-AC_MSG_RESULT($want_activity_games)
-AM_CONDITIONAL(BUILD_ACTIVITY_GAMES, test "x$want_activity_games" = "xyes")
-if test "x$want_activity_games" = "xyes"; then
-  AC_DEFINE(BUILD_ACTIVITY_GAMES, 1, [Games Activity])
-fi
-
 # Music
 want_activity_music="yes"
 AC_MSG_CHECKING(whether music activity module is to be built)
@@ -154,19 +141,6 @@ if test "x$want_activity_photo" = "xyes"; then
   AC_DEFINE(BUILD_ACTIVITY_PHOTO, 1, [Photo Activity])
 fi
 
-# TV
-want_activity_tv="no"
-AC_MSG_CHECKING(whether tv activity module is to be built)
-AC_ARG_ENABLE(activity-tv,
-  AS_HELP_STRING([--enable-activity-tv],[Enable TV Activity Module]),
-  [ want_activity_tv=$enableval ]
-)
-AC_MSG_RESULT($want_activity_tv)
-AM_CONDITIONAL(BUILD_ACTIVITY_TV, test "x$want_activity_tv" = "xyes")
-if test "x$want_activity_tv" = "xyes"; then
-  AC_DEFINE(BUILD_ACTIVITY_TV, 1, [TV  Activity])
-fi
-
 # Video
 want_activity_video="yes"
 AC_MSG_CHECKING(whether video activity module is to be built)
@@ -180,74 +154,9 @@ if test "x$want_activity_video" = "xyes"; then
   AC_DEFINE(BUILD_ACTIVITY_VIDEO, 1, [Video Activity])
 fi
 
-# Weather
-want_activity_weather="no"
-AC_MSG_CHECKING(whether weather activity module is to be built)
-AC_ARG_ENABLE(activity-weather,
-  AS_HELP_STRING([--enable-activity-weather],[Enable Weather Activity Module]),
-  [ want_activity_weather=$enableval ]
-)
-AC_MSG_RESULT($want_activity_weather)
-AM_CONDITIONAL(BUILD_ACTIVITY_WEATHER, test "x$want_activity_weather" = "xyes")
-if test "x$want_activity_weather" = "xyes"; then
-  AC_DEFINE(BUILD_ACTIVITY_WEATHER, 1, [Weather Activity])
-fi
-
 ###################
 # Browser Modules #
 ###################
-
-# Audio CD (CDDA)
-want_browser_cdda="no"
-AC_MSG_CHECKING(whether cdda browser module is to be built)
-AC_ARG_ENABLE(browser-cdda,
-  AS_HELP_STRING([--enable-browser-cdda],[Enable CDDA Browser Module]),
-  [ want_browser_cdda=$enableval ]
-)
-AC_MSG_RESULT($want_browser_cdda)
-AM_CONDITIONAL(BUILD_BROWSER_CDDA, test "x$want_browser_cdda" = "xyes")
-if test "x$want_browser_cdda" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_CDDA, 1, [CDDA Browser])
-fi
-
-# DVD Video
-want_browser_dvd="yes"
-AC_MSG_CHECKING(whether dvd video browser module is to be built)
-AC_ARG_ENABLE(browser-dvd,
-  AS_HELP_STRING([--enable-browser-dvd],[Enable DVD Video Browser Module]),
-  [ want_browser_dvd=$enableval ]
-)
-AC_MSG_RESULT($want_browser_dvd)
-AM_CONDITIONAL(BUILD_BROWSER_DVD, test "x$want_browser_dvd" = "xyes")
-if test "x$want_browser_dvd" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_DVD, 1, [Dvd Video Browser])
-fi
-
-# iPod/iPhone support
-want_browser_ipod="no"
-have_browser_ipod="no"
-AC_MSG_CHECKING(whether iPod browser is to be built)
-AC_ARG_ENABLE(browser-ipod,
-  AS_HELP_STRING([--enable-browser-ipod],[Enable iPod Browser Module]),
-  [ want_browser_ipod=$enableval ]
-)
-AC_MSG_RESULT($want_browser_ipod)
-if test "x$want_browser_ipod" = "xyes" -o "x$want_browser_ipod" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [LIBGPOD],
-    [libgpod-1.0 >= 0.7.93],
-    [
-      AC_DEFINE(BUILD_BROWSER_IPOD, 1, [iPod Browser Module])
-      have_browser_ipod="yes"
-    ],
-    [
-      if test "x$want_browser_ipod" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libgpod not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_BROWSER_IPOD, test "x$have_browser_ipod" = "xyes")
 
 # Local Files
 want_browser_localfiles="yes"
@@ -260,110 +169,6 @@ AC_MSG_RESULT($want_browser_localfiles)
 AM_CONDITIONAL(BUILD_BROWSER_LOCALFILES, test "x$want_browser_localfiles" = "xyes")
 if test "x$want_browser_localfiles" = "xyes"; then
   AC_DEFINE(BUILD_BROWSER_LOCALFILES, 1, [Localfiles Browser])
-fi
-
-# NetStreams
-want_browser_netstreams="no"
-AC_MSG_CHECKING(whether netstreams browser module is to be built)
-AC_ARG_ENABLE(browser-netstreams,
-  AS_HELP_STRING([--enable-browser-netstreams],[Enable NetStreams Browser Module]),
-  [ want_browser_netstreams=$enableval ]
-)
-AC_MSG_RESULT($want_browser_netstreams)
-AM_CONDITIONAL(BUILD_BROWSER_NETSTREAMS, test "x$want_browser_netstreams" = "xyes")
-if test "x$want_browser_netstreams" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_NETSTREAMS, 1, [NetStreams Browser])
-fi
-
-# Podcast
-want_browser_podcasts="no"
-AC_MSG_CHECKING(whether podcasts browser module is to be built)
-AC_ARG_ENABLE(browser-podcasts,
-  AS_HELP_STRING([--enable-browser-podcasts],[Enable Podcasts Browser Module]),
-  [ want_browser_podcasts=$enableval ]
-)
-AC_MSG_RESULT($want_browser_podcasts)
-AM_CONDITIONAL(BUILD_BROWSER_PODCASTS, test "x$want_browser_podcasts" = "xyes")
-if test "x$want_browser_podcasts" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_PODCASTS, 1, [Podcasts Browser])
-fi
-
-# SHOUTcast
-want_browser_shoutcast="no"
-AC_MSG_CHECKING(whether shoutcast browser module is to be built)
-AC_ARG_ENABLE(browser-shoutcast,
-  AS_HELP_STRING([--enable-browser-shoutcast],[Enable SHOUTcast Browser Module]),
-  [ want_browser_shoutcast=$enableval ]
-)
-AC_MSG_RESULT($want_browser_shoutcast)
-AM_CONDITIONAL(BUILD_BROWSER_SHOUTCAST, test "x$want_browser_shoutcast" = "xyes")
-if test "x$want_browser_shoutcast" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_SHOUTCAST, 1, [SHOUTcast Browser])
-fi
-
-# Spotify support
-want_browser_spotify="no"
-have_browser_spotify="no"
-AC_MSG_CHECKING(whether spotify browser is to be built)
-AC_ARG_ENABLE(browser-spotify,
-  AS_HELP_STRING([--enable-browser-spotify],[Enable spotify Browser Module]),
-  [ want_browser_spotify=$enableval ]
-)
-AC_MSG_RESULT($want_browser_spotify)
-if test "x$want_browser_spotify" = "xyes" -o "x$want_browser_spotify" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [SPOTIFY],
-    [libspotify],
-    [
-      AC_DEFINE(BUILD_BROWSER_SPOTIFY, 1, [spotify Browser Module])
-      have_browser_spotify="yes"
-    ],
-    [
-      if test "x$want_browser_spotify" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libspotify not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_BROWSER_SPOTIFY, test "x$have_browser_spotify" = "xyes")
-
-# UPnP/DLNA
-want_browser_upnp="no"
-have_browser_upnp="no"
-AC_MSG_CHECKING(whether UPnP/DLNA browser is to be built)
-AC_ARG_ENABLE(browser-upnp,
-  AS_HELP_STRING([--enable-browser-upnp],[Enable UPnP/DLNA Browser Module]),
-  [ want_browser_upnp=$enableval ]
-)
-AC_MSG_RESULT($want_browser_upnp)
-if test "x$want_browser_upnp" = "xyes" -o "x$want_browser_upnp" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [GUPNP],
-    [gssdp-1.0 >= 0.7.0 gupnp-1.0 >= 0.13.1 gupnp-av-1.0 >= 0.5.2],
-    [
-      AC_DEFINE(BUILD_BROWSER_UPNP, 1, [UPnP/DLNA Browser Module])
-      have_browser_upnp="yes"
-    ],
-    [
-      if test "x$want_browser_upnp" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([gupnp-1.0 not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_BROWSER_UPNP, test "x$have_browser_upnp" = "xyes")
-
-# Valhalla Scanner
-want_browser_valhalla="yes"
-AC_MSG_CHECKING(whether Valhalla browser is to be built)
-AC_ARG_ENABLE(browser_valhalla,
-  AS_HELP_STRING([--enable-browser-valhalla],[Enable Valhalla Browser Module]),
-  [ want_browser_valhalla=$enableval ]
-)
-AC_MSG_RESULT($want_browser_valhalla)
-AM_CONDITIONAL(BUILD_BROWSER_VALHALLA, test "x$want_browser_valhalla" = "xyes")
-if test "x$want_browser_valhalla" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_VALHALLA, 1, [Valhalla Browser Module])
 fi
 
 ###################
@@ -396,19 +201,6 @@ if test "x$want_gadget_dummy" = "xyes"; then
   AC_DEFINE(BUILD_GADGET_DUMMY, 1, [Gadget dummy Module])
 fi
 
-# Weather gadget
-want_gadget_weather="yes"
-AC_MSG_CHECKING(whether Weather gadget is to be built)
-AC_ARG_ENABLE(gadget_weather,
-  AS_HELP_STRING([--enable-gadget-weather],[Enable Weather Gadget Module]),
-  [ want_gadget_weather=$enableval ]
-)
-AC_MSG_RESULT($want_gadget_weather)
-AM_CONDITIONAL(BUILD_GADGET_WEATHER, test "x$want_gadget_weather" = "xyes")
-if test "x$want_gadget_weather" = "xyes"; then
-  AC_DEFINE(BUILD_GADGET_WEATHER, 1, [Gadget weather Module])
-fi
-
 #################
 # Input Modules #
 #################
@@ -437,72 +229,9 @@ if test "x$have_input_lirc" = "xyes"; then
 fi
 AM_CONDITIONAL(BUILD_INPUT_LIRC, test "x$have_input_lirc" = "xyes")
 
-# Wiimote
-want_input_wiimote="auto"
-have_input_wiimote="no"
-AC_MSG_CHECKING(whether wiimote input module is to be built)
-AC_ARG_ENABLE(input-wiimote,
-  AS_HELP_STRING([--enable-input-wiimote], [Enable Wiimote input module]),
-  [ want_input_wiimote=$enableval ]
-)
-AC_MSG_RESULT($want_input_wiimote)
-if test "x$want_input_wiimote" = "xyes" -o "x$want_input_wiimote" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [LIBBLUETOOTH],
-    [bluez],
-    [
-      AC_CHECK_HEADER(cwiid.h,
-        [
-          AC_DEFINE(BUILD_INPUT_WIIMOTE, 1, [Wiimote Input])
-          LIBCWIID_LIBS=-lcwiid
-          AC_SUBST(LIBCWIID_LIBS)
-          have_input_wiimote="yes"
-        ],
-        [
-          if test "x$want_input_wiimote" = "xyes" -a "x$use_strict" = "xyes" ; then
-            AC_MSG_ERROR([libcwiid not found (strict dependencies checking)])
-          fi
-        ]
-      )
-    ],
-    [
-      if test "x$want_input_wiimote" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libbluetooth not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_INPUT_WIIMOTE, test "x$have_input_wiimote" = "xyes")
-
 ##################
 # Volume Modules #
 ##################
-
-# HAL
-want_volume_hal="no"
-have_volume_hal="no"
-AC_MSG_CHECKING(whether hal volume module is to be built)
-AC_ARG_ENABLE(volume-hal,
-  AS_HELP_STRING([--enable-volume-hal],[Enable HAL Volume]),
-  [ want_volume_hal=$enableval ]
-)
-AC_MSG_RESULT($want_volume_hal)
-if test "x$want_volume_hal" = "xyes" -o "x$want_volume_hal" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [EHAL],
-    [ehal edbus],
-    [
-      AC_DEFINE(BUILD_VOLUME_HAL, 1, [HAL Volume])
-      have_volume_hal="yes"
-    ],
-    [
-      if test "x$want_volume_hal" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([ehal or e-dbus not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_VOLUME_HAL, test "x$have_volume_hal" = "xyes")
 
 # mtab
 want_volume_mtab="yes"
@@ -517,113 +246,9 @@ if test "x$want_volume_mtab" = "xyes"; then
   AC_DEFINE(BUILD_VOLUME_MTAB, 1, [mtab Volume])
 fi
 
-# Udev
-want_volume_udev="auto"
-have_volume_udev="no"
-AC_MSG_CHECKING(whether Udev volume module is to be built)
-AC_ARG_ENABLE(volume-udev,
-  AS_HELP_STRING([--enable-volume-udev],[Enable Udev Volume]),
-  [ want_volume_udev=$enableval ]
-)
-AC_MSG_RESULT($want_volume_udev)
-if test "x$want_volume_udev" = "xyes" -o "x$want_volume_udev" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [UDEV],
-    [libudev],
-    [
-      AC_DEFINE(BUILD_VOLUME_UDEV, 1, [Udev Volume])
-      have_volume_udev="yes"
-    ],
-    [
-      if test "x$want_volume_udev" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([udev not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_VOLUME_UDEV, test "x$have_volume_udev" = "xyes")
-
 ##############
 # Librairies #
 ##############
-
-# ecore-x
-want_ecore_x="auto"
-have_ecore_x="no"
-AC_MSG_CHECKING(whether ecore-x support is to be built)
-AC_ARG_ENABLE(ecore-x,
-    AS_HELP_STRING([--enable-ecore-x],[Enable ecore X11 support]),
-    [ want_ecore_x=$enableval ]
-)
-AC_MSG_RESULT($want_ecore_x)
-if test "x$want_ecore_x" = "xyes" -o "x$want_ecore_x" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [ECORE_X],
-    [ecore-x],
-    [
-      AC_DEFINE(BUILD_ECORE_X, 1, [ecore-x support])
-      have_ecore_x="yes"
-    ],
-    [
-      if test "x$want_ecore_x" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([ecore-x not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_ECORE_X, test "x$have_ecore_x" = "xyes")
-
-# libcddb
-want_libcddb="auto"
-have_libcddb="no"
-AC_MSG_CHECKING(whether libcddb support is to be built)
-AC_ARG_ENABLE(libcddb,
-    AS_HELP_STRING([--enable-libcddb],[Enable libcddb support]),
-    [ want_libcddb=$enableval ]
-)
-AC_MSG_RESULT($want_libcddb)
-if test "x$want_libcddb" = "xyes" -o "x$want_libcddb" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [LIBCDDB],
-    [libcddb],
-    [
-      AC_DEFINE(BUILD_LIBCDDB, 1, [libcddb support])
-      have_libcddb="yes"
-    ],
-    [
-      if test "x$want_libcddb" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libcddb not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_LIBCDDB, test "x$have_libcddb" = "xyes")
-
-# libsvdrp
-want_libsvdrp="auto"
-have_libsvdrp="no"
-AC_MSG_CHECKING(whether libsvdrp support is to be built)
-AC_ARG_ENABLE(libsvdrp,
-    AS_HELP_STRING([--enable-libsvdrp],[Enable libsvdrp support]),
-    [ want_libsvdrp=$enableval ]
-)
-AC_MSG_RESULT($want_libsvdrp)
-if test "x$want_libsvdrp" = "xyes" -o "x$want_libsvdrp" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [LIBSVDRP],
-    [libsvdrp],
-    [
-      AC_DEFINE(BUILD_LIBSVDRP, 1, [libsvdrp support])
-      have_libsvdrp="yes"
-    ],
-    [
-      if test "x$want_libsvdrp" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libsvdrp not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_LIBSVDRP, test "x$have_libsvdrp" = "xyes")
 
 # libxrandr
 want_libxrandr="auto"
@@ -692,35 +317,19 @@ src/bin/Makefile
 src/modules/Makefile
 src/modules/activity/Makefile
 src/modules/activity/configuration/Makefile
-src/modules/activity/games/Makefile
 src/modules/activity/music/Makefile
 src/modules/activity/photo/Makefile
-src/modules/activity/tv/Makefile
 src/modules/activity/video/Makefile
-src/modules/activity/weather/Makefile
 src/modules/browser/Makefile
-src/modules/browser/cdda/Makefile
-src/modules/browser/dvd/Makefile
-src/modules/browser/ipod/Makefile
 src/modules/browser/localfiles/Makefile
-src/modules/browser/netstreams/Makefile
-src/modules/browser/podcasts/Makefile
-src/modules/browser/shoutcast/Makefile
-src/modules/browser/spotify/Makefile
-src/modules/browser/upnp/Makefile
-src/modules/browser/valhalla/Makefile
 src/modules/gadgets/Makefile
-src/modules/gadgets/weather/Makefile
 src/modules/gadgets/date/Makefile
 src/modules/gadgets/dummy/Makefile
 src/modules/input/Makefile
 src/modules/input/kbd/Makefile
 src/modules/input/lirc/Makefile
-src/modules/input/wiimote/Makefile
 src/modules/volume/Makefile
-src/modules/volume/hal/Makefile
 src/modules/volume/mtab/Makefile
-src/modules/volume/udev/Makefile
 data/Makefile
 data/other/Makefile
 data/theme/Makefile
@@ -749,31 +358,14 @@ echo
 echo "Supported Activity Modules:"
 echo
 echo "  Configuration.................... : $want_activity_configuration"
-echo "  Games............................ : $want_activity_games"
 echo "  Music............................ : $want_activity_music"
 echo "  Photo............................ : $want_activity_photo"
-echo "  TV............................... : $want_activity_tv"
 echo "  Video............................ : $want_activity_video"
-echo "  Weather.......................... : $want_activity_weather"
 echo
-echo
-echo "Supported Backend:"
-echo
-echo "  Libplayer........................ : $have_backend_libplayer"
-echo "  Emotion.......................... : $have_backend_emotion"
 echo
 echo "Supported Browser Modules:"
 echo
-echo "  Audio CD......................... : $want_browser_cdda"
-echo "  DVD Video........................ : $want_browser_dvd"
-echo "  iPod/iPhone/iPad................. : $have_browser_ipod"
 echo "  Local files...................... : $want_browser_localfiles"
-echo "  Network Streams.................. : $want_browser_netstreams"
-echo "  Podcasts......................... : $want_browser_podcasts"
-echo "  SHOUTcast........................ : $want_browser_shoutcast"
-echo "  Spotify.......................... : $want_browser_spotify"
-echo "  UPnP/DLNA........................ : $have_browser_upnp"
-echo "  Valhalla Scanner................. : $want_browser_valhalla"
 echo
 echo "Supported Gadget Modules:"
 echo
@@ -784,19 +376,13 @@ echo "Supported Input Modules:"
 echo
 echo "  Keyboard client.................. : $want_input_keyboard"
 echo "  LIRC client...................... : $have_input_lirc"
-echo "  Wiimote client................... : $have_input_wiimote"
 echo
 echo "Supported Volume Modules:"
 echo
-echo "  HAL (deprecated)................. : $have_volume_hal"
 echo "  mtab............................. : $want_volume_mtab"
-echo "  Udev............................. : $have_volume_udev"
 echo
 echo "Optional linked-in librairies:"
 echo
-echo "  ecore-x.......................... : $have_ecore_x"
-echo "  libcddb.......................... : $have_libcddb"
-echo "  libsvdrp......................... : $have_libsvdrp"
 echo "  libxrandr........................ : $have_libxrandr"
 echo
 echo "Suppported Themes:"

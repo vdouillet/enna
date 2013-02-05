@@ -444,38 +444,6 @@ _mediaplayer_mouse_up_cb(void *data,
     media_controls_display(1);
 }
 
-static Eina_Bool
-_mediaplayer_mouse_move_libplayer_cb(void *data, int type, void *event)
-{
-    Ecore_Event_Mouse_Move *e = event;
-    Evas_Coord y;
-
-    evas_object_geometry_get(mod->o_mediacontrols, NULL, &y, NULL, NULL);
-
-    if ((e->window != enna->ee_winid) && (e->y >= y))
-    {
-        media_controls_display(1);
-        return 1;
-    }
-    return 0;
-}
-
-static Eina_Bool
-_mediaplayer_mouse_down_libplayer_cb(void *data, int type, void *event)
-{
-    Ecore_Event_Mouse_Button *e = event;
-    Evas_Coord y;
-
-    evas_object_geometry_get(mod->o_mediacontrols, NULL, &y, NULL, NULL);
-
-    if ((e->window != enna->ee_winid) && (e->y >= y))
-    {
-        media_controls_display(1);
-        return 1;
-    }
-    return 0;
-}
-
 void
 movie_start_playback(int resume)
 {
@@ -512,13 +480,6 @@ movie_start_playback(int resume)
     /*edje_object_part_swallow(mod->o_edje,
                              "controls.swallow", mod->o_mediacontrols);*/
     /* enna_mediaplayer_obj_layout_set(mod->o_mediacontrols, "layout,video"); */
-
-    mod->mouse_button_event_handler =
-        ecore_event_handler_add(ECORE_EVENT_MOUSE_BUTTON_DOWN,
-                                _mediaplayer_mouse_down_libplayer_cb, NULL);
-    mod->mouse_move_event_handler =
-        ecore_event_handler_add(ECORE_EVENT_MOUSE_MOVE,
-                                _mediaplayer_mouse_move_libplayer_cb, NULL);
 
     evas_object_event_callback_add(enna_mediaplayer_obj_get(),
                                    EVAS_CALLBACK_MOUSE_MOVE,

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-01-30 13:09+0100\n"
+"POT-Creation-Date: 2013-02-05 22:47+0100\n"
 "PO-Revision-Date: 2010-01-19 12:17-0300\n"
 "Last-Translator: André Luís de Andrade Mendes <andreluis.mendes+poedit@gmail."
 "com>\n"
@@ -22,49 +22,49 @@ msgstr ""
 msgid "No media found!"
 msgstr "Nenhum arquivo multimídia encontrado!"
 
-#: src/bin/enna.c:564
+#: src/bin/enna.c:505
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna MediaCenter\n"
 
-#: src/bin/enna.c:565
+#: src/bin/enna.c:506
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr " Uso: %s [opções ...]\n"
 
-#: src/bin/enna.c:566
+#: src/bin/enna.c:507
 #, c-format
 msgid " Available options:\n"
 msgstr "Opções disponíveis:\n"
 
-#: src/bin/enna.c:567
+#: src/bin/enna.c:508
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr ""
 "  -c, (--config):   Especifique o arquivo de configuração a ser utilizado.\n"
 
-#: src/bin/enna.c:568
+#: src/bin/enna.c:509
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "  -f, (--fs):       Forçar modo de tela cheia.\n"
 
-#: src/bin/enna.c:569
+#: src/bin/enna.c:510
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "  -h, (--help):     Mostra esta ajuda.\n"
 
-#: src/bin/enna.c:570
+#: src/bin/enna.c:511
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "  -t, (--theme):    Especifique o nome do tema a ser usado.\n"
 
-#: src/bin/enna.c:571
+#: src/bin/enna.c:512
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr ""
 "  -g, (--geometry): Especifique a resolução da janela. (geometria=1280x720)\n"
 
-#: src/bin/enna.c:572
+#: src/bin/enna.c:513
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
@@ -72,17 +72,17 @@ msgid ""
 msgstr ""
 "  -g, (--geometry): Especifique a resolução da janela. (geometria=1280x720)\n"
 
-#: src/bin/enna.c:573
+#: src/bin/enna.c:514
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (--perfil): Especifique um perfil para a tela\n"
 
-#: src/bin/enna.c:574
+#: src/bin/enna.c:515
 #, c-format
 msgid "    Supported: "
 msgstr "Suportados:"
 
-#: src/bin/enna.c:578
+#: src/bin/enna.c:519
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version):  Mostra o número da versão do Enna.\n"
@@ -107,11 +107,11 @@ msgstr "Não"
 msgid "continue using Enna"
 msgstr "Não, quero continuar a usar o Enna."
 
-#: src/bin/module.c:269
+#: src/bin/module.c:166
 msgid "Modules"
 msgstr "Módulos"
 
-#: src/bin/module.c:438
+#: src/bin/module.c:335
 msgid "No information provided"
 msgstr "Nenhuma informação EXIF encontrada."
 
@@ -120,90 +120,13 @@ msgstr "Nenhuma informação EXIF encontrada."
 msgid "Track #%02d (%02d:%02d)"
 msgstr "Faixa #%02d (%02d:%02d)"
 
-#: src/bin/weather_api.c:406 src/bin/weather_api.c:439
-msgid "City"
-msgstr "Cidade"
-
-#: src/bin/weather_api.c:407
-msgid "Choose your City"
-msgstr "Escolha a sua Cidade"
-
-#: src/bin/weather_api.c:411
-msgid "Enter your City here"
-msgstr "Entra a sua Cidade aqui"
-
-#: src/bin/weather_api.c:414 src/bin/weather_api.c:447
-msgid "Remove"
-msgstr "Remover"
-
-#: src/bin/weather_api.c:440
-msgid "Choose your city"
-msgstr "Escolha a sua cidade"
-
-#: src/bin/weather_api.c:452
-msgid "Add new city"
-msgstr "Adicionar uma nova cidade"
-
-#: src/bin/weather_api.c:453
-msgid "Add more cities to the list"
-msgstr "Adicionar mais cidades a lista"
-
-#: src/bin/weather_api.c:458
-msgid "Add"
-msgstr "Adicionar"
-
-#: src/bin/weather_api.c:462
-msgid "Select unit"
-msgstr "Selecionar a unidade"
-
-#: src/bin/weather_api.c:463
-msgid "Select the unit to display temperature"
-msgstr "Selecionar a unidade para mostrar a temperatura"
-
-#: src/bin/weather_api.c:468
-msgid "°C"
-msgstr "°C"
-
-#: src/bin/weather_api.c:468
-msgid "°F"
-msgstr "°F"
-
-#: src/bin/weather_api.c:472
-msgid "Select hemisphere"
-msgstr "Selecionar o hemisfério"
-
-#: src/bin/weather_api.c:473
-msgid "Select the hemisphere you are located in"
-msgstr "Selecionar o hemisfério no qual você está localizado"
-
-#: src/bin/weather_api.c:478
-msgid "Northern"
-msgstr "Norte"
-
-#: src/bin/weather_api.c:478
-msgid "Southern"
-msgstr "Sul"
-
-#: src/bin/weather_api.c:722 src/modules/activity/weather/weather.c:290
-msgid "Weather"
-msgstr "Meteorologia"
-
-#: src/modules/activity/bookstore/bookstore.c:319
-#: src/modules/activity/bookstore/bookstore.c:370
-msgid "Bookstore"
-msgstr "Livraria"
-
-#: src/modules/activity/bookstore/bookstore.c:372
-msgid "Read your books"
-msgstr "Ler os seus livros"
-
 #: src/modules/activity/configuration/configuration.c:206
 #: src/modules/activity/configuration/configuration.c:265
 msgid "Configuration"
 msgstr "Configuração"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:679
+#: src/modules/activity/configuration/configuration_sysinfo.c:670
 msgid "System information"
 msgstr "Informações sobre o sistema"
 
@@ -231,152 +154,108 @@ msgstr "Os créditos vão para:"
 msgid "and"
 msgstr "e"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:105
+#: src/modules/activity/configuration/configuration_sysinfo.c:101
 msgid "Enna information"
 msgstr "Informações sobre o Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:107
+#: src/modules/activity/configuration/configuration_sysinfo.c:103
 msgid "Enna:"
 msgstr "Enna:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:122
+#: src/modules/activity/configuration/configuration_sysinfo.c:113
 msgid "Video renderer:"
 msgstr "Renderizador de vídeo:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:183
+#: src/modules/activity/configuration/configuration_sysinfo.c:174
 msgid "Distribution:"
 msgstr "Distribuição:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:209
+#: src/modules/activity/configuration/configuration_sysinfo.c:200
 msgid "OS:"
 msgstr "Sistema operacional:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:217
+#: src/modules/activity/configuration/configuration_sysinfo.c:208
 msgid "for"
 msgstr "para"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:265
+#: src/modules/activity/configuration/configuration_sysinfo.c:232
+#: src/modules/activity/configuration/configuration_sysinfo.c:256
 msgid "Available CPUs:"
 msgstr "Processadores disponíveis:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:296
+#: src/modules/activity/configuration/configuration_sysinfo.c:287
 msgid ", running at"
 msgstr ", operando à"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:318
-#: src/modules/activity/configuration/configuration_sysinfo.c:338
+#: src/modules/activity/configuration/configuration_sysinfo.c:309
+#: src/modules/activity/configuration/configuration_sysinfo.c:329
 msgid "CPU Load:"
 msgstr "Carga do processador:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:408
+#: src/modules/activity/configuration/configuration_sysinfo.c:399
 msgid "Memory:"
 msgstr "Memória:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:410
+#: src/modules/activity/configuration/configuration_sysinfo.c:401
 msgid "used on"
 msgstr "usado"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:412
+#: src/modules/activity/configuration/configuration_sysinfo.c:403
 msgid "total"
 msgstr "total"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:449
+#: src/modules/activity/configuration/configuration_sysinfo.c:440
 msgid "Screen resolution:"
 msgstr "Resolução da tela:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:452
+#: src/modules/activity/configuration/configuration_sysinfo.c:443
 msgid "at"
 msgstr "em"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:454
+#: src/modules/activity/configuration/configuration_sysinfo.c:445
 msgid "min:"
 msgstr "min:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:456
+#: src/modules/activity/configuration/configuration_sysinfo.c:447
 msgid "max:"
 msgstr "max:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:469
+#: src/modules/activity/configuration/configuration_sysinfo.c:460
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:472
+#: src/modules/activity/configuration/configuration_sysinfo.c:463
 msgid "connected to VDR"
 msgstr "conectado ao VDR"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:475
+#: src/modules/activity/configuration/configuration_sysinfo.c:466
 msgid "on"
 msgstr "em"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:480
+#: src/modules/activity/configuration/configuration_sysinfo.c:471
 msgid "not connected"
 msgstr "não conectado"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:492
+#: src/modules/activity/configuration/configuration_sysinfo.c:483
 msgid "Available network interfaces:"
 msgstr "Interfaces de rede disponíveis:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:510
+#: src/modules/activity/configuration/configuration_sysinfo.c:501
 msgid "IP:"
 msgstr "Endereço IP:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:515
+#: src/modules/activity/configuration/configuration_sysinfo.c:506
 msgid "Netmask:"
 msgstr "Máscara de rede:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:615
-#: src/modules/activity/configuration/configuration_sysinfo.c:635
+#: src/modules/activity/configuration/configuration_sysinfo.c:606
+#: src/modules/activity/configuration/configuration_sysinfo.c:626
 msgid "Default gateway:"
 msgstr "Gateway padrão:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:663
+#: src/modules/activity/configuration/configuration_sysinfo.c:654
 msgid "None"
 msgstr "Nenhum"
-
-#: src/modules/activity/games/games.c:221
-#, c-format
-msgid "no games found"
-msgstr "Nenhum jogo encontrado!"
-
-#: src/modules/activity/games/games.c:223
-#, c-format
-msgid "one game"
-msgstr "um jogo"
-
-#: src/modules/activity/games/games.c:225
-#, c-format
-msgid "%d games"
-msgstr "%d jogos"
-
-#: src/modules/activity/games/games.c:409
-#: src/modules/activity/games/games.c:473
-msgid "Games"
-msgstr "Jogos"
-
-#: src/modules/activity/games/games.c:475
-msgid "Play all your games directly from Enna"
-msgstr "Jogar os seus jogos diretamente a partir do Enna"
-
-#: src/modules/activity/games/games_mame.c:81
-msgid "<c>M.A.M.E.</c><br>Game running..."
-msgstr "<c>M.A.M.E.</c><br>Jogo rodando..."
-
-#: src/modules/activity/games/games_mame.c:318
-msgid ""
-"<c>Mame Error</c><br><b>No roms found in path</b><br>Roms must be located "
-"at: ~/.mame/roms<br>"
-msgstr ""
-"<c>Erro do Mame</c><br><b>Nenhuma ROM encontrado neste caminho<b><br>ROMs "
-"devem estar localizadas em: ~/.mame/roms<br> "
-
-#: src/modules/activity/games/games_sys.c:161
-msgid "<c>System Games</c><br>Game running..."
-msgstr "<c>Jogos do Sistema</c><br>Jogo rodando..."
-
-#: src/modules/activity/games/games_sys.c:257
-msgid "System Games"
-msgstr "Jogos do Sistema"
 
 #: src/modules/activity/music/music.c:106
 #, c-format
@@ -401,83 +280,19 @@ msgstr "Foto"
 msgid "Browse your photos and create slideshows"
 msgstr "Navegue por suas fotos e crie apresentações de slides"
 
-#: src/modules/activity/tv/tv.c:107
-#, c-format
-msgid "Timer '%s' is due to start in %i minute"
-msgid_plural "Timer '%s' is due to start in %i minutes"
-msgstr[0] "O cronômetro '%s' vai começar em %i minuto"
-msgstr[1] "O cronômetro '%s' vai começar em %i minutos"
-
-#: src/modules/activity/tv/tv.c:110
-#, c-format
-msgid "Currently recording '%s'"
-msgstr "Gravando '%s'"
-
-#: src/modules/activity/tv/tv.c:119
-msgid "Recording in progress"
-msgstr "Gravação em andamento"
-
-#: src/modules/activity/tv/tv.c:164 src/modules/activity/tv/tv.c:382
-msgid "Television"
-msgstr "Televisão"
-
-#: src/modules/activity/tv/tv.c:384
-msgid "View TV channels"
-msgstr "Veja os canais da TV"
-
 #: src/modules/activity/video/video.c:116
 #, c-format
 msgid "%d Movies"
 msgstr "%d Filmes"
 
-#: src/modules/activity/video/video.c:740
-#: src/modules/activity/video/video.c:826
+#: src/modules/activity/video/video.c:688
+#: src/modules/activity/video/video.c:774
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/modules/activity/video/video.c:828
+#: src/modules/activity/video/video.c:776
 msgid "Play your videos"
 msgstr "Assistir seus vídeos:"
-
-#: src/modules/activity/weather/weather.c:347
-msgid "Weather forecasts"
-msgstr "Previsão do tempo"
-
-#: src/modules/activity/weather/weather.c:349
-msgid "Show the weather at your location"
-msgstr "Mostra a previsão do tempo para a sua localidade"
-
-#: src/modules/browser/cdda/cdda.c:95
-msgid "Play audio CD"
-msgstr "Tocar um CD de áudio"
-
-#: src/modules/browser/cdda/cdda.c:164
-msgid "CDDA module"
-msgstr "Módulo CDDA"
-
-#: src/modules/browser/cdda/cdda.c:166
-msgid "Listen your favorite CDs"
-msgstr "Escute os seus CD favoritos"
-
-#: src/modules/browser/dvd/dvd.c:61
-msgid "Play"
-msgstr "Tocar"
-
-#: src/modules/browser/dvd/dvd.c:64
-msgid "Play (with menus)"
-msgstr "Tocar (com menus interativos)"
-
-#: src/modules/browser/dvd/dvd.c:71
-msgid "Watch DVD video"
-msgstr "Ver um DVD de vídeo"
-
-#: src/modules/browser/dvd/dvd.c:141
-msgid "DVD module"
-msgstr "Módulo de DVD"
-
-#: src/modules/browser/dvd/dvd.c:143
-msgid "Watch movies from DVD"
-msgstr "Veja os filmes de DVD"
 
 #: src/modules/browser/localfiles/localfiles.c:613
 msgid "Browse local devices"
@@ -490,161 +305,6 @@ msgstr "Navegar através dos arquivos locais"
 #: src/modules/browser/localfiles/localfiles.c:818
 msgid "Browse files in your local file systems"
 msgstr "Navegar através dos arquivos do seu sistema de arquivos local"
-
-#: src/modules/browser/netstreams/netstreams.c:322
-#: src/modules/browser/netstreams/netstreams.c:338
-msgid "Browse network streams"
-msgstr "Navegar através dos fluxos de rede"
-
-#: src/modules/browser/netstreams/netstreams.c:441
-msgid "Netstreams"
-msgstr "Fluxos de rede"
-
-#: src/modules/browser/netstreams/netstreams.c:443
-msgid "Browse and play network streams"
-msgstr "Navegar através e tocar os fluxos de rede"
-
-#: src/modules/browser/podcasts/podcasts.c:216
-msgid "Listen to podcasts"
-msgstr "Escutar podcasts"
-
-#: src/modules/browser/podcasts/podcasts.c:352
-msgid "Podcast browser"
-msgstr "Navegador de Podcast"
-
-#: src/modules/browser/podcasts/podcasts.c:354
-msgid "Podcast module"
-msgstr "Módulo de Podcast"
-
-#: src/modules/browser/shoutcast/shoutcast.c:335
-msgid "SHOUTcast streaming"
-msgstr "Fluxos SHOUTcast"
-
-#: src/modules/browser/shoutcast/shoutcast.c:384
-msgid "SHOUTcast browser"
-msgstr "Navegador do SHOUTcast"
-
-#: src/modules/browser/shoutcast/shoutcast.c:386
-msgid "Listen to SHOUTcast stream"
-msgstr "Escutar um fluxo SHOUTcast"
-
-#: src/modules/browser/upnp/upnp.c:473
-msgid "UPnP/DLNA media servers"
-msgstr "Servidores multimídia UPnP/DLNA"
-
-#: src/modules/browser/upnp/upnp.c:526
-#, c-format
-msgid "Found new UPnP device '%s (%s)'"
-msgstr "Encontrado um novo periférico UPnP '%s (%s)'"
-
-#: src/modules/browser/upnp/upnp.c:610
-msgid "UPnP/DLNA module"
-msgstr "Módulo do UPnP/DLNA"
-
-#: src/modules/browser/upnp/upnp.c:612
-msgid "This module allows Enna to browse contents from UPnP/DLNA media servers"
-msgstr ""
-"Este módulo permite ao Enna explorar o conteúdo de servidores UPnP/DLNA"
-
-#: src/modules/browser/valhalla/valhalla.c:669
-msgid "Media library"
-msgstr "Biblioteca multimídia"
-
-#: src/modules/browser/valhalla/valhalla.c:710
-msgid "Valhalla module"
-msgstr "Módulo Valhalla"
-
-#: src/modules/browser/valhalla/valhalla.c:712
-msgid "Build a browseable catalog of your media files"
-msgstr "Construir um catálogo de arquivos multimídia navegável"
-
-#: src/modules/volume/hal/hal_volume.c:39
-msgid "CD-ROM"
-msgstr "CD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:40
-msgid "CD-R"
-msgstr "CD-R"
-
-#: src/modules/volume/hal/hal_volume.c:41
-msgid "CD-RW"
-msgstr "CD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:42
-msgid "DVD-ROM"
-msgstr "DVD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:43
-msgid "DVD-RAM"
-msgstr "DVD-RAM"
-
-#: src/modules/volume/hal/hal_volume.c:44
-msgid "DVD-R"
-msgstr "DVD-R"
-
-#: src/modules/volume/hal/hal_volume.c:45
-msgid "DVD-RW"
-msgstr "DVD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:46
-msgid "DVD+R"
-msgstr "DVD+R"
-
-#: src/modules/volume/hal/hal_volume.c:47
-msgid "DVD+RW"
-msgstr "DVD+RW"
-
-#: src/modules/volume/hal/hal_volume.c:48
-msgid "DVD+R (DL)"
-msgstr "DVD+R (DL)"
-
-#: src/modules/volume/hal/hal_volume.c:49
-msgid "BD-ROM"
-msgstr "BD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:50
-msgid "BD-R"
-msgstr "BD-R"
-
-#: src/modules/volume/hal/hal_volume.c:51
-msgid "BD-RE"
-msgstr "BD-RE"
-
-#: src/modules/volume/hal/hal_volume.c:52
-msgid "HD-DVD-ROM"
-msgstr "HD-DVD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:53
-msgid "HD-DVD-R"
-msgstr "HD-DVD-R"
-
-#: src/modules/volume/hal/hal_volume.c:54
-msgid "HD-DVD-RW"
-msgstr "HD-DVD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:55
-msgid "MagnetoOptical"
-msgstr "Magneto-ótico"
-
-#: src/modules/volume/hal/hal_volume.c:64
-msgid "CDDA"
-msgstr "CDDA"
-
-#: src/modules/volume/hal/hal_volume.c:65
-msgid "VCD"
-msgstr "VCD"
-
-#: src/modules/volume/hal/hal_volume.c:66
-msgid "SVCD"
-msgstr "SVCD"
-
-#: src/modules/volume/hal/hal_volume.c:67
-msgid "DVD"
-msgstr "DVD"
-
-#: src/modules/volume/hal/hal_volume.c:68
-msgid "Data"
-msgstr "Dados"
 
 #: src/modules/volume/mtab/mtab.c:78
 #, fuzzy, c-format
@@ -664,13 +324,262 @@ msgstr "Volumes via mtab"
 msgid "This module provide support for already mounted volumes"
 msgstr "Este módulo suporta os volumes já montados"
 
-#: src/modules/volume/udev/udev.c:733
-msgid "Volumes from udev"
-msgstr "Volumes via udev"
+#~ msgid "City"
+#~ msgstr "Cidade"
 
-#: src/modules/volume/udev/udev.c:735
-msgid "This module provide support for removable volumes"
-msgstr "Este módulo suporta os volumes removíveis"
+#~ msgid "Choose your City"
+#~ msgstr "Escolha a sua Cidade"
+
+#~ msgid "Enter your City here"
+#~ msgstr "Entra a sua Cidade aqui"
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "Choose your city"
+#~ msgstr "Escolha a sua cidade"
+
+#~ msgid "Add new city"
+#~ msgstr "Adicionar uma nova cidade"
+
+#~ msgid "Add more cities to the list"
+#~ msgstr "Adicionar mais cidades a lista"
+
+#~ msgid "Add"
+#~ msgstr "Adicionar"
+
+#~ msgid "Select unit"
+#~ msgstr "Selecionar a unidade"
+
+#~ msgid "Select the unit to display temperature"
+#~ msgstr "Selecionar a unidade para mostrar a temperatura"
+
+#~ msgid "°C"
+#~ msgstr "°C"
+
+#~ msgid "°F"
+#~ msgstr "°F"
+
+#~ msgid "Select hemisphere"
+#~ msgstr "Selecionar o hemisfério"
+
+#~ msgid "Select the hemisphere you are located in"
+#~ msgstr "Selecionar o hemisfério no qual você está localizado"
+
+#~ msgid "Northern"
+#~ msgstr "Norte"
+
+#~ msgid "Southern"
+#~ msgstr "Sul"
+
+#~ msgid "Weather"
+#~ msgstr "Meteorologia"
+
+#~ msgid "Bookstore"
+#~ msgstr "Livraria"
+
+#~ msgid "Read your books"
+#~ msgstr "Ler os seus livros"
+
+#~ msgid "no games found"
+#~ msgstr "Nenhum jogo encontrado!"
+
+#~ msgid "one game"
+#~ msgstr "um jogo"
+
+#~ msgid "%d games"
+#~ msgstr "%d jogos"
+
+#~ msgid "Games"
+#~ msgstr "Jogos"
+
+#~ msgid "Play all your games directly from Enna"
+#~ msgstr "Jogar os seus jogos diretamente a partir do Enna"
+
+#~ msgid "<c>M.A.M.E.</c><br>Game running..."
+#~ msgstr "<c>M.A.M.E.</c><br>Jogo rodando..."
+
+#~ msgid ""
+#~ "<c>Mame Error</c><br><b>No roms found in path</b><br>Roms must be located "
+#~ "at: ~/.mame/roms<br>"
+#~ msgstr ""
+#~ "<c>Erro do Mame</c><br><b>Nenhuma ROM encontrado neste caminho<b><br>ROMs "
+#~ "devem estar localizadas em: ~/.mame/roms<br> "
+
+#~ msgid "<c>System Games</c><br>Game running..."
+#~ msgstr "<c>Jogos do Sistema</c><br>Jogo rodando..."
+
+#~ msgid "System Games"
+#~ msgstr "Jogos do Sistema"
+
+#~ msgid "Timer '%s' is due to start in %i minute"
+#~ msgid_plural "Timer '%s' is due to start in %i minutes"
+#~ msgstr[0] "O cronômetro '%s' vai começar em %i minuto"
+#~ msgstr[1] "O cronômetro '%s' vai começar em %i minutos"
+
+#~ msgid "Currently recording '%s'"
+#~ msgstr "Gravando '%s'"
+
+#~ msgid "Recording in progress"
+#~ msgstr "Gravação em andamento"
+
+#~ msgid "Television"
+#~ msgstr "Televisão"
+
+#~ msgid "View TV channels"
+#~ msgstr "Veja os canais da TV"
+
+#~ msgid "Weather forecasts"
+#~ msgstr "Previsão do tempo"
+
+#~ msgid "Show the weather at your location"
+#~ msgstr "Mostra a previsão do tempo para a sua localidade"
+
+#~ msgid "Play audio CD"
+#~ msgstr "Tocar um CD de áudio"
+
+#~ msgid "CDDA module"
+#~ msgstr "Módulo CDDA"
+
+#~ msgid "Listen your favorite CDs"
+#~ msgstr "Escute os seus CD favoritos"
+
+#~ msgid "Play"
+#~ msgstr "Tocar"
+
+#~ msgid "Play (with menus)"
+#~ msgstr "Tocar (com menus interativos)"
+
+#~ msgid "Watch DVD video"
+#~ msgstr "Ver um DVD de vídeo"
+
+#~ msgid "DVD module"
+#~ msgstr "Módulo de DVD"
+
+#~ msgid "Watch movies from DVD"
+#~ msgstr "Veja os filmes de DVD"
+
+#~ msgid "Browse network streams"
+#~ msgstr "Navegar através dos fluxos de rede"
+
+#~ msgid "Netstreams"
+#~ msgstr "Fluxos de rede"
+
+#~ msgid "Browse and play network streams"
+#~ msgstr "Navegar através e tocar os fluxos de rede"
+
+#~ msgid "Listen to podcasts"
+#~ msgstr "Escutar podcasts"
+
+#~ msgid "Podcast browser"
+#~ msgstr "Navegador de Podcast"
+
+#~ msgid "Podcast module"
+#~ msgstr "Módulo de Podcast"
+
+#~ msgid "SHOUTcast streaming"
+#~ msgstr "Fluxos SHOUTcast"
+
+#~ msgid "SHOUTcast browser"
+#~ msgstr "Navegador do SHOUTcast"
+
+#~ msgid "Listen to SHOUTcast stream"
+#~ msgstr "Escutar um fluxo SHOUTcast"
+
+#~ msgid "UPnP/DLNA media servers"
+#~ msgstr "Servidores multimídia UPnP/DLNA"
+
+#~ msgid "Found new UPnP device '%s (%s)'"
+#~ msgstr "Encontrado um novo periférico UPnP '%s (%s)'"
+
+#~ msgid "UPnP/DLNA module"
+#~ msgstr "Módulo do UPnP/DLNA"
+
+#~ msgid ""
+#~ "This module allows Enna to browse contents from UPnP/DLNA media servers"
+#~ msgstr ""
+#~ "Este módulo permite ao Enna explorar o conteúdo de servidores UPnP/DLNA"
+
+#~ msgid "Media library"
+#~ msgstr "Biblioteca multimídia"
+
+#~ msgid "Valhalla module"
+#~ msgstr "Módulo Valhalla"
+
+#~ msgid "Build a browseable catalog of your media files"
+#~ msgstr "Construir um catálogo de arquivos multimídia navegável"
+
+#~ msgid "CD-ROM"
+#~ msgstr "CD-ROM"
+
+#~ msgid "CD-R"
+#~ msgstr "CD-R"
+
+#~ msgid "CD-RW"
+#~ msgstr "CD-RW"
+
+#~ msgid "DVD-ROM"
+#~ msgstr "DVD-ROM"
+
+#~ msgid "DVD-RAM"
+#~ msgstr "DVD-RAM"
+
+#~ msgid "DVD-R"
+#~ msgstr "DVD-R"
+
+#~ msgid "DVD-RW"
+#~ msgstr "DVD-RW"
+
+#~ msgid "DVD+R"
+#~ msgstr "DVD+R"
+
+#~ msgid "DVD+RW"
+#~ msgstr "DVD+RW"
+
+#~ msgid "DVD+R (DL)"
+#~ msgstr "DVD+R (DL)"
+
+#~ msgid "BD-ROM"
+#~ msgstr "BD-ROM"
+
+#~ msgid "BD-R"
+#~ msgstr "BD-R"
+
+#~ msgid "BD-RE"
+#~ msgstr "BD-RE"
+
+#~ msgid "HD-DVD-ROM"
+#~ msgstr "HD-DVD-ROM"
+
+#~ msgid "HD-DVD-R"
+#~ msgstr "HD-DVD-R"
+
+#~ msgid "HD-DVD-RW"
+#~ msgstr "HD-DVD-RW"
+
+#~ msgid "MagnetoOptical"
+#~ msgstr "Magneto-ótico"
+
+#~ msgid "CDDA"
+#~ msgstr "CDDA"
+
+#~ msgid "VCD"
+#~ msgstr "VCD"
+
+#~ msgid "SVCD"
+#~ msgstr "SVCD"
+
+#~ msgid "DVD"
+#~ msgstr "DVD"
+
+#~ msgid "Data"
+#~ msgstr "Dados"
+
+#~ msgid "Volumes from udev"
+#~ msgstr "Volumes via udev"
+
+#~ msgid "This module provide support for removable volumes"
+#~ msgstr "Este módulo suporta os volumes removíveis"
 
 #~ msgid "No lyrics found ..."
 #~ msgstr "Nenhuma letra encontrada ..."

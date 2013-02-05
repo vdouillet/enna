@@ -44,53 +44,17 @@ static void _config_panel_hide(void *data);
 #ifdef BUILD_ACTIVITY_CONFIGURATION
 extern Enna_Module_Api enna_mod_activity_configuration_api;
 #endif
-#ifdef BUILD_ACTIVITY_GAMES
-extern Enna_Module_Api enna_mod_activity_games_api;
-#endif
 #ifdef BUILD_ACTIVITY_MUSIC
 extern Enna_Module_Api enna_mod_activity_music_api;
 #endif
 #ifdef BUILD_ACTIVITY_PHOTO
 extern Enna_Module_Api enna_mod_activity_photo_api;
 #endif
-#ifdef BUILD_ACTIVITY_TV
-extern Enna_Module_Api enna_mod_activity_tv_api;
-#endif
 #ifdef BUILD_ACTIVITY_VIDEO
 extern Enna_Module_Api enna_mod_activity_video_api;
 #endif
-#ifdef BUILD_ACTIVITY_WEATHER
-extern Enna_Module_Api enna_mod_activity_weather_api;
-#endif
-#ifdef BUILD_BROWSER_CDDA
-extern Enna_Module_Api enna_mod_browser_cdda_api;
-#endif
-#ifdef BUILD_BROWSER_DVD
-extern Enna_Module_Api enna_mod_browser_dvd_api;
-#endif
-#ifdef BUILD_BROWSER_IPOD
-extern Enna_Module_Api enna_mod_browser_ipod_api;
-#endif
-#ifdef BUILD_BROWSER_SPOTIFY
-extern Enna_Module_Api enna_mod_browser_spotify_api;
-#endif
 #ifdef BUILD_BROWSER_LOCALFILES
 extern Enna_Module_Api enna_mod_browser_localfiles_api;
-#endif
-#ifdef BUILD_BROWSER_NETSTREAMS
-extern Enna_Module_Api enna_mod_browser_netstreams_api;
-#endif
-#ifdef BUILD_BROWSER_PODCASTS
-extern Enna_Module_Api enna_mod_browser_podcasts_api;
-#endif
-#ifdef BUILD_BROWSER_SHOUTCAST
-extern Enna_Module_Api enna_mod_browser_shoutcast_api;
-#endif
-#ifdef BUILD_BROWSER_UPNP
-extern Enna_Module_Api enna_mod_browser_upnp_api;
-#endif
-#ifdef BUILD_BROWSER_VALHALLA
-extern Enna_Module_Api enna_mod_browser_valhalla_api;
 #endif
 #ifdef BUILD_GADGET_DATE
 extern Enna_Module_Api enna_mod_gadget_date_api;
@@ -98,28 +62,15 @@ extern Enna_Module_Api enna_mod_gadget_date_api;
 #ifdef BUILD_GADGET_DUMMY
 extern Enna_Module_Api enna_mod_gadget_dummy_api;
 #endif
-#ifdef BUILD_GADGET_WEATHER
-extern Enna_Module_Api enna_mod_gadget_weather_api;
-#endif
 #ifdef BUILD_INPUT_KBD
 extern Enna_Module_Api enna_mod_input_kbd_api;
 #endif
 #ifdef BUILD_INPUT_LIRC
 extern Enna_Module_Api enna_mod_input_lirc_api;
 #endif
-#ifdef BUILD_INPUT_WIIMOTE
-extern Enna_Module_Api enna_mod_input_wiimote_api;
-#endif
-#ifdef BUILD_VOLUME_HAL
-extern Enna_Module_Api enna_mod_volume_hal_api;
-#endif
 #ifdef BUILD_VOLUME_MTAB
 extern Enna_Module_Api enna_mod_volume_mtab_api;
 #endif
-#ifdef BUILD_VOLUME_UDEV
-extern Enna_Module_Api enna_mod_volume_udev_api;
-#endif
-
 
 static Enna_Module *
 enna_module_open(Enna_Module_Api *api)
@@ -162,53 +113,17 @@ enna_module_init(void)
     #ifdef BUILD_ACTIVITY_CONFIGURATION
         eina_array_push(_plugins_array, &enna_mod_activity_configuration_api);
     #endif
-    #ifdef BUILD_ACTIVITY_GAMES
-        eina_array_push(_plugins_array, &enna_mod_activity_games_api);
-    #endif
     #ifdef BUILD_ACTIVITY_MUSIC
         eina_array_push(_plugins_array, &enna_mod_activity_music_api);
     #endif
     #ifdef BUILD_ACTIVITY_PHOTO
         eina_array_push(_plugins_array, &enna_mod_activity_photo_api);
     #endif
-    #ifdef BUILD_ACTIVITY_TV
-        eina_array_push(_plugins_array, &enna_mod_activity_tv_api);
-    #endif
     #ifdef BUILD_ACTIVITY_VIDEO
         eina_array_push(_plugins_array, &enna_mod_activity_video_api);
     #endif
-    #ifdef BUILD_ACTIVITY_WEATHER
-        eina_array_push(_plugins_array, &enna_mod_activity_weather_api);
-    #endif
-    #ifdef BUILD_BROWSER_CDDA
-        eina_array_push(_plugins_array, &enna_mod_browser_cdda_api);
-    #endif
-    #ifdef BUILD_BROWSER_DVD
-        eina_array_push(_plugins_array, &enna_mod_browser_dvd_api);
-    #endif
-    #ifdef BUILD_BROWSER_IPOD
-        eina_array_push(_plugins_array, &enna_mod_browser_ipod_api);
-    #endif
-    #ifdef BUILD_BROWSER_SPOTIFY
-        eina_array_push(_plugins_array, &enna_mod_browser_spotify_api);
-    #endif
     #ifdef BUILD_BROWSER_LOCALFILES
         eina_array_push(_plugins_array, &enna_mod_browser_localfiles_api);
-    #endif
-    #ifdef BUILD_BROWSER_NETSTREAMS
-        eina_array_push(_plugins_array, &enna_mod_browser_netstreams_api);
-    #endif
-    #ifdef BUILD_BROWSER_PODCASTS
-        eina_array_push(_plugins_array, &enna_mod_browser_podcasts_api);
-    #endif
-    #ifdef BUILD_BROWSER_SHOUTCAST
-        eina_array_push(_plugins_array, &enna_mod_browser_shoutcast_api);
-    #endif
-    #ifdef BUILD_BROWSER_UPNP
-        eina_array_push(_plugins_array, &enna_mod_browser_upnp_api);
-    #endif
-    #ifdef BUILD_BROWSER_VALHALLA
-        eina_array_push(_plugins_array, &enna_mod_browser_valhalla_api);
     #endif
     #ifdef BUILD_GADGET_DATE
         eina_array_push(_plugins_array, &enna_mod_gadget_date_api);
@@ -216,26 +131,14 @@ enna_module_init(void)
     #ifdef BUILD_GADGET_DUMMY
         eina_array_push(_plugins_array, &enna_mod_gadget_dummy_api);
     #endif
-    #ifdef BUILD_GADGET_WEATHER
-        eina_array_push(_plugins_array, &enna_mod_gadget_weather_api);
-    #endif
     #ifdef BUILD_INPUT_KBD
         eina_array_push(_plugins_array, &enna_mod_input_kbd_api);
     #endif
     #ifdef BUILD_INPUT_LIRC
         eina_array_push(_plugins_array, &enna_mod_input_lirc_api);
     #endif
-    #ifdef BUILD_INPUT_WIIMOTE
-        eina_array_push(_plugins_array, &enna_mod_input_wiimote_api);
-    #endif
-    #ifdef BUILD_VOLUME_HAL
-        eina_array_push(_plugins_array, &enna_mod_volume_hal_api);
-    #endif
     #ifdef BUILD_VOLUME_MTAB
         eina_array_push(_plugins_array, &enna_mod_volume_mtab_api);
-    #endif
-    #ifdef BUILD_VOLUME_UDEV
-        eina_array_push(_plugins_array, &enna_mod_volume_udev_api);
     #endif
 
     /* Log the array */

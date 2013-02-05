@@ -134,7 +134,6 @@ typedef struct _Enna Enna;
 
 struct _Enna
 {
-    Ecore_X_Window ee_winid; /**< Ecore_Evas WindowID */
     Evas *evas; /**< Main enna evas.  */
     Evas_Object *win; /** Main elementary window. */
     Evas_Object *o_background;/**< Background object, it handles key down. */

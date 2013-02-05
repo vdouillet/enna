@@ -61,8 +61,6 @@ ICON("icon_config.png",                   "icon/config");
 ICON("icon_music.png",                    "icon/music");
 ICON("icon_photo.png",                    "icon/photo");
 ICON("icon_video.png",                    "icon/video");
-ICON("icon_games.png",                    "icon/games");
-ICON("icon_weather.png",                  "icon/weather");
 
 ICON("arrow_right.png",                   "icon/arrow_right");
 ICON("arrow_left.png",                    "icon/arrow_left");
@@ -80,24 +78,6 @@ ICON("mp_play.png",                       "icon/mp_play");
 ICON("mp_prev.png",                       "icon/mp_prev");
 ICON("mp_rewind.png",                     "icon/mp_rewind");
 ICON("mp_stop.png",                       "icon/mp_stop");
-
-ICON("weather_cloudy.png",        "weather/cloudy");
-ICON("weather_foggy.png",         "weather/foggy");
-ICON("weather_heavy_rain.png",    "weather/heavy_rain");
-ICON("weather_ice.png",           "weather/ice");
-ICON("weather_light_snow.png",    "weather/light_snow");
-ICON("weather_rain.png",          "weather/rain");
-ICON("weather_rain_storm.png",    "weather/rain_storm");
-ICON("weather_showers.png",       "weather/showers");
-ICON("weather_snow.png",          "weather/snow");
-ICON("weather_sun_clouds.png",    "weather/clouds");
-ICON("weather_sun_light_clouds.png",  "weather/light_clouds");
-ICON("weather_sun_mostly_cloudy.png", "weather/mostly_cloudy");
-ICON("weather_sunny.png",         "weather/sunny");
-ICON("weather_sun_rain.png",      "weather/sun_rain");
-ICON("weather_sun_snow.png",      "weather/sun_snow");
-ICON("weather_sun_storm.png",     "weather/sun_storm");
-ICON("weather_windy.png",         "weather/windy");
 
 ICON("favorite.png", "icon/favorite");
 ICON("playlist.png", "icon/playlist");

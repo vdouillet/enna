@@ -23,7 +23,6 @@ EDC = \
 elm/elm.edc \
 elm/video.edc \
 gad_date.edc \
-gad_weather.edc \
 icons.edc \
 stb.edc \
 player.edc
@@ -146,11 +145,9 @@ images/icons/flags/video/sd.png
 
 IMG_ICONS = \
 images/icons/icon_config.png \
-images/icon_games.png \
 images/icons/icon_music.png \
 images/icons/icon_photo.png \
 images/icons/icon_video.png \
-images/icons/icon_weather.png \
 images/icons/arrow_left.png \
 images/icons/arrow_right.png \
 images/icons/directory_512.png \
@@ -200,26 +197,6 @@ images/icons/mp_prev.png \
 images/icons/mp_rewind.png \
 images/icons/mp_stop.png
 
-IMG_WEATHER_ICONS = \
-images/icons/weather_cloudy.png \
-images/icons/weather_foggy.png \
-images/icons/weather_heavy_rain.png \
-images/icons/weather_ice.png \
-images/icons/weather_light_snow.png \
-images/icons/weather_rain.png \
-images/icons/weather_rain_storm.png \
-images/icons/weather_showers.png \
-images/icons/weather_snow.png \
-images/icons/weather_sun_clouds.png \
-images/icons/weather_sun_light_clouds.png \
-images/icons/weather_sun_mostly_cloudy.png \
-images/icons/weather_sunny.png \
-images/icons/weather_sun_rain.png \
-images/icons/weather_sun_snow.png \
-images/icons/weather_sun_storm.png \
-images/icons/weather_windy.png
-
-
 
 
 EXTRA_DIST = \
@@ -229,8 +206,7 @@ EXTRA_DIST = \
 	$(IMG_ICONS) \
 	$(ELM_IMG) \
 	$(IMG_MOVIE_FLAGS) \
-	$(IMG_MEDIACONTROLS) \
-	$(IMG_WEATHER_ICONS)
+	$(IMG_MEDIACONTROLS)
 
 stb.edj: Makefile $(EXTRA_DIST)
 	$(AM_V_GEN)$(EDJE_CC) $(EDJE_FLAGS) \

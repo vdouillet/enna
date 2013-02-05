@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-01-30 13:09+0100\n"
+"POT-Creation-Date: 2013-02-05 22:47+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kostyantyn Derets <ua.motofan@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -23,65 +23,65 @@ msgstr ""
 msgid "No media found!"
 msgstr "Источник не найден!"
 
-#: src/bin/enna.c:564
+#: src/bin/enna.c:505
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "МедиаЦентр Enna\n"
 
-#: src/bin/enna.c:565
+#: src/bin/enna.c:506
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr " Использование: %s [опции...]\n"
 
-#: src/bin/enna.c:566
+#: src/bin/enna.c:507
 #, c-format
 msgid " Available options:\n"
 msgstr " Доступные опции:\n"
 
-#: src/bin/enna.c:567
+#: src/bin/enna.c:508
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr "  -c, (--config):  Укажите конфигурационный файл.\n"
 
-#: src/bin/enna.c:568
+#: src/bin/enna.c:509
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "  -f, (--fs):      Принудительный полноэкранный режим.\n"
 
-#: src/bin/enna.c:569
+#: src/bin/enna.c:510
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "  -h, (--help):    Выводит это сообщение.\n"
 
-#: src/bin/enna.c:570
+#: src/bin/enna.c:511
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr ""
 "  -t, (--theme):   Укажите название темы, которая будет использована.\n"
 
-#: src/bin/enna.c:571
+#: src/bin/enna.c:512
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "  -g, (--geometry):Укажите размеры окна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:572
+#: src/bin/enna.c:513
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "  -g, (--geometry):Укажите размеры окна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:573
+#: src/bin/enna.c:514
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (--profile): Укажите профиль дисплея\n"
 
-#: src/bin/enna.c:574
+#: src/bin/enna.c:515
 #, c-format
 msgid "    Supported: "
 msgstr "Поддерживает:"
 
-#: src/bin/enna.c:578
+#: src/bin/enna.c:519
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version): Выводит номер версии Enna.\n"
@@ -110,11 +110,11 @@ msgstr "Нет<br>"
 msgid "continue using Enna"
 msgstr "Нет, продолжить работать в Enna"
 
-#: src/bin/module.c:269
+#: src/bin/module.c:166
 msgid "Modules"
 msgstr "Модули"
 
-#: src/bin/module.c:438
+#: src/bin/module.c:335
 msgid "No information provided"
 msgstr "Необходимая информация не задана"
 
@@ -123,91 +123,13 @@ msgstr "Необходимая информация не задана"
 msgid "Track #%02d (%02d:%02d)"
 msgstr "Дорожка №%02d (%02d:%02d)"
 
-#: src/bin/weather_api.c:406 src/bin/weather_api.c:439
-msgid "City"
-msgstr "Город"
-
-#: src/bin/weather_api.c:407
-msgid "Choose your City"
-msgstr "Найти Ваш Город"
-
-#: src/bin/weather_api.c:411
-msgid "Enter your City here"
-msgstr "Введите город"
-
-#: src/bin/weather_api.c:414 src/bin/weather_api.c:447
-#, fuzzy
-msgid "Remove"
-msgstr "Сменный носитель"
-
-#: src/bin/weather_api.c:440
-msgid "Choose your city"
-msgstr "Выберите город"
-
-#: src/bin/weather_api.c:452
-msgid "Add new city"
-msgstr "Добавить новый город"
-
-#: src/bin/weather_api.c:453
-msgid "Add more cities to the list"
-msgstr "Добавить больше городов в список"
-
-#: src/bin/weather_api.c:458
-msgid "Add"
-msgstr "Добавить"
-
-#: src/bin/weather_api.c:462
-msgid "Select unit"
-msgstr "Выбрать"
-
-#: src/bin/weather_api.c:463
-msgid "Select the unit to display temperature"
-msgstr "Выбрать единицу температуры"
-
-#: src/bin/weather_api.c:468
-msgid "°C"
-msgstr "градус Цельсия"
-
-#: src/bin/weather_api.c:468
-msgid "°F"
-msgstr "градус Фаренгейта"
-
-#: src/bin/weather_api.c:472
-msgid "Select hemisphere"
-msgstr "Выберите полушарие"
-
-#: src/bin/weather_api.c:473
-msgid "Select the hemisphere you are located in"
-msgstr "Выберите полушарие в котором Вы находитесь"
-
-#: src/bin/weather_api.c:478
-msgid "Northern"
-msgstr "Северное"
-
-#: src/bin/weather_api.c:478
-msgid "Southern"
-msgstr "Южное"
-
-#: src/bin/weather_api.c:722 src/modules/activity/weather/weather.c:290
-msgid "Weather"
-msgstr "Погода"
-
-#: src/modules/activity/bookstore/bookstore.c:319
-#: src/modules/activity/bookstore/bookstore.c:370
-msgid "Bookstore"
-msgstr "Книжный магазин"
-
-#: src/modules/activity/bookstore/bookstore.c:372
-msgid "Read your books"
-msgstr "Читать книги"
-
 #: src/modules/activity/configuration/configuration.c:206
 #: src/modules/activity/configuration/configuration.c:265
 msgid "Configuration"
 msgstr "Настройка"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:679
+#: src/modules/activity/configuration/configuration_sysinfo.c:670
 msgid "System information"
 msgstr "Информация о системе"
 
@@ -236,162 +158,116 @@ msgstr "Благодарности:"
 msgid "and"
 msgstr "И"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:105
+#: src/modules/activity/configuration/configuration_sysinfo.c:101
 msgid "Enna information"
 msgstr "Информация об Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:107
+#: src/modules/activity/configuration/configuration_sysinfo.c:103
 msgid "Enna:"
 msgstr "Enna"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:122
+#: src/modules/activity/configuration/configuration_sysinfo.c:113
 msgid "Video renderer:"
 msgstr "видео"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:183
+#: src/modules/activity/configuration/configuration_sysinfo.c:174
 msgid "Distribution:"
 msgstr "Дистрибутив"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:209
+#: src/modules/activity/configuration/configuration_sysinfo.c:200
 msgid "OS:"
 msgstr "ОС:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:217
+#: src/modules/activity/configuration/configuration_sysinfo.c:208
 msgid "for"
 msgstr "для"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:265
+#: src/modules/activity/configuration/configuration_sysinfo.c:232
+#: src/modules/activity/configuration/configuration_sysinfo.c:256
 msgid "Available CPUs:"
 msgstr " Доступные процессоры:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:296
+#: src/modules/activity/configuration/configuration_sysinfo.c:287
 #, fuzzy
 msgid ", running at"
 msgstr ", с частотой %d MHz"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:318
-#: src/modules/activity/configuration/configuration_sysinfo.c:338
+#: src/modules/activity/configuration/configuration_sysinfo.c:309
+#: src/modules/activity/configuration/configuration_sysinfo.c:329
 msgid "CPU Load:"
 msgstr "Загрузка процессора"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:408
+#: src/modules/activity/configuration/configuration_sysinfo.c:399
 msgid "Memory:"
 msgstr "Память"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:410
+#: src/modules/activity/configuration/configuration_sysinfo.c:401
 msgid "used on"
 msgstr "использовано"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:412
+#: src/modules/activity/configuration/configuration_sysinfo.c:403
 msgid "total"
 msgstr "полный объем"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:449
+#: src/modules/activity/configuration/configuration_sysinfo.c:440
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "<hilight>Разрешение экрана: </hilight>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:452
+#: src/modules/activity/configuration/configuration_sysinfo.c:443
 #, fuzzy
 msgid "at"
 msgstr "Данные"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:454
+#: src/modules/activity/configuration/configuration_sysinfo.c:445
 msgid "min:"
 msgstr "мин."
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:456
+#: src/modules/activity/configuration/configuration_sysinfo.c:447
 msgid "max:"
 msgstr "макс."
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:469
+#: src/modules/activity/configuration/configuration_sysinfo.c:460
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:472
+#: src/modules/activity/configuration/configuration_sysinfo.c:463
 #, fuzzy
 msgid "connected to VDR"
 msgstr "установлено соединение с VDR %s на %s (%s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:475
+#: src/modules/activity/configuration/configuration_sysinfo.c:466
 msgid "on"
 msgstr "на, в"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:480
+#: src/modules/activity/configuration/configuration_sysinfo.c:471
 #, fuzzy
 msgid "not connected"
 msgstr "нет соединений<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:492
+#: src/modules/activity/configuration/configuration_sysinfo.c:483
 #, fuzzy
 msgid "Available network interfaces:"
 msgstr "<hilight>Доступные сетевые соединения:</hilight><br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:510
+#: src/modules/activity/configuration/configuration_sysinfo.c:501
 msgid "IP:"
 msgstr "IP:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:515
+#: src/modules/activity/configuration/configuration_sysinfo.c:506
 #, fuzzy
 msgid "Netmask:"
 msgstr "Netmask: %s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:615
-#: src/modules/activity/configuration/configuration_sysinfo.c:635
+#: src/modules/activity/configuration/configuration_sysinfo.c:606
+#: src/modules/activity/configuration/configuration_sysinfo.c:626
 msgid "Default gateway:"
 msgstr "Default gateway"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:663
+#: src/modules/activity/configuration/configuration_sysinfo.c:654
 #, fuzzy
 msgid "None"
 msgstr "Нет<br>"
-
-#: src/modules/activity/games/games.c:221
-#, fuzzy, c-format
-msgid "no games found"
-msgstr "Источник не найден!"
-
-#: src/modules/activity/games/games.c:223
-#, fuzzy, c-format
-msgid "one game"
-msgstr "Системные игры"
-
-#: src/modules/activity/games/games.c:225
-#, fuzzy, c-format
-msgid "%d games"
-msgstr "%d Песня"
-
-#: src/modules/activity/games/games.c:409
-#: src/modules/activity/games/games.c:473
-msgid "Games"
-msgstr "Игры"
-
-#: src/modules/activity/games/games.c:475
-#, fuzzy
-msgid "Play all your games directly from Enna"
-msgstr "С помощью этого модуля Вы можете играть в игры прямо из enna"
-
-#: src/modules/activity/games/games_mame.c:81
-msgid "<c>M.A.M.E.</c><br>Game running..."
-msgstr "<c>M.A.M.E.</c><br>Запуск игры..."
-
-#: src/modules/activity/games/games_mame.c:318
-msgid ""
-"<c>Mame Error</c><br><b>No roms found in path</b><br>Roms must be located "
-"at: ~/.mame/roms<br>"
-msgstr ""
-"<c>Ошибка Mame</c><br><b>Нет roms в папке </b><br>Путь для Roms: ~/.mame/"
-"roms<br>"
-
-#: src/modules/activity/games/games_sys.c:161
-msgid "<c>System Games</c><br>Game running..."
-msgstr "<c>Системные Игры</c><br>Запуск игры..."
-
-#: src/modules/activity/games/games_sys.c:257
-#, fuzzy
-msgid "System Games"
-msgstr "Системные игры"
 
 #: src/modules/activity/music/music.c:106
 #, c-format
@@ -418,89 +294,19 @@ msgstr "Фото"
 msgid "Browse your photos and create slideshows"
 msgstr "Просмотреть все Ваши фото 'на стене' или как слайдшоу"
 
-#: src/modules/activity/tv/tv.c:107
-#, c-format
-msgid "Timer '%s' is due to start in %i minute"
-msgid_plural "Timer '%s' is due to start in %i minutes"
-msgstr[0] "Таймер '%s' запустится через %i минут"
-msgstr[1] "Timer '%s' is due to start in %i minute"
-
-#: src/modules/activity/tv/tv.c:110
-#, c-format
-msgid "Currently recording '%s'"
-msgstr "Сейчас записывается '%s'"
-
-#: src/modules/activity/tv/tv.c:119
-msgid "Recording in progress"
-msgstr "Идет запись"
-
-#: src/modules/activity/tv/tv.c:164 src/modules/activity/tv/tv.c:382
-msgid "Television"
-msgstr "Телевидение"
-
-#: src/modules/activity/tv/tv.c:384
-#, fuzzy
-msgid "View TV channels"
-msgstr "Смотреть телеканалы"
-
 #: src/modules/activity/video/video.c:116
 #, c-format
 msgid "%d Movies"
 msgstr "%d Фильмов"
 
-#: src/modules/activity/video/video.c:740
-#: src/modules/activity/video/video.c:826
+#: src/modules/activity/video/video.c:688
+#: src/modules/activity/video/video.c:774
 msgid "Video"
 msgstr "Видео"
 
-#: src/modules/activity/video/video.c:828
+#: src/modules/activity/video/video.c:776
 msgid "Play your videos"
 msgstr "Проиграть видео"
-
-#: src/modules/activity/weather/weather.c:347
-#, fuzzy
-msgid "Weather forecasts"
-msgstr "Прогноз погоды"
-
-#: src/modules/activity/weather/weather.c:349
-msgid "Show the weather at your location"
-msgstr "Показывать погоду в Вашем городе"
-
-#: src/modules/browser/cdda/cdda.c:95
-#, fuzzy
-msgid "Play audio CD"
-msgstr "Воспроизвести Аудио диск"
-
-#: src/modules/browser/cdda/cdda.c:164
-msgid "CDDA module"
-msgstr "Модуль CDDA"
-
-#: src/modules/browser/cdda/cdda.c:166
-#, fuzzy
-msgid "Listen your favorite CDs"
-msgstr "Слушайте Ваши любимые диски"
-
-#: src/modules/browser/dvd/dvd.c:61
-msgid "Play"
-msgstr "Играть"
-
-#: src/modules/browser/dvd/dvd.c:64
-#, fuzzy
-msgid "Play (with menus)"
-msgstr "Играть (с меню)"
-
-#: src/modules/browser/dvd/dvd.c:71
-#, fuzzy
-msgid "Watch DVD video"
-msgstr "Смотреть DVD видео"
-
-#: src/modules/browser/dvd/dvd.c:141
-msgid "DVD module"
-msgstr "Модуль DVD"
-
-#: src/modules/browser/dvd/dvd.c:143
-msgid "Watch movies from DVD"
-msgstr "Смотреть фильм с DVD"
 
 #: src/modules/browser/localfiles/localfiles.c:613
 #, fuzzy
@@ -516,170 +322,6 @@ msgstr "Обзор локальных файлов"
 #, fuzzy
 msgid "Browse files in your local file systems"
 msgstr "Обзор файлов на Вашем жестком диске"
-
-#: src/modules/browser/netstreams/netstreams.c:322
-#: src/modules/browser/netstreams/netstreams.c:338
-#, fuzzy
-msgid "Browse network streams"
-msgstr "Обзор сетевых трансляций"
-
-#: src/modules/browser/netstreams/netstreams.c:441
-msgid "Netstreams"
-msgstr "Сетевые трансляции"
-
-#: src/modules/browser/netstreams/netstreams.c:443
-#, fuzzy
-msgid "Browse and play network streams"
-msgstr "Обзор сетевых трансляций"
-
-#: src/modules/browser/podcasts/podcasts.c:216
-#, fuzzy
-msgid "Listen to podcasts"
-msgstr "Слушать подкасты"
-
-#: src/modules/browser/podcasts/podcasts.c:352
-msgid "Podcast browser"
-msgstr "Обозреватель подкастов"
-
-#: src/modules/browser/podcasts/podcasts.c:354
-msgid "Podcast module"
-msgstr "Модуль подкастов"
-
-#: src/modules/browser/shoutcast/shoutcast.c:335
-#, fuzzy
-msgid "SHOUTcast streaming"
-msgstr "Сетевые радио трансляции"
-
-#: src/modules/browser/shoutcast/shoutcast.c:384
-#, fuzzy
-msgid "SHOUTcast browser"
-msgstr "Обозреватель сетевых трансляций"
-
-#: src/modules/browser/shoutcast/shoutcast.c:386
-#, fuzzy
-msgid "Listen to SHOUTcast stream"
-msgstr "Слушать сетевую радио станцию"
-
-#: src/modules/browser/upnp/upnp.c:473
-#, fuzzy
-msgid "UPnP/DLNA media servers"
-msgstr "Медиа сервера UPnP/DLNA"
-
-#: src/modules/browser/upnp/upnp.c:526
-#, c-format
-msgid "Found new UPnP device '%s (%s)'"
-msgstr "Найдено новое UPnP устройство '%s (%s)'"
-
-#: src/modules/browser/upnp/upnp.c:610
-#, fuzzy
-msgid "UPnP/DLNA module"
-msgstr "Модуль UPnP / DLNA"
-
-#: src/modules/browser/upnp/upnp.c:612
-#, fuzzy
-msgid "This module allows Enna to browse contents from UPnP/DLNA media servers"
-msgstr "Этот модуль позволяет Enna читать файлы с UPnP/DLNA медиа серверов"
-
-#: src/modules/browser/valhalla/valhalla.c:669
-#, fuzzy
-msgid "Media library"
-msgstr "Медиа библиотека"
-
-#: src/modules/browser/valhalla/valhalla.c:710
-msgid "Valhalla module"
-msgstr "Модуль Valhalla"
-
-#: src/modules/browser/valhalla/valhalla.c:712
-msgid "Build a browseable catalog of your media files"
-msgstr "Сделать базу медиа-файлов"
-
-#: src/modules/volume/hal/hal_volume.c:39
-msgid "CD-ROM"
-msgstr "CD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:40
-msgid "CD-R"
-msgstr "CD-R"
-
-#: src/modules/volume/hal/hal_volume.c:41
-msgid "CD-RW"
-msgstr "CD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:42
-msgid "DVD-ROM"
-msgstr "DVD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:43
-msgid "DVD-RAM"
-msgstr "DVD-RAM"
-
-#: src/modules/volume/hal/hal_volume.c:44
-msgid "DVD-R"
-msgstr "DVD-R"
-
-#: src/modules/volume/hal/hal_volume.c:45
-msgid "DVD-RW"
-msgstr "DVD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:46
-msgid "DVD+R"
-msgstr "DVD+R"
-
-#: src/modules/volume/hal/hal_volume.c:47
-msgid "DVD+RW"
-msgstr "DVD+RW"
-
-#: src/modules/volume/hal/hal_volume.c:48
-msgid "DVD+R (DL)"
-msgstr "DVD-R (DL)"
-
-#: src/modules/volume/hal/hal_volume.c:49
-msgid "BD-ROM"
-msgstr "BD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:50
-msgid "BD-R"
-msgstr "BD-R"
-
-#: src/modules/volume/hal/hal_volume.c:51
-msgid "BD-RE"
-msgstr "BD-RE"
-
-#: src/modules/volume/hal/hal_volume.c:52
-msgid "HD-DVD-ROM"
-msgstr "HD-DVD-ROM"
-
-#: src/modules/volume/hal/hal_volume.c:53
-msgid "HD-DVD-R"
-msgstr "HD-DVD-R"
-
-#: src/modules/volume/hal/hal_volume.c:54
-msgid "HD-DVD-RW"
-msgstr "HD-DVD-RW"
-
-#: src/modules/volume/hal/hal_volume.c:55
-msgid "MagnetoOptical"
-msgstr "МагнитоОптика"
-
-#: src/modules/volume/hal/hal_volume.c:64
-msgid "CDDA"
-msgstr "CDDA"
-
-#: src/modules/volume/hal/hal_volume.c:65
-msgid "VCD"
-msgstr "VCD"
-
-#: src/modules/volume/hal/hal_volume.c:66
-msgid "SVCD"
-msgstr "SVCD"
-
-#: src/modules/volume/hal/hal_volume.c:67
-msgid "DVD"
-msgstr "DVD"
-
-#: src/modules/volume/hal/hal_volume.c:68
-msgid "Data"
-msgstr "Данные"
 
 #: src/modules/volume/mtab/mtab.c:78
 #, fuzzy, c-format
@@ -699,14 +341,284 @@ msgstr "Раздел из mtab"
 msgid "This module provide support for already mounted volumes"
 msgstr "Этот модуль обеспечивает поддержку уже монтированных томов"
 
-#: src/modules/volume/udev/udev.c:733
-#, fuzzy
-msgid "Volumes from udev"
-msgstr "Раздел из mtab"
+#~ msgid "City"
+#~ msgstr "Город"
 
-#: src/modules/volume/udev/udev.c:735
-msgid "This module provide support for removable volumes"
-msgstr "Этот модуль обеспечивает поддержку отсоединяемых томов"
+#~ msgid "Choose your City"
+#~ msgstr "Найти Ваш Город"
+
+#~ msgid "Enter your City here"
+#~ msgstr "Введите город"
+
+#, fuzzy
+#~ msgid "Remove"
+#~ msgstr "Сменный носитель"
+
+#~ msgid "Choose your city"
+#~ msgstr "Выберите город"
+
+#~ msgid "Add new city"
+#~ msgstr "Добавить новый город"
+
+#~ msgid "Add more cities to the list"
+#~ msgstr "Добавить больше городов в список"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Select unit"
+#~ msgstr "Выбрать"
+
+#~ msgid "Select the unit to display temperature"
+#~ msgstr "Выбрать единицу температуры"
+
+#~ msgid "°C"
+#~ msgstr "градус Цельсия"
+
+#~ msgid "°F"
+#~ msgstr "градус Фаренгейта"
+
+#~ msgid "Select hemisphere"
+#~ msgstr "Выберите полушарие"
+
+#~ msgid "Select the hemisphere you are located in"
+#~ msgstr "Выберите полушарие в котором Вы находитесь"
+
+#~ msgid "Northern"
+#~ msgstr "Северное"
+
+#~ msgid "Southern"
+#~ msgstr "Южное"
+
+#~ msgid "Weather"
+#~ msgstr "Погода"
+
+#~ msgid "Bookstore"
+#~ msgstr "Книжный магазин"
+
+#~ msgid "Read your books"
+#~ msgstr "Читать книги"
+
+#, fuzzy
+#~ msgid "no games found"
+#~ msgstr "Источник не найден!"
+
+#, fuzzy
+#~ msgid "one game"
+#~ msgstr "Системные игры"
+
+#, fuzzy
+#~ msgid "%d games"
+#~ msgstr "%d Песня"
+
+#~ msgid "Games"
+#~ msgstr "Игры"
+
+#, fuzzy
+#~ msgid "Play all your games directly from Enna"
+#~ msgstr "С помощью этого модуля Вы можете играть в игры прямо из enna"
+
+#~ msgid "<c>M.A.M.E.</c><br>Game running..."
+#~ msgstr "<c>M.A.M.E.</c><br>Запуск игры..."
+
+#~ msgid ""
+#~ "<c>Mame Error</c><br><b>No roms found in path</b><br>Roms must be located "
+#~ "at: ~/.mame/roms<br>"
+#~ msgstr ""
+#~ "<c>Ошибка Mame</c><br><b>Нет roms в папке </b><br>Путь для Roms: ~/.mame/"
+#~ "roms<br>"
+
+#~ msgid "<c>System Games</c><br>Game running..."
+#~ msgstr "<c>Системные Игры</c><br>Запуск игры..."
+
+#, fuzzy
+#~ msgid "System Games"
+#~ msgstr "Системные игры"
+
+#~ msgid "Timer '%s' is due to start in %i minute"
+#~ msgid_plural "Timer '%s' is due to start in %i minutes"
+#~ msgstr[0] "Таймер '%s' запустится через %i минут"
+#~ msgstr[1] "Timer '%s' is due to start in %i minute"
+
+#~ msgid "Currently recording '%s'"
+#~ msgstr "Сейчас записывается '%s'"
+
+#~ msgid "Recording in progress"
+#~ msgstr "Идет запись"
+
+#~ msgid "Television"
+#~ msgstr "Телевидение"
+
+#, fuzzy
+#~ msgid "View TV channels"
+#~ msgstr "Смотреть телеканалы"
+
+#, fuzzy
+#~ msgid "Weather forecasts"
+#~ msgstr "Прогноз погоды"
+
+#~ msgid "Show the weather at your location"
+#~ msgstr "Показывать погоду в Вашем городе"
+
+#, fuzzy
+#~ msgid "Play audio CD"
+#~ msgstr "Воспроизвести Аудио диск"
+
+#~ msgid "CDDA module"
+#~ msgstr "Модуль CDDA"
+
+#, fuzzy
+#~ msgid "Listen your favorite CDs"
+#~ msgstr "Слушайте Ваши любимые диски"
+
+#~ msgid "Play"
+#~ msgstr "Играть"
+
+#, fuzzy
+#~ msgid "Play (with menus)"
+#~ msgstr "Играть (с меню)"
+
+#, fuzzy
+#~ msgid "Watch DVD video"
+#~ msgstr "Смотреть DVD видео"
+
+#~ msgid "DVD module"
+#~ msgstr "Модуль DVD"
+
+#~ msgid "Watch movies from DVD"
+#~ msgstr "Смотреть фильм с DVD"
+
+#, fuzzy
+#~ msgid "Browse network streams"
+#~ msgstr "Обзор сетевых трансляций"
+
+#~ msgid "Netstreams"
+#~ msgstr "Сетевые трансляции"
+
+#, fuzzy
+#~ msgid "Browse and play network streams"
+#~ msgstr "Обзор сетевых трансляций"
+
+#, fuzzy
+#~ msgid "Listen to podcasts"
+#~ msgstr "Слушать подкасты"
+
+#~ msgid "Podcast browser"
+#~ msgstr "Обозреватель подкастов"
+
+#~ msgid "Podcast module"
+#~ msgstr "Модуль подкастов"
+
+#, fuzzy
+#~ msgid "SHOUTcast streaming"
+#~ msgstr "Сетевые радио трансляции"
+
+#, fuzzy
+#~ msgid "SHOUTcast browser"
+#~ msgstr "Обозреватель сетевых трансляций"
+
+#, fuzzy
+#~ msgid "Listen to SHOUTcast stream"
+#~ msgstr "Слушать сетевую радио станцию"
+
+#, fuzzy
+#~ msgid "UPnP/DLNA media servers"
+#~ msgstr "Медиа сервера UPnP/DLNA"
+
+#~ msgid "Found new UPnP device '%s (%s)'"
+#~ msgstr "Найдено новое UPnP устройство '%s (%s)'"
+
+#, fuzzy
+#~ msgid "UPnP/DLNA module"
+#~ msgstr "Модуль UPnP / DLNA"
+
+#, fuzzy
+#~ msgid ""
+#~ "This module allows Enna to browse contents from UPnP/DLNA media servers"
+#~ msgstr "Этот модуль позволяет Enna читать файлы с UPnP/DLNA медиа серверов"
+
+#, fuzzy
+#~ msgid "Media library"
+#~ msgstr "Медиа библиотека"
+
+#~ msgid "Valhalla module"
+#~ msgstr "Модуль Valhalla"
+
+#~ msgid "Build a browseable catalog of your media files"
+#~ msgstr "Сделать базу медиа-файлов"
+
+#~ msgid "CD-ROM"
+#~ msgstr "CD-ROM"
+
+#~ msgid "CD-R"
+#~ msgstr "CD-R"
+
+#~ msgid "CD-RW"
+#~ msgstr "CD-RW"
+
+#~ msgid "DVD-ROM"
+#~ msgstr "DVD-ROM"
+
+#~ msgid "DVD-RAM"
+#~ msgstr "DVD-RAM"
+
+#~ msgid "DVD-R"
+#~ msgstr "DVD-R"
+
+#~ msgid "DVD-RW"
+#~ msgstr "DVD-RW"
+
+#~ msgid "DVD+R"
+#~ msgstr "DVD+R"
+
+#~ msgid "DVD+RW"
+#~ msgstr "DVD+RW"
+
+#~ msgid "DVD+R (DL)"
+#~ msgstr "DVD-R (DL)"
+
+#~ msgid "BD-ROM"
+#~ msgstr "BD-ROM"
+
+#~ msgid "BD-R"
+#~ msgstr "BD-R"
+
+#~ msgid "BD-RE"
+#~ msgstr "BD-RE"
+
+#~ msgid "HD-DVD-ROM"
+#~ msgstr "HD-DVD-ROM"
+
+#~ msgid "HD-DVD-R"
+#~ msgstr "HD-DVD-R"
+
+#~ msgid "HD-DVD-RW"
+#~ msgstr "HD-DVD-RW"
+
+#~ msgid "MagnetoOptical"
+#~ msgstr "МагнитоОптика"
+
+#~ msgid "CDDA"
+#~ msgstr "CDDA"
+
+#~ msgid "VCD"
+#~ msgstr "VCD"
+
+#~ msgid "SVCD"
+#~ msgstr "SVCD"
+
+#~ msgid "DVD"
+#~ msgstr "DVD"
+
+#~ msgid "Data"
+#~ msgstr "Данные"
+
+#, fuzzy
+#~ msgid "Volumes from udev"
+#~ msgstr "Раздел из mtab"
+
+#~ msgid "This module provide support for removable volumes"
+#~ msgstr "Этот модуль обеспечивает поддержку отсоединяемых томов"
 
 #~ msgid "No lyrics found ..."
 #~ msgstr "Музыки не найдено..."

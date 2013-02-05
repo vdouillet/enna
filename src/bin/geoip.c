@@ -25,7 +25,6 @@
 
 #include "enna.h"
 #include "enna_config.h"
-#include "xml_utils.h"
 #include "url_utils.h"
 #include "utils.h"
 #include "logs.h"
@@ -38,15 +37,70 @@
 
 int ENNA_EVENT_GEO_LOC_DETECTED;
 
+typedef enum _TAG_ID
+{
+    TAG_ID_IP,
+    TAG_ID_COUNTRYCODE,
+    TAG_ID_CITY,
+    TAG_ID_LONGITUDE,
+    TAG_ID_LATITUDE,
+    TAG_ID_SENTINEL,
+}TAG_ID;
+
+static struct {
+    TAG_ID id;
+    const char *tag;
+    Eina_Bool found;
+    char *value;
+} xml_struct[] = {
+    { TAG_ID_IP, "Ip", EINA_FALSE, NULL},
+    { TAG_ID_COUNTRYCODE, "CountryCode", EINA_FALSE, NULL},
+    { TAG_ID_CITY, "City", EINA_FALSE, NULL},
+    { TAG_ID_LONGITUDE, "Latitude", EINA_FALSE, NULL},
+    { TAG_ID_LATITUDE, "Longitude", EINA_FALSE, NULL},
+    { TAG_ID_SENTINEL, NULL, 0},
+};
+    
+
+static Eina_Bool
+_xml_tag_cb(void *data, Eina_Simple_XML_Type type, const char *content,
+            unsigned offset, unsigned length)
+{
+   char buffer[length+1];
+   Eina_Array *array = data;
+   char str[512];
+   int i;
+
+   if (type == EINA_SIMPLE_XML_OPEN)
+     {
+         for (i = 0; xml_struct[i].tag; i++)
+         {
+             if (!strncmp(xml_struct[i].tag, content, strlen(xml_struct[i].tag)))
+                 xml_struct[i].found = EINA_TRUE;
+         }
+     }
+   else if (type == EINA_SIMPLE_XML_DATA)
+     {
+         for (i = 0; xml_struct[i].tag; i++)
+         {
+             if (xml_struct[i].found)
+             {
+                 xml_struct[i].value = strdup(content);
+             }
+         }
+     }
+
+   return EINA_TRUE;
+}
+
+
 static Eina_Bool
 url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev) 
 { 
-    xmlDocPtr doc = NULL;
-    xmlNode *n;
-    xmlChar *tmp;
     Ecore_Con_Event_Url_Data *urldata = ev;
     Geo *geo = NULL;
-    
+    int i;
+
     ecore_con_url_data_get(urldata->url_con); 
 
     if (!urldata->size)
@@ -55,56 +109,35 @@ url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev)
     enna_log(ENNA_MSG_EVENT, ENNA_MODULE_NAME,
              "Search Reply: %s", urldata->data);
 
-    /* parse the XML answer */
-    doc = get_xml_doc_from_memory((char*)urldata->data);
- 
-    if (!doc)
-        goto error;
-
-    n = xmlDocGetRootElement(doc);
-
-    /* check for existing city */
-    tmp = get_prop_value_from_xml_tree(n, "Status");
-    if (!tmp || xmlStrcmp(tmp, (unsigned char *) "OK"))
-    {
-        enna_log(ENNA_MSG_WARNING, ENNA_MODULE_NAME,
-                 "Error returned by website.");
-        if (tmp)
-            xmlFree(tmp);
-        goto error;
-    }
-    xmlFree(tmp);
-
     geo = calloc(1, sizeof(Geo));
 
-    tmp = get_prop_value_from_xml_tree(n, "Latitude");
-    if (tmp)
-    {
-        geo->latitude = enna_util_atof((char *) tmp);
-        xmlFree(tmp);
-    }
+    /* parse the XML answer */
+    eina_simple_xml_parse(urldata->data, urldata->size, EINA_TRUE, _xml_tag_cb, geo);
+    
+     for (i = 0; xml_struct[i].tag; i++)
+     {
+         printf("%s: %s\n",  xml_struct[i].tag,  xml_struct[i].value);
+     }
 
-    tmp = get_prop_value_from_xml_tree(n, "Longitude");
-    if (tmp)
-    {
-        geo->longitude = enna_util_atof((char *) tmp);
-        xmlFree(tmp);
-    }
-
-    tmp = get_prop_value_from_xml_tree(n, "CountryCode");
-    if (tmp)
-    {
-        geo->country = strdup((char *) tmp);
-        xmlFree(tmp);
-    }
-
-    tmp = get_prop_value_from_xml_tree(n, "City");
-    if (tmp)
-    {
-        geo->city = strdup((char *) tmp);
-        xmlFree(tmp);
-    }
-
+     switch (xml_struct[i].id)
+     {
+     case TAG_ID_COUNTRYCODE:
+         geo->country = xml_struct[TAG_ID_COUNTRYCODE].value;
+         break;
+     case TAG_ID_CITY :
+         geo->city = xml_struct[TAG_ID_CITY].value;
+         break;
+     case TAG_ID_LONGITUDE:
+         geo->longitude = enna_util_atof(xml_struct[TAG_ID_LONGITUDE].value);
+         break;
+     case TAG_ID_LATITUDE:
+         geo->latitude = enna_util_atof(xml_struct[TAG_ID_LATITUDE].value);
+         break;
+     default:
+         break;
+     }
+     
+     
     if (geo->city)
     {
         char res[256];
@@ -117,17 +150,11 @@ url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev)
         enna_log(ENNA_MSG_INFO, ENNA_MODULE_NAME,
                  "Geolocalized in: %s (%f ; %f).", geo->geo, geo->latitude, geo->longitude);
     }
-
+    
 error:
-    if (doc)
-    {
-        xmlFreeDoc(doc);
-        doc = NULL;
-    }
-
     enna->geo_loc = geo;
     ecore_event_add(ENNA_EVENT_GEO_LOC_DETECTED, NULL, NULL, NULL);
-
+    
     return 0; 
 } 
 

@@ -66,7 +66,6 @@ static Eina_Bool
 _xml_tag_cb(void *data, Eina_Simple_XML_Type type, const char *content,
             unsigned offset, unsigned length)
 {
-   char buffer[length+1];
    Eina_Array *array = data;
    char str[512];
    int i;
@@ -76,7 +75,10 @@ _xml_tag_cb(void *data, Eina_Simple_XML_Type type, const char *content,
          for (i = 0; xml_struct[i].tag; i++)
          {
              if (!strncmp(xml_struct[i].tag, content, strlen(xml_struct[i].tag)))
+             {
                  xml_struct[i].found = EINA_TRUE;
+                 break;
+             }
          }
      }
    else if (type == EINA_SIMPLE_XML_DATA)
@@ -85,7 +87,11 @@ _xml_tag_cb(void *data, Eina_Simple_XML_Type type, const char *content,
          {
              if (xml_struct[i].found)
              {
-                 xml_struct[i].value = strdup(content);
+                 char buffer[length+1];
+                 snprintf(buffer, sizeof(buffer), "%s", content);
+                 xml_struct[i].value = strdup(buffer);
+                 xml_struct[i].found = EINA_FALSE;
+                 break;
              }
          }
      }
@@ -104,7 +110,7 @@ url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev)
     ecore_con_url_data_get(urldata->url_con); 
 
     if (!urldata->size)
-        goto error;
+        return 0;
 
     enna_log(ENNA_MSG_EVENT, ENNA_MODULE_NAME,
              "Search Reply: %s", urldata->data);
@@ -114,29 +120,26 @@ url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev)
     /* parse the XML answer */
     eina_simple_xml_parse(urldata->data, urldata->size, EINA_TRUE, _xml_tag_cb, geo);
     
-     for (i = 0; xml_struct[i].tag; i++)
-     {
-         printf("%s: %s\n",  xml_struct[i].tag,  xml_struct[i].value);
-     }
-
-     switch (xml_struct[i].id)
-     {
-     case TAG_ID_COUNTRYCODE:
-         geo->country = xml_struct[TAG_ID_COUNTRYCODE].value;
-         break;
-     case TAG_ID_CITY :
-         geo->city = xml_struct[TAG_ID_CITY].value;
-         break;
-     case TAG_ID_LONGITUDE:
-         geo->longitude = enna_util_atof(xml_struct[TAG_ID_LONGITUDE].value);
-         break;
-     case TAG_ID_LATITUDE:
-         geo->latitude = enna_util_atof(xml_struct[TAG_ID_LATITUDE].value);
-         break;
-     default:
-         break;
-     }
-     
+    for (i = 0; xml_struct[i].tag; i++)
+    {
+        switch (xml_struct[i].id)
+        {
+        case TAG_ID_COUNTRYCODE:
+            geo->country = xml_struct[TAG_ID_COUNTRYCODE].value;
+            break;
+        case TAG_ID_CITY :
+            geo->city = xml_struct[TAG_ID_CITY].value;
+            break;
+        case TAG_ID_LONGITUDE:
+            geo->longitude = enna_util_atof(xml_struct[TAG_ID_LONGITUDE].value);
+            break;
+        case TAG_ID_LATITUDE:
+            geo->latitude = enna_util_atof(xml_struct[TAG_ID_LATITUDE].value);
+            break;
+        default:
+            break;
+        }
+    }
      
     if (geo->city)
     {
@@ -150,12 +153,11 @@ url_data_cb(void *data EINA_UNUSED, int ev_type EINA_UNUSED, void *ev)
         enna_log(ENNA_MSG_INFO, ENNA_MODULE_NAME,
                  "Geolocalized in: %s (%f ; %f).", geo->geo, geo->latitude, geo->longitude);
     }
-    
-error:
+
     enna->geo_loc = geo;
     ecore_event_add(ENNA_EVENT_GEO_LOC_DETECTED, NULL, NULL, NULL);
     
-    return 0; 
+    return 1; 
 } 
 
 

@@ -41,10 +41,6 @@ static Evas_Object *_config_panel_show(void *data);
 static void _config_panel_hide(void *data);
 #endif
 
-
-#ifdef BUILD_ACTIVITY_BOOKSTORE
-extern Enna_Module_Api enna_mod_activity_bookstore_api;
-#endif
 #ifdef BUILD_ACTIVITY_CONFIGURATION
 extern Enna_Module_Api enna_mod_activity_configuration_api;
 #endif
@@ -162,9 +158,7 @@ enna_module_init(void)
 
     /* Populate the array of available plugins statically */
     _plugins_array = eina_array_new(20);
-    #ifdef BUILD_ACTIVITY_BOOKSTORE
-        eina_array_push(_plugins_array, &enna_mod_activity_bookstore_api);
-    #endif
+
     #ifdef BUILD_ACTIVITY_CONFIGURATION
         eina_array_push(_plugins_array, &enna_mod_activity_configuration_api);
     #endif

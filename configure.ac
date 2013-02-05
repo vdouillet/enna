@@ -102,19 +102,6 @@ AM_CONDITIONAL([ENNA_BUILD_THEME], test "x${build_theme}" = "xyes")
 # Activity Modules #
 ####################
 
-# Bookstore
-want_activity_bookstore="no"
-AC_MSG_CHECKING(whether bookstore activity module is to be built)
-AC_ARG_ENABLE(activity-bookstore,
-  AS_HELP_STRING([--enable-activity-bookstore],[Enable bookstore Activity Module]),
-  [ want_activity_bookstore=$enableval ]
-)
-AC_MSG_RESULT($want_activity_bookstore)
-AM_CONDITIONAL(BUILD_ACTIVITY_BOOKSTORE, test "x$want_activity_bookstore" = "xyes")
-if test "x$want_activity_bookstore" = "xyes"; then
-  AC_DEFINE(BUILD_ACTIVITY_BOOKSTORE, 1, [bookstore Activity])
-fi
-
 # Configuration
 want_activity_configuration="yes"
 AC_MSG_CHECKING(whether configuration activity module is to be built)
@@ -704,7 +691,6 @@ src/Makefile
 src/bin/Makefile
 src/modules/Makefile
 src/modules/activity/Makefile
-src/modules/activity/bookstore/Makefile
 src/modules/activity/configuration/Makefile
 src/modules/activity/games/Makefile
 src/modules/activity/music/Makefile
@@ -762,7 +748,6 @@ echo "NLS................................ : $USE_NLS"
 echo
 echo "Supported Activity Modules:"
 echo
-echo "  Bookstore........................ : $want_activity_bookstore"
 echo "  Configuration.................... : $want_activity_configuration"
 echo "  Games............................ : $want_activity_games"
 echo "  Music............................ : $want_activity_music"
@@ -794,7 +779,6 @@ echo "Supported Gadget Modules:"
 echo
 echo "  Date............................. : $want_gadget_date"
 echo "  Dummy............................ : $want_gadget_dummy"
-echo "  Weather.......................... : $want_gadget_weather"
 echo
 echo "Supported Input Modules:"
 echo
@@ -818,9 +802,7 @@ echo
 echo "Suppported Themes:"
 echo
 echo "  default.......................... : $want_theme_default"
-echo "  phone............................ : $want_theme_phone"
 echo "  stb.............................. : $want_theme_stb"
-echo "  tablet........................... : $want_theme_tablet"
 echo
 echo "Now type 'make' ('gmake' on some systems) to compile $PACKAGE."
 echo

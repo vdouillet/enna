@@ -74,7 +74,6 @@ AM_CFLAGS += @LIBXRANDR_CFLAGS@
 enna_LDADD += @LIBXRANDR_LIBS@
 endif
 
-include ../modules/activity/bookstore/config.mak
 include ../modules/activity/configuration/config.mak
 include ../modules/activity/games/config.mak
 include ../modules/activity/music/config.mak
@@ -101,10 +100,6 @@ include ../modules/input/wiimote/config.mak
 include ../modules/volume/hal/config.mak
 include ../modules/volume/mtab/config.mak
 include ../modules/volume/udev/config.mak
-
-if BUILD_ACTIVITY_BOOKSTORE
-enna_SOURCES += $(SRCS_ACTIVITY_BOOKSTORE)
-endif
 
 if BUILD_ACTIVITY_CONFIGURATION
 enna_SOURCES += $(SRCS_ACTIVITY_CONFIGURATION)

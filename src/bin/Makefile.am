@@ -3,10 +3,10 @@
 AM_CPPFLAGS = \
 -DPACKAGE_LIB_DIR=\"$(libdir)\" \
 -DPACKAGE_BIN_DIR=\"$(bindir)\" \
--DPACKAGE_DATA_DIR=\"$(datadir)\"
+-DPACKAGE_DATA_DIR=\"$(datadir)\" \
+-DLOCALE_DIR=\"$(datadir)/locale\"
 
-
-AM_CFLAGS = @ENNA_CFLAGS@ @EVIL_CFLAGS@
+AM_CFLAGS = @ENNA_CFLAGS@
 
 bin_PROGRAMS = enna
 
@@ -48,7 +48,7 @@ kbdnav.c\
 videoplayer_obj.c \
 mediaplayer_emotion.c
 
-enna_LDADD = @ENNA_LIBS@ @EVIL_LIBS@
+enna_LDADD = @ENNA_LIBS@
 enna_LDFLAGS = -rdynamic
 
 if BUILD_LIBXRANDR

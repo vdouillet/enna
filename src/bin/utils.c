@@ -382,7 +382,7 @@ char *init_locale (void)
     char *curlocale=setlocale(LC_ALL, "");
     curlocale=curlocale?curlocale:setlocale(LC_ALL, "C");
     mylocale = curlocale?strdup(curlocale):NULL;
-    bindtextdomain(PACKAGE, LOCALEDIR);
+    bindtextdomain(PACKAGE, LOCALE_DIR);
     textdomain(PACKAGE);
 
     return mylocale;

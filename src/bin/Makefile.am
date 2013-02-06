@@ -31,7 +31,6 @@ view_list.c\
 view_list2.c\
 view_wall.c\
 mediaplayer_obj.c\
-xml_utils.c\
 url_utils.c\
 logs.c\
 parser_cdda.c\
@@ -145,7 +144,6 @@ view_list2.h\
 view_wall.h\
 mediaplayer.h\
 mediaplayer_obj.h\
-xml_utils.h\
 url_utils.h\
 logs.h\
 parser_cdda.h\

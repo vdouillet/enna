@@ -37,7 +37,6 @@ logs.c\
 parser_cdda.c\
 box.c\
 exit.c\
-weather_api.c\
 volume_notification.c\
 ini_parser.c\
 input.c\
@@ -153,7 +152,6 @@ parser_cdda.h\
 box.h\
 exit.h\
 gettext.h\
-weather_api.h\
 volume_notification.h\
 ini_parser.h\
 input.h\

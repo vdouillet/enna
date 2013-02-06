@@ -25,7 +25,6 @@
 #include "enna.h"
 #include "enna_config.h"
 #include "utils.h"
-#include "weather_api.h"
 #include "gadgets.h"
 #include "module.h"
 

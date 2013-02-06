@@ -51,7 +51,6 @@ struct _Smart_Data
 {
     Evas_Object *o_menu;
     Evas_Object *o_background;
-    Evas_Object *o_weather;
     Evas_Object *o_volume;
     Enna_File *selected;
     Input_Listener *listener;
@@ -227,7 +226,6 @@ enna_mainmenu_shutdown(Evas_Object *obj)
 
     ENNA_OBJECT_DEL(sd->o_menu);
     ENNA_OBJECT_DEL(sd->o_background);
-    ENNA_OBJECT_DEL(sd->o_weather);
     ENNA_OBJECT_DEL(sd->o_volume);
     EINA_LIST_FOREACH(sd->backgrounds, l, name)
     {

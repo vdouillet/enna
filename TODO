@@ -6,12 +6,9 @@
   * Bind enna event to video player.
   * Select last item in list when back button is pressed. 
   * Fix click event on list
-  * remove libvalhalla browser module. Keep libvalhlla as core dependancy for now for metadata grabbing, but remove browser library module.
-  * Remove not working browser modules : cdda, dvd, spotify, netstreams, podcast, shoutcast, upnp, valhalla. They need to be fixed to match the browser api. They never worked so remove this code instead of maintaining crap.
-  * Remove not working activities modules : bookstore games tv (weather?).
-  * Remove hal and udev modules. We need to use E_UDisk now E_HAl does't exist anymore.
   * Fix File header with credits, copyright and licence (which is lgpl)
 
 - v6 :
-  * Remove libvalhalla definitively and use our own parser based on EMS.
+  * Remove libvalhalla definitively and use our own parser based on EMS
+  * E_Udisk for disk detection.
 

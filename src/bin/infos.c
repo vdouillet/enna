@@ -1,7 +1,7 @@
 
 /*
- * GeeXboX Enna Media Center.
- * Copyright (C) 2005-2010 The Enna Project
+ * Enna Media Center
+ * Copyright (C) 2005-2013 Enna Team. All rights reserved.
  *
  * This file is part of Enna.
  *

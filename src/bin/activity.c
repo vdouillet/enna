@@ -1,7 +1,6 @@
 /*
- * GeeXboX Enna Media Center.
- * Copyright (C) 2005-2010 The Enna Project
- *
+ * Enna Media Center.
+ * Copyright (C) 2005-2012 The Enna Project
  * This file is part of Enna.
  *
  * Enna is free software; you can redistribute it and/or

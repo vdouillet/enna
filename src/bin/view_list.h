@@ -26,7 +26,7 @@
 #include "vfs.h"
 #include "input.h"
 
-Evas_Object *enna_list_add (Evas_Object *parent);
+Evas_Object *enna_list_add (Evas_Object *parent, Enna_File *selected);
 void enna_list_file_append(Evas_Object *obj, Enna_File *file,
     void (*func_activated) (void *data), void *data);
 void enna_list_file_remove(Evas_Object *obj, Enna_File *file);
@@ -34,6 +34,7 @@ void enna_list_file_update(Evas_Object *obj, Enna_File *file);
 Eina_List* enna_list_files_get(Evas_Object* obj);
 int enna_list_selected_get(Evas_Object *obj);
 void enna_list_select_nth(Evas_Object *obj, int nth);
+void enna_list_select_file(Evas_Object *obj, Enna_File *file);
 Eina_Bool enna_list_input_feed(Evas_Object *obj, enna_input event);
 void * enna_list_selected_data_get(Evas_Object *obj);
 int enna_list_jump_label(Evas_Object *obj, const char *label);

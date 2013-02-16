@@ -52,6 +52,7 @@ struct _Smart_Data
     Enna_File *file;
     const char *root_uri;
     Eina_List *visited;
+    Enna_File *prev;
     struct
     {
         Evas_Object *(*view_add)(Smart_Data *sd);
@@ -106,7 +107,7 @@ _browser_view_list_add(Smart_Data *sd)
 
     if (!sd) return NULL;
 
-    view = enna_list_add(sd->o_layout);
+    view = enna_list_add(sd->o_layout, sd->prev);
 
     elm_layout_content_set(sd->o_layout, "enna.swallow.content", view);
     evas_object_smart_callback_add(view, "hilight", _view_hilight_cb, sd);
@@ -347,13 +348,16 @@ _browse_back(Smart_Data *sd)
     if (!cur || cur->uri == sd->root_uri)
         evas_object_smart_callback_call (sd->o_layout, "root", NULL);
 
+    sd->prev = cur;
     sd->visited = eina_list_remove(sd->visited, cur);
     prev = (Enna_File*)eina_list_nth(sd->visited,
                                      eina_list_count(sd->visited) - 1);
+
     if (!prev)
     {
          prev = enna_file_menu_add("main_menu", sd->root_uri, "Main Menu", "icon/home");
     }
+
 
     _browse(sd, prev, EINA_TRUE);
 
@@ -388,6 +392,7 @@ _view_event(Smart_Data *sd, enna_input event)
 
             if (!cb_data)
                 break;
+            sd->prev = NULL;
             _browse(sd, cb_data->file, EINA_FALSE);
             return ENNA_EVENT_BLOCK;
             break;
@@ -473,6 +478,7 @@ enna_browser_obj_root_set(Evas_Object *obj, const char *uri)
         enna_file_free(sd->root);
     sd->root_uri = eina_stringshare_add(uri);
     sd->root = enna_file_menu_add("main_menu", uri, "Main Menu", "icon/home");
+    sd->prev = NULL;
     _browse(sd, sd->root, EINA_FALSE);
 }
 

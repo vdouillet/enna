@@ -45,6 +45,7 @@ struct _List_Item
 
 struct _Smart_Data
 {
+    Enna_File *selected;
     Evas_Object *obj;
     Eina_List *items;
 };
@@ -444,13 +445,14 @@ _del_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj, void *event_info EINA
 }
 
 Evas_Object *
-enna_list_add(Evas_Object *parent)
+enna_list_add(Evas_Object *parent, Enna_File *selected)
 {
     Evas_Object *obj;
     Smart_Data *sd;
 
     sd = calloc(1, sizeof(Smart_Data));
 
+    sd->selected = selected;
     obj = elm_genlist_add(parent);
     /* Don't let elm focused genlist object, keys are handle by enna */
     elm_object_focus_allow_set(obj, EINA_FALSE);
@@ -525,8 +527,12 @@ enna_list_file_append(Evas_Object *obj, Enna_File *file,
     }
     sd->items = eina_list_append(sd->items, it);
     /* Select first item */
-    if (eina_list_count(sd->items) == 1)
+    if (!sd->selected && (eina_list_count(sd->items) == 1))
         enna_list_select_nth(obj, 0);
+    else if (file && sd->selected && !strcmp(file->uri, sd->selected->uri))
+        enna_list_select_file(obj, sd->selected);
+       
+
 }
 
 void
@@ -577,6 +583,24 @@ enna_list_select_nth(Evas_Object *obj, int nth)
     _smart_select_item(sd, nth);
 }
 
+void
+enna_list_select_file(Evas_Object *obj, Enna_File *file)
+{
+    Smart_Data *sd = evas_object_data_get(obj, "sd");
+    int nth = 0;
+    Eina_List *l;
+    List_Item *it;
+
+     EINA_LIST_FOREACH(sd->items, l, it)
+     {
+         if (it && it->file && !strcmp(it->file->uri, file->uri))
+             break;
+         nth++;
+     }
+     _smart_select_item(sd, nth);
+}
+
+
 Eina_List *
 enna_list_files_get(Evas_Object* obj)
 {
@@ -586,7 +610,8 @@ enna_list_files_get(Evas_Object* obj)
     List_Item *it;
 
     EINA_LIST_FOREACH(sd->items, l, it)
-        files = eina_list_append(files, it->file);
+        if (it && it->file)
+            files = eina_list_append(files, it->file);
 
     return files;
 }

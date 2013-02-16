@@ -76,7 +76,8 @@ _item_click_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, vo
 
     /* Don't activate when user is scrolling list */
     if (ev->event_flags & EVAS_EVENT_FLAG_ON_HOLD)
-        return;
+        return; 
+
     _item_activate(item);
 }
 
@@ -96,7 +97,7 @@ _item_realized_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *ev
    Evas_Object *o_item;
    List_Item *li;
 
-   o_item = (Evas_Object*) elm_object_item_widget_get(item);
+   o_item = elm_object_item_part_content_get(item, "event");
    evas_object_event_callback_add(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb, item);
 
    li = (List_Item*)elm_object_item_data_get(item);
@@ -122,7 +123,7 @@ _item_unrealized_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *
     Evas_Object *o_item;
     List_Item *li;
 
-    o_item = (Evas_Object*)elm_object_item_widget_get(item);
+    o_item = elm_object_item_part_content_get(item, "event");
     evas_object_event_callback_del(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb);
 
     li = (List_Item*)elm_object_item_data_get(item);
@@ -276,7 +277,6 @@ _list_item_track_icon_get(void *data, Evas_Object *obj, const char *part)
             return NULL;
 
         starred = enna_file_meta_get(li->file, "starred");
-        printf("Starred : %s\n", starred);
         if (!starred)
             return NULL;
         ic = elm_icon_add(obj);
@@ -303,7 +303,6 @@ _list_item_track_icon_get(void *data, Evas_Object *obj, const char *part)
         }
         eina_stringshare_del(tmp);
         ic = elm_icon_add(obj);
-        printf("PLAYING icon add\n");
         elm_image_file_set(ic, enna_config_theme_get(), "icon/mp_play");
         evas_object_size_hint_min_set(ic, 24, 24);
         evas_object_show(ic);

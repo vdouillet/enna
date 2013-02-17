@@ -109,7 +109,6 @@ endif
 
 if BUILD_INPUT_LIRC
 enna_SOURCES += $(SRCS_INPUT_LIRC)
-enna_LDADD += @LIRC_LIBS@
 endif
 
 if BUILD_VOLUME_MTAB

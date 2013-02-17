@@ -98,7 +98,7 @@ _item_realized_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *ev
    Evas_Object *o_item;
    List_Item *li;
 
-   o_item = elm_object_item_part_content_get(item, "event");
+   o_item = elm_object_item_part_content_get(item, "elm.swallow.event");
    evas_object_event_callback_add(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb, item);
 
    li = (List_Item*)elm_object_item_data_get(item);
@@ -124,7 +124,7 @@ _item_unrealized_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *
     Evas_Object *o_item;
     List_Item *li;
 
-    o_item = elm_object_item_part_content_get(item, "event");
+    o_item = elm_object_item_part_content_get(item, "elm.swallow.event");
     evas_object_event_callback_del(o_item, EVAS_CALLBACK_MOUSE_UP,_item_click_cb);
 
     li = (List_Item*)elm_object_item_data_get(item);
@@ -208,6 +208,13 @@ _list_item_default_icon_get(void *data, Evas_Object *obj, const char *part)
         evas_object_size_hint_min_set(ic, 24, 24);
         evas_object_show(ic);
         return ic;
+    }
+    else if (!strcmp(part, "elm.swallow.event"))
+    {
+        Evas_Object *r;
+        r = evas_object_rectangle_add(evas_object_evas_get(obj));
+        evas_object_color_set(r, 0, 0, 0, 0);
+        return r;
     }
 
     return NULL;
@@ -309,7 +316,13 @@ _list_item_track_icon_get(void *data, Evas_Object *obj, const char *part)
         evas_object_show(ic);
         return ic;
     }
-
+    else if (!strcmp(part, "elm.swallow.event"))
+    {
+        Evas_Object *r;
+        r = evas_object_rectangle_add(evas_object_evas_get(obj));
+        evas_object_color_set(r, 0, 0, 0, 0);
+        return r;
+    }
 
     return NULL;
 }
@@ -378,6 +391,13 @@ _list_item_film_icon_get(void *data, Evas_Object *obj, const char *part)
         elm_image_file_set(ic, enna_config_theme_get(), "icon/played");
         evas_object_show(ic);
         return ic;
+    }
+    else if (!strcmp(part, "elm.swallow.event"))
+    {
+        Evas_Object *r;
+        r = evas_object_rectangle_add(evas_object_evas_get(obj));
+        evas_object_color_set(r, 0, 0, 0, 0);
+        return r;
     }
 
     return NULL;

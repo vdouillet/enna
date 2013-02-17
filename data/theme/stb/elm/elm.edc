@@ -1314,13 +1314,21 @@ group { name: "elm/genlist/item/default/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text";
-   data.item: "contents" "elm.swallow.icon elm.swallow.starred elm.swallow.end";
+   data.item: "contents" "elm.swallow.icon elm.swallow.starred elm.swallow.end elm.swallow.event";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
       image: "sel_bg.png" COMP;
    }
    parts {   
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+       }
       part { name: "bg";
  
          mouse_events: 0;
@@ -1491,13 +1499,21 @@ group { name: "elm/genlist/item_odd/default/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text";
-   data.item: "contents" "elm.swallow.playing elm.swallow.icon elm.swallow.end elm.swallow.label";
+   data.item: "contents" "elm.swallow.playing elm.swallow.icon elm.swallow.end elm.swallow.label elm.swallow.event";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
       image: "sel_bg.png" COMP;
    }
    parts {   
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+       }
       part { name: "bg";
  
          mouse_events: 0;
@@ -1667,13 +1683,21 @@ group { name: "elm/genlist/item/track/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text.trackno elm.text.title elm.text.length";
-   data.item: "contents" "elm.swallow.playing elm.swallow.starred";
+   data.item: "contents" "elm.swallow.playing elm.swallow.starred elm.swallow.event";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
       image: "sel_bg.png" COMP;
    }
    parts {   
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+       }
       part { name: "bg";
  
          mouse_events: 0;
@@ -1875,13 +1899,21 @@ group { name: "elm/genlist/item_odd/track/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text.trackno elm.text.title elm.text.length";
-   data.item: "contents" "elm.swallow.playing elm.swallow.starred";
+   data.item: "contents" "elm.swallow.playing elm.swallow.starred elm.swallow.event";
    data.item: "treesize" "20";
    images {
       image: "sel_bg.png" COMP;
    }
    parts {   
-      part { name: "bg";
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+       }
+       part { name: "bg";
  
          mouse_events: 0;
          description { state: "default" 0.0;
@@ -2085,13 +2117,21 @@ group { name: "elm/genlist/item/film/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text.title elm.text.episode";
-   data.item: "contents" "elm.swallow.played";
+   data.item: "contents" "elm.swallow.played elm.swallow.event";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
       image: "sel_bg.png" COMP;
    }
-   parts {   
+   parts {
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+         }
+      }
       part { name: "bg";
  
          mouse_events: 0;
@@ -2253,13 +2293,21 @@ group { name: "elm/genlist/item_odd/film/enna";
    data.item: "stacking" "above";
    data.item: "selectraise" "on";
    data.item: "texts" "elm.text.title elm.text.episode";
-   data.item: "contents" "elm.swallow.played";
+   data.item: "contents" "elm.swallow.played elm.swallow.event";
    data.item: "treesize" "20";
    //      data.item: "states" "";
    images {
       image: "sel_bg.png" COMP;
    }
    parts {   
+       part { name: "elm.swallow.event";
+          type: RECT;
+          mouse_events: 1;
+          description { state: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+       }
       part { name: "bg";
  
          mouse_events: 0;

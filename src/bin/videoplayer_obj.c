@@ -432,6 +432,7 @@ enna_view_player_video_add(Evas_Object *parent)
 void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 {
     const char *cover;
+    const char *title;
 
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
@@ -441,7 +442,17 @@ void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 
    elm_video_file_set(priv->video, f->mrl);
 
-   elm_object_part_text_set(priv->layout, "title.text", enna_file_meta_get(f, "title"));
+   title = enna_file_meta_get(f, "title");
+   if (title)
+   {
+       elm_object_part_text_set(priv->layout, "title.text", title);
+       eina_stringshare_del(title);
+   }   
+   else
+   {
+       title = ecore_file_file_get(f->mrl);
+       elm_object_part_text_set(priv->layout, "title.text", title);
+   }
 
    cover = enna_file_meta_get(f, "cover");
    if (cover)

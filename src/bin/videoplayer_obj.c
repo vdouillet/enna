@@ -100,7 +100,7 @@ int _enna_log_dom_global;
  *                                  Local                                     *
  *============================================================================*/
 
-#define OSD_TIMER    10.0
+#define OSD_TIMER    4.0
 
 typedef struct _Enna_View_Player_Video_Data Enna_View_Player_Video_Data;
 
@@ -212,7 +212,7 @@ _set_osd_timer(Enna_View_Player_Video_Data *priv, double t)
 {
    FREE_NULL_FUNC(ecore_timer_del, priv->osd_timer);
 
-   if (t > 0.0)
+   if (t >= 0.0)
      priv->osd_timer = ecore_timer_add(t, _osd_timer_cb, priv);
    elm_object_signal_emit(priv->layout, "show,osd", "enna");
 }
@@ -236,6 +236,42 @@ _update_time_part(Evas_Object *obj, const char *part, double t)
    elm_object_part_text_set(obj, part, eina_strbuf_string_get(str));
 
    eina_strbuf_free(str);
+}
+
+static void
+_slider_position_update_cb(void *data,
+                           Evas_Object *obj EINA_UNUSED,
+                           const char *emission EINA_UNUSED,
+                           const char *source EINA_UNUSED)
+{
+    Enna_View_Player_Video_Data *priv = data;
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double vx, vy;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &vx, &vy);
+
+    pos = vx *  emotion_object_play_length_get(emotion);
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+    timestamp = time(NULL);
+    timestamp += emotion_object_play_length_get(emotion) - pos;
+    t = localtime(&timestamp);
+    str = eina_strbuf_new();
+    eina_strbuf_append_printf(str, "End at %02dh%02d", t->tm_hour, t->tm_min);
+    elm_object_part_text_set(priv->layout, "time_end_at.text", eina_strbuf_string_get(str));
+    eina_strbuf_free(str);
+
+    emotion_object_position_set(emotion, pos);
 }
 
 static void 
@@ -361,7 +397,6 @@ _mouse_move_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, vo
 {
     Enna_View_Player_Video_Data *priv = data;
 
-    printf("Mouse move\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
 
@@ -371,7 +406,6 @@ _mouse_down_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, vo
     Enna_View_Player_Video_Data *priv = data;
 
     priv->on_hold = EINA_TRUE;
-    printf("Mouse down\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
 
@@ -381,9 +415,36 @@ _mouse_up_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void
     Enna_View_Player_Video_Data *priv = data;
 
     priv->on_hold = EINA_FALSE;
-    printf("Mouse up\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
+
+static void
+_drag_cb(void *data,
+         Evas_Object *obj EINA_UNUSED,
+         const char *emission,
+         const char *source)
+{
+    Enna_View_Player_Video_Data *priv = data;
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double v;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &v, NULL);
+
+    pos = v *  emotion_object_play_length_get(emotion);
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+}
+
 
 /*============================================================================*
  *                                 Global                                     *
@@ -421,6 +482,9 @@ enna_view_player_video_add(Evas_Object *parent)
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_MOVE, _mouse_move_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_DOWN, _mouse_down_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_UP, _mouse_up_cb, priv);
+
+   elm_layout_signal_callback_add(layout, "drag", "*", _drag_cb, priv);
+   elm_layout_signal_callback_add(layout, "drag,stop", "*", _slider_position_update_cb, priv);
 
    emotion_object_init(emotion, mp_cfg.engine);
 
@@ -476,14 +540,20 @@ void enna_view_player_video_play(Evas_Object *o)
 {
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
-   elm_video_play(priv->video);
+   if (!elm_video_is_playing_get(priv->video))
+       elm_video_play(priv->video);
+   else
+       elm_video_pause(priv->video);
 }
 
 void enna_view_player_video_pause(Evas_Object *o)
 {
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
-   elm_video_pause(priv->video);
+   if (!elm_video_is_playing_get(priv->video))
+       elm_video_play(priv->video);
+   else
+       elm_video_pause(priv->video);
 }
 
 void enna_view_player_video_stop(Evas_Object *o)
@@ -498,3 +568,42 @@ void enna_videoplayer_obj_cfg_register(void)
     enna_config_section_parser_register(&cfg_mediaplayer);
 }
 
+void enna_view_video_player_show_osd(Evas_Object *o, Eina_Bool show)
+{
+    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
+
+    if (show)
+        _set_osd_timer(priv, OSD_TIMER);
+    else
+        _set_osd_timer(priv, 0);
+}
+
+void enna_view_video_player_seek(Evas_Object *o, double time)
+{ 
+    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double v;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &v, NULL);
+
+    pos = v *  emotion_object_play_length_get(emotion) + time;
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+    v = pos / emotion_object_play_length_get(emotion);
+
+   edje = elm_layout_edje_get(priv->layout);
+   edje_object_part_drag_value_set(edje, "time.slider", v, v);
+
+   emotion_object_position_set(emotion, pos);
+
+}

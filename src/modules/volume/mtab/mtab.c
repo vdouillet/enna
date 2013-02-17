@@ -74,8 +74,8 @@ mtab_add_mnt(MTAB_TYPE t, char *fsname, char *dir)
             return;
         strncpy(srv, fsname, p - fsname);
         strcpy(share, p + 1);
-        share[strlen(share)-1] = '\0';
-        snprintf(name, sizeof(name), _("[NFS] %s "), ecore_file_file_get(share));
+        share[strlen(share)] = '\0';
+        snprintf(name, sizeof(name), _("[NFS] %s"), ecore_file_file_get(share));
         type = VOLUME_TYPE_NFS;
         break;
 

@@ -23,6 +23,6 @@
 #define VIDEO_H
 
 void movie_start_playback (int resume);
-void media_controls_display (int show);
+void media_controls_display (Eina_Bool show);
 
 #endif /* VIDEO_H */

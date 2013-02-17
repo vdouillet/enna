@@ -1,6 +1,6 @@
 /*
  * Enna Media Center.
- * Copyright (C) 2005-2012 The Enna Project
+ * Copyright (C) 2005-2013 Enna Team. All rights reserved.
  * This file is part of Enna.
  *
  * Enna is free software; you can redistribute it and/or

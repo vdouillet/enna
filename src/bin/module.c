@@ -62,7 +62,7 @@ extern Enna_Module_Api enna_mod_gadget_date_api;
 #ifdef BUILD_GADGET_DUMMY
 extern Enna_Module_Api enna_mod_gadget_dummy_api;
 #endif
-#ifdef BUILD_INPUT_KBD
+#ifdef BUILD_INPUT_KEYBOARD
 extern Enna_Module_Api enna_mod_input_kbd_api;
 #endif
 #ifdef BUILD_INPUT_LIRC
@@ -131,7 +131,7 @@ enna_module_init(void)
     #ifdef BUILD_GADGET_DUMMY
         eina_array_push(_plugins_array, &enna_mod_gadget_dummy_api);
     #endif
-    #ifdef BUILD_INPUT_KBD
+    #ifdef BUILD_INPUT_KEYBOARD
         eina_array_push(_plugins_array, &enna_mod_input_kbd_api);
     #endif
     #ifdef BUILD_INPUT_LIRC

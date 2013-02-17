@@ -1,4 +1,5 @@
 
+
 dnl use: ENNA_CHECK(system, name, want_module)
 
 AC_DEFUN([ENNA_CHECK_MODULE],
@@ -24,6 +25,7 @@ AC_ARG_ENABLE(m4_defn([DOWNSYS])[-]m4_defn([DOWN]),
 
 AC_MSG_CHECKING([whether $2 $1 module is to be built])
 AC_MSG_RESULT([$want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])])
+
 
 if test "x${want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])}" = "xyes"; then
    AC_DEFINE([BUILD_]m4_defn([UPSYS])[_]m4_defn([UP]), [1], [$2])

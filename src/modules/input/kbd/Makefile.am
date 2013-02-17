@@ -16,7 +16,7 @@ AM_CPPFLAGS = \
 -I$(top_srcdir)/src/modules \
 @ENNA_CFLAGS@
 
-if BUILD_INPUT_KBD
+if BUILD_INPUT_KEYBOARD
 
 pkgdir = $(libdir)/enna/modules
 

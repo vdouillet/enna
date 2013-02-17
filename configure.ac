@@ -141,8 +141,6 @@ PKG_CHECK_EXISTS(
    [PKG_CHECK_MODULES([dummy], [${requirements_hard}])])
  
 ## Activity Modules
-
-
  
 # Configuration
 ENNA_CHECK_MODULE([Activity], [Configuration], [yes])
@@ -164,6 +162,31 @@ ENNA_CHECK_MODULE([Gadget], [Date], [yes])
 # Dummy gadget
 ENNA_CHECK_MODULE([Gadget], [Dummy], [no])
 
+## Browser Modules
+
+# Local Files
+ENNA_CHECK_MODULE([Browser], [LocalFiles], [yes])
+
+## Input Modules
+
+# Keyboard
+ENNA_CHECK_MODULE([Input], [Keyboard], [yes])
+
+have_input_lirc=no
+AC_CHECK_HEADER(lirc/lirc_client.h, have_input_lirc=yes)
+if test "x$have_input_lirc" = "xyes"; then
+  AC_DEFINE([BUILD_INPUT_LIRC], [1], [Define if LIRC client lib is present])
+  have_input_lirc="yes"
+  LIRC_LIBS=-llirc_client
+  AC_SUBST(LIRC_LIBS)
+fi
+AM_CONDITIONAL(BUILD_INPUT_LIRC, test "x$have_input_lirc" = "xyes")
+
+## Volume Modules
+
+# mtab
+ENNA_CHECK_MODULE([Volume], [mtab], [yes])
+
 PKG_CHECK_MODULES([ENNA], [${requirements}])
 
 ### Checks for header files
@@ -175,68 +198,6 @@ PKG_CHECK_MODULES([ENNA], [${requirements}])
 ### Checks for compiler characteristics
 
 AM_PROG_CC_C_O
-
-###################
-# Browser Modules #
-###################
-
-# Local Files
-want_browser_localfiles="yes"
-AC_MSG_CHECKING(whether localfiles browser module is to be built)
-AC_ARG_ENABLE(browser-localfiles,
-  AS_HELP_STRING([--enable-browser-localfiles],[Enable Local Files Browser Module]),
-  [ want_browser_localfiles=$enableval ]
-)
-AC_MSG_RESULT($want_browser_localfiles)
-AM_CONDITIONAL(BUILD_BROWSER_LOCALFILES, test "x$want_browser_localfiles" = "xyes")
-if test "x$want_browser_localfiles" = "xyes"; then
-  AC_DEFINE(BUILD_BROWSER_LOCALFILES, 1, [Localfiles Browser])
-fi
-
-#################
-# Input Modules #
-#################
-
-# Keyboard
-want_input_keyboard="yes"
-AC_MSG_CHECKING(whether keyboard input module is to be built)
-AC_ARG_ENABLE(input-keyboard,
-  AS_HELP_STRING([--enable-input-keyboard],[Enable Keyboard Input Module]),
-  [ want_input_keyboard=$enableval ]
-)
-AC_MSG_RESULT($want_input_keyboard)
-AM_CONDITIONAL(BUILD_INPUT_KBD, test "x$want_input_keyboard" = "xyes")
-if test "x$want_input_keyboard" = "xyes"; then
-  AC_DEFINE(BUILD_INPUT_KBD, 1, [Keyboard Input])
-fi
-
-# LIRC
-have_input_lirc=no
-AC_CHECK_HEADER(lirc/lirc_client.h, have_input_lirc=yes)
-if test "x$have_input_lirc" = "xyes"; then
-  AC_DEFINE([BUILD_INPUT_LIRC], [1], [Define if LIRC client lib is present])
-  have_input_lirc="yes"
-  LIRC_LIBS=-llirc_client
-  AC_SUBST(LIRC_LIBS)
-fi
-AM_CONDITIONAL(BUILD_INPUT_LIRC, test "x$have_input_lirc" = "xyes")
-
-##################
-# Volume Modules #
-##################
-
-# mtab
-want_volume_mtab="yes"
-AC_MSG_CHECKING(whether mtab volume module is to be built)
-AC_ARG_ENABLE(volume-mtab,
-  AS_HELP_STRING([--enable-volume-mtab],[Enable mtab Volume Module]),
-  [ want_volume_mtab=$enableval ]
-)
-AC_MSG_RESULT($want_volume_mtab)
-AM_CONDITIONAL(BUILD_VOLUME_MTAB, test "x$want_volume_mtab" = "xyes")
-if test "x$want_volume_mtab" = "xyes"; then
-  AC_DEFINE(BUILD_VOLUME_MTAB, 1, [mtab Volume])
-fi
 
 ##############
 # Librairies #

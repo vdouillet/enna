@@ -1322,11 +1322,11 @@ group { name: "elm/genlist/item/default/enna";
    }
    parts {   
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
           }
        }
       part { name: "bg";
@@ -1507,11 +1507,11 @@ group { name: "elm/genlist/item_odd/default/enna";
    }
    parts {   
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
           }
        }
       part { name: "bg";
@@ -1691,11 +1691,11 @@ group { name: "elm/genlist/item/track/enna";
    }
    parts {   
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
           }
        }
       part { name: "bg";
@@ -1906,11 +1906,11 @@ group { name: "elm/genlist/item_odd/track/enna";
    }
    parts {   
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
           }
        }
        part { name: "bg";
@@ -2125,11 +2125,11 @@ group { name: "elm/genlist/item/film/enna";
    }
    parts {
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
          }
       }
       part { name: "bg";
@@ -2301,11 +2301,11 @@ group { name: "elm/genlist/item_odd/film/enna";
    }
    parts {   
        part { name: "elm.swallow.event";
-          type: RECT;
+          type: SWALLOW;
           mouse_events: 1;
           description { state: "default" 0.0;
              visible: 1;
-             color: 255 255 255 255;
+             color: 255 255 255 0;
           }
        }
       part { name: "bg";

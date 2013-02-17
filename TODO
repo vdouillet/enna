@@ -12,3 +12,5 @@
   * E_Udisk for disk detection.
   * cdda/dvd plugin
 
+- v7 :
+  * Add integration with transmission.

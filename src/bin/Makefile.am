@@ -49,20 +49,11 @@ mediaplayer_emotion.c
 enna_LDADD = @ENNA_LIBS@
 enna_LDFLAGS = -rdynamic
 
-if BUILD_LIBXRANDR
-enna_LDADD += @LIBXRANDR_LIBS@ -lX11
-endif
-
 ##########################################################################
 # For Modules Static linking : BEGIN
 ##########################################################################
 
 if USE_STATIC_MODULES
-
-if BUILD_LIBXRANDR
-AM_CFLAGS += @LIBXRANDR_CFLAGS@
-enna_LDADD += @LIBXRANDR_LIBS@
-endif
 
 include ../modules/activity/configuration/config.mak
 include ../modules/activity/music/config.mak

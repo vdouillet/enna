@@ -4,6 +4,20 @@ dnl Activity
 AC_DEFUN([ENNA_CHECK_MODULE_ACTIVITY_CONFIGURATION],
 [
 have_dep="yes"
+
+if test "x${want_libxrandr}" = "xyes" || test "x${want_libxrandr}" = "xauto" ; then
+   PKG_CHECK_EXISTS([xrandr],
+      [
+       want_libxrandr="yes"
+       requirements="${requirements} xrandr"
+       requirements_libs="${requirements_libs} -lX11"
+       AC_DEFINE(BUILD_LIBXRANDR, 1, [libxrandr support])
+      ],
+      [want_libxrandr="no"])
+fi
+
+AM_CONDITIONAL([BUILD_LIBXRANDR], [test "x${have_libxrandr}" = "xyes"])
+
 AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
 ])
 

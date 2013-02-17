@@ -16,6 +16,7 @@ AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.17])
 
 ### Additional options to configure
+
 ## Static Modules
 AC_ARG_ENABLE([static_modules],
    [AC_HELP_STRING(
@@ -101,6 +102,21 @@ fi
 
 AM_CONDITIONAL([BUILD_THEME_STB], [test "x${want_theme_stb}" = "xyes"])
 
+# X RandR
+AC_ARG_ENABLE([libxrandr],
+   [AS_HELP_STRING(
+       [--enable-libxrandr],
+       [Enable libxrandr support])],
+   [
+    if test "x${enableval}" = "xyes"; then
+       want_libxrandr="yes"
+    else
+       want_libxrandr="no"
+    fi
+   ],
+   [want_libxrandr="auto"])
+
+
 ### Default values or options with respect to host
 
 AC_CANONICAL_HOST
@@ -120,7 +136,6 @@ requirements_libs=""
 
 ## Evil
 
-
 case "$host_os" in
    mingw*)
       PKG_CHECK_EXISTS([evil >= ${efl_version}],
@@ -132,7 +147,7 @@ case "$host_os" in
 esac
 
 ## hard dependencies
-requirements_hard="eina >= ${efl_version} eet >= ${efl_version} evas >= ${efl_version} ecore >= ${efl_version} ecore-input >= ${efl_version} ecore-evas >= ${efl_version} ecore-file >= ${efl_version} ecore-ipc >= ${efl_version} ecore-con >= ${efl_version} efreet >= ${efl_version} edje >= ${efl_version} edbus >= ${efl_version} emotion >= ${efl_version} ethumb >= ${efl_version} elementary >= ${efl_version} libvalhalla >= 2.0.0 libvalhalla < 3.0.0 libcurl"
+requirements_hard="eina >= ${efl_version} eet >= ${efl_version} evas >= ${efl_version} ecore >= ${efl_version} ecore-input >= ${efl_version} ecore-evas >= ${efl_version} ecore-file >= ${efl_version} ecore-ipc >= ${efl_version} ecore-con >= ${efl_version} efreet >= ${efl_version} edje >= ${efl_version} edbus >= ${efl_version} emotion >= ${efl_version} ethumb >= ${efl_version} ethumb_client >= ${efl_version} elementary >= ${efl_version} libvalhalla >= 2.0.0 libvalhalla < 3.0.0 libcurl"
 
 PKG_CHECK_EXISTS(
    [${requirements_hard}],
@@ -194,36 +209,6 @@ ENNA_LIBS="${ENNA_LIBS} ${requirements_libs}"
 ### Checks for compiler characteristics
 
 AM_PROG_CC_C_O
-
-##############
-# Librairies #
-##############
-
-# libxrandr
-want_libxrandr="auto"
-have_libxrandr="no"
-AC_MSG_CHECKING(whether libxrandr support is to be built)
-AC_ARG_ENABLE(libxrandr,
-    AS_HELP_STRING([--enable-libxrandr],[Enable libxrandr support]),
-    [ want_libxrandr=$enableval ]
-)
-AC_MSG_RESULT($want_libxrandr)
-if test "x$want_libxrandr" = "xyes" -o "x$want_libxrandr" = "xauto"; then
-  PKG_CHECK_MODULES(
-    [LIBXRANDR],
-    [xrandr],
-    [
-      AC_DEFINE(BUILD_LIBXRANDR, 1, [libxrandr support])
-      have_libxrandr="yes"
-    ],
-    [
-      if test "x$want_libxrandr" = "xyes" -a "x$use_strict" = "xyes" ; then
-        AC_MSG_ERROR([libxrandr not found (strict dependencies checking)])
-      fi
-    ]
-  )
-fi
-AM_CONDITIONAL(BUILD_LIBXRANDR, test "x$have_libxrandr" = "xyes")
 
 AC_CONFIG_FILES([
 Makefile
@@ -299,7 +284,7 @@ echo "  mtab............................. : $want_volume_mtab"
 echo
 echo "Optional linked-in librairies:"
 echo
-echo "  libxrandr........................ : $have_libxrandr"
+echo "  libxrandr........................ : $want_libxrandr"
 echo
 echo "Suppported Themes:"
 echo

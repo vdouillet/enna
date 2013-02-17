@@ -116,9 +116,10 @@ PKG_PROG_PKG_CONFIG
 ### Checks for libraries
 
 requirements=""
+requirements_libs=""
 
 ## Evil
- 
+
 
 case "$host_os" in
    mingw*)
@@ -139,9 +140,9 @@ PKG_CHECK_EXISTS(
     requirements="${requirements_hard} ${requirements}"
    ],
    [PKG_CHECK_MODULES([dummy], [${requirements_hard}])])
- 
+
 ## Activity Modules
- 
+
 # Configuration
 ENNA_CHECK_MODULE([Activity], [Configuration], [yes])
 
@@ -172,15 +173,8 @@ ENNA_CHECK_MODULE([Browser], [LocalFiles], [yes])
 # Keyboard
 ENNA_CHECK_MODULE([Input], [Keyboard], [yes])
 
-have_input_lirc=no
-AC_CHECK_HEADER(lirc/lirc_client.h, have_input_lirc=yes)
-if test "x$have_input_lirc" = "xyes"; then
-  AC_DEFINE([BUILD_INPUT_LIRC], [1], [Define if LIRC client lib is present])
-  have_input_lirc="yes"
-  LIRC_LIBS=-llirc_client
-  AC_SUBST(LIRC_LIBS)
-fi
-AM_CONDITIONAL(BUILD_INPUT_LIRC, test "x$have_input_lirc" = "xyes")
+# LIRC
+ENNA_CHECK_MODULE([Input], [LIRC], [yes])
 
 ## Volume Modules
 
@@ -188,6 +182,8 @@ AM_CONDITIONAL(BUILD_INPUT_LIRC, test "x$have_input_lirc" = "xyes")
 ENNA_CHECK_MODULE([Volume], [mtab], [yes])
 
 PKG_CHECK_MODULES([ENNA], [${requirements}])
+
+ENNA_LIBS="${ENNA_LIBS} ${requirements_libs}"
 
 ### Checks for header files
 
@@ -295,7 +291,7 @@ echo
 echo "Supported Input Modules:"
 echo
 echo "  Keyboard client.................. : $want_input_keyboard"
-echo "  LIRC client...................... : $have_input_lirc"
+echo "  LIRC client...................... : $want_input_lirc"
 echo
 echo "Supported Volume Modules:"
 echo

@@ -1,4 +1,83 @@
 
+dnl Activity
+
+AC_DEFUN([ENNA_CHECK_MODULE_ACTIVITY_CONFIGURATION],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+AC_DEFUN([ENNA_CHECK_MODULE_ACTIVITY_MUSIC],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+AC_DEFUN([ENNA_CHECK_MODULE_ACTIVITY_PHOTO],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+AC_DEFUN([ENNA_CHECK_MODULE_ACTIVITY_VIDEO],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+dnl Gadget
+
+AC_DEFUN([ENNA_CHECK_MODULE_GADGET_DATE],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+AC_DEFUN([ENNA_CHECK_MODULE_GADGET_DUMMY],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+dnl Browser
+
+AC_DEFUN([ENNA_CHECK_MODULE_BROWSER_LOCALFILES],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+dnl Input
+
+AC_DEFUN([ENNA_CHECK_MODULE_INPUT_KEYBOARD],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+AC_DEFUN([ENNA_CHECK_MODULE_INPUT_LIRC],
+[
+AC_CHECK_HEADER([lirc/lirc_client.h], [have_dep="yes"], [have_dep="no"])
+
+if test "x${have_dep}" = "xyes" ; then
+   AC_CHECK_LIB([lirc_client], [lirc_init],
+      [
+       have_dep="yes"
+       requirements_libs="-llirc_client"
+      ],
+      [have_dep="no"])
+fi
+
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
+
+dnl Volume
+
+AC_DEFUN([ENNA_CHECK_MODULE_VOLUME_MTAB],
+[
+have_dep="yes"
+AS_IF([test "x${have_dep}" = "xyes"], [$1], [$2])
+])
 
 dnl use: ENNA_CHECK(system, name, want_module)
 
@@ -26,6 +105,9 @@ AC_ARG_ENABLE(m4_defn([DOWNSYS])[-]m4_defn([DOWN]),
 AC_MSG_CHECKING([whether $2 $1 module is to be built])
 AC_MSG_RESULT([$want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])])
 
+if test "x${want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])}" = "xyes" ; then
+   m4_default([ENNA_CHECK_MODULE_]m4_defn([UPSYS])[_]m4_defn([UP]))([want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])="yes"], [want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])="no"])
+fi
 
 if test "x${want_[]m4_defn([DOWNSYS])_[]m4_defn([DOWN])}" = "xyes"; then
    AC_DEFINE([BUILD_]m4_defn([UPSYS])[_]m4_defn([UP]), [1], [$2])

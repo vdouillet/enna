@@ -24,7 +24,7 @@ pkg_LTLIBRARIES = input_lirc.la
 
 input_lirc_la_SOURCES = $(SRCS_INPUT_LIRC)
 
-input_lirc_la_LIBADD = @ENNA_LIBS@ @LIRC_LIBS@
+input_lirc_la_LIBADD = @ENNA_LIBS@
 input_lirc_la_LDFLAGS = -module -avoid-version
 input_lirc_la_DEPENDENCIES = $(top_builddir)/config.h
 

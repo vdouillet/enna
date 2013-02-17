@@ -312,4 +312,3 @@ echo "  stb.............................. : $want_theme_stb"
 echo
 echo "Now type 'make' ('gmake' on some systems) to compile $PACKAGE."
 echo
-

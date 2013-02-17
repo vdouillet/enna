@@ -182,7 +182,7 @@ cfg_mediaplayer_section_set_default (void)
 {
     cfg_mediaplayer_free();
 
-    mp_cfg.engine           = strdup("xine");
+    mp_cfg.engine           = strdup("generic");
 }
 
 static Enna_Config_Section_Parser cfg_mediaplayer = {

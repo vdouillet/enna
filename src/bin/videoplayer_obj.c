@@ -1,26 +1,21 @@
-/* Enna - Media Center application
+/*
+ * Enna Media Center.
+ * Copyright (C) 2005-2013 Enna Team. All rights reserved.
+ * This file is part of Enna.
  *
- * Copyright (C) 2012-2013 Enna Team. All rights reserved.
+ * Enna is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Enna is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
  *
- *    1. Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- * COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with Enna; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
 #ifdef HAVE_CONFIG_H
@@ -105,7 +100,7 @@ int _enna_log_dom_global;
  *                                  Local                                     *
  *============================================================================*/
 
-#define OSD_TIMER    10.0
+#define OSD_TIMER    4.0
 
 typedef struct _Enna_View_Player_Video_Data Enna_View_Player_Video_Data;
 
@@ -187,7 +182,7 @@ cfg_mediaplayer_section_set_default (void)
 {
     cfg_mediaplayer_free();
 
-    mp_cfg.engine           = strdup("xine");
+    mp_cfg.engine           = strdup("generic");
 }
 
 static Enna_Config_Section_Parser cfg_mediaplayer = {
@@ -217,7 +212,7 @@ _set_osd_timer(Enna_View_Player_Video_Data *priv, double t)
 {
    FREE_NULL_FUNC(ecore_timer_del, priv->osd_timer);
 
-   if (t > 0.0)
+   if (t >= 0.0)
      priv->osd_timer = ecore_timer_add(t, _osd_timer_cb, priv);
    elm_object_signal_emit(priv->layout, "show,osd", "enna");
 }
@@ -241,6 +236,42 @@ _update_time_part(Evas_Object *obj, const char *part, double t)
    elm_object_part_text_set(obj, part, eina_strbuf_string_get(str));
 
    eina_strbuf_free(str);
+}
+
+static void
+_slider_position_update_cb(void *data,
+                           Evas_Object *obj EINA_UNUSED,
+                           const char *emission EINA_UNUSED,
+                           const char *source EINA_UNUSED)
+{
+    Enna_View_Player_Video_Data *priv = data;
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double vx, vy;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &vx, &vy);
+
+    pos = vx *  emotion_object_play_length_get(emotion);
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+    timestamp = time(NULL);
+    timestamp += emotion_object_play_length_get(emotion) - pos;
+    t = localtime(&timestamp);
+    str = eina_strbuf_new();
+    eina_strbuf_append_printf(str, "End at %02dh%02d", t->tm_hour, t->tm_min);
+    elm_object_part_text_set(priv->layout, "time_end_at.text", eina_strbuf_string_get(str));
+    eina_strbuf_free(str);
+
+    emotion_object_position_set(emotion, pos);
 }
 
 static void 
@@ -366,7 +397,6 @@ _mouse_move_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, vo
 {
     Enna_View_Player_Video_Data *priv = data;
 
-    printf("Mouse move\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
 
@@ -376,7 +406,6 @@ _mouse_down_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, vo
     Enna_View_Player_Video_Data *priv = data;
 
     priv->on_hold = EINA_TRUE;
-    printf("Mouse down\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
 
@@ -386,9 +415,36 @@ _mouse_up_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void
     Enna_View_Player_Video_Data *priv = data;
 
     priv->on_hold = EINA_FALSE;
-    printf("Mouse up\n");
     _set_osd_timer(priv, OSD_TIMER);
 }
+
+static void
+_drag_cb(void *data,
+         Evas_Object *obj EINA_UNUSED,
+         const char *emission,
+         const char *source)
+{
+    Enna_View_Player_Video_Data *priv = data;
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double v;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &v, NULL);
+
+    pos = v *  emotion_object_play_length_get(emotion);
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+}
+
 
 /*============================================================================*
  *                                 Global                                     *
@@ -427,6 +483,9 @@ enna_view_player_video_add(Evas_Object *parent)
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_DOWN, _mouse_down_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_UP, _mouse_up_cb, priv);
 
+   elm_layout_signal_callback_add(layout, "drag", "*", _drag_cb, priv);
+   elm_layout_signal_callback_add(layout, "drag,stop", "*", _slider_position_update_cb, priv);
+
    emotion_object_init(emotion, mp_cfg.engine);
 
    evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _enna_view_del, priv);
@@ -437,6 +496,7 @@ enna_view_player_video_add(Evas_Object *parent)
 void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 {
     const char *cover;
+    const char *title;
 
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
@@ -446,7 +506,17 @@ void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 
    elm_video_file_set(priv->video, f->mrl);
 
-   elm_object_part_text_set(priv->layout, "title.text", enna_file_meta_get(f, "title"));
+   title = enna_file_meta_get(f, "title");
+   if (title)
+   {
+       elm_object_part_text_set(priv->layout, "title.text", title);
+       eina_stringshare_del(title);
+   }   
+   else
+   {
+       title = ecore_file_file_get(f->mrl);
+       elm_object_part_text_set(priv->layout, "title.text", title);
+   }
 
    cover = enna_file_meta_get(f, "cover");
    if (cover)
@@ -470,14 +540,20 @@ void enna_view_player_video_play(Evas_Object *o)
 {
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
-   elm_video_play(priv->video);
+   if (!elm_video_is_playing_get(priv->video))
+       elm_video_play(priv->video);
+   else
+       elm_video_pause(priv->video);
 }
 
 void enna_view_player_video_pause(Evas_Object *o)
 {
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
-   elm_video_pause(priv->video);
+   if (!elm_video_is_playing_get(priv->video))
+       elm_video_play(priv->video);
+   else
+       elm_video_pause(priv->video);
 }
 
 void enna_view_player_video_stop(Evas_Object *o)
@@ -492,3 +568,42 @@ void enna_videoplayer_obj_cfg_register(void)
     enna_config_section_parser_register(&cfg_mediaplayer);
 }
 
+void enna_view_video_player_show_osd(Evas_Object *o, Eina_Bool show)
+{
+    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
+
+    if (show)
+        _set_osd_timer(priv, OSD_TIMER);
+    else
+        _set_osd_timer(priv, 0);
+}
+
+void enna_view_video_player_seek(Evas_Object *o, double time)
+{ 
+    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
+    Evas_Object *emotion;
+    Evas_Object *edje;
+    double v;
+    double pos;
+    time_t timestamp;
+    struct tm *t;
+    Eina_Strbuf *str;
+
+    emotion = elm_video_emotion_get(priv->video);
+
+    edje = elm_layout_edje_get(priv->layout);
+    edje_object_part_drag_value_get(edje, "time.slider", &v, NULL);
+
+    pos = v *  emotion_object_play_length_get(emotion) + time;
+
+    _update_time_part(priv->layout, "time_current.text", pos);
+    _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));
+
+    v = pos / emotion_object_play_length_get(emotion);
+
+   edje = elm_layout_edje_get(priv->layout);
+   edje_object_part_drag_value_set(edje, "time.slider", v, v);
+
+   emotion_object_position_set(emotion, pos);
+
+}

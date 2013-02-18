@@ -77,7 +77,7 @@ if test "x${have_dep}" = "xyes" ; then
    AC_CHECK_LIB([lirc_client], [lirc_init],
       [
        have_dep="yes"
-       requirements_libs="-llirc_client"
+       requirements_libs="${requirements_libs} -llirc_client"
       ],
       [have_dep="no"])
 fi

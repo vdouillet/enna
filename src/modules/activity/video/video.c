@@ -77,7 +77,6 @@ struct _Enna_Module_Video
     Evas_Object *o_panel_infos;
     Evas_Object *o_resume;
     Evas_Object *o_mediaplayer;
-    Evas_Object *o_mediacontrols;
     Enna_Module *em;
     VIDEO_STATE state;
     Ecore_Event_Handler *eos_event_handler;
@@ -139,41 +138,36 @@ video_resize(void)
 }
 
 void
-media_controls_display(int show)
+media_controls_display(Eina_Bool show)
 {
-    if (show)
-    {
-        ENNA_TIMER_DEL(mod->controls_timer);
-        mod->controls_timer =
-            ecore_timer_add(TIMER_DELAY, _controls_timer_cb, NULL);
-    }
-
-    if (show == mod->controls_displayed)
-        return;
-
+    printf("<<<<<<<< show osd %d\n", show);
+    enna_view_video_player_show_osd(mod->o_mediaplayer, show);
     mod->controls_displayed = show;
-    /* show ? evas_object_show(mod->o_mediacontrols) : evas_object_hide(mod->o_mediacontrols); */
-
-    video_resize();
 }
 
 static void
-_seek_video(int value)
+_seek_video(double value)
 {
-    enna_mediaplayer_seek_relative(value);
-//    enna_mediaplayer_position_update(mod->o_mediacontrols);
+//    enna_mediaplayer_seek_relative(value);
+//    enna_mediaplayer_position_update(mod->o_mediaplayer);
+    enna_view_video_player_seek(mod->o_mediaplayer, value);
+    printf("<<<<<<<<<<<<<<<<<<<<<<<<< seek %3.3f\n", value);
+    
 }
 
 static void
 videoplayer_view_event_no_display (enna_input event)
 {
+
+    printf("<<<<<<<<<<<< EVENT %d %d\n", event, ENNA_INPUT_PLAY);
+
     switch (event)
     {
     case ENNA_INPUT_OK:
         media_controls_display(!mod->controls_displayed);
         break;
     case ENNA_INPUT_PLAY:
-        enna_mediaplayer_play(mod->enna_playlist);
+        enna_view_player_video_play(mod->o_mediaplayer);
         break;
     case ENNA_INPUT_RIGHT:
         _seek_video(+10); /* +10s */
@@ -192,54 +186,6 @@ videoplayer_view_event_no_display (enna_input event)
         break;
     case ENNA_INPUT_REWIND:
         _seek_video(-600); /* -10min */
-        break;
-    case ENNA_INPUT_MUTE:
-        enna_mediaplayer_mute();
-        break;
-    case ENNA_INPUT_AUDIO_PREV:
-        enna_mediaplayer_audio_previous();
-        break;
-    case ENNA_INPUT_AUDIO_NEXT:
-        enna_mediaplayer_audio_next();
-        break;
-    case ENNA_INPUT_AUDIO_DELAY_PLUS:
-        enna_mediaplayer_audio_increase_delay();
-        break;
-    case ENNA_INPUT_AUDIO_DELAY_MINUS:
-        enna_mediaplayer_audio_decrease_delay();
-        break;
-    case ENNA_INPUT_SUBTITLES:
-        enna_mediaplayer_subtitle_set_visibility();
-        break;
-    case ENNA_INPUT_SUBS_PREV:
-        enna_mediaplayer_subtitle_previous();
-        break;
-    case ENNA_INPUT_SUBS_NEXT:
-        enna_mediaplayer_subtitle_next();
-        break;
-    case ENNA_INPUT_SUBS_ALIGN:
-        enna_mediaplayer_subtitle_set_alignment();
-        break;
-    case ENNA_INPUT_SUBS_POS_PLUS:
-        enna_mediaplayer_subtitle_increase_position();
-        break;
-    case ENNA_INPUT_SUBS_POS_MINUS:
-        enna_mediaplayer_subtitle_decrease_position();
-        break;
-    case ENNA_INPUT_SUBS_SCALE_PLUS:
-        enna_mediaplayer_subtitle_increase_scale();
-        break;
-    case ENNA_INPUT_SUBS_SCALE_MINUS:
-        enna_mediaplayer_subtitle_decrease_scale();
-        break;
-    case ENNA_INPUT_SUBS_DELAY_PLUS:
-        enna_mediaplayer_subtitle_increase_delay();
-        break;
-    case ENNA_INPUT_SUBS_DELAY_MINUS:
-        enna_mediaplayer_subtitle_decrease_delay();
-        break;
-    case ENNA_INPUT_FRAMEDROP:
-        enna_mediaplayer_set_framedrop();
         break;
     default:
         break;
@@ -291,7 +237,6 @@ _return_to_video_info_gui()
     media_controls_display(0);
     ENNA_TIMER_DEL(mod->controls_timer);
     ENNA_OBJECT_DEL(mod->o_mediaplayer);
-    ENNA_OBJECT_DEL(mod->o_mediacontrols);
     popup_resume_display (0);
     m = enna_mediaplayer_metadata_get(mod->enna_playlist);
     pos = enna_mediaplayer_position_get();
@@ -466,21 +411,6 @@ movie_start_playback(int resume)
     evas_object_event_callback_add(mod->o_mediaplayer, EVAS_CALLBACK_RESIZE,
                                    _mediaplayer_resize_cb, NULL);
 
-
-    /* mod->o_mediacontrols = */
-    /*     enna_mediaplayer_obj_add(enna->evas, mod->enna_playlist); */
-    
-    /* o_edje = elm_layout_edje_get(mod->o_layout); */
-    /* ed = edje_object_part_object_get(o_edje, "controls.swallow"); */
-    /* evas_object_geometry_get(ed, &x, &y, &w, &h); */
-    /* evas_object_move(mod->o_mediacontrols, x, y); */
-    /* evas_object_resize(mod->o_mediacontrols, w, h); */
-    /* evas_object_show(mod->o_mediacontrols); */
-
-    /*edje_object_part_swallow(mod->o_edje,
-                             "controls.swallow", mod->o_mediacontrols);*/
-    /* enna_mediaplayer_obj_layout_set(mod->o_mediacontrols, "layout,video"); */
-
     evas_object_event_callback_add(enna_mediaplayer_obj_get(),
                                    EVAS_CALLBACK_MOUSE_MOVE,
                                    _mediaplayer_mouse_move_cb, NULL);
@@ -491,8 +421,7 @@ movie_start_playback(int resume)
                                    EVAS_CALLBACK_RESIZE,
                                    _mediaplayer_resize_cb, NULL);
 
-  //  enna_mediaplayer_stop();
-    /* enna_mediaplayer_obj_event_catch(mod->o_mediacontrols); */
+    enna_mediaplayer_obj_event_catch(mod->o_mediaplayer);
     enna_mediaplayer_play(mod->enna_playlist);
     media_controls_display(1);
 #if 0
@@ -733,7 +662,6 @@ em_shutdown(Enna_Module *em)
     ENNA_EVENT_HANDLER_DEL(mod->mouse_move_event_handler);
     ENNA_OBJECT_DEL(mod->o_browser);
     ENNA_OBJECT_DEL(mod->o_mediaplayer);
-    ENNA_OBJECT_DEL(mod->o_mediacontrols);
     ENNA_OBJECT_DEL(mod->o_backdrop);
     ENNA_OBJECT_DEL(mod->o_snapshot);
     ENNA_OBJECT_DEL(mod->o_panel_infos);

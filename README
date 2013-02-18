@@ -35,13 +35,11 @@ Core dependencies
 * Ethumb >= 1.0.0
 * Elementary >= 1.0.0
 * libvalhalla (http://hg.geexbox.org/libvalhalla/) >= 2.0.0
-* libxml-2.0
 * libcurl
 
 Module dependencies (optional)
 ==============================
 
-* libplayer (http://libplayer.geexbox.org/) >= 2.0.0
 * emotion
 * gssdp-1.0 >= 0.7.0 
 * gupnp-1.0 >= 0.13.1 

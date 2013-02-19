@@ -1,8 +1,7 @@
 - v5 :
 
-  * Update README file
+  * Indentation
   * Update Debian package
-  * Detect end of video and go back to menu
 
 - v6 :
   * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
@@ -11,6 +10,8 @@
   * Mark video as read
   * E_Udisk for disk detection.
   * cdda/dvd plugin
+  * Smooth transition when go back to mainmenu after end of video
+  * Transition when browsing
 
 - v7 :
   * Add integration with transmission.

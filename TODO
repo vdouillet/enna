@@ -1,12 +1,11 @@
 - v5 :
 
-  * Check if efreet is really need, it's only used in enna_util_init to get cache, config et data directories, we should build our own patch instead ?
-  * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
-  * Bind enna event to video player.
   * Update README file
   * Update Debian package
+  * Detect end of video and go back to menu
 
 - v6 :
+  * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
   * Remove libvalhalla definitively and use our own parser based on EMS
   * Read video from the beginning or since the last known position
   * Mark video as read

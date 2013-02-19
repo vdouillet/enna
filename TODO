@@ -1,9 +1,9 @@
 - v5 :
 
-  * Indentation
   * Update Debian package
 
 - v6 :
+  * Better cover graphics for movies (add reflection and shadow)
   * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
   * Remove libvalhalla definitively and use our own parser based on EMS
   * Read video from the beginning or since the last known position

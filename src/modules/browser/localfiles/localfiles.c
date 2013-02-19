@@ -25,7 +25,7 @@
     #include <sys/statfs.h>
 #endif
 
-#ifdef __FreeBSD__
+#if __FreeBSD__ || __APPLE__ || __DARWIN__
     #include <sys/param.h>
     #include <sys/mount.h>
 #endif

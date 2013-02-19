@@ -135,7 +135,6 @@ mediaplayer.h\
 mediaplayer_obj.h\
 url_utils.h\
 logs.h\
-parser_cdda.h\
 box.h\
 exit.h\
 gettext.h\

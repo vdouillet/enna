@@ -147,7 +147,7 @@ case "$host_os" in
 esac
 
 ## hard dependencies
-requirements_hard="eina >= ${efl_version} eet >= ${efl_version} evas >= ${efl_version} ecore >= ${efl_version} ecore-input >= ${efl_version} ecore-evas >= ${efl_version} ecore-file >= ${efl_version} ecore-ipc >= ${efl_version} ecore-con >= ${efl_version} efreet >= ${efl_version} edje >= ${efl_version} edbus >= ${efl_version} emotion >= ${efl_version} ethumb >= ${efl_version} ethumb_client >= ${efl_version} elementary >= ${efl_version} libvalhalla >= 2.0.0 libvalhalla < 3.0.0 libcurl"
+requirements_hard="eina >= ${efl_version} eet >= ${efl_version} evas >= ${efl_version} ecore >= ${efl_version} ecore-input >= ${efl_version} ecore-evas >= ${efl_version} ecore-file >= ${efl_version} ecore-ipc >= ${efl_version} ecore-con >= ${efl_version} edje >= ${efl_version} edbus >= ${efl_version} emotion >= ${efl_version} ethumb >= ${efl_version} ethumb_client >= ${efl_version} elementary >= ${efl_version} libvalhalla >= 2.0.0 libvalhalla < 3.0.0 libcurl"
 
 PKG_CHECK_EXISTS(
    [${requirements_hard}],

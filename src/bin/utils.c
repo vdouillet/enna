@@ -71,9 +71,9 @@ enna_util_init()
         return ++_util_init_count;
 
     sd = calloc(1, sizeof(Smart_Data));
-    sd->cache = eina_stringshare_printf("%s/enna", efreet_cache_home_get());
-    sd->config = eina_stringshare_printf("%s/enna", efreet_config_home_get());
-    sd->data = eina_stringshare_printf("%s/enna", efreet_data_home_get());
+    sd->cache = eina_stringshare_printf("%s/.cache/enna", getenv("HOME"));
+    sd->config = eina_stringshare_printf("%s/.config/enna", getenv("HOME"));
+    sd->data = eina_stringshare_printf("%s/.local/share/enna", getenv("HOME"));
 
     if (!ecore_file_is_dir(sd->cache))
         ecore_file_mkdir(sd->cache);

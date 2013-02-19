@@ -8,6 +8,8 @@
 
 - v6 :
   * Remove libvalhalla definitively and use our own parser based on EMS
+  * Read video from the beginning or since the last known position
+  * Mark video as read
   * E_Udisk for disk detection.
   * cdda/dvd plugin
 

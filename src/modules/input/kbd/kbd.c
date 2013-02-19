@@ -232,7 +232,7 @@ _input_event (Ecore_Event_Key *ev)
 
     for (i = 0; enna_keymap[i].keyname; i++)
     {
-        if ((enna_keymap[i].modifier == ECORE_NONE) &&
+      if ((enna_keymap[i].modifier == ECORE_NONE) && (ev->key) &&
             !strcmp(enna_keymap[i].keyname, ev->key))
         {
             enna_log(ENNA_MSG_EVENT, NULL, "Key pressed : %s",

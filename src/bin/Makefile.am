@@ -33,7 +33,6 @@ view_wall.c\
 mediaplayer_obj.c\
 url_utils.c\
 logs.c\
-parser_cdda.c\
 box.c\
 exit.c\
 volume_notification.c\

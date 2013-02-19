@@ -57,7 +57,6 @@ static void browser_cb_delay_hilight(void *data,
 static void _create_menu(void);
 static void _return_to_video_info_gui();
 
-static Eina_Bool _eos_cb(void *data, int type, void *event);
 
 typedef struct _Enna_Module_Video Enna_Module_Video;
 typedef enum _VIDEO_STATE VIDEO_STATE;
@@ -245,11 +244,10 @@ _return_to_video_info_gui()
     mod->state = BROWSER_VIEW;
 }
 
-static Eina_Bool
-_eos_cb(void *data, int type, void *event)
+static void
+_eos_cb(void *data, Evas_Object *o EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     _return_to_video_info_gui();
-    return 1;
 }
 
 /****************************************************************************/
@@ -406,6 +404,8 @@ movie_start_playback(int resume)
 
     mod->o_mediaplayer = enna_view_player_video_add(enna->layout);
     enna_view_player_video_uri_set(mod->o_mediaplayer, mod->file);
+    evas_object_smart_callback_add(mod->o_mediaplayer, "playback_finished", _eos_cb, NULL);
+
     elm_layout_content_set(enna->layout,
                            "enna.fullscreen.swallow", mod->o_mediaplayer);
     evas_object_event_callback_add(mod->o_mediaplayer, EVAS_CALLBACK_RESIZE,
@@ -641,8 +641,6 @@ em_init(Enna_Module *em)
     mod->controls_displayed = 0;
     mod->o_backdrop = enna_video_picture_add(enna->evas);
     mod->o_snapshot = enna_video_picture_add(enna->evas);
-    mod->eos_event_handler =
-        ecore_event_handler_add(ENNA_EVENT_MEDIAPLAYER_EOS, _eos_cb, NULL);
     enna_activity_register(&class);
     mod->enna_playlist = enna_mediaplayer_playlist_create();
 }

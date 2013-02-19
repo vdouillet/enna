@@ -375,8 +375,15 @@ _emotion_playback_started_cb(void *data, Evas_Object *obj EINA_UNUSED, void *eve
 {
    Enna_View_Player_Video_Data *priv = data;
 
-
    _set_osd_timer(priv, OSD_TIMER);
+}
+
+static void
+_emotion_playback_finished_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
+{
+   Enna_View_Player_Video_Data *priv = data;
+   
+   evas_object_smart_callback_call(priv->layout, "playback_finished", NULL);
 }
 
 static void
@@ -479,6 +486,7 @@ enna_view_player_video_add(Evas_Object *parent)
    evas_object_smart_callback_add(emotion, "position_update", _emotion_position_update_cb, priv);
    evas_object_smart_callback_add(emotion, "open_done", _emotion_open_done_cb, priv);
    evas_object_smart_callback_add(emotion, "playback_started", _emotion_playback_started_cb, priv);
+   evas_object_smart_callback_add(emotion, "playback_finished", _emotion_playback_finished_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_MOVE, _mouse_move_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_DOWN, _mouse_down_cb, priv);
    evas_object_event_callback_add(emotion, EVAS_CALLBACK_MOUSE_UP, _mouse_up_cb, priv);

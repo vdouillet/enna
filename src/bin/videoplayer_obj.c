@@ -497,14 +497,17 @@ void enna_view_player_video_uri_set(Evas_Object *o, Enna_File *f)
 {
     const char *cover;
     const char *title;
-
+    int prefix = 0;
+    
    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
    priv->media = strdup(f->mrl);
 
    DBG("Start video player with item: %s", f->mrl);
 
-   elm_video_file_set(priv->video, f->mrl);
+   if (!strncmp(f->mrl, "file://", 7))
+       prefix = 7;
+   elm_video_file_set(priv->video, f->mrl + prefix);
 
    title = enna_file_meta_get(f, "title");
    if (title)

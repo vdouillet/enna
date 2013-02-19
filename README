@@ -1,10 +1,14 @@
-Enna 0.5.0
+Enna v5
 ==========
 
 Enna is a Media Center application.
 Featuring a simple user interface, Enna is based on the powerful
-Enlightenment Foundations Libraries (EFL) as for its graphical user interface
-and GeeXboX libraries as for multimedia playback and information retrieval.
+Enlightenment Foundations Libraries (EFL) as for its graphical user interface.
+
+The previous version was Enna 0.4.0. Enna v5 is based on the same source code than the
+previous version but was adapted to build and works with latest EFL version, i.e 1.7.x
+A lot of modules wich was not fully functionnal or wich was not working anymore after
+changes of their webservices have been removed from this version.
 
 Enna's features
 ===============
@@ -14,45 +18,35 @@ Enna's features
 - Browse and play slideshow with your photos,
 - Retrieve informations about your media files on the Internet,
 - Build a database of your medias and retrieve information from your music,
-  video ... (such as covers, fan arts, songs lyrics and many much more).
+  video ... (such as covers, fan arts, and many much more).
 
 Core dependencies
 =================
 
-* Eina >= 1.2.0
-* Eet >= 1.6.0
-* Evas >= 1.2.0
-* Ecore >= 1.2.0
-* Ecore-X >= 1.2.0
-* Ecore-input >= 1.2.0
-* Ecore-Evas >= 1.2.0
-* Ecore-File >= 1.2.0
-* Ecore-Ipc >= 1.2.0
-* Ecore-Con >= 1.2.0
-* Edje >= 1.2.0
-* Efreet >= 1.2.0
-* Edbus >= 1.2.0
-* Ethumb >= 1.0.0
-* Elementary >= 1.0.0
-* libvalhalla (http://hg.geexbox.org/libvalhalla/) >= 2.0.0
+* Eina >= 1.7.0
+* Eet >= 1.7.0
+* Evas >= 1.7.0
+* Ecore >= 1.7.0
+* Ecore-input >= 1.7.0
+* Ecore-Evas >= 1.7.0
+* Ecore-File >= 1.7.0
+* Ecore-Ipc >= 1.7.0
+* Ecore-Con >= 1.7.0
+* Edje >= 1.7.0
+* Edbus >= 1.7.0
+* Ethumb >= 1.7.0
+* Elementary >= 1.7.0
+* Eio >= 1.7.0
+* Emotion >= 1.7.0 (Generic Vlc backend is preffered, and used a default to play videos)
+* libvalhalla (http://hg.geexbox.org/libvalhalla/) >= 2.0.0 (2.1.0 is recommended for 
+  a better experience)
 * libcurl
 
 Module dependencies (optional)
 ==============================
 
-* emotion
-* gssdp-1.0 >= 0.7.0 
-* gupnp-1.0 >= 0.13.1 
-* gupnp-av-1.0 >= 0.5.2
-* libcddb
-* libgpod-1.0 >= 0.7.93
-* libspotify
-* libsvdrp (http://hg.geexbox.org/libsvdrp/)
 * libxrandr
 * Lirc (http://www.lirc.org/)
-* libcwiid
-* libudev
-* hal
 * gettext
 
 This program is under heavy development, so feel free to join.

@@ -478,6 +478,7 @@ enna_list_add(Evas_Object *parent, Enna_File *selected)
     elm_object_focus_allow_set(obj, EINA_FALSE);
     evas_object_size_hint_weight_set(obj, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     elm_genlist_mode_set(obj, ELM_LIST_COMPRESS);
+    elm_genlist_homogeneous_set(obj, EINA_TRUE);
 
     evas_object_show(obj);
     sd->obj = obj;

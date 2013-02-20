@@ -39,7 +39,7 @@ struct _Smart_Data
 };
 
 static void
-_del(void *data, Evas *a, Evas_Object *obj, void *event_info)
+_del(void *data, Evas *a EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     ENNA_OBJECT_DEL(sd->o_img);

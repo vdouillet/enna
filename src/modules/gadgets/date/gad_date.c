@@ -42,8 +42,6 @@ static Smart_Data *sd = NULL;
 static Evas_Object *
 _date_add(Evas_Object *parent)
 {
-    Evas_Coord w, h;
-
     sd->obj = elm_layout_add(parent);
     elm_layout_file_set(sd->obj, enna_config_theme_get(), "gadget/date");
     evas_object_show(sd->obj);
@@ -53,7 +51,7 @@ _date_add(Evas_Object *parent)
 }
 
 static void
-_date_del()
+_date_del(void)
 {
     if(sd)
         ENNA_OBJECT_DEL(sd->obj);
@@ -75,7 +73,7 @@ static Enna_Gadget gadget =
 #endif /* USE_STATIC_MODULES */
 
 static void
-module_init(Enna_Module *em)
+module_init(Enna_Module *em EINA_UNUSED)
 {
     sd = ENNA_NEW(Smart_Data, 1);
 
@@ -83,7 +81,7 @@ module_init(Enna_Module *em)
 }
 
 static void
-module_shutdown(Enna_Module *em)
+module_shutdown(Enna_Module *em EINA_UNUSED)
 {
  
     ENNA_OBJECT_DEL(sd->obj);

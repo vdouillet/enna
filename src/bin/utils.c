@@ -465,7 +465,7 @@ enna_util_str_chomp(char *str)
 double
 enna_util_atof(const char *nptr)
 {
-    double div = 1.0;
+    double division = 1.0;
     int res, integer;
     unsigned int frac = 0, start = 0, end = 0;
 
@@ -483,10 +483,10 @@ enna_util_atof(const char *nptr)
         return integer;
 
     if (integer < 0)
-        div = -div;
+        division = -division;
 
-    div *= pow(10.0, end - start);
-    return integer + frac / div;
+    division *= pow(10.0, end - start);
+    return integer + frac / division;
 }
 
 Eina_List *

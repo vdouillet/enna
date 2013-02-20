@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "logs.h"
 #include "mediaplayer.h"
+#include "mediaplayer_obj.h"
 #include "enna_config.h"
 
 #define SEEK_STEP_DEFAULT         10 /* seconds */
@@ -252,9 +253,9 @@ enna_mediaplayer_play(Enna_Playlist *enna_playlist)
 }
 
 int
-enna_mediaplayer_select_nth(Enna_Playlist *enna_playlist,int n)
+enna_mediaplayer_select_nth(Enna_Playlist *enna_playlist, int n)
 {
-    if (n < 0 || n > eina_list_count(enna_playlist->playlist) - 1)
+  if (n < 0 || (unsigned int)n > eina_list_count(enna_playlist->playlist) - 1)
         return -1;
 
     enna_log(ENNA_MSG_EVENT, NULL, "select %d", n);
@@ -311,7 +312,7 @@ int
 enna_mediaplayer_next(Enna_Playlist *enna_playlist)
 {
     enna_playlist->selected++;
-    if(enna_playlist->selected >
+    if ((unsigned int)enna_playlist->selected >
        eina_list_count(enna_playlist->playlist) - 1)
     {
         enna_playlist->selected--;

@@ -125,21 +125,21 @@ _rotate_go(Smart_Data *sd, unsigned char mode)
 #endif /* FEATURE_ROTATION */
 
 static void
-_controls_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_controls_show(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     evas_object_show(sd->controls);
 }
 
 static void
-_mouse_in(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_mouse_in(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 //    elm_notify_timeout_set(sd->controls, 0);
 }
 
 static void
-_mouse_out(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_mouse_out(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 //    elm_notify_timeout_set(sd->controls, 3);
@@ -147,7 +147,7 @@ _mouse_out(void *data, Evas *e, Evas_Object *obj, void *event_info)
 
 
 static void
-_button_clicked_play_cb(void *data, Evas_Object *obj, void *event_info)
+_button_clicked_play_cb(void *data, Evas_Object *obj, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     Evas_Object *ic;
@@ -171,21 +171,21 @@ _button_clicked_play_cb(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-_button_clicked_prev_cb(void *data, Evas_Object *obj, void *event_info)
+_button_clicked_prev_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     elm_slideshow_previous(sd->slideshow);
 }
 
 static void
-_button_clicked_next_cb(void *data, Evas_Object *obj, void *event_info)
+_button_clicked_next_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     elm_slideshow_next(sd->slideshow);
 }
 
 static void
-_button_clicked_stop_cb(void *data, Evas_Object *obj, void *event_info)
+_button_clicked_stop_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     evas_object_smart_callback_call(sd->layout, "delete,requested", NULL);
@@ -193,14 +193,14 @@ _button_clicked_stop_cb(void *data, Evas_Object *obj, void *event_info)
 
 #ifdef FEATURE_ROTATION
 static void
- _button_clicked_rotate_ccw_cb(void *data, Evas_Object *obj, void *event_info)
+ _button_clicked_rotate_ccw_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     _rotate_go(sd, 0);
 }
 
 static void
- _button_clicked_rotate_cw_cb(void *data, Evas_Object *obj, void *event_info)
+ _button_clicked_rotate_cw_cb(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     _rotate_go(sd, 1);
@@ -208,7 +208,7 @@ static void
 #endif /* FEATURE_ROTATION */
 
 static void
-_spin(void *data, Evas_Object *obj, void *event_info)
+_spin(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -218,7 +218,7 @@ _spin(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-_mouse_wheel_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_mouse_wheel_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
     Smart_Data *sd = data;
     Evas_Object *photocam;
@@ -306,7 +306,7 @@ _slideshow_item_get(void *data, Evas_Object *obj)
 }
 
 static void
-_sd_del(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_sd_del(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
 
@@ -443,7 +443,7 @@ void enna_photo_slideshow_timeout_set(Evas_Object *obj, int to)
     elm_slideshow_timeout_set(sd->slideshow, to);
 }
 
-void enna_photo_slideshow_image_add(Evas_Object *obj, const char *file, const char *group)
+void enna_photo_slideshow_image_add(Evas_Object *obj, const char *file, const char *group EINA_UNUSED)
 {
     Elm_Object_Item *it;
     Smart_Data *sd = evas_object_data_get(obj, "sd");

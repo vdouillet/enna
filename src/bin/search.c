@@ -24,6 +24,7 @@
 #include "enna.h"
 #include "enna_config.h"
 #include "input.h"
+#include "search.h"
 
 typedef struct _Smart_Data Smart_Data;
 

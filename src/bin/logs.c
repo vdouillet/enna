@@ -24,6 +24,7 @@
 #include <stdarg.h>
 
 #include "enna.h"
+#include "logs.h"
 
 #define DEFAULT_MODULE_NAME "Enna"
 
@@ -60,7 +61,7 @@ enna_log_init(const char *filename)
 
 void
 enna_log_print(int level, const char *module,
-               char *file, int line, const char *format, ...)
+               const char *file, int line, const char *format, ...)
 {
     FILE *f;
     static const char *const c[] =

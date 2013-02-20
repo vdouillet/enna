@@ -38,7 +38,7 @@ struct _Enna_Kbdnav_Class
     void  (*activate_set)(void *item_data, void *user_data);
 };
 
-Enna_Kbdnav *enna_kbdnav_add();
+Enna_Kbdnav *enna_kbdnav_add(void);
 void enna_kbdnav_del(Enna_Kbdnav *nav);
 void enna_kbdnav_item_add(Enna_Kbdnav *nav, void *obj, Enna_Kbdnav_Class *class, void *user_data);
 void enna_kbdnav_item_del(Enna_Kbdnav *nav, void *obj);

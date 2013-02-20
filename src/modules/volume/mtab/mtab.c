@@ -146,13 +146,13 @@ mtab_parse(void)
 #endif /* USE_STATIC_MODULES */
 
 static void
-module_init(Enna_Module *em)
+module_init(Enna_Module *em EINA_UNUSED)
 {
     mtab_parse();
 }
 
 static void
-module_shutdown(Enna_Module *em)
+module_shutdown(Enna_Module *em EINA_UNUSED)
 {
     Enna_Volume *v;
     Eina_List *l, *l_next;

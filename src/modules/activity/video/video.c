@@ -39,6 +39,7 @@
 #include "metadata.h"
 #include "utils.h"
 #include "mediaplayer_obj.h"
+#include "videoplayer_obj.h"
 #include "infos.h"
 
 #include "video.h"
@@ -55,7 +56,7 @@ static void browser_cb_select(void *data, Evas_Object *obj, void *event_info);
 static void browser_cb_delay_hilight(void *data,
                                      Evas_Object *obj, void *event_info);
 static void _create_menu(void);
-static void _return_to_video_info_gui();
+static void _return_to_video_info_gui(void);
 
 
 typedef struct _Enna_Module_Video Enna_Module_Video;
@@ -118,11 +119,11 @@ end:
 }
 
 static Eina_Bool
-_controls_timer_cb(void *data)
+_controls_timer_cb(void *data EINA_UNUSED)
 {
     media_controls_display(0);
     mod->controls_timer = NULL;
-    return 0;
+    return EINA_FALSE;
 }
 
 static void
@@ -362,27 +363,27 @@ browser_view_event(enna_input event)
 }
 
 static void
-browser_cb_root(void *data, Evas_Object *obj, void *event_info)
+browser_cb_root(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     enna_content_hide();
 }
 
 static void
-_mediaplayer_resize_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_mediaplayer_resize_cb(void *data EINA_UNUSED, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     video_resize();
 }
 
 static void
-_mediaplayer_mouse_move_cb(void *data,
-                           Evas *e, Evas_Object *obj, void *event_info)
+_mediaplayer_mouse_move_cb(void *data EINA_UNUSED,
+                           Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     media_controls_display(1);
 }
 
 static void
-_mediaplayer_mouse_up_cb(void *data,
-                         Evas *e, Evas_Object *obj, void *event_info)
+_mediaplayer_mouse_up_cb(void *data EINA_UNUSED,
+                         Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     media_controls_display(1);
 }
@@ -400,7 +401,6 @@ movie_start_playback(int resume)
     ENNA_EVENT_HANDLER_DEL(mod->mouse_button_event_handler);
     ENNA_EVENT_HANDLER_DEL(mod->mouse_move_event_handler);
     ENNA_OBJECT_DEL(mod->o_mediaplayer);
-   
 
     mod->o_mediaplayer = enna_view_player_video_add(enna->layout);
     enna_view_player_video_uri_set(mod->o_mediaplayer, mod->file);
@@ -437,7 +437,7 @@ movie_start_playback(int resume)
 }
 
 static void
-browser_cb_select(void *data, Evas_Object *obj, void *event_info)
+browser_cb_select(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
     int i = 0;
     Enna_File *file = event_info;
@@ -476,13 +476,13 @@ browser_cb_select(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-_update_file_cb(void *data, Enna_File *file)
+_update_file_cb(void *data EINA_UNUSED, Enna_File *file)
 {
     backdrop_show(file);
 }
 
 static void
-browser_cb_delay_hilight(void *data, Evas_Object *obj, void *event_info)
+browser_cb_delay_hilight(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
     Enna_File *file = event_info;
 
@@ -646,7 +646,7 @@ em_init(Enna_Module *em)
 }
 
 static void
-em_shutdown(Enna_Module *em)
+em_shutdown(Enna_Module *em EINA_UNUSED)
 {
     enna_activity_unregister(&class);
     ENNA_EVENT_HANDLER_DEL(mod->eos_event_handler);

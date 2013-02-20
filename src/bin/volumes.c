@@ -63,14 +63,14 @@ static Eina_List *_volumes = NULL; /** List of volumes currently detected */
 /* Externally accessible functions */
 
 Enna_Volumes_Listener *
-enna_volumes_listener_add(const char *name, EnnaVolumesFunc add, EnnaVolumesFunc remove, void *data)
+enna_volumes_listener_add(const char *name, EnnaVolumesFunc add, EnnaVolumesFunc rmv, void *data)
 {
    Enna_Volumes_Listener *vl;
 
    vl = ENNA_NEW(Enna_Volumes_Listener, 1);
    vl->name = eina_stringshare_add(name);
    vl->add = add;
-   vl->remove = remove;
+   vl->remove = rmv;
    vl->data = data;
 
    enna_log(ENNA_MSG_EVENT, "volumes", "Add: %s listener", vl->name);

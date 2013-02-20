@@ -169,7 +169,7 @@ _remove_volumes_cb(void *data, Enna_Volume *v)
 
 static void
 __class_init(const char *name, Class_Private_Data **priv,
-             ENNA_VFS_CAPS caps, char *key)
+             ENNA_VFS_CAPS caps, char *key EINA_UNUSED)
 {
     Class_Private_Data *data;
     Root_Directories *root;
@@ -286,7 +286,7 @@ _remove_child_volume_cb(void *data, Enna_Volume *v)
 }
 
 static void *
-_add(Eina_List *tokens, Enna_Browser *browser, ENNA_VFS_CAPS caps)
+_add(Eina_List *tokens, Enna_Browser *browser, ENNA_VFS_CAPS caps EINA_UNUSED)
 {
     Enna_Volumes_Listener *vl = NULL;
     if (eina_list_count(tokens) == 2 )
@@ -297,7 +297,7 @@ _add(Eina_List *tokens, Enna_Browser *browser, ENNA_VFS_CAPS caps)
     return vl;
 }
 
-const char*
+static const char*
 make_human_readable_str(unsigned long long val,
                         unsigned long block_size, unsigned long display_unit)
 {
@@ -358,7 +358,7 @@ make_human_readable_str(unsigned long long val,
 }
 
 static const char *
-_root_meta_get(void *data, Enna_File *file, const char *key)
+_root_meta_get(void *data, Enna_File *file EINA_UNUSED, const char *key)
 {
     Root_Directories *root = data;
     struct statfs st;

@@ -60,13 +60,13 @@ _smart_reconfigure (Smart_Data * sd)
 }
 
 static void
-cb_playback_resume (void *data)
+cb_playback_resume (void *data EINA_UNUSED)
 {
     movie_start_playback (1);
 }
 
 static void
-cb_playback_begin (void *data)
+cb_playback_begin (void *data EINA_UNUSED)
 {
     movie_start_playback (0);
 }

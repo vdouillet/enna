@@ -24,6 +24,7 @@
 #include "enna.h"
 #include "enna_config.h"
 #include "metadata.h"
+#include "infos_video_flags.h"
 
 #define EDJE_GROUP "activity/video/flags"
 
@@ -123,7 +124,7 @@ static const struct {
 };
 
 static void
-video_flags_del(void *data, Evas *a, Evas_Object *obj, void *event_info)
+video_flags_del(void *data, Evas *a EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     Smart_Data *sd = data;
     ENNA_OBJECT_DEL(sd->o_video);

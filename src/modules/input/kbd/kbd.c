@@ -263,7 +263,7 @@ _get_input_from_event(Ecore_Event_Key *ev)
 }
 
 static Eina_Bool
-_ecore_event_key_down_cb(void *data, int type, void *event)
+_ecore_event_key_down_cb(void *data EINA_UNUSED, int type EINA_UNUSED, void *event)
 {
     Ecore_Event_Key *e = event;
     enna_input in;
@@ -286,14 +286,14 @@ _ecore_event_key_down_cb(void *data, int type, void *event)
 #endif /* USE_STATIC_MODULES */
 
 static void
-module_init(Enna_Module *em)
+module_init(Enna_Module *em EINA_UNUSED)
 {
     key_down_event_handler =
         ecore_event_handler_add (ECORE_EVENT_KEY_DOWN, _ecore_event_key_down_cb, NULL);
 }
 
 static void
-module_shutdown(Enna_Module *em)
+module_shutdown(Enna_Module *em EINA_UNUSED)
 {
     ENNA_EVENT_HANDLER_DEL(key_down_event_handler);
 }

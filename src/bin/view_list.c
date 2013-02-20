@@ -435,11 +435,12 @@ static void
 list_set_item(Smart_Data *sd, int start, int up, int step)
 {
     int n, ns;
+    int boundary;
 
     ns = start;
     n = start;
 
-    int boundary = up ? eina_list_count(sd->items) - 1 : 0;
+    boundary = up ? eina_list_count(sd->items) - 1 : 0;
 
     if (n == boundary)
         n = ns;

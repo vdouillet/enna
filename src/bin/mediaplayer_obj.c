@@ -483,11 +483,12 @@ static int
 _set_button(Smart_Data *sd, int start, int right)
 {
     int n, ns;
+    int boundary;
 
     ns = start;
     n = start;
 
-    int boundary = right ? eina_list_count(sd->buttons) - 1 : 0;
+    boundary = right ? eina_list_count(sd->buttons) - 1 : 0;
 
     if (n == boundary)
         return ENNA_EVENT_CONTINUE;

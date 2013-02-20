@@ -41,9 +41,9 @@
 
 #define ENNA_MODULE_NAME "music"
 
-static void _create_menu();
-static void _create_gui();
-static void _create_mediaplayer_gui();
+static void _create_menu(void);
+static void _create_gui(void);
+static void _create_mediaplayer_gui(void);
 
 static void _browser_selected_cb(void *data,
                                  Evas_Object *obj, void *event_info);
@@ -258,7 +258,7 @@ _browser_delay_hilight_cb(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, 
 }
 
 static void
-_create_mediaplayer_gui()
+_create_mediaplayer_gui(void)
 {
     Evas_Object *o;
     Evas_Object *o_edje;
@@ -276,7 +276,7 @@ _create_mediaplayer_gui()
 }
 
 static void
-_create_menu()
+_create_menu(void)
 {
     DBG(__FUNCTION__);
     /* Set default state */
@@ -314,7 +314,7 @@ _create_menu()
 }
 
 static void
-_create_gui()
+_create_gui(void)
 {
     DBG(__FUNCTION__);
     /* Set default state */

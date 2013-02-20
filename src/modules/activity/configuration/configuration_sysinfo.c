@@ -425,8 +425,6 @@ get_resolution(Enna_Buffer *b)
         return;
 
     root = RootWindow(dpy, screen);
-    if (root < 0)
-        return;
 
     sc = XRRGetScreenInfo(dpy, root);
     if (!sc)

@@ -399,7 +399,7 @@ ini_parse (ini_t *ini)
         if (d)
         {
             char key[BUFSIZE], val[BUFSIZE];
-            ini_field_t *f;
+            ini_field_t *fld;
             int len;
 
             len = MMIN(BUFSIZE, d - buf + 1);
@@ -407,8 +407,8 @@ ini_parse (ini_t *ini)
             len = MMIN(BUFSIZE, strlen(d) - 1);
             snprintf(val, len, "%s", d + 1);
 
-            f = ini_field_new(key, val);
-            ini_section_append_field(ini->current_section, f);
+            fld = ini_field_new(key, val);
+            ini_section_append_field(ini->current_section, fld);
         }
 
     } while (c);

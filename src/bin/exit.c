@@ -53,11 +53,11 @@ static int _exit_init_count = -1;
 static void
 _inwin_del_cb(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
-    Smart_Data *sd = data;
+    Smart_Data *sd_ = data;
 
-    ENNA_OBJECT_DEL(sd->label);
-    ENNA_OBJECT_DEL(sd->list);
-    ENNA_OBJECT_DEL(sd->layout);
+    ENNA_OBJECT_DEL(sd_->label);
+    ENNA_OBJECT_DEL(sd_->list);
+    ENNA_OBJECT_DEL(sd_->layout);
 }
 
 static void
@@ -79,7 +79,7 @@ _update_text(Evas_Object *lb)
 }
 
 static void
-_inwin_hide()
+_inwin_hide(void)
 {
     ENNA_OBJECT_DEL(sd->inwin);
     sd->visible = EINA_FALSE;
@@ -99,7 +99,7 @@ _no_cb(void *data EINA_UNUSED)
 }
 
 static void
-_inwin_add()
+_inwin_add(void)
 {
     ENNA_OBJECT_DEL(sd->inwin);
 
@@ -136,7 +136,7 @@ _inwin_add()
 }
 
 static void
-_inwin_show()
+_inwin_show(void)
 {
     _inwin_add();
 
@@ -150,19 +150,19 @@ _inwin_show()
 static Eina_Bool
 _input_events_cb(void *data, enna_input event)
 {
-    Smart_Data *sd = data;
+    Smart_Data *sd_ = data;
 
     if (event == ENNA_INPUT_QUIT)
     {
-        if (sd->visible)
+        if (sd_->visible)
             _inwin_hide();
         else
             _inwin_show();
         return ENNA_EVENT_BLOCK;
     }
-    if (sd->visible)
+    if (sd_->visible)
     {
-        enna_box_input_feed(sd->list, event);
+        enna_box_input_feed(sd_->list, event);
         return ENNA_EVENT_BLOCK;
     }
     return ENNA_EVENT_CONTINUE;
@@ -172,7 +172,7 @@ _input_events_cb(void *data, enna_input event)
 
 /* externally accessible functions */
 
-int 
+int
 enna_exit_visible()
 {
   return sd->visible;

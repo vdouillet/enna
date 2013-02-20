@@ -391,14 +391,14 @@ static void _enna_shutdown(void)
     ENNA_FREE(enna);
 }
 
-static void _opt_geometry_parse(const char *optarg,
+static void _opt_geometry_parse(const char *optargs,
                                 unsigned int *pw, unsigned int *ph, unsigned int *px, unsigned int *py)
 {
     int w = 0, h = 0;
     int x = 0, y = 0;
     int ret;
 
-    ret = sscanf(optarg, "%dx%d:%d:%d", &w, &h, &x, &y);
+    ret = sscanf(optargs, "%dx%d:%d:%d", &w, &h, &x, &y);
 
     if ( ret != 2 && ret != 4 )
         return;
@@ -432,16 +432,16 @@ static const struct {
 };
 
 static void
-_opt_profile_parse (const char *optarg, const char **pt,
+_opt_profile_parse (const char *optargs, const char **pt,
                     unsigned int *pw, unsigned int *ph)
 {
     int i;
 
-    if (!optarg)
+    if (!optargs)
         return;
 
     for (i = 0; profile_resolution_mapping[i].name; i++)
-        if (!strcasecmp(optarg, profile_resolution_mapping[i].name))
+        if (!strcasecmp(optargs, profile_resolution_mapping[i].name))
         {
             *pt = profile_resolution_mapping[i].theme;
             *pw = profile_resolution_mapping[i].width;
@@ -516,7 +516,7 @@ static void version(void)
 
 static int parse_command_line(int argc, char **argv)
 {
-    int c, index;
+    int c, idx;
     char short_options[] = "Vhfc:t:b:g:p:";
     struct option long_options [] =
         {
@@ -533,7 +533,7 @@ static int parse_command_line(int argc, char **argv)
     /* command line argument processing */
     while (1)
     {
-        c = getopt_long(argc, argv, short_options, long_options, &index);
+        c = getopt_long(argc, argv, short_options, long_options, &idx);
 
         if (c == EOF)
             break;
@@ -541,7 +541,7 @@ static int parse_command_line(int argc, char **argv)
         switch (c)
         {
         case 0:
-            /* opt = long_options[index].name; */
+            /* opt = long_options[idx].name; */
             break;
 
         case '?':

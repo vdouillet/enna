@@ -210,6 +210,8 @@ ENNA_LIBS="${ENNA_LIBS} ${requirements_libs}"
 
 AM_PROG_CC_C_O
 
+EFL_CHECK_COMPILER_FLAGS([ENNA], [-Wall -Wextra -Wshadow -Wdeclaration-after-statement -Wmissing-prototypes -Wstrict-prototypes -Wpointer-arith -Wno-missing-field-initializers -fvisibility=hidden -fdata-sections -ffunction-sections])
+
 AC_CONFIG_FILES([
 Makefile
 po/Makefile.in

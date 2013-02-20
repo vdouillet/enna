@@ -32,6 +32,7 @@
 #include "metadata.h"
 #include "mediaplayer.h"
 #include "mediaplayer_obj.h"
+#include "videoplayer_obj.h"
 #include "utils.h"
 #include "logs.h"
 
@@ -217,7 +218,7 @@ _set_osd_timer(Enna_View_Player_Video_Data *priv, double t)
     elm_object_signal_emit(priv->layout, "show,osd", "enna");
 }
 
-void
+static void
 _update_time_part(Evas_Object *obj, const char *part, double t)
 {
     Eina_Strbuf *str;
@@ -589,23 +590,23 @@ void enna_view_video_player_show_osd(Evas_Object *o, Eina_Bool show)
         _set_osd_timer(priv, 0);
 }
 
-void enna_view_video_player_seek(Evas_Object *o, double time)
-{ 
-    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
+void enna_view_video_player_seek(Evas_Object *o, double t)
+{
     Evas_Object *emotion;
     Evas_Object *edje;
     double v;
     double pos;
     time_t timestamp;
-    struct tm *t;
     Eina_Strbuf *str;
+
+    PRIV_GET_OR_RETURN(o, Enna_View_Player_Video_Data, priv);
 
     emotion = elm_video_emotion_get(priv->video);
 
     edje = elm_layout_edje_get(priv->layout);
     edje_object_part_drag_value_get(edje, "time.slider", &v, NULL);
 
-    pos = v *  emotion_object_play_length_get(emotion) + time;
+    pos = v *  emotion_object_play_length_get(emotion) + t;
 
     _update_time_part(priv->layout, "time_current.text", pos);
     _update_time_part(priv->layout, "time_duration.text", emotion_object_play_length_get(emotion));

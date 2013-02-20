@@ -2,8 +2,10 @@
 
   * Update Debian package
   * Create a PPA for ubuntu
-je vais d
+
 - v6 :
+  * Swith to ems theme
+  * Transitions between backrops when switching item in video menu
   * Better cover graphics for movies (add reflection and shadow)
   * libcurl is used in url_utils. This part seems to do actually the same as ecore_con_url so remove this old code and use ecore_con instead. 
   * Remove libvalhalla definitively and use our own parser based on EMS
@@ -14,5 +16,3 @@ je vais d
   * Smooth transition when go back to mainmenu after end of video
   * Transition when browsing
 
-- v7 :
-  * Add integration with transmission.

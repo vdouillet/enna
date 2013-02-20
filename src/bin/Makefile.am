@@ -31,14 +31,12 @@ view_list.c\
 view_list2.c\
 view_wall.c\
 mediaplayer_obj.c\
-url_utils.c\
 logs.c\
 box.c\
 exit.c\
 volume_notification.c\
 ini_parser.c\
 input.c\
-geoip.c\
 search.c\
 gadgets.c\
 kbdnav.c\
@@ -133,7 +131,6 @@ view_list2.h\
 view_wall.h\
 mediaplayer.h\
 mediaplayer_obj.h\
-url_utils.h\
 logs.h\
 box.h\
 exit.h\
@@ -141,7 +138,6 @@ gettext.h\
 volume_notification.h\
 ini_parser.h\
 input.h\
-geoip.h\
 gadgets.h\
 kbdnav.h\
 videoplayer_obj.h

@@ -43,8 +43,6 @@
 #include "metadata.h"
 #include "mediaplayer.h"
 #include "input.h"
-#include "url_utils.h"
-#include "geoip.h"
 #include "gadgets.h"
 #include "videoplayer_obj.h"
 
@@ -192,9 +190,6 @@ static int _enna_init(int argc, char **argv)
     Enna_Class_Activity *a;
 
     enna->lvl = ENNA_MSG_INFO;
-
-    /* try to geolocate */
-    enna_get_geo_by_ip();
 
     /* register configuration parsers */
     enna_main_cfg_register();
@@ -377,7 +372,6 @@ static int _create_gui(void)
 static void _enna_shutdown(void)
 {
     ENNA_TIMER_DEL(enna->idle_timer);
-    enna_geo_free(enna->geo_loc);
 
     enna_activity_del_all();
     enna_config_shutdown();
@@ -597,8 +591,6 @@ elm_main(int argc, char **argv)
     if (parse_command_line(argc, argv) < 0)
         return EXIT_SUCCESS;
 
-    url_global_init();
-
     enna_util_init();
 
     /* Must be called first */
@@ -617,7 +609,6 @@ elm_main(int argc, char **argv)
     res = EXIT_SUCCESS;
 
  out:
-    url_global_uninit();
     return res;
 }
 

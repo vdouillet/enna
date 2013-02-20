@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-02-17 11:01+0100\n"
+"POT-Creation-Date: 2013-02-20 09:59+0100\n"
 "PO-Revision-Date: 2010-01-15 00:53+0100\n"
 "Last-Translator: Igor Szymanski <szymanski.igor@gmail.com>\n"
 "Language-Team: Polish\n"
@@ -21,64 +21,64 @@ msgstr ""
 msgid "No media found!"
 msgstr "Nie znaleziono multimediów !"
 
-#: src/bin/enna.c:499
+#: src/bin/enna.c:497
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna MediaCenter\n"
 
-#: src/bin/enna.c:500
+#: src/bin/enna.c:498
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr "Użycie: %s [options ...]\n"
 
-#: src/bin/enna.c:501
+#: src/bin/enna.c:499
 #, c-format
 msgid " Available options:\n"
 msgstr "Dostępne opcje :\n"
 
-#: src/bin/enna.c:502
+#: src/bin/enna.c:500
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr " -c, (--config) : Określ plik konfiguracyjny, który ma zostać użyty.\n"
 
-#: src/bin/enna.c:503
+#: src/bin/enna.c:501
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr " -f, (--fs) : Wymuś tryb pełnoekranowy.\n"
 
-#: src/bin/enna.c:504
+#: src/bin/enna.c:502
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr " -h, (--help) : Wyświetl pomoc.\n"
 
-#: src/bin/enna.c:505
+#: src/bin/enna.c:503
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "  -t, (--theme) :    Określ nazwę skórki która ma zostać użyta.\n"
 
-#: src/bin/enna.c:506
+#: src/bin/enna.c:504
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "  -g, (--geometry) : Określ rozmiar okna. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:507
+#: src/bin/enna.c:505
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "  -g, (--geometry) : Określ rozmiar okna. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:508
+#: src/bin/enna.c:506
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p, (-- profile): Określ profil wyświetlania\n"
 
-#: src/bin/enna.c:509
+#: src/bin/enna.c:507
 #, c-format
 msgid "    Supported: "
 msgstr "Wspierany:"
 
-#: src/bin/enna.c:513
+#: src/bin/enna.c:511
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version) :  Wyświetl numer wersji Enna.\n"
@@ -110,11 +110,6 @@ msgstr "Moduły"
 #: src/bin/module.c:335
 msgid "No information provided"
 msgstr "Nie znaleziono informacji"
-
-#: src/bin/parser_cdda.c:465
-#, c-format
-msgid "Track #%02d (%02d:%02d)"
-msgstr "Utwór #%02d (%02d:%02d)"
 
 #: src/modules/activity/configuration/configuration.c:206
 #: src/modules/activity/configuration/configuration.c:265
@@ -276,17 +271,17 @@ msgstr "Zdjęcia"
 msgid "Browse your photos and create slideshows"
 msgstr "Przeglądanie zdjęć i tworzenia pokazów slajdów"
 
-#: src/modules/activity/video/video.c:116
+#: src/modules/activity/video/video.c:115
 #, c-format
 msgid "%d Movies"
 msgstr "%d Filmów"
 
-#: src/modules/activity/video/video.c:688
-#: src/modules/activity/video/video.c:774
+#: src/modules/activity/video/video.c:617
+#: src/modules/activity/video/video.c:702
 msgid "Video"
 msgstr "Wideo"
 
-#: src/modules/activity/video/video.c:776
+#: src/modules/activity/video/video.c:704
 msgid "Play your videos"
 msgstr "Odtwarzaj pliki wideo"
 
@@ -304,7 +299,7 @@ msgstr "Przeglądaj pliki w lokalnym systemie plików"
 
 #: src/modules/volume/mtab/mtab.c:78
 #, fuzzy, c-format
-msgid "[NFS] %s "
+msgid "[NFS] %s"
 msgstr "[NFS] %s na %s"
 
 #: src/modules/volume/mtab/mtab.c:88
@@ -319,6 +314,9 @@ msgstr "Woluminy z mtab"
 #: src/modules/volume/mtab/mtab.c:175
 msgid "This module provide support for already mounted volumes"
 msgstr "Ten moduł zapewnia wsparcie dla już zamontowanych woluminów"
+
+#~ msgid "Track #%02d (%02d:%02d)"
+#~ msgstr "Utwór #%02d (%02d:%02d)"
 
 #~ msgid "City"
 #~ msgstr "Miasto"

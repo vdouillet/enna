@@ -1,9 +1,9 @@
 Source: enna
-Section: multimedia
+Section: video 
 Priority: optional
 Maintainer: Nicolas Aguirre <captainigloo@geexbox.org>
-Build-Depends: debhelper (>= 6), cdbs, automake1.10, autopoint, subversion, 
- libtool, pkg-config, libelementary-dev, libecore-dev, libedje-dev, libefreet-dev,
+Build-Depends: debhelper (>= 6), cdbs, libtool, pkg-config,
+ libelementary-dev, libecore-dev, libedje-dev, libefreet-dev,
  libeio-dev, libethumb-dev, libcurl4-gnutls-dev, libxrandr-dev, liblircclient-dev,
  libvalhalla-dev
 Standards-Version: 3.8.2

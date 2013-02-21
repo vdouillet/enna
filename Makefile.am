@@ -3,7 +3,8 @@
 
 SUBDIRS = po src data
 
-EXTRA_DIST = config.rpath enna.cfg.sample MAINTAINERS $(ennadoc_DATA)
+EXTRA_DIST = config.rpath enna.cfg.sample MAINTAINERS $(ennadoc_DATA) \
+	autoge.sh
 
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:

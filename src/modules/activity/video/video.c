@@ -246,7 +246,7 @@ _return_to_video_info_gui()
 }
 
 static void
-_eos_cb(void *data, Evas_Object *o EINA_UNUSED, void *event_info EINA_UNUSED)
+_eos_cb(void *data EINA_UNUSED, Evas_Object *o EINA_UNUSED, void *event_info EINA_UNUSED)
 {
     _return_to_video_info_gui();
 }
@@ -391,10 +391,6 @@ _mediaplayer_mouse_up_cb(void *data EINA_UNUSED,
 void
 movie_start_playback(int resume)
 {
-    const Evas_Object *ed;
-    Evas_Object *o_edje;
-    Evas_Coord x, y, w, h;
-
     panel_infos_display(0);
     mod->state = VIDEOPLAYER_VIEW;
 
@@ -421,8 +417,6 @@ movie_start_playback(int resume)
                                    EVAS_CALLBACK_RESIZE,
                                    _mediaplayer_resize_cb, NULL);
 
-    enna_mediaplayer_obj_event_catch(mod->o_mediaplayer);
-    enna_mediaplayer_play(mod->enna_playlist);
     media_controls_display(1);
 #if 0
     if (resume)
@@ -439,9 +433,7 @@ movie_start_playback(int resume)
 static void
 browser_cb_select(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
-    int i = 0;
     Enna_File *file = event_info;
-    Eina_List *l;
 
     if (!file)
         return;
@@ -455,7 +447,6 @@ browser_cb_select(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *ev
     else
     {
         Enna_Metadata *m;
-        Enna_File *f;
         enna_log(ENNA_MSG_EVENT,
                  ENNA_MODULE_NAME, "File Selected %s", file->uri);
 

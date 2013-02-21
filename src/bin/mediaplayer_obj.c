@@ -203,7 +203,6 @@ _start_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
     edje_object_signal_emit(elm_layout_edje_get(sd->layout), "controls,show", "enna");
     ENNA_TIMER_DEL(sd->timer);
     sd->timer = ecore_timer_add(1, _timer_cb, sd);
-    sd->len = enna_mediaplayer_length_get();
     sd->pos = 0.0;
     sd->show = 1;
     return 1;
@@ -275,6 +274,7 @@ _eos_cb(void *data, int type EINA_UNUSED, void *event EINA_UNUSED)
     Smart_Data *sd = data;
 
     /* EOS received, update metadata */
+    enna_log(ENNA_MSG_EVENT, NULL, "Media control Event EOS ");
     enna_mediaplayer_next(sd->playlist);
     return 1;
 }
@@ -303,7 +303,11 @@ slider_position_update(Smart_Data *sd)
     edje_object_part_text_set(elm_layout_edje_get(sd->layout), "text.pos", buf);
 
     if (sd->len)
+    {
         elm_slider_value_set(sd->sl, sd->pos/sd->len * 100.0);
+        if(sd->pos > sd->len)
+            ecore_event_add(ENNA_EVENT_MEDIAPLAYER_EOS, NULL, NULL, NULL);
+    }
     enna_log(ENNA_MSG_EVENT, NULL, "Position %f %f", sd->pos, sd->len);
 }
 
@@ -673,6 +677,7 @@ enna_mediaplayer_obj_add(Evas * evas EINA_UNUSED, Enna_Playlist *enna_playlist)
     evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _del_cb, sd);
 
     sd->playlist = enna_playlist;
+    sd->len = 0;
 
     evas_object_data_set(layout, "sd", sd);
 

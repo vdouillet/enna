@@ -116,7 +116,9 @@ _append_helper(Evas_Object *obj, const char *label,
     evas_object_size_hint_weight_set(si->o_edje, 1.0, 1.0);
     evas_object_size_hint_align_set(si->o_edje, -1.0, -1.0);
 
-    edje_object_size_min_calc(si->o_edje, &w, &h);
+    o_edje = elm_layout_edje_get(si->o_edje);
+
+    edje_object_size_min_calc(o_edje, &w, &h);
     evas_object_size_hint_min_set(o_edje, w, h);
 
     si->sd = sd;
@@ -443,8 +445,10 @@ _box_resize(void *data, Evas *e EINA_UNUSED, Evas_Object *o EINA_UNUSED, void *e
 
     EINA_LIST_FOREACH(sd->items, l, si)
     {
-        edje_object_size_min_calc(si->o_edje, &w, &h);
-        evas_object_size_hint_min_set(si->o_edje, w, h);
+        Evas_Object *o_edje = elm_layout_edje_get(si->o_edje);
+
+        edje_object_size_min_calc(o_edje, &w, &h);
+        evas_object_size_hint_min_set(o_edje, w, h);
     }
 }
 

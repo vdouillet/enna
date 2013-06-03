@@ -157,3 +157,5 @@ ICON("flags/video/480i.png",              "flags/video/480i");
 ICON("flags/video/480p.png",              "flags/video/480p");
 ICON("flags/video/defaultscreen.png",     "flags/video/default");
 ICON("flags/video/sd.png",                "flags/video/sd");
+
+ICON("ctrl_ok.png",                "ctrl/ok");

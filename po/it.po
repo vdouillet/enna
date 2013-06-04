@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-02-20 09:59+0100\n"
+"POT-Creation-Date: 2013-05-30 12:11+0200\n"
 "PO-Revision-Date: 2011-03-14 13:42+0100\n"
 "Last-Translator: Davide Cavalca <davide@geexbox.org>\n"
 "Language-Team: Italian\n"
@@ -21,49 +21,49 @@ msgstr ""
 msgid "No media found!"
 msgstr "Nessun media trovato!"
 
-#: src/bin/enna.c:497
+#: src/bin/enna.c:493
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "Enna Media Center\n"
 
-#: src/bin/enna.c:498
+#: src/bin/enna.c:494
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr "Uso: %s [opzioni...]\n"
 
-#: src/bin/enna.c:499
+#: src/bin/enna.c:495
 #, c-format
 msgid " Available options:\n"
 msgstr " Opzioni disponibili:\n"
 
-#: src/bin/enna.c:500
+#: src/bin/enna.c:496
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr "  -c, (--config):   specifica il file di configurazione da usare.\n"
 
-#: src/bin/enna.c:501
+#: src/bin/enna.c:497
 #, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "  -f, (--fs):       forza modalità a pieno schermo.\n"
 
-#: src/bin/enna.c:502
+#: src/bin/enna.c:498
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "  -h, (--help):     mostra questo messaggio d'aiuto.\n"
 
-#: src/bin/enna.c:503
+#: src/bin/enna.c:499
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "  -t, (--theme):    specifica il nome del tema da usare.\n"
 
-#: src/bin/enna.c:504
+#: src/bin/enna.c:500
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr ""
 "  -g, (--geometry): specifica la geometria della finestra. "
 "(geometry=1280x720)\n"
 
-#: src/bin/enna.c:505
+#: src/bin/enna.c:501
 #, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
@@ -72,17 +72,17 @@ msgstr ""
 "  -g, (--geometry): specifica la geometria della finestra. "
 "(geometry=1280x720:10:20)\n"
 
-#: src/bin/enna.c:506
+#: src/bin/enna.c:502
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "  -p, (--profile): Specifica profilo schermo\n"
 
-#: src/bin/enna.c:507
+#: src/bin/enna.c:503
 #, c-format
 msgid "    Supported: "
 msgstr "    Supportato: "
 
-#: src/bin/enna.c:511
+#: src/bin/enna.c:507
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version):  mostra il numero di versione di Enna.\n"
@@ -121,7 +121,7 @@ msgid "Configuration"
 msgstr "Impostazioni"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:670
+#: src/modules/activity/configuration/configuration_sysinfo.c:668
 msgid "System information"
 msgstr "Informazioni di sistema"
 
@@ -199,56 +199,56 @@ msgstr "occupati su"
 msgid "total"
 msgstr "totali"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:440
+#: src/modules/activity/configuration/configuration_sysinfo.c:438
 msgid "Screen resolution:"
 msgstr "Risoluzione:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:443
+#: src/modules/activity/configuration/configuration_sysinfo.c:441
 msgid "at"
 msgstr "a"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:445
+#: src/modules/activity/configuration/configuration_sysinfo.c:443
 msgid "min:"
 msgstr "min:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:447
+#: src/modules/activity/configuration/configuration_sysinfo.c:445
 msgid "max:"
 msgstr "max:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:460
+#: src/modules/activity/configuration/configuration_sysinfo.c:458
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:463
+#: src/modules/activity/configuration/configuration_sysinfo.c:461
 msgid "connected to VDR"
 msgstr "connesso a VDR"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:466
+#: src/modules/activity/configuration/configuration_sysinfo.c:464
 msgid "on"
 msgstr "su"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:471
+#: src/modules/activity/configuration/configuration_sysinfo.c:469
 msgid "not connected"
 msgstr "non connesso"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:483
+#: src/modules/activity/configuration/configuration_sysinfo.c:481
 msgid "Available network interfaces:"
 msgstr "Interfacce di rete disponibili:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:501
+#: src/modules/activity/configuration/configuration_sysinfo.c:499
 msgid "IP:"
 msgstr "IP:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:506
+#: src/modules/activity/configuration/configuration_sysinfo.c:504
 msgid "Netmask:"
 msgstr "Maschera:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:606
-#: src/modules/activity/configuration/configuration_sysinfo.c:626
+#: src/modules/activity/configuration/configuration_sysinfo.c:604
+#: src/modules/activity/configuration/configuration_sysinfo.c:624
 msgid "Default gateway:"
 msgstr "Gateway:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:654
+#: src/modules/activity/configuration/configuration_sysinfo.c:652
 msgid "None"
 msgstr "Nessuno"
 
@@ -280,12 +280,12 @@ msgstr "Sfoglia le tue foto e crea slideshow"
 msgid "%d Movies"
 msgstr "%d video"
 
-#: src/modules/activity/video/video.c:617
-#: src/modules/activity/video/video.c:702
+#: src/modules/activity/video/video.c:608
+#: src/modules/activity/video/video.c:691
 msgid "Video"
 msgstr "Video"
 
-#: src/modules/activity/video/video.c:704
+#: src/modules/activity/video/video.c:693
 msgid "Play your videos"
 msgstr "Guarda video e filmati"
 

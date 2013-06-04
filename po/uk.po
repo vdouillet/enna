@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
-"POT-Creation-Date: 2013-02-20 09:59+0100\n"
+"POT-Creation-Date: 2013-05-30 12:11+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kostyantyn Derets <ua.motofan@gmail.com>\n"
 "Language-Team: Ukraine\n"
@@ -24,64 +24,64 @@ msgstr ""
 msgid "No media found!"
 msgstr "Не знайдено джерела!"
 
-#: src/bin/enna.c:497
+#: src/bin/enna.c:493
 #, c-format
 msgid "Enna MediaCenter\n"
 msgstr "МедіаЦентр Enna\n"
 
-#: src/bin/enna.c:498
+#: src/bin/enna.c:494
 #, c-format
 msgid " Usage: %s [options ...]\n"
 msgstr " Використання: %s [опції...]\n"
 
-#: src/bin/enna.c:499
+#: src/bin/enna.c:495
 #, fuzzy, c-format
 msgid " Available options:\n"
 msgstr " Доступні опції:\n"
 
-#: src/bin/enna.c:500
+#: src/bin/enna.c:496
 #, c-format
 msgid "  -c, (--config):  Specify configuration file to be used.\n"
 msgstr "  -c, (--config):  Вкажіть конфігураційний файл.\n"
 
-#: src/bin/enna.c:501
+#: src/bin/enna.c:497
 #, fuzzy, c-format
 msgid "  -f, (--fs):      Force fullscreen mode.\n"
 msgstr "  -f, (--fs):      Примусовий повноекраний режим.\n"
 
-#: src/bin/enna.c:502
+#: src/bin/enna.c:498
 #, c-format
 msgid "  -h, (--help):    Display this help.\n"
 msgstr "  -h, (--help):    Показує це повідомлення.\n"
 
-#: src/bin/enna.c:503
+#: src/bin/enna.c:499
 #, c-format
 msgid "  -t, (--theme):   Specify theme name to be used.\n"
 msgstr "  -t, (--theme):   Вкажіть назву теми, що буде використовуватись.\n"
 
-#: src/bin/enna.c:504
+#: src/bin/enna.c:500
 #, c-format
 msgid "  -g, (--geometry):Specify window geometry. (geometry=1280x720)\n"
 msgstr "  -g, (--geometry):Вкажіть розміри вікна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:505
+#: src/bin/enna.c:501
 #, fuzzy, c-format
 msgid ""
 "  -g, (--geometry):Specify window geometry and offset. "
 "(geometry=1280x720:10:20)\n"
 msgstr "  -g, (--geometry):Вкажіть розміри вікна. (geometry=1280x720)\n"
 
-#: src/bin/enna.c:506
+#: src/bin/enna.c:502
 #, c-format
 msgid "  -p, (--profile): Specify display profile\n"
 msgstr "-p (--profile): вкажіть профіль дісплею \n"
 
-#: src/bin/enna.c:507
+#: src/bin/enna.c:503
 #, c-format
 msgid "    Supported: "
 msgstr "\tПідтримується: "
 
-#: src/bin/enna.c:511
+#: src/bin/enna.c:507
 #, c-format
 msgid "  -V, (--version): Display Enna version number.\n"
 msgstr "  -V, (--version): Відображує номер версії Enna.\n"
@@ -126,7 +126,7 @@ msgid "Configuration"
 msgstr "Налаштування"
 
 #: src/modules/activity/configuration/configuration.c:241
-#: src/modules/activity/configuration/configuration_sysinfo.c:670
+#: src/modules/activity/configuration/configuration_sysinfo.c:668
 #, fuzzy
 msgid "System information"
 msgstr "<c>Інформація про систему</c><br><br>"
@@ -211,62 +211,62 @@ msgstr "використано на"
 msgid "total"
 msgstr "всього"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:440
+#: src/modules/activity/configuration/configuration_sysinfo.c:438
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "<hilight>Роздільна здатність: </hilight>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:443
+#: src/modules/activity/configuration/configuration_sysinfo.c:441
 #, fuzzy
 msgid "at"
 msgstr "Данні"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:445
+#: src/modules/activity/configuration/configuration_sysinfo.c:443
 msgid "min:"
 msgstr "мін:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:447
+#: src/modules/activity/configuration/configuration_sysinfo.c:445
 msgid "max:"
 msgstr "макс:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:460
+#: src/modules/activity/configuration/configuration_sysinfo.c:458
 msgid "VDR:"
 msgstr "VDR:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:463
+#: src/modules/activity/configuration/configuration_sysinfo.c:461
 #, fuzzy
 msgid "connected to VDR"
 msgstr "приєднано до VDR %s на %s (%s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:466
+#: src/modules/activity/configuration/configuration_sysinfo.c:464
 msgid "on"
 msgstr "на"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:471
+#: src/modules/activity/configuration/configuration_sysinfo.c:469
 #, fuzzy
 msgid "not connected"
 msgstr "немає з'єднань<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:483
+#: src/modules/activity/configuration/configuration_sysinfo.c:481
 #, fuzzy
 msgid "Available network interfaces:"
 msgstr "<hilight>Доступні мережеві з'єднання:</hilight><br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:501
+#: src/modules/activity/configuration/configuration_sysinfo.c:499
 msgid "IP:"
 msgstr "Адреса"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:506
+#: src/modules/activity/configuration/configuration_sysinfo.c:504
 #, fuzzy
 msgid "Netmask:"
 msgstr "Маска мережі: %s)<br>"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:606
-#: src/modules/activity/configuration/configuration_sysinfo.c:626
+#: src/modules/activity/configuration/configuration_sysinfo.c:604
+#: src/modules/activity/configuration/configuration_sysinfo.c:624
 msgid "Default gateway:"
 msgstr "Шлюз:"
 
-#: src/modules/activity/configuration/configuration_sysinfo.c:654
+#: src/modules/activity/configuration/configuration_sysinfo.c:652
 #, fuzzy
 msgid "None"
 msgstr "Немає<br>"
@@ -301,12 +301,12 @@ msgstr "Переглянути всі Ваші фото 'на стіні' або
 msgid "%d Movies"
 msgstr "%d Фільмів"
 
-#: src/modules/activity/video/video.c:617
-#: src/modules/activity/video/video.c:702
+#: src/modules/activity/video/video.c:608
+#: src/modules/activity/video/video.c:691
 msgid "Video"
 msgstr "Відео"
 
-#: src/modules/activity/video/video.c:704
+#: src/modules/activity/video/video.c:693
 msgid "Play your videos"
 msgstr "Програти ваше відео"
 

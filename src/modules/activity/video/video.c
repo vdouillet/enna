@@ -515,10 +515,10 @@ _create_menu()
     elm_layout_content_set(mod->o_layout,
                            "infos.swallow", mod->o_panel_infos);
 
-    ENNA_OBJECT_DEL(mod->o_resume);
-    mod->o_resume = video_resume_add(enna->evas);
-    elm_layout_content_set(mod->o_layout,
-                           "resume.swallow", mod->o_resume);
+    /* ENNA_OBJECT_DEL(mod->o_resume); */
+    /* mod->o_resume = video_resume_add(enna->evas); */
+    /* elm_layout_content_set(mod->o_layout, */
+    /*                        "resume.swallow", mod->o_resume); */
 
     mod->state = BROWSER_VIEW;
 }

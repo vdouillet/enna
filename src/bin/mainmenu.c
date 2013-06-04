@@ -50,14 +50,12 @@ struct _Activated_Cb_Data
 struct _Smart_Data
 {
     Evas_Object *o_menu;
-    Evas_Object *o_background;
     Evas_Object *o_volume;
     Enna_File *selected;
     Input_Listener *listener;
     Ecore_Event_Handler *act_handler;
     Eina_Bool visible;
     Eina_Bool exit_visible;
-    Eina_List *backgrounds;
     Enna_Browser *browser;
 };
 
@@ -78,17 +76,6 @@ _enna_mainmenu_load_from_activities(Smart_Data *sd)
     enna_browser_browse(sd->browser);
 }
 
-static void
-_enna_mainmenu_item_focus(void *data, Evas_Object *obj EINA_UNUSED, void *event_info)
-{
-    Smart_Data *sd = data;
-    Activated_Cb_Data *cb_data = event_info;
-
-    if (!cb_data || !cb_data->file)
-        return;
-
-    enna_mainmenu_background_select(sd->o_menu, cb_data->file);
-}
 
 static void
 _enna_mainmenu_item_activate(void *data)
@@ -190,20 +177,6 @@ enna_mainmenu_add(Evas_Object *parent)
     evas_object_size_hint_weight_set(sd->o_menu, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
     evas_object_show(sd->o_menu);
-    /* Add  background*/
-    sd->o_background = elm_slideshow_add(parent);
-    elm_layout_content_set(enna->layout, "enna.background.swallow", sd->o_background);
-    elm_slideshow_loop_set(sd->o_background, EINA_TRUE);
-    evas_object_size_hint_weight_set(sd->o_background, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-    evas_object_show(sd->o_background);
-    elm_slideshow_transition_set(sd->o_background, "fade");
-    sd->backgrounds = NULL;
-    evas_object_smart_callback_add(sd->o_menu, "hilight", _enna_mainmenu_item_focus, sd);
-    /* Volume widget */
-    sd->o_volume =
-        enna_volume_notification_smart_add(evas_object_evas_get(enna->layout));
-    elm_layout_content_set(enna->layout,
-                           "enna.volume.swallow", sd->o_volume);
 
     /* connect to the input signal */
     sd->listener = enna_input_listener_add("mainmenu", _input_events_cb, sd);
@@ -215,8 +188,6 @@ enna_mainmenu_add(Evas_Object *parent)
 void
 enna_mainmenu_shutdown(Evas_Object *obj)
 {
-    Eina_List *l;
-    const char *name;
     Smart_Data *sd;
 
     sd =evas_object_data_get(obj, "mainmenu_data");
@@ -225,13 +196,7 @@ enna_mainmenu_shutdown(Evas_Object *obj)
     enna_input_listener_del(sd->listener);
 
     ENNA_OBJECT_DEL(sd->o_menu);
-    ENNA_OBJECT_DEL(sd->o_background);
     ENNA_OBJECT_DEL(sd->o_volume);
-    EINA_LIST_FOREACH(sd->backgrounds, l, name)
-    {
-        sd->backgrounds = eina_list_remove(sd->backgrounds, name);
-        if (name) eina_stringshare_del(name);
-    }
     enna_browser_del(sd->browser);
     ENNA_FREE(sd);
 }
@@ -252,7 +217,6 @@ enna_mainmenu_append(Evas_Object *obj, Enna_File *f)
 
     enna_box_file_append(sd->o_menu, f, _enna_mainmenu_item_activate, cb_data);
 
-    enna_mainmenu_background_add(sd->o_menu, f);
     if (!enna_box_selected_data_get(sd->o_menu))
     {
         enna_box_select_nth(sd->o_menu, 0);
@@ -287,10 +251,12 @@ enna_mainmenu_show(Evas_Object *obj)
     edje_object_signal_emit(elm_layout_edje_get(enna->layout),
                             "gadgets,show", "enna");
 
-    ic = elm_icon_add(enna->o_button_back);
-    elm_image_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
-    elm_object_content_set(enna->o_button_back, ic);
-
+    if (enna->o_button_back)
+      {
+	ic = elm_icon_add(enna->o_button_back);
+	elm_image_file_set(ic, enna_config_theme_get(), "ctrl/shutdown");
+	elm_object_content_set(enna->o_button_back, ic);
+      }
 }
 
 void
@@ -309,71 +275,7 @@ enna_mainmenu_hide(Evas_Object *obj)
     edje_object_signal_emit(elm_layout_edje_get(enna->layout),
                             "gadgets,hide", "enna");
 
-    ic = elm_icon_add(enna->o_button_back);
-    elm_image_file_set(ic, enna_config_theme_get(), "icon/arrow_left");
-    elm_object_content_set(enna->o_button_back, ic);
     enna_gadgets_hide();
-}
-
-typedef struct _Bg_Data
-{
-    Enna_File *file;
-    Elm_Object_Item *it;
-}Bg_Data;
-
-static Evas_Object *
-_background_get(void *data, Evas_Object *obj)
-{
-    Evas_Object *o_bg = elm_icon_add(obj);
-    elm_image_file_set(o_bg, enna_config_theme_get(), data);
-    return o_bg;
-}
-
-static Elm_Slideshow_Item_Class itc = {
-    {
-        _background_get,
-        NULL
-    }
-};
-
-
-void
-enna_mainmenu_background_add(Evas_Object *obj, Enna_File *file)
-{
-    Smart_Data *sd;
-    Elm_Object_Item *it;
-    Bg_Data *bg;
-
-
-    if (!file)
-        return;
-
-    sd = evas_object_data_get(obj, "mainmenu_data");
-    bg = calloc(1, sizeof(Bg_Data));
-
-    it = elm_slideshow_item_add(sd->o_background, &itc, file->icon_file);
-    bg->it = it;
-    bg->file = file;
-    sd->backgrounds = eina_list_append(sd->backgrounds, bg);
-}
-
-void
-enna_mainmenu_background_select(Evas_Object *obj, Enna_File *file)
-{
-    Bg_Data *bg;
-    Eina_List *l;
-    Smart_Data *sd;
-
-    sd = evas_object_data_get(obj, "mainmenu_data");
-
-    EINA_LIST_FOREACH(sd->backgrounds, l, bg)
-    {
-        if (bg->file == file)
-        {
-            elm_slideshow_item_show(bg->it);
-            break;
-        }
-    }
 }
 
 Eina_Bool

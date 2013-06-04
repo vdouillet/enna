@@ -63,10 +63,10 @@ static void _create_infos(void)
 {
 	Evas_Object *o_edje;
     mod->o_infos = photo_panel_infos_add (evas_object_evas_get(mod->o_layout));
-    edje_object_part_swallow (mod->o_layout,
-                              "infos.panel.swallow", mod->o_infos);
-    o_edje = elm_layout_edje_get(mod->o_layout);
-    edje_object_signal_emit (o_edje, "infos,hide", "enna");
+    //elm_layout_content_set(mod->o_layout,
+    //			   "infos.panel.swallow", mod->o_infos);
+    //o_edje = elm_layout_edje_get(mod->o_layout);
+    //edje_object_signal_emit (o_edje, "infos,hide", "enna");
 }
 
 static void

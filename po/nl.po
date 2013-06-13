@@ -7,7 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enna 0.4.0\n"
 "Report-Msgid-Bugs-To: http://enna.geexbox.org\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2013-05-30 12:11+0200\n"
+||||||| merged common ancestors
+"POT-Creation-Date: 2013-02-20 09:59+0100\n"
+=======
+"POT-Creation-Date: 2013-02-20 19:11+0100\n"
+>>>>>>> Change name of package
 "PO-Revision-Date: 2010-01-07 00:14+0100\n"
 "Last-Translator: Geert Deboutte deg@mail.be\n"
 "Language-Team: Dutch\n"
@@ -284,17 +290,31 @@ msgstr "Foto"
 msgid "Browse your photos and create slideshows"
 msgstr "Bekijk al je foto's aan een wand of als een diashow"
 
-#: src/modules/activity/video/video.c:115
+#: src/modules/activity/video/video.c:114
 #, c-format
 msgid "%d Movies"
 msgstr "%d Films"
 
+<<<<<<< HEAD
 #: src/modules/activity/video/video.c:608
 #: src/modules/activity/video/video.c:691
+||||||| merged common ancestors
+#: src/modules/activity/video/video.c:617
+#: src/modules/activity/video/video.c:702
+=======
+#: src/modules/activity/video/video.c:617
+#: src/modules/activity/video/video.c:700
+>>>>>>> Change name of package
 msgid "Video"
 msgstr "Video"
 
+<<<<<<< HEAD
 #: src/modules/activity/video/video.c:693
+||||||| merged common ancestors
+#: src/modules/activity/video/video.c:704
+=======
+#: src/modules/activity/video/video.c:702
+>>>>>>> Change name of package
 msgid "Play your videos"
 msgstr "Vertoon je video's"
 

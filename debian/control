@@ -2,7 +2,10 @@ Source: enna
 Section: multimedia
 Priority: optional
 Maintainer: Nicolas Aguirre <captainigloo@geexbox.org>
-Build-Depends: debhelper (>= 6), cdbs, pkg-config, libelementary-dev, libecore-dev, libedje-dev, libefreet-dev, libeio-dev, libethumb-dev, libcurl4-gnutls-dev, libxrandr-dev, liblircclient-dev, libvalhalla-dev, libelementary-bin, libeet-bin
+Build-Depends: debhelper (>= 6), cdbs, automake1.10, autopoint, subversion, 
+ libtool, pkg-config, libelementary-dev, libecore-dev, libedje-dev, libefreet-dev,
+ libeio-dev, libethumb-dev, libcurl4-gnutls-dev, libxrandr-dev, liblircclient-dev,
+ libvalhalla-dev
 Standards-Version: 3.8.2
 Vcs-Git: https://github.com/enna-project/enna
 Vcs-Browser: https://github.com/enna-project/enna

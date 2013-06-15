@@ -6,7 +6,7 @@ AM_CPPFLAGS = \
 -DPACKAGE_DATA_DIR=\"$(datadir)\" \
 -DLOCALE_DIR=\"$(datadir)/locale\"
 
-AM_CFLAGS = @ENNA_CFLAGS@
+AM_CFLAGS = @ENNA_CFLAGS@ @ECORE_X_CFLAGS@
 
 bin_PROGRAMS = enna
 
@@ -43,7 +43,7 @@ kbdnav.c\
 videoplayer_obj.c \
 mediaplayer_emotion.c
 
-enna_LDADD = @ENNA_LIBS@
+enna_LDADD = @ENNA_LIBS@ @ECORE_X_LIBS@
 enna_LDFLAGS = -rdynamic
 
 ##########################################################################

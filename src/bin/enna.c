@@ -46,6 +46,10 @@
 #include "gadgets.h"
 #include "videoplayer_obj.h"
 
+#ifdef HAVE_ECORE_X
+#include <Ecore_X.h>
+#endif
+
 #ifndef ELM_LIB_QUICKLAUNCH
 
 #define EDJE_GROUP_MAIN_LAYOUT "enna/main/layout"
@@ -270,6 +274,11 @@ static int _enna_init(int argc, char **argv)
         enna->idle_timer = NULL;
         enna_idle_timer_renew();
     }
+
+#ifdef HAVE_ECORE_X
+    /* Disable screensaver */
+    ecore_x_screensaver_set(0, 0, 0, 0);
+#endif
 
     return 1;
 }

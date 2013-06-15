@@ -156,6 +156,11 @@ PKG_CHECK_EXISTS(
    ],
    [PKG_CHECK_MODULES([dummy], [${requirements_hard}])])
 
+have_ecore_x="no"
+PKG_CHECK_MODULES([ECORE_X], [ecore-x >= ${efl_version}], [have_ecore_x="yes"], [have_ecore_x="no"])
+if test "${have_ecore_x}" = "yes" ;  then
+   AC_DEFINE([HAVE_ECORE_X], [1], ["1 if Ecore_X is installed"])
+fi
 ## Activity Modules
 
 # Configuration
@@ -287,6 +292,7 @@ echo
 echo "Optional linked-in librairies:"
 echo
 echo "  libxrandr........................ : $want_libxrandr"
+echo "  ecore_x.......................... : $have_ecore_x"
 echo
 echo "Suppported Themes:"
 echo

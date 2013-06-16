@@ -40,10 +40,11 @@ static Enna_Mediaplayer *mp = NULL;
 static const struct {
     const char *name;
 } map_player_type[] = {
-    { "generic"                                  },
-    { "gstreamer"                            },
-    { "xine"                                 },
-    { NULL                                   }
+    { "generic" },
+    { "gstreamer" },
+    { "xine" },
+    { "vlc" },
+    { NULL }
 };
 
 

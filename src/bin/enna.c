@@ -74,10 +74,21 @@ static int run_fullscreen = 0;
 static int _create_gui(void);
 
 /* Callbacks */
+
+static Eina_Bool
+_reset_screensaver_cb(void *data EINA_UNUSED)
+{
+#ifdef HAVE_ECORE_X
+    /* Disable screensaver */
+    ecore_x_screensaver_set(0, 0, 0, 0);
+    ecore_x_screensaver_custom_blanking_disable();
+#endif 
+    return ECORE_CALLBACK_RENEW;
+}
+
 static Eina_Bool
 _idle_timer_cb(void *data EINA_UNUSED)
 {
-
     if (enna_exit_visible())
     {
         enna_log(ENNA_MSG_INFO, NULL, "gracetime is over, quitting enna.");
@@ -277,7 +288,8 @@ static int _enna_init(int argc, char **argv)
 
 #ifdef HAVE_ECORE_X
     /* Disable screensaver */
-    ecore_x_screensaver_set(0, 0, 0, 0);
+    _reset_screensaver_cb(NULL);
+    ecore_timer_add(60.0, _reset_screensaver_cb, NULL);
 #endif
 
     return 1;

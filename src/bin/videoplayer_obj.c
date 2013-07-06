@@ -128,6 +128,7 @@ static const struct {
     { "generic"                                  },
     { "gstreamer"                            },
     { "xine"                                 },
+    { "vlc"                                  },
     { NULL                                   }
 };
 

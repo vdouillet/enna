@@ -358,7 +358,7 @@ group {
 	        type: TEXTBLOCK;
           clip_to: "infos.panel.clip";
           description {
-             state: "show" 0.0;
+             state: "default" 0.0;
              visible: 1;
              color: 255 255 255 255;
              rel1.relative: 1 0;
